@@ -89,7 +89,9 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
           CustomFadeInUp(
             duration: 1000,
             child: AppTextButton(
-              onPressed: () {},
+              onPressed: () {
+                context.pushNamed(Routes.verificationCodeRoute);
+              },
               text: LocaleKeys.createAccount.tr(),
             ),
           ),

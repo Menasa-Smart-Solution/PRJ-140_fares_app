@@ -1,3 +1,4 @@
+import 'package:fares/core/helpers/extensions.dart';
 import 'package:fares/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +32,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           InkWell(
             borderRadius: BorderRadius.circular(100),
             onTap: () {
-              // Handle back button tap
+              context.pop();
             },
             child: Container(
               width: 35,
