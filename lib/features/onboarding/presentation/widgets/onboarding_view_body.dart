@@ -2,8 +2,9 @@ import 'dart:developer';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fares/core/common_ui/widgets/animate_do.dart';
-import 'package:fares/core/common_ui/widgets/extensions.dart';
+import 'package:fares/core/helpers/extensions.dart';
 import 'package:fares/core/helpers/spacing.dart';
+import 'package:fares/core/routing/routes.dart';
 import 'package:fares/core/theme/app_colors.dart';
 import 'package:fares/core/theme/app_text_styles.dart';
 import 'package:fares/core/utils/app_images.dart';
@@ -72,7 +73,9 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                   child: Material(
                     color: Colors.transparent,
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        context.pushReplacementNamed(Routes.welcomeRoute);
+                      },
                       borderRadius: BorderRadius.circular(32),
                       child: Container(
                         height: 64,

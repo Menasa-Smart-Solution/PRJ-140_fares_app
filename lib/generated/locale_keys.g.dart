@@ -6,5 +6,9 @@ abstract class  LocaleKeys {
   static const trackingTitle = 'trackingTitle';
   static const deliverySubtitle = 'deliverySubtitle';
   static const startNow = 'startNow';
+  static const appName = 'appName';
+  static const forDelivery = 'forDelivery';
+  static const createAccount = 'createAccount';
+  static const login = 'login';
 
 }

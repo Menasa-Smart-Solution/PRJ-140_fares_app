@@ -1,5 +1,9 @@
 {
     "trackingTitle": "تتبع حالة \nشحناتك \nوانت في مكانك",
     "deliverySubtitle": "التسليم في متناول يدك.",
-    "startNow": "ابدأ الان"
+    "startNow": "ابدأ الان",
+    "appName": "فارس",
+    "forDelivery": "للتوصيل",
+    "createAccount": "انشاء حساب",
+    "login": "تسجل دخول"
 }

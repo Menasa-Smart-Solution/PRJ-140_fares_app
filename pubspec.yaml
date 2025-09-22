@@ -42,6 +42,7 @@ dependencies:
   flutter_secure_storage: ^9.2.4
   responsive_framework: ^1.5.1
   easy_localization: ^3.0.8
+  skeletonizer: ^2.1.0+1
 
 dev_dependencies:
   flutter_test:

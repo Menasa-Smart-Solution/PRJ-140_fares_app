@@ -15,9 +15,13 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> _ar = {
-  "trackingTitle": "تتبع حالة شحناتك وانت في مكانك",
+  "trackingTitle": "تتبع حالة \nشحناتك \nوانت في مكانك",
   "deliverySubtitle": "التسليم في متناول يدك.",
-  "startNow": "ابدأ الان"
+  "startNow": "ابدأ الان",
+  "appName": "فارس",
+  "forDelivery": "للتوصيل",
+  "createAccount": "انشاء حساب",
+  "login": "تسجل دخول"
 };
 static const Map<String,dynamic> _en = {};
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
