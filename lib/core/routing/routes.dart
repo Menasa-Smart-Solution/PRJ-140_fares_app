@@ -4,4 +4,5 @@ class Routes {
   static const String welcomeRoute = '/WelcomeView';
   static const String loginRoute = '/LoginView';
   static const String registerRoute = '/RegisterView';
+  static const String verificationCodeRoute = '/VerificationCodeView';
 }

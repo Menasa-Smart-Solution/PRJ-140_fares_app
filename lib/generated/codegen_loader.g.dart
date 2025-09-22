@@ -35,7 +35,12 @@ class CodegenLoader extends AssetLoader{
   "nameHint": "ادخل الاسم",
   "fullNameLabel": "الاسم بالكامل",
   "confirmPasswordLabel": "تاكيد كلمة المرور",
-  "alreadyHaveAccount": "لديك حساب بالفعل؟"
+  "alreadyHaveAccount": "لديك حساب بالفعل؟",
+  "dontReceiveCode": "لم تستقبل الرمز؟ ",
+  "resendCode": "إعادة الإرسال",
+  "resendIn": "إعادة الإرسال خلال  {seconds} ثانية",
+  "pleaseEnterverificationCode": "يرجى إدخال رمز التحقق",
+  "verificationCodeLengthValidation": "يجب أن يتكون الرمز من 6 أرقام"
 };
 static const Map<String,dynamic> _en = {};
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

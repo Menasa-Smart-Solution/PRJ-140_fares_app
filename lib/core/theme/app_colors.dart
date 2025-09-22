@@ -11,4 +11,6 @@ class AppColors {
   static const Color textFormBorderColor = Color(0xFFE8ECF4);
   static const Color grey500 = Color(0xFF7F909F);
   static const Color black500 = Color(0xFF0D120E);
+  static const Color greyWhite = Color(0xFFFFFFFF);
+  static const Color grey200 = Color(0xFFD9DFE6);
 }

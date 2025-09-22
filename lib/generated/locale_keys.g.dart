@@ -24,5 +24,13 @@ abstract class  LocaleKeys {
   static const fullNameLabel = 'fullNameLabel';
   static const confirmPasswordLabel = 'confirmPasswordLabel';
   static const alreadyHaveAccount = 'alreadyHaveAccount';
+  static const dontReceiveCode = 'dontReceiveCode';
+  static const resendCode = 'resendCode';
+  static const resendIn = 'resendIn';
+  static const pleaseEnterverificationCode = 'pleaseEnterverificationCode';
+  static const verificationCodeLengthValidation = 'verificationCodeLengthValidation';
+  static const verificationCode = 'verificationCode';
+  static const verificationInstruction = 'verificationInstruction';
+  static const verify = 'verify';
 
 }
