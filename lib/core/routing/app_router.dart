@@ -1,102 +1,27 @@
-import 'package:animate_do/animate_do.dart';
-import 'package:fares/core/helpers/cache_helper.dart';
-import 'package:fares/core/utils/prefs_keys.dart';
+import 'dart:io';
+
+import 'package:fares/core/routing/page_route_animation.dart';
+import 'package:fares/core/routing/routes.dart';
+import 'package:fares/features/onboarding/presentation/views/on_boarding_view.dart';
+import 'package:fares/features/onboarding/presentation/views/welcome_view.dart';
 import 'package:flutter/material.dart';
 
-class CustomFadeInDown extends StatelessWidget {
-  const CustomFadeInDown({
-    required this.child,
-    required this.duration,
-    super.key,
-  });
-
-  final Widget child;
-
-  final int duration;
-
-  @override
-  Widget build(BuildContext context) {
-    return FadeInDown(
-      delay: const Duration(milliseconds: 300),
-      duration: Duration(milliseconds: duration),
-      child: child,
-    );
+class AppRouter {
+  static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  Route? onGenerateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case Routes.onBoardingRoute:
+        return _buildRoute(builder: (_) => const OnBoardingView());
+      case Routes.welcomeRoute:
+        return _buildRoute(builder: (_) => const WelcomeView());
+      default:
+        return null;
+    }
   }
-}
 
-class CustomFadeInUp extends StatelessWidget {
-  const CustomFadeInUp({
-    required this.child,
-    required this.duration,
-    super.key,
-  });
-
-  final Widget child;
-
-  final int duration;
-
-  @override
-  Widget build(BuildContext context) {
-    return FadeInUp(
-      delay: const Duration(milliseconds: 300),
-      duration: Duration(milliseconds: duration),
-      child: child,
-    );
-  }
-}
-
-class CustomFadeInLeft extends StatelessWidget {
-  const CustomFadeInLeft({
-    required this.child,
-    required this.duration,
-    super.key,
-  });
-
-  final Widget child;
-
-  final int duration;
-
-  @override
-  Widget build(BuildContext context) {
-    return CacheHelper().getData(key: PrefsKeys.appLanguage) == null ||
-            CacheHelper().getData(key: PrefsKeys.appLanguage) == 'ar'
-        ? FadeInLeft(
-            delay: const Duration(milliseconds: 300),
-            duration: Duration(milliseconds: duration),
-            child: child,
-          )
-        : FadeInRight(
-            delay: const Duration(milliseconds: 300),
-            duration: Duration(milliseconds: duration),
-            child: child,
-          );
-  }
-}
-
-class CustomFadeInRight extends StatelessWidget {
-  const CustomFadeInRight({
-    required this.child,
-    required this.duration,
-    super.key,
-  });
-
-  final Widget child;
-
-  final int duration;
-
-  @override
-  Widget build(BuildContext context) {
-    return CacheHelper().getData(key: PrefsKeys.appLanguage) == null ||
-            CacheHelper().getData(key: PrefsKeys.appLanguage) == 'ar'
-        ? FadeInRight(
-            delay: const Duration(milliseconds: 300),
-            duration: Duration(milliseconds: duration),
-            child: child,
-          )
-        : FadeInLeft(
-            delay: const Duration(milliseconds: 300),
-            duration: Duration(milliseconds: duration),
-            child: child,
-          );
+  PageRoute _buildRoute({required WidgetBuilder builder}) {
+    return Platform.isAndroid
+        ? FadePageRoute(builder: builder)
+        : MaterialPageRoute(builder: builder);
   }
 }
