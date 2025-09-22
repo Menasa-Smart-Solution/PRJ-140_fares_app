@@ -31,12 +31,16 @@
   "forgotPasswordInstruction": "لا تقلق! هذا يحدث. يرجى إدخال عنوان البريد الإلكتروني او رقم الجوال المرتبط بحسابك",
   "continueButton": "استمرار",
   "fieldRequired": "هذا الحقل مطلوب",
-    "newPassword": "كلمة المرور الجديدة",
+  "newPassword": "كلمة المرور الجديدة",
   "oneLowerCaseLatter": "على الأقل حرف واحد صغير",
   "oneUppercaseLatter": "على الأقل حرف واحد كبير",
   "oneSpecialLatter": "على الأقل رمز واحد خاص",
   "atLeastOneNumber": "على الأقل رقم واحد",
-  "eightCharacterLong": "يجب أن تكون كلمة المرور 8 أحرف على الأقل"
-  
-
+  "eightCharacterLong": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
+  "changePassword": "تغيير كلمة المرور",
+  "changePasswordInstruction": "يجب أن تكون كلمة المرور الجديدة فريدة من بين تلك التي استخدمتها سابقًا.",
+  "changeButton": "تغيير",
+  "passwordChangedSuccessfully": "تم تغيير كلمة المرور!",
+  "passwordChangedMessage": "لقد تم تغيير كلمة المرور الخاصة بك بنجاح.",
+  "backToLogin": "العودة إلى تسجيل الدخول"
 }

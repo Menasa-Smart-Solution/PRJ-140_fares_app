@@ -19,6 +19,7 @@ class AppTextButton extends StatelessWidget {
     this.isGradient = false,
     this.borderColor,
     this.textColor,
+    this.hoverColor,
   });
   final VoidCallback onPressed;
   final String text;
@@ -32,28 +33,54 @@ class AppTextButton extends StatelessWidget {
   final Color? borderColor;
   final bool isLoading;
   final Color? textColor;
+  final Color? hoverColor;
 
   @override
   Widget build(BuildContext context) {
     return Skeleton.leaf(
       child: SizedBox(
         width: width ?? context.width,
-        height: height ?? 65,
+        height: height ?? 55,
         child: TextButton(
           onPressed: onPressed,
-
-          style: TextButton.styleFrom(
-            minimumSize: Size(width ?? context.width, height ?? 65),
-            backgroundColor: backgroundColor ?? AppColors.primaryColor,
-            padding: padding ?? EdgeInsets.symmetric(horizontal: 12),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(radius ?? 100),
-              side: borderColor != null
-                  ? BorderSide(
-                      color: borderColor ?? Colors.transparent,
-                      width: 1,
-                    )
-                  : BorderSide.none,
+          style: ButtonStyle(
+            minimumSize: WidgetStateProperty.all(
+              Size(width ?? context.width, height ?? 55),
+            ),
+            backgroundColor: WidgetStateProperty.resolveWith<Color>((
+              Set<WidgetState> states,
+            ) {
+              if (states.contains(WidgetState.disabled)) {
+                return (backgroundColor ?? AppColors.primaryColor).withOpacity(
+                  0.6,
+                );
+              }
+              return backgroundColor ?? AppColors.primaryColor;
+            }),
+            overlayColor: WidgetStateProperty.resolveWith<Color>((
+              Set<WidgetState> states,
+            ) {
+              if (states.contains(WidgetState.hovered)) {
+                return hoverColor ?? AppColors.lightPrimaryColor;
+              }
+              if (states.contains(WidgetState.pressed)) {
+                return hoverColor ?? AppColors.lightPrimaryColor;
+              }
+              return Colors.transparent;
+            }),
+            padding: WidgetStateProperty.all(
+              padding ?? EdgeInsets.symmetric(horizontal: 12),
+            ),
+            shape: WidgetStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(radius ?? 100),
+                side: borderColor != null
+                    ? BorderSide(
+                        color: borderColor ?? Colors.transparent,
+                        width: 1,
+                      )
+                    : BorderSide.none,
+              ),
             ),
           ),
           child: FittedBox(

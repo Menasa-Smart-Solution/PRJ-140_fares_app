@@ -53,8 +53,8 @@ class _NewPasswordTextFromFieldState extends State<NewPasswordTextFromField> {
       children: [
         PasswordFormField(
           showError: false,
-          hintText: "ادخل كلمة المرور",
-          title: "كلمة المرور الجديدة",
+          hintText: LocaleKeys.passwordHint.tr(),
+          title: LocaleKeys.newPassword.tr(),
           passwordController: widget.newPasswordController,
           validator: (value) {
             if (value == null || value.isEmpty) {

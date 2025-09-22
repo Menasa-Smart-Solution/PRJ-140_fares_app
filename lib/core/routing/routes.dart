@@ -7,4 +7,6 @@ class Routes {
   static const String verificationCodeRoute = '/VerificationCodeView';
   static const String forgetPasswordRoute = '/ForgetPasswordView';
   static const String changePasswordRoute = '/ChangePasswordView';
+  static const String passwordChangedSuccessRoute =
+      '/PasswordChangedSuccessView';
 }

@@ -41,5 +41,11 @@ abstract class  LocaleKeys {
   static const oneSpecialLatter = 'oneSpecialLatter';
   static const atLeastOneNumber = 'atLeastOneNumber';
   static const eightCharacterLong = 'eightCharacterLong';
+  static const changePassword = 'changePassword';
+  static const changePasswordInstruction = 'changePasswordInstruction';
+  static const changeButton = 'changeButton';
+  static const passwordChangedSuccessfully = 'passwordChangedSuccessfully';
+  static const passwordChangedMessage = 'passwordChangedMessage';
+  static const backToLogin = 'backToLogin';
 
 }

@@ -1,11 +1,14 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:fares/core/common_ui/widgets/animate_do.dart';
 import 'package:fares/core/common_ui/widgets/app_text_button.dart';
 import 'package:fares/core/helpers/extensions.dart';
 import 'package:fares/core/helpers/spacing.dart';
+import 'package:fares/core/routing/routes.dart';
 import 'package:fares/core/theme/app_colors.dart';
 import 'package:fares/core/theme/app_text_styles.dart';
 import 'package:fares/features/auth/presentation/widgets/change_password/new_password_text_form_field.dart';
 import 'package:fares/features/auth/presentation/widgets/password_form_field.dart';
+import 'package:fares/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
 class ChangePasswordViewBody extends StatefulWidget {
@@ -34,14 +37,17 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
         SliverToBoxAdapter(
           child: CustomFadeInLeft(
             duration: 400,
-            child: Text("تغيير كلمة المرور", style: AppTextStyles.bold24),
+            child: Text(
+              LocaleKeys.changePassword.tr(),
+              style: AppTextStyles.bold24,
+            ),
           ),
         ),
         SliverToBoxAdapter(
           child: CustomFadeInLeft(
             duration: 500,
             child: Text(
-              "يجب أن تكون كلمة المرور الجديدة فريدة من بين تلك التي استخدمتها سابقًا.",
+              LocaleKeys.changePasswordInstruction.tr(),
               style: AppTextStyles.reg16.copyWith(
                 color: AppColors.inActiveButton,
               ),
@@ -63,8 +69,8 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
             duration: 700,
             child: PasswordFormField(
               passwordController: _confirmPasswordController,
-              title: "تأكيد كلمة المرور",
-              hintText: "ادخل كلمة المرور",
+              title: LocaleKeys.confirmPasswordLabel.tr(),
+              hintText: LocaleKeys.passwordHint.tr(),
               validator: (value) {},
             ),
           ),
@@ -75,7 +81,15 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
             alignment: Alignment.bottomCenter,
             child: CustomFadeInUp(
               duration: 800,
-              child: AppTextButton(onPressed: () {}, text: "تغيير"),
+              child: AppTextButton(
+                onPressed: () {
+                  // Navigate to success screen
+                  context.pushReplacementNamed(
+                    Routes.passwordChangedSuccessRoute,
+                  );
+                },
+                text: LocaleKeys.changeButton.tr(),
+              ),
             ).withPadding(bottom: 50),
           ),
         ),

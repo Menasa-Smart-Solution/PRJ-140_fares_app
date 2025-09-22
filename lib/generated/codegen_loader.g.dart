@@ -52,7 +52,13 @@ class CodegenLoader extends AssetLoader{
   "oneUppercaseLatter": "على الأقل حرف واحد كبير",
   "oneSpecialLatter": "على الأقل رمز واحد خاص",
   "atLeastOneNumber": "على الأقل رقم واحد",
-  "eightCharacterLong": "يجب أن تكون كلمة المرور 8 أحرف على الأقل"
+  "eightCharacterLong": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
+  "changePassword": "تغيير كلمة المرور",
+  "changePasswordInstruction": "يجب أن تكون كلمة المرور الجديدة فريدة من بين تلك التي استخدمتها سابقًا.",
+  "changeButton": "تغيير",
+  "passwordChangedSuccessfully": "تم تغيير كلمة المرور!",
+  "passwordChangedMessage": "لقد تم تغيير كلمة المرور الخاصة بك بنجاح.",
+  "backToLogin": "العودة إلى تسجيل الدخول"
 };
 static const Map<String,dynamic> _en = {};
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
