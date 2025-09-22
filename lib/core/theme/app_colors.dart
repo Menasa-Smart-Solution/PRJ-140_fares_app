@@ -6,4 +6,9 @@ class AppColors {
   static const Color tertiaryColor = Color(0xFF11B39D);
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
+  static const Color inActiveButton = Color(0xFF7F909F);
+  static const Color textFormFieldBg = Color(0xFFF7F8F9);
+  static const Color textFormBorderColor = Color(0xFFE8ECF4);
+  static const Color grey500 = Color(0xFF7F909F);
+  static const Color black500 = Color(0xFF0D120E);
 }

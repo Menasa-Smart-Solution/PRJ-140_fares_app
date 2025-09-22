@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fares/core/common_ui/widgets/animate_do.dart';
 import 'package:fares/core/common_ui/widgets/app_text_button.dart';
+import 'package:fares/core/helpers/extensions.dart';
 import 'package:fares/core/helpers/spacing.dart';
+import 'package:fares/core/routing/routes.dart';
 import 'package:fares/core/theme/app_colors.dart';
 import 'package:fares/core/theme/app_text_styles.dart';
 import 'package:fares/core/utils/app_images.dart';
@@ -60,7 +62,9 @@ class WelcomeViewBody extends StatelessWidget {
             CustomFadeInUp(
               duration: 700,
               child: AppTextButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.pushReplacementNamed(Routes.loginRoute);
+                },
                 text: LocaleKeys.login.tr(),
                 backgroundColor: Colors.transparent,
                 borderColor: AppColors.primaryColor,

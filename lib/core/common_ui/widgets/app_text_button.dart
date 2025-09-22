@@ -41,6 +41,7 @@ class AppTextButton extends StatelessWidget {
         height: height ?? 65,
         child: TextButton(
           onPressed: onPressed,
+
           style: TextButton.styleFrom(
             minimumSize: Size(width ?? context.width, height ?? 65),
             backgroundColor: backgroundColor ?? AppColors.primaryColor,
@@ -69,41 +70,5 @@ class AppTextButton extends StatelessWidget {
         ),
       ),
     );
-
-    // Skeleton.leaf(
-    //     child: InkWell(
-    //       onTap: onPressed,
-    //       borderRadius: BorderRadius.circular(radius ?? 12),
-    //       child: Container(
-    //         width: width ?? 1.sw,
-    //         height: height ?? 50.h,
-
-    //         padding: padding ?? EdgeInsets.symmetric(horizontal: 12.h),
-    //         decoration: BoxDecoration(
-    //           color: backgroundColor ?? AppColors.primaryDark,
-    //           gradient: gradientColors == null
-    //               ? null
-    //               : LinearGradient(
-    //                   colors: gradientColors!,
-    //                   begin: Alignment.topLeft,
-    //                   end: Alignment.bottomRight,
-    //                 ),
-    //           borderRadius: BorderRadius.circular(radius ?? 12),
-    //           border: borderColor != null
-    //               ? Border.all(color: borderColor!, width: 1)
-    //               : null,
-    //         ),
-    //         child: Center(
-    //           child: FittedBox(
-    //             fit: BoxFit.cover,
-    //             child: Text(
-    //               text,
-    //               style: textStyle ?? AppTextStyles.bigTitleSemibold,
-    //             ),
-    //           ),
-    //         ),
-    //       ),
-    //     ),
-    //   );
   }
 }

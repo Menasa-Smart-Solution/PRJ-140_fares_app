@@ -22,8 +22,13 @@ abstract class AppTextStyles {
   }
 
   // Predefined text styles using static getters
+  static TextStyle get reg14 => _regular(fontSize: 14);
+  static TextStyle get reg16 => _regular(fontSize: 16);
+  static TextStyle get med12 => _medium(fontSize: 12);
+  static TextStyle get med14 => _medium(fontSize: 14);
   static TextStyle get med18 => _medium(fontSize: 18);
   static TextStyle get bold16 => _bold(fontSize: 16);
+  static TextStyle get bold24 => _bold(fontSize: 24);
   static TextStyle get font50W700 => _bold(fontSize: 50);
 
   static TextStyle _regular({
