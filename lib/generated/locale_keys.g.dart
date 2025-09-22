@@ -34,5 +34,12 @@ abstract class  LocaleKeys {
   static const verify = 'verify';
   static const forgotPasswordInstruction = 'forgotPasswordInstruction';
   static const continueButton = 'continueButton';
+  static const fieldRequired = 'fieldRequired';
+  static const newPassword = 'newPassword';
+  static const oneLowerCaseLatter = 'oneLowerCaseLatter';
+  static const oneUppercaseLatter = 'oneUppercaseLatter';
+  static const oneSpecialLatter = 'oneSpecialLatter';
+  static const atLeastOneNumber = 'atLeastOneNumber';
+  static const eightCharacterLong = 'eightCharacterLong';
 
 }

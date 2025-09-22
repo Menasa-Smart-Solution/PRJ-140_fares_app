@@ -40,7 +40,19 @@ class CodegenLoader extends AssetLoader{
   "resendCode": "إعادة الإرسال",
   "resendIn": "إعادة الإرسال خلال  {seconds} ثانية",
   "pleaseEnterverificationCode": "يرجى إدخال رمز التحقق",
-  "verificationCodeLengthValidation": "يجب أن يتكون الرمز من 6 أرقام"
+  "verificationCodeLengthValidation": "يجب أن يتكون الرمز من 6 أرقام",
+  "verificationCode": "رمز التحقق",
+  "verificationInstruction": "الرجاء إدخال رمز التحقق المرسل إلى عنوان بريدك الإلكتروني",
+  "verify": "التحقق",
+  "forgotPasswordInstruction": "لا تقلق! هذا يحدث. يرجى إدخال عنوان البريد الإلكتروني او رقم الجوال المرتبط بحسابك",
+  "continueButton": "استمرار",
+  "fieldRequired": "هذا الحقل مطلوب",
+  "newPassword": "كلمة المرور الجديدة",
+  "oneLowerCaseLatter": "على الأقل حرف واحد صغير",
+  "oneUppercaseLatter": "على الأقل حرف واحد كبير",
+  "oneSpecialLatter": "على الأقل رمز واحد خاص",
+  "atLeastOneNumber": "على الأقل رقم واحد",
+  "eightCharacterLong": "يجب أن تكون كلمة المرور 8 أحرف على الأقل"
 };
 static const Map<String,dynamic> _en = {};
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

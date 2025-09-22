@@ -29,5 +29,14 @@
   "verificationInstruction": "الرجاء إدخال رمز التحقق المرسل إلى عنوان بريدك الإلكتروني",
   "verify": "التحقق",
   "forgotPasswordInstruction": "لا تقلق! هذا يحدث. يرجى إدخال عنوان البريد الإلكتروني او رقم الجوال المرتبط بحسابك",
-  "continueButton": "استمرار"
+  "continueButton": "استمرار",
+  "fieldRequired": "هذا الحقل مطلوب",
+    "newPassword": "كلمة المرور الجديدة",
+  "oneLowerCaseLatter": "على الأقل حرف واحد صغير",
+  "oneUppercaseLatter": "على الأقل حرف واحد كبير",
+  "oneSpecialLatter": "على الأقل رمز واحد خاص",
+  "atLeastOneNumber": "على الأقل رقم واحد",
+  "eightCharacterLong": "يجب أن تكون كلمة المرور 8 أحرف على الأقل"
+  
+
 }
