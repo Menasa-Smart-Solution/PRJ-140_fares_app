@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:fares/core/routing/page_route_animation.dart';
 import 'package:fares/core/routing/routes.dart';
+import 'package:fares/features/auth/presentation/views/forget_password_view.dart';
 import 'package:fares/features/auth/presentation/views/login_view.dart';
 import 'package:fares/features/auth/presentation/views/register_view.dart';
 import 'package:fares/features/auth/presentation/views/verification_code_view.dart';
@@ -22,6 +23,8 @@ class AppRouter {
         return _buildRoute(builder: (_) => const RegisterView());
       case Routes.verificationCodeRoute:
         return _buildRoute(builder: (_) => const VerificationCodeView());
+      case Routes.forgetPasswordRoute:
+        return _buildRoute(builder: (_) => const ForgetPasswordView());
 
       default:
         return null;

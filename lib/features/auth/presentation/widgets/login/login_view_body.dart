@@ -66,7 +66,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               CustomFadeInLeft(
                 duration: 800,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.pushNamed(Routes.forgetPasswordRoute);
+                  },
                   child: Text(
                     LocaleKeys.forgotPassword.tr(),
                     style: AppTextStyles.med12.copyWith(

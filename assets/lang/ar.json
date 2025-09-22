@@ -27,5 +27,7 @@
   "verificationCodeLengthValidation": "يجب أن يتكون الرمز من 6 أرقام",
   "verificationCode": "رمز التحقق",
   "verificationInstruction": "الرجاء إدخال رمز التحقق المرسل إلى عنوان بريدك الإلكتروني",
-  "verify": "التحقق"
+  "verify": "التحقق",
+  "forgotPasswordInstruction": "لا تقلق! هذا يحدث. يرجى إدخال عنوان البريد الإلكتروني او رقم الجوال المرتبط بحسابك",
+  "continueButton": "استمرار"
 }

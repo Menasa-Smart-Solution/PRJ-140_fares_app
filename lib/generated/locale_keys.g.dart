@@ -32,5 +32,7 @@ abstract class  LocaleKeys {
   static const verificationCode = 'verificationCode';
   static const verificationInstruction = 'verificationInstruction';
   static const verify = 'verify';
+  static const forgotPasswordInstruction = 'forgotPasswordInstruction';
+  static const continueButton = 'continueButton';
 
 }
