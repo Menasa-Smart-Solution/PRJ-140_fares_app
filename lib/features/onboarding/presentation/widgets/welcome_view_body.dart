@@ -54,7 +54,9 @@ class WelcomeViewBody extends StatelessWidget {
             CustomFadeInUp(
               duration: 600,
               child: AppTextButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.pushReplacementNamed(Routes.registerRoute);
+                },
                 text: LocaleKeys.createAccount.tr(),
               ),
             ),

@@ -21,7 +21,21 @@ class CodegenLoader extends AssetLoader{
   "appName": "فارس",
   "forDelivery": "للتوصيل",
   "createAccount": "انشاء حساب",
-  "login": "تسجل دخول"
+  "login": "تسجيل الدخول",
+  "welcomeMessage": "مرحبا بك 👋",
+  "emailPhoneHint": "ادخل البريد او رقم الجوال",
+  "emailPhoneLabel": "البريد الالكتروني او رقم الجوال",
+  "passwordLabel": "كلمة المرور",
+  "passwordHint": "ادخل كلمة المرور",
+  "forgotPassword": "نسيت كلمة المرور؟",
+  "dontHaveAccount": " ليس لديك حساب؟",
+  "loginWelcome": "مرحباً بك مرة أخرى، لقد افتقدناك!",
+  "createNewAccount": "إنشاء حساب جديد",
+  "registerSubtitle": "انضم إلينا وابدأ رحلتك معنا بخطوات سهلة وسريعة",
+  "nameHint": "ادخل الاسم",
+  "fullNameLabel": "الاسم بالكامل",
+  "confirmPasswordLabel": "تاكيد كلمة المرور",
+  "alreadyHaveAccount": "لديك حساب بالفعل؟"
 };
 static const Map<String,dynamic> _en = {};
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

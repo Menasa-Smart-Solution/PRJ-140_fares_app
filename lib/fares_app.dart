@@ -19,7 +19,7 @@ class FaresApp extends StatelessWidget {
       ),
       navigatorKey: AppRouter.navigatorKey,
       onGenerateRoute: AppRouter().onGenerateRoute,
-      initialRoute: Routes.onBoardingRoute,
+      initialRoute: Routes.registerRoute,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,

@@ -2,10 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:fares/core/common_ui/widgets/animate_do.dart';
 import 'package:fares/core/common_ui/widgets/app_text_button.dart';
 import 'package:fares/core/common_ui/widgets/app_text_from_field.dart';
+import 'package:fares/core/helpers/extensions.dart';
 import 'package:fares/core/helpers/spacing.dart';
+import 'package:fares/core/routing/routes.dart';
 import 'package:fares/core/theme/app_colors.dart';
 import 'package:fares/core/theme/app_text_styles.dart';
-import 'package:fares/core/utils/app_images.dart';
+import 'package:fares/features/auth/presentation/widgets/auth_welcome.dart';
 import 'package:fares/features/auth/presentation/widgets/have_or_dont_have_account.dart';
 import 'package:fares/features/auth/presentation/widgets/password_form_field.dart';
 import 'package:fares/generated/locale_keys.g.dart';
@@ -38,14 +40,17 @@ class _LoginViewBodyState extends State<LoginViewBody> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               verticalSpace(50),
-              LoginWelcome(),
+              AuthWelcome(
+                title: LocaleKeys.welcomeMessage.tr(),
+                subtitle: LocaleKeys.loginWelcome.tr(),
+              ),
               verticalSpace(32),
               CustomFadeInLeft(
                 duration: 600,
                 child: AppTextFormField(
-                  hintText: 'ادخل البريد او رقم الجوال',
+                  hintText: LocaleKeys.emailPhoneHint.tr(),
                   validator: (value) {},
-                  title: 'البريد الالكتروني او رقم الجوال',
+                  title: LocaleKeys.emailPhoneLabel.tr(),
                 ),
               ),
               verticalSpace(16),
@@ -53,8 +58,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 duration: 700,
                 child: PasswordFormField(
                   passwordController: _passwordController,
-                  title: "كلمة المرور",
-                  hintText: "ادخل كلمة المرور",
+                  title: LocaleKeys.passwordLabel.tr(),
+                  hintText: LocaleKeys.passwordHint.tr(),
                   validator: (value) {},
                 ),
               ),
@@ -63,7 +68,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 child: TextButton(
                   onPressed: () {},
                   child: Text(
-                    'نسيت كلمة المرور؟',
+                    LocaleKeys.forgotPassword.tr(),
                     style: AppTextStyles.med12.copyWith(
                       color: AppColors.lightPrimaryColor,
                     ),
@@ -74,6 +79,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           ),
         ),
         SliverFillRemaining(
+          hasScrollBody: false,
           child: Align(
             alignment: Alignment.bottomCenter,
             child: Column(
@@ -90,46 +96,15 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 CustomFadeInUp(
                   duration: 1000,
                   child: HaveOrDontHaveAccount(
-                    text1: "ليس لديك حساب؟",
-                    text2: "انشاء حساب",
-                    onTap: () {},
+                    text1: LocaleKeys.dontHaveAccount.tr(),
+                    text2: LocaleKeys.createAccount.tr(),
+                    onTap: () {
+                      context.pushReplacementNamed(Routes.registerRoute);
+                    },
                   ),
                 ),
               ],
             ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class LoginWelcome extends StatelessWidget {
-  const LoginWelcome({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CustomFadeInDown(
-          duration: 400,
-          child: Image.asset(AppImages.imagesAppLogo, height: 95, width: 95),
-        ),
-        verticalSpace(32),
-        CustomFadeInLeft(
-          duration: 500,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('مرحبا بك 👋', style: AppTextStyles.bold24),
-              Text(
-                'مرحباً بك مرة أخرى، لقد افتقدناك!',
-                style: AppTextStyles.reg16.copyWith(
-                  color: AppColors.inActiveButton,
-                ),
-              ),
-            ],
           ),
         ),
       ],
