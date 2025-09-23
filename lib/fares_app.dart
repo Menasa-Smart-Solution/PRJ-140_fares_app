@@ -16,10 +16,14 @@ class FaresApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.light(primary: AppColors.primaryColor),
         fontFamily: AppTextStyles.fontFamily,
+        appBarTheme: AppBarThemeData(
+          backgroundColor: AppColors.white,
+          elevation: 0,
+        ),
       ),
       navigatorKey: AppRouter.navigatorKey,
       onGenerateRoute: AppRouter().onGenerateRoute,
-      initialRoute: Routes.onBoardingRoute,
+      initialRoute: Routes.changePasswordRoute,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,

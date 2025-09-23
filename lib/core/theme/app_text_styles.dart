@@ -21,10 +21,27 @@ abstract class AppTextStyles {
     );
   }
 
-  // Predefined text styles using static getters
+  //! Regular
+  static TextStyle get reg14 => _regular(fontSize: 14);
+  static TextStyle get reg16 => _regular(fontSize: 16);
+
+  //! Medium
+  static TextStyle get med12 => _medium(fontSize: 12);
+  static TextStyle get med14 => _medium(fontSize: 14);
+  static TextStyle get med16 => _medium(fontSize: 16);
   static TextStyle get med18 => _medium(fontSize: 18);
+  static TextStyle get med20 => _medium(fontSize: 20);
+
+  //! SemiBold
+  static TextStyle get semiBold16 => _semiBold(fontSize: 16);
+
+  //! Bold
   static TextStyle get bold16 => _bold(fontSize: 16);
+  static TextStyle get bold24 => _bold(fontSize: 24);
   static TextStyle get font50W700 => _bold(fontSize: 50);
+
+  //! Extra Bold
+  static TextStyle get extraBold24 => _extraBold(fontSize: 24);
 
   static TextStyle _regular({
     required double fontSize,
@@ -80,6 +97,21 @@ abstract class AppTextStyles {
     return _baseTextStyle(
       fontSize: fontSize,
       fontWeight: FontWeight.w700,
+      color: color,
+      height: height,
+      letterSpacing: letterSpacing,
+    );
+  }
+
+  static TextStyle _extraBold({
+    required double fontSize,
+    Color? color,
+    double? height,
+    double? letterSpacing,
+  }) {
+    return _baseTextStyle(
+      fontSize: fontSize,
+      fontWeight: FontWeight.w800,
       color: color,
       height: height,
       letterSpacing: letterSpacing,
