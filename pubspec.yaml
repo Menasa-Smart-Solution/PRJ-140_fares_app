@@ -88,9 +88,9 @@ flutter:
           weight: 500
         - asset: assets/fonts/ArbFONTS-LamaSans-SemiBold.ttf
           weight: 600
-    # - family: app_icons
-    #   fonts:
-    #     - asset: assets/icons/app_icons.ttf
+    - family: AppIcons
+      fonts:
+        - asset: assets/icons/AppIcons.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
