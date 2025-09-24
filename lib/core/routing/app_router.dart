@@ -42,6 +42,9 @@ class AppRouter {
       case Routes.allOrdersRoute:
         return _buildRoute(builder: (_) => const AllOrdersView());
 
+      case Routes.orderQrCodeRoute:
+        return _buildRoute(builder: (_) => const OrderQrCodeView());
+
       default:
         return null;
     }
