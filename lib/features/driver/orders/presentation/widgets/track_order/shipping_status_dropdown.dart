@@ -48,7 +48,16 @@ class _ShippingStatusDropdownState extends State<ShippingStatusDropdown> {
                   ),
                 )
                 .toList(),
-            onChanged: (value) {},
+            onChanged: (value) {
+              showModalBottomSheet(
+                context: context,
+                backgroundColor: AppColors.white,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+                ),
+                builder: (context) => const ShipmentDeliveryFailedBottomSheet(),
+              );
+            },
             hint: Text(
               LocaleKeys.shippingStatus.tr(),
               style: AppTextStyles.semiBold14.copyWith(color: Colors.white),
