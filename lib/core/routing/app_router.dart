@@ -39,6 +39,8 @@ class AppRouter {
         return _buildRoute(builder: (_) => const NotificationsView());
       case Routes.trackOrderRoute:
         return _buildRoute(builder: (_) => const TrackOrderView());
+      case Routes.allOrdersRoute:
+        return _buildRoute(builder: (_) => const AllOrdersView());
 
       default:
         return null;

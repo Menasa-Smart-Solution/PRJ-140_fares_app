@@ -9,10 +9,10 @@ class OrderMenu extends StatefulWidget {
 
 class _OrderMenuState extends State<OrderMenu> {
   final List<String> options = [
-    "الاتصال بالمسلتم",
-    "واتساب",
-    "محادثه المتجر",
-    "طلب الموقع",
+    LocaleKeys.contactMerchant.tr(),
+    LocaleKeys.whatsapp.tr(),
+    LocaleKeys.storeChat.tr(),
+    LocaleKeys.requestLocation.tr(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class _OrderMenuState extends State<OrderMenu> {
         ),
       ),
 
-      icon: Icon(Icons.more_horiz, color: AppColors.black),
+      icon: const Icon(Icons.more_horiz, color: AppColors.black),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       itemBuilder: (context) {
         return options

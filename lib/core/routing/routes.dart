@@ -12,4 +12,5 @@ class Routes {
   static const String homeRoute = '/HomeView';
   static const String notificationsRoute = '/NotificationsView';
   static const String trackOrderRoute = '/TrackOrderView';
+  static const String allOrdersRoute = '/AllOrdersView';
 }

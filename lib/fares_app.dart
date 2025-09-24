@@ -14,16 +14,16 @@ class FaresApp extends StatelessWidget {
     return MaterialApp(
       title: 'Fares App',
       theme: ThemeData(
-        colorScheme: ColorScheme.light(primary: AppColors.primaryColor),
+        colorScheme: const ColorScheme.light(primary: AppColors.primaryColor),
         fontFamily: AppTextStyles.fontFamily,
-        appBarTheme: AppBarThemeData(
+        appBarTheme: const AppBarThemeData(
           backgroundColor: AppColors.white,
           elevation: 0,
         ),
       ),
       navigatorKey: AppRouter.navigatorKey,
       onGenerateRoute: AppRouter().onGenerateRoute,
-      initialRoute: Routes.trackOrderRoute,
+      initialRoute: Routes.homeRoute,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,

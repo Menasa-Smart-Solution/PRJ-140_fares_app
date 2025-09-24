@@ -82,7 +82,7 @@ class AppTextFormField extends StatelessWidget {
 
           style:
               inputTextStyle ??
-              TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
           decoration: InputDecoration(
             hintText: hintText,
             suffixIcon: suffixIcon,
@@ -95,7 +95,7 @@ class AppTextFormField extends StatelessWidget {
                 AppTextStyles.reg14.copyWith(color: AppColors.grey500),
             contentPadding:
                 contentPadding ??
-                EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
             border: _buildBorder(),
             enabledBorder: enabledBorder ?? _buildBorder(),
             focusedBorder:
@@ -117,7 +117,7 @@ class AppTextFormField extends StatelessWidget {
   OutlineInputBorder _buildErrorBorder() {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(radius ?? 50),
-      borderSide: BorderSide(color: Colors.red, width: 1.5),
+      borderSide: const BorderSide(color: Colors.red, width: 1.5),
     );
   }
 

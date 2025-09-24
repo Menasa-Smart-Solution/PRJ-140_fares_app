@@ -65,7 +65,27 @@ class CodegenLoader extends AssetLoader{
   "home": "الرئيسية",
   "wallet": "المحفظة",
   "orders": "الطلبات",
-  "chats": "المحادثات"
+  "chats": "المحادثات",
+  "shippingStatusDelivered": "تم تسليم الشحنه",
+  "shippingStatusPartiallyDelivered": "تسليم جزء من الشحنه",
+  "shippingStatusInTransit": "قيد التسليم",
+  "shippingStatusUnderReview": "قيد المراجعه",
+  "shippingStatusDeliveryFailed": "تعذر التسليم للشحنه",
+  "shippingStatus": "حاله الشحنه",
+  "trackingNumber": "رقم الرحله",
+  "from": "من:",
+  "description": "الوصف:",
+  "creationDate": "تاريخ الإنشاء:",
+  "to": "إلى:",
+  "recipient": "المستلم:",
+  "pieces": "عدد القطع:",
+  "total": "الإجمالي",
+  "trackOrder": "متابعة الطلب",
+  "contactMerchant": "الاتصال بالمسلتم",
+  "whatsapp": "واتساب",
+  "storeChat": "محادثه المتجر",
+  "requestLocation": "طلب الموقع",
+  "searchHint": "بحث.."
 };
 static const Map<String,dynamic> _en = {};
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

@@ -1,11 +1,10 @@
 // ignore_for_file: prefer_single_quotes
 class AppImages {
   AppImages._();
-
+  
   static const String imagesAllOrders = "assets/images/all_orders.svg";
 
-  static const String imagesAndroid12Splash =
-      "assets/images/android12_splash.png";
+  static const String imagesAndroid12Splash = "assets/images/android12_splash.png";
 
   static const String imagesAppLogo = "assets/images/app_logo.png";
 
@@ -27,7 +26,12 @@ class AppImages {
 
   static const String imagesSearch = "assets/images/search.svg";
 
+  static const String imagesSearchPng = "assets/images/search_png.png";
+
+  static const String imagesSubtract = "assets/images/subtract.svg";
+
   static const String imagesSuccess = "assets/images/success.svg";
 
   static const String imagesUnderReviews = "assets/images/under-reviews.svg";
 }
+

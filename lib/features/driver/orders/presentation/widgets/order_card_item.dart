@@ -20,7 +20,7 @@ class OrderCardItem extends StatelessWidget {
             children: [
               CircleAvatar(
                 backgroundColor: AppColors.lightPrimaryColor,
-                child: Icon(AppIcons.package),
+                child: SvgPicture.asset(AppImages.imagesSubtract),
               ),
               horizontalSpace(12),
               Expanded(
@@ -28,7 +28,7 @@ class OrderCardItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'رقم الرحله',
+                      LocaleKeys.trackingNumber.tr(),
                       style: AppTextStyles.med12.copyWith(
                         color: AppColors.white,
                       ),
@@ -49,7 +49,7 @@ class OrderCardItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(50),
                 ),
                 child: Text(
-                  'قيد المراجعه',
+                  LocaleKeys.shippingStatusUnderReview.tr(),
                   style: AppTextStyles.med12.copyWith(color: AppColors.white),
                 ),
               ),
@@ -65,12 +65,18 @@ class OrderCardItem extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    OrderDetailsWidget(title: 'من:', value: 'طرابلس، ليبيا'),
-                    verticalSpace(16),
-                    OrderDetailsWidget(title: 'الوصف:', value: 'ملبس نسائي'),
+                    OrderDetailsWidget(
+                      title: LocaleKeys.from.tr(),
+                      value: 'طرابلس، ليبيا',
+                    ),
                     verticalSpace(16),
                     OrderDetailsWidget(
-                      title: 'تاريخ الإنشاء:',
+                      title: LocaleKeys.description.tr(),
+                      value: 'ملبس نسائي',
+                    ),
+                    verticalSpace(16),
+                    OrderDetailsWidget(
+                      title: LocaleKeys.creationDate.tr(),
                       value: '25 يوليو 2025',
                     ),
                   ],
@@ -80,14 +86,20 @@ class OrderCardItem extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    OrderDetailsWidget(title: 'إلى:', value: 'بنغازي، ليبيا'),
+                    OrderDetailsWidget(
+                      title: LocaleKeys.to.tr(),
+                      value: 'بنغازي، ليبيا',
+                    ),
                     verticalSpace(16),
                     OrderDetailsWidget(
-                      title: 'المستلم:',
+                      title: LocaleKeys.recipient.tr(),
                       value: 'Albert Stevano',
                     ),
                     verticalSpace(16),
-                    OrderDetailsWidget(title: 'عدد القطع:', value: '3'),
+                    OrderDetailsWidget(
+                      title: LocaleKeys.pieces.tr(),
+                      value: '3',
+                    ),
                   ],
                 ),
               ),
@@ -99,7 +111,7 @@ class OrderCardItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'الإجمالي',
+                LocaleKeys.total.tr(),
                 style: AppTextStyles.bold16.copyWith(color: AppColors.white),
               ),
               Text(
@@ -114,5 +126,5 @@ class OrderCardItem extends StatelessWidget {
   }
 
   Divider _buildDivider() =>
-      Divider(color: AppColors.lightPrimaryColor, thickness: 1);
+      const Divider(color: AppColors.lightPrimaryColor, thickness: 1);
 }

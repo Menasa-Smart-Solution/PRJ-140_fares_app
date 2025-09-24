@@ -9,11 +9,11 @@ class ShippingStatusDropdown extends StatefulWidget {
 
 class _ShippingStatusDropdownState extends State<ShippingStatusDropdown> {
   final List<String> shippingStatusOptions = [
-    "تم تسليم الشحنه",
-    "تسليم جزء من الشحنه",
-    "قيد التسليم",
-    "قيد المراجعه",
-    "تعذر التسليم للشحنه",
+    LocaleKeys.shippingStatusDelivered.tr(),
+    LocaleKeys.shippingStatusPartiallyDelivered.tr(),
+    LocaleKeys.shippingStatusInTransit.tr(),
+    LocaleKeys.shippingStatusUnderReview.tr(),
+    LocaleKeys.shippingStatusDeliveryFailed.tr(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -31,10 +31,10 @@ class _ShippingStatusDropdownState extends State<ShippingStatusDropdown> {
           ),
           alignment: Alignment.center,
           child: DropdownButton(
-            underline: SizedBox(),
+            underline: const SizedBox(),
             // isExpanded: true,
             dropdownColor: AppColors.dropDownColor,
-            icon: Icon(Icons.keyboard_arrow_down, color: AppColors.white),
+            icon: const Icon(Icons.keyboard_arrow_down, color: AppColors.white),
             items: shippingStatusOptions
                 .map(
                   (status) => DropdownMenuItem(
@@ -50,7 +50,7 @@ class _ShippingStatusDropdownState extends State<ShippingStatusDropdown> {
                 .toList(),
             onChanged: (value) {},
             hint: Text(
-              'حاله الشحنه',
+              LocaleKeys.shippingStatus.tr(),
               style: AppTextStyles.semiBold14.copyWith(color: Colors.white),
             ),
           ),

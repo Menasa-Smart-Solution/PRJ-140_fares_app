@@ -54,5 +54,25 @@ abstract class  LocaleKeys {
   static const wallet = 'wallet';
   static const orders = 'orders';
   static const chats = 'chats';
+  static const shippingStatusDelivered = 'shippingStatusDelivered';
+  static const shippingStatusPartiallyDelivered = 'shippingStatusPartiallyDelivered';
+  static const shippingStatusInTransit = 'shippingStatusInTransit';
+  static const shippingStatusUnderReview = 'shippingStatusUnderReview';
+  static const shippingStatusDeliveryFailed = 'shippingStatusDeliveryFailed';
+  static const shippingStatus = 'shippingStatus';
+  static const trackingNumber = 'trackingNumber';
+  static const from = 'from';
+  static const description = 'description';
+  static const creationDate = 'creationDate';
+  static const to = 'to';
+  static const recipient = 'recipient';
+  static const pieces = 'pieces';
+  static const total = 'total';
+  static const trackOrder = 'trackOrder';
+  static const contactMerchant = 'contactMerchant';
+  static const whatsapp = 'whatsapp';
+  static const storeChat = 'storeChat';
+  static const requestLocation = 'requestLocation';
+  static const searchHint = 'searchHint';
 
 }

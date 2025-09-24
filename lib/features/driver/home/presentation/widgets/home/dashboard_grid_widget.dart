@@ -21,7 +21,7 @@ class DashboardGridWidget extends StatelessWidget {
               title: 'جميع الطلبات',
               subtitle: '154 حركة متاحة',
               imagePath: AppImages.imagesAllOrders,
-              onTap: () => print('Dashboard card tapped at index $index'),
+              onTap: () => context.pushNamed(Routes.allOrdersRoute),
             );
           },
         ),
