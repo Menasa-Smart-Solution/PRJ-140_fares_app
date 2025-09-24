@@ -74,5 +74,25 @@ abstract class  LocaleKeys {
   static const storeChat = 'storeChat';
   static const requestLocation = 'requestLocation';
   static const searchHint = 'searchHint';
+  static const cancel = 'cancel';
+  static const confirmDeliveryQuestion = 'confirmDeliveryQuestion';
+  static const yes = 'yes';
+  static const confirmDelivery = 'confirmDelivery';
+  static const partialDelivery = 'partialDelivery';
+  static const productPrice = 'productPrice';
+  static const shippingPrice = 'shippingPrice';
+  static const amountToReceive = 'amountToReceive';
+  static const piecesDelivered = 'piecesDelivered';
+  static const deliver = 'deliver';
+  static const inDelivery = 'inDelivery';
+  static const reason = 'reason';
+  static const update = 'update';
+  static const theDeliveryFailed = 'theDeliveryFailed';
+  static const selectStatus = 'selectStatus';
+  static const additionalNote = 'additionalNote';
+  static const deliverShipment = 'deliverShipment';
+  static const confirm = 'confirm';
+  static const scanQRCode = 'scanQRCode';
+  static const deliveryFailed = 'deliveryFailed';
 
 }

@@ -15,7 +15,7 @@ void main() async {
       path: 'assets/lang',
       fallbackLocale: const Locale('ar'),
       startLocale: const Locale('ar'),
-      child: FaresApp(),
+      child: const FaresApp(),
     ),
   );
 }

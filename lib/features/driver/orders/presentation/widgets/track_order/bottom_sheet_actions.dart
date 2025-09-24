@@ -21,7 +21,7 @@ class BottomSheetActions extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            text: 'إلغاء',
+            text: LocaleKeys.cancel.tr(),
             backgroundColor: Colors.transparent,
             textColor: AppColors.red,
             hoverColor: AppColors.red.withAlpha(20),

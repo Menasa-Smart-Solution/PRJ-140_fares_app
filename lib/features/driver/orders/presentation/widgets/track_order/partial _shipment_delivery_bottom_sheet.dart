@@ -21,18 +21,18 @@ class PartialShipmentDeliveryBottomSheet extends StatelessWidget {
             ),
             verticalSpace(16),
             Text(
-              'تسليم جزئي للشحنه\n#147077',
+              '${LocaleKeys.partialDelivery.tr()}\n#147077',
               style: AppTextStyles.semiBold24,
               textAlign: TextAlign.center,
             ),
             verticalSpace(24),
-            const OrderPriceDetailsItem(
-              title: 'سعر المنتج',
+            OrderPriceDetailsItem(
+              title: LocaleKeys.productPrice.tr(),
               price: '200.0 د.ل',
               color: AppColors.grey,
             ),
-            const OrderPriceDetailsItem(
-              title: 'سعر الشحن',
+            OrderPriceDetailsItem(
+              title: LocaleKeys.shippingPrice.tr(),
               price: '5.00 د.ل',
               color: AppColors.grey,
             ),
@@ -42,16 +42,16 @@ class PartialShipmentDeliveryBottomSheet extends StatelessWidget {
             ),
             verticalSpace(24),
             AppTextFormField(
-              hintText: 'المبلغ المراد استلامه مع حساب سعر التوصيل',
+              hintText: LocaleKeys.amountToReceive.tr(),
               validator: (value) {},
             ),
             verticalSpace(8),
             AppTextFormField(
-              hintText: 'عدد القطع المستلمه من اصل 1',
+              hintText: LocaleKeys.piecesDelivered.tr(),
               validator: (value) {},
             ),
             verticalSpace(24),
-            const BottomSheetActions(title: 'تسليم'),
+            BottomSheetActions(title: LocaleKeys.deliver.tr()),
 
             verticalSpace(20),
           ],
