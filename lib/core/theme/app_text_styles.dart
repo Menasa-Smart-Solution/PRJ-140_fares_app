@@ -32,9 +32,11 @@ abstract class AppTextStyles {
   static TextStyle get med16 => _medium(fontSize: 16);
   static TextStyle get med18 => _medium(fontSize: 18);
   static TextStyle get med20 => _medium(fontSize: 20);
+  static TextStyle get med24 => _medium(fontSize: 24);
 
   //! SemiBold
   static TextStyle get semiBold12 => _semiBold(fontSize: 12);
+  static TextStyle get semiBold14 => _semiBold(fontSize: 14);
   static TextStyle get semiBold16 => _semiBold(fontSize: 16);
 
   //! Bold

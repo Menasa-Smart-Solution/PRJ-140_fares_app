@@ -1,4 +1,4 @@
-import '../../../../core/utils/exports.dart';
+import '../../../../../core/utils/exports.dart';
 import 'package:flutter/material.dart';
 part "home/home_header_widget.dart";
 part "home/home_search_bar_widget.dart";
