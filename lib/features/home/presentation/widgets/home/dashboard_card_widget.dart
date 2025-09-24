@@ -19,13 +19,14 @@ class DashboardCardWidget extends StatelessWidget {
     return Material(
       color: Colors.white,
       borderRadius: BorderRadius.circular(14),
-      elevation: 2,
+      elevation: 3,
       shadowColor: Colors.grey.withAlpha(20),
       child: InkWell(
         borderRadius: BorderRadius.circular(14),
-        // splashColor: iconColor.withOpacity(0.2),
-        // highlightColor: iconColor.withOpacity(0.1),
-        // hoverColor: iconColor.withOpacity(0.05),
+        splashColor: AppColors.pastelGreen,
+        highlightColor: AppColors.pastelGreen,
+        hoverColor: AppColors.pastelGreen,
+
         onTap: onTap,
         child: Container(
           padding: const EdgeInsets.all(8),
