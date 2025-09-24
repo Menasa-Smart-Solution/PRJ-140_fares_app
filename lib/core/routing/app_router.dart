@@ -7,6 +7,7 @@ import 'package:fares/features/auth/presentation/views/login_view.dart';
 import 'package:fares/features/auth/presentation/views/password_changed_success_view.dart';
 import 'package:fares/features/auth/presentation/views/register_view.dart';
 import 'package:fares/features/auth/presentation/views/verification_code_view.dart';
+import 'package:fares/features/home/presentation/widgets/widgets.dart';
 import 'package:fares/features/onboarding/presentation/views/on_boarding_view.dart';
 import 'package:fares/features/onboarding/presentation/views/welcome_view.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,10 @@ class AppRouter {
         return _buildRoute(builder: (_) => const ChangePasswordView());
       case Routes.passwordChangedSuccessRoute:
         return _buildRoute(builder: (_) => const PasswordChangedSuccessView());
+      case Routes.homeRoute:
+        return _buildRoute(builder: (_) => const HomeView());
+      case Routes.notificationsRoute:
+        return _buildRoute(builder: (_) => const NotificationsView());
 
       default:
         return null;

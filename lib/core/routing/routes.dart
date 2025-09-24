@@ -9,4 +9,6 @@ class Routes {
   static const String changePasswordRoute = '/ChangePasswordView';
   static const String passwordChangedSuccessRoute =
       '/PasswordChangedSuccessView';
+  static const String homeRoute = '/HomeView';
+  static const String notificationsRoute = '/NotificationsView';
 }

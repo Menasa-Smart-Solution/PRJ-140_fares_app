@@ -22,6 +22,7 @@ abstract class AppTextStyles {
   }
 
   //! Regular
+  static TextStyle get reg12 => _regular(fontSize: 12);
   static TextStyle get reg14 => _regular(fontSize: 14);
   static TextStyle get reg16 => _regular(fontSize: 16);
 
@@ -33,6 +34,7 @@ abstract class AppTextStyles {
   static TextStyle get med20 => _medium(fontSize: 20);
 
   //! SemiBold
+  static TextStyle get semiBold12 => _semiBold(fontSize: 12);
   static TextStyle get semiBold16 => _semiBold(fontSize: 16);
 
   //! Bold

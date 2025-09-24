@@ -58,7 +58,14 @@ class CodegenLoader extends AssetLoader{
   "changeButton": "تغيير",
   "passwordChangedSuccessfully": "تم تغيير كلمة المرور!",
   "passwordChangedMessage": "لقد تم تغيير كلمة المرور الخاصة بك بنجاح.",
-  "backToLogin": "العودة إلى تسجيل الدخول"
+  "backToLogin": "العودة إلى تسجيل الدخول",
+  "notifications": "الاشعارات",
+  "allNotifications": "جميع الاشعارات",
+  "currentBalance": "رصيدك الحالي",
+  "home": "الرئيسية",
+  "wallet": "المحفظة",
+  "orders": "الطلبات",
+  "chats": "المحادثات"
 };
 static const Map<String,dynamic> _en = {};
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

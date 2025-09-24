@@ -47,5 +47,12 @@ abstract class  LocaleKeys {
   static const passwordChangedSuccessfully = 'passwordChangedSuccessfully';
   static const passwordChangedMessage = 'passwordChangedMessage';
   static const backToLogin = 'backToLogin';
+  static const notifications = 'notifications';
+  static const allNotifications = 'allNotifications';
+  static const currentBalance = 'currentBalance';
+  static const home = 'home';
+  static const wallet = 'wallet';
+  static const orders = 'orders';
+  static const chats = 'chats';
 
 }
