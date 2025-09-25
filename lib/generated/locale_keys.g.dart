@@ -99,5 +99,13 @@ abstract class  LocaleKeys {
   static const conversations = 'conversations';
   static const shipmentConversation = 'shipmentConversation';
   static const writeYourMessage = 'writeYourMessage';
+  static const profile = 'profile';
+  static const shipments = 'shipments';
+  static const walletMenu = 'walletMenu';
+  static const chatsMenu = 'chatsMenu';
+  static const aboutApp = 'aboutApp';
+  static const policies = 'policies';
+  static const termsAndConditions = 'termsAndConditions';
+  static const logout = 'logout';
 
 }

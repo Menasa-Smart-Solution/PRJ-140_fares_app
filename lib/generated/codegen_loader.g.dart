@@ -110,7 +110,15 @@ class CodegenLoader extends AssetLoader{
   "noMessagesSubtitle": "ليس لديك رسالة بعد. ابدأ محادثة جديدة مع محبي السيارات.",
   "conversations": "المحادثات",
   "shipmentConversation": "محادثه شحنه رقم #{value}",
-  "writeYourMessage": "كتب رسالتك"
+  "writeYourMessage": "كتب رسالتك",
+  "profile": "الملف الشخصي",
+  "shipments": "الشحنات",
+  "walletMenu": "المحفظه",
+  "chatsMenu": "المحادثات",
+  "aboutApp": "عن التطبيق",
+  "policies": "السياسات",
+  "termsAndConditions": "الشروط والاحكام",
+  "logout": "تسجيل الخروج"
 };
 static const Map<String,dynamic> _en = {};
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

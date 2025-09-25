@@ -12,17 +12,31 @@ class AppImages {
 
   static const String imagesCanceled = "assets/images/canceled.svg";
 
+  static const String imagesChats = "assets/images/chats.svg";
+
   static const String imagesCompanyDues = "assets/images/company_dues.svg";
 
   static const String imagesConversations = "assets/images/conversations.svg";
 
   static const String imagesDelivery = "assets/images/delivery.svg";
 
+  static const String imagesDocumentText = "assets/images/document-text.svg";
+
   static const String imagesEmptyMessages = "assets/images/empty_messages.svg";
+
+  static const String imagesGlobal = "assets/images/global.svg";
+
+  static const String imagesHelp = "assets/images/help.svg";
 
   static const String imagesInDelivery = "assets/images/in_delivery.svg";
 
+  static const String imagesLogout = "assets/images/logout.svg";
+
   static const String imagesOnboarding = "assets/images/onboarding.jpg";
+
+  static const String imagesOrders = "assets/images/orders.svg";
+
+  static const String imagesProfile = "assets/images/profile.svg";
 
   static const String imagesQrCode = "assets/images/qr_code.svg";
 
@@ -32,10 +46,14 @@ class AppImages {
 
   static const String imagesSend = "assets/images/send.svg";
 
+  static const String imagesShieldSecurity = "assets/images/shield-security.svg";
+
   static const String imagesSubtract = "assets/images/subtract.svg";
 
   static const String imagesSuccess = "assets/images/success.svg";
 
   static const String imagesUnderReviews = "assets/images/under-reviews.svg";
+
+  static const String imagesWallet = "assets/images/wallet.svg";
 }
 

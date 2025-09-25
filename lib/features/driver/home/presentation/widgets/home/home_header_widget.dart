@@ -12,10 +12,12 @@ class HomeHeaderWidget extends StatelessWidget {
         Row(
           children: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
               // padding: EdgeInsets.zero,
               visualDensity: const VisualDensity(horizontal: -1, vertical: -1),
-              icon: Icon(
+              icon: const Icon(
                 AppIcons.menu,
                 size: 15,
                 color: AppColors.primaryColor,
@@ -38,7 +40,7 @@ class HomeHeaderWidget extends StatelessWidget {
             ),
           ],
         ),
-        Spacer(),
+        const Spacer(),
         Column(
           children: [
             Text(
@@ -49,7 +51,7 @@ class HomeHeaderWidget extends StatelessWidget {
           ],
         ),
         horizontalSpace(15),
-        Spacer(),
+        const Spacer(),
 
         RoundedIconButton(
           icon: AppIcons.notifications,

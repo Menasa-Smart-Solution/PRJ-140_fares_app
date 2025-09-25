@@ -10,15 +10,17 @@ class HomeView extends StatelessWidget {
         child: Column(
           children: [
             // Header Section
-            HomeHeaderWidget(balance: '500 د.ل'),
+            const HomeHeaderWidget(balance: '500 د.ل'),
             verticalSpace(20),
-            HomeSearchBarWidget(),
+            const HomeSearchBarWidget(),
             verticalSpace(20),
-            DashboardGridWidget(),
+            const DashboardGridWidget(),
             verticalSpace(20),
           ],
         ).withPadding(vertical: 20, horizontal: 16),
       ),
+
+      drawer: const HomeDrawer(),
     );
   }
 }
