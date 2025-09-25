@@ -47,8 +47,8 @@ class AppRouter {
         return _buildRoute(builder: (_) => const OrderQrCodeView());
       case Routes.conversationRoute:
         return _buildRoute(builder: (_) => const ConversationsView());
-      // case Routes.chatRoute:
-      //   return _buildRoute(builder: (_) => const ChatView());
+      case Routes.chatRoute:
+        return _buildRoute(builder: (_) => const ChatView());
 
       default:
         return null;

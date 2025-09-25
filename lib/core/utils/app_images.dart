@@ -30,6 +30,8 @@ class AppImages {
 
   static const String imagesSearchPng = "assets/images/search_png.png";
 
+  static const String imagesSend = "assets/images/send.svg";
+
   static const String imagesSubtract = "assets/images/subtract.svg";
 
   static const String imagesSuccess = "assets/images/success.svg";
