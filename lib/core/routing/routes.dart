@@ -15,4 +15,6 @@ class Routes {
   static const String allOrdersRoute = '/AllOrdersView';
 
   static const String orderQrCodeRoute = '/OrderQrCodeView';
+  static const String conversationRoute = '/ConversationView';
+  static const String chatRoute = '/ChatView';
 }

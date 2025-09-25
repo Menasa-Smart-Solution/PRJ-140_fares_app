@@ -18,6 +18,8 @@ class AppImages {
 
   static const String imagesDelivery = "assets/images/delivery.svg";
 
+  static const String imagesEmptyMessages = "assets/images/empty_messages.svg";
+
   static const String imagesInDelivery = "assets/images/in_delivery.svg";
 
   static const String imagesOnboarding = "assets/images/onboarding.jpg";

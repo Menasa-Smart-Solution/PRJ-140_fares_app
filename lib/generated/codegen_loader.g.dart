@@ -105,7 +105,12 @@ class CodegenLoader extends AssetLoader{
   "deliverShipment": "تسليم الشحنه",
   "confirm": "تاكيد",
   "scanQRCode": "مسح QR code بالكاميرا",
-  "deliveryFailed": "تعذر تسليم الشحنه"
+  "deliveryFailed": "تعذر تسليم الشحنه",
+  "noMessages": "لا توجد رسائل متاحة",
+  "noMessagesSubtitle": "ليس لديك رسالة بعد. ابدأ محادثة جديدة مع محبي السيارات.",
+  "conversations": "المحادثات",
+  "shipmentConversation": "محادثه شحنه رقم #{value}",
+  "writeYourMessage": "كتب رسالتك"
 };
 static const Map<String,dynamic> _en = {};
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

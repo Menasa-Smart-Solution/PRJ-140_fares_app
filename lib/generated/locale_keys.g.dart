@@ -94,5 +94,10 @@ abstract class  LocaleKeys {
   static const confirm = 'confirm';
   static const scanQRCode = 'scanQRCode';
   static const deliveryFailed = 'deliveryFailed';
+  static const noMessages = 'noMessages';
+  static const noMessagesSubtitle = 'noMessagesSubtitle';
+  static const conversations = 'conversations';
+  static const shipmentConversation = 'shipmentConversation';
+  static const writeYourMessage = 'writeYourMessage';
 
 }
