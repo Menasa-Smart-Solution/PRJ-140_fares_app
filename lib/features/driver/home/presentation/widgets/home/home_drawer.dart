@@ -24,6 +24,9 @@ class HomeDrawer extends StatelessWidget {
             child: DrawerItem(
               title: LocaleKeys.profile.tr(),
               imagePath: AppImages.imagesProfile,
+              onTap: () {
+                context.pushNamed(Routes.profileRoute);
+              },
             ),
           ),
           SliverToBoxAdapter(
@@ -42,6 +45,9 @@ class HomeDrawer extends StatelessWidget {
             child: DrawerItem(
               title: LocaleKeys.chatsMenu.tr(),
               imagePath: AppImages.imagesGlobal,
+              onTap: () {
+                context.pushNamed(Routes.conversationRoute);
+              },
             ),
           ),
           SliverToBoxAdapter(

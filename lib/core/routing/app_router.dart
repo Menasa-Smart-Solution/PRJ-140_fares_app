@@ -9,9 +9,11 @@ import 'package:fares/features/auth/presentation/views/register_view.dart';
 import 'package:fares/features/auth/presentation/views/verification_code_view.dart';
 import 'package:fares/features/driver/chat/feature_imports.dart';
 import 'package:fares/features/driver/home/presentation/widgets/widgets.dart';
+import 'package:fares/features/driver/main/presentations/driver_main.dart';
 import 'package:fares/features/driver/orders/feature_imports.dart';
 import 'package:fares/features/onboarding/presentation/views/on_boarding_view.dart';
 import 'package:fares/features/onboarding/presentation/views/welcome_view.dart';
+import 'package:fares/features/profile/feature_imports.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
@@ -51,6 +53,13 @@ class AppRouter {
         return _buildRoute(builder: (_) => const ChatView());
       case Routes.searchRoute:
         return _buildRoute(builder: (_) => const SearchView());
+      case Routes.profileRoute:
+        return _buildRoute(builder: (_) => const EditProfileView());
+
+      case Routes.updatePasswordRoute:
+        return _buildRoute(builder: (_) => const UpdatePasswordView());
+      case Routes.mainDriverRoute:
+        return _buildRoute(builder: (_) => const DriverMain());
 
       default:
         return null;

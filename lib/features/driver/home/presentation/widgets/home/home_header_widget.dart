@@ -11,17 +11,24 @@ class HomeHeaderWidget extends StatelessWidget {
       children: [
         Row(
           children: [
-            IconButton(
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
+            Builder(
+              builder: (context) {
+                return IconButton(
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer();
+                  },
+                  // padding: EdgeInsets.zero,
+                  visualDensity: const VisualDensity(
+                    horizontal: -1,
+                    vertical: -1,
+                  ),
+                  icon: const Icon(
+                    AppIcons.menu,
+                    size: 15,
+                    color: AppColors.primaryColor,
+                  ),
+                );
               },
-              // padding: EdgeInsets.zero,
-              visualDensity: const VisualDensity(horizontal: -1, vertical: -1),
-              icon: const Icon(
-                AppIcons.menu,
-                size: 15,
-                color: AppColors.primaryColor,
-              ),
             ),
             Container(
               width: 32,

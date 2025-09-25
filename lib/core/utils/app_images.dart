@@ -22,6 +22,8 @@ class AppImages {
 
   static const String imagesDocumentText = "assets/images/document-text.svg";
 
+  static const String imagesEdit = "assets/images/edit.svg";
+
   static const String imagesEmptyMessages = "assets/images/empty_messages.svg";
 
   static const String imagesGlobal = "assets/images/global.svg";

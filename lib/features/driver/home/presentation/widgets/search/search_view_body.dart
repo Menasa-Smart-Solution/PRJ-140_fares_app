@@ -11,7 +11,9 @@ class SearchViewBody extends StatelessWidget {
           Row(
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.pop();
+                },
                 icon: const Icon(Icons.arrow_back, color: AppColors.grey),
               ),
 
