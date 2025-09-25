@@ -49,6 +49,8 @@ class AppRouter {
         return _buildRoute(builder: (_) => const ConversationsView());
       case Routes.chatRoute:
         return _buildRoute(builder: (_) => const ChatView());
+      case Routes.searchRoute:
+        return _buildRoute(builder: (_) => const SearchView());
 
       default:
         return null;
