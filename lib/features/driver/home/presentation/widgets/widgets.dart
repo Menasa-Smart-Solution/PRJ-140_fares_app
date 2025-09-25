@@ -1,0 +1,12 @@
+import '../../../../../core/utils/exports.dart';
+import 'package:flutter/material.dart';
+part "home/home_header_widget.dart";
+part "home/home_search_bar_widget.dart";
+part "home/dashboard_card_widget.dart";
+part "home/home_bottom_navigation_widget.dart";
+part "home/dashboard_grid_widget.dart";
+part "../views/home_view.dart";
+part 'notifications/notification_list_view.dart';
+part 'notifications/notification_item.dart';
+part '../views/notifications_view.dart';
+part 'notifications/notification_view_body.dart';

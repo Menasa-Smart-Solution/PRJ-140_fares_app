@@ -27,6 +27,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ? Text(title.toString(), style: AppTextStyles.semiBold16)
           : title,
       centerTitle: centerTitle,
+      actionsPadding: const EdgeInsetsDirectional.only(end: 10),
+      surfaceTintColor: Colors.transparent,
       leading:
           leading ??
           InkWell(
