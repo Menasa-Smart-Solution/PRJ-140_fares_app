@@ -7,6 +7,7 @@ import 'package:fares/features/auth/presentation/views/login_view.dart';
 import 'package:fares/features/auth/presentation/views/password_changed_success_view.dart';
 import 'package:fares/features/auth/presentation/views/register_view.dart';
 import 'package:fares/features/auth/presentation/views/verification_code_view.dart';
+import 'package:fares/features/driver/chat/feature_imports.dart';
 import 'package:fares/features/driver/home/presentation/widgets/widgets.dart';
 import 'package:fares/features/driver/orders/feature_imports.dart';
 import 'package:fares/features/onboarding/presentation/views/on_boarding_view.dart';
@@ -44,6 +45,12 @@ class AppRouter {
 
       case Routes.orderQrCodeRoute:
         return _buildRoute(builder: (_) => const OrderQrCodeView());
+      case Routes.conversationRoute:
+        return _buildRoute(builder: (_) => const ConversationsView());
+      case Routes.chatRoute:
+        return _buildRoute(builder: (_) => const ChatView());
+      case Routes.searchRoute:
+        return _buildRoute(builder: (_) => const SearchView());
 
       default:
         return null;

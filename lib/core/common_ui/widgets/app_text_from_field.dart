@@ -29,6 +29,7 @@ class AppTextFormField extends StatelessWidget {
     this.radius,
     this.onFieldSubmitted,
     this.textInputAction,
+    this.showFocusedBorder = true,
   });
   final EdgeInsetsGeometry? contentPadding;
   final InputBorder? focusedBorder;
@@ -53,6 +54,7 @@ class AppTextFormField extends StatelessWidget {
   final void Function(String)? onChanged;
   final void Function(String)? onFieldSubmitted;
   final TextInputAction? textInputAction;
+  final bool showFocusedBorder;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -99,7 +101,10 @@ class AppTextFormField extends StatelessWidget {
             border: _buildBorder(),
             enabledBorder: enabledBorder ?? _buildBorder(),
             focusedBorder:
-                focusedBorder ?? _buildBorder(color: AppColors.primaryColor),
+                focusedBorder ??
+                _buildBorder(
+                  color: showFocusedBorder ? AppColors.primaryColor : null,
+                ),
             errorStyle: const TextStyle(
               height: 0,
               color: Colors.red,

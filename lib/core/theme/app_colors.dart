@@ -20,4 +20,5 @@ class AppColors {
   static const Color complimentaryGreen = Color(0xFF29BE10);
   static const Color dropDownColor = Color(0xFF88B3AD);
   static const Color red = Color(0xFFFF0900);
+  static const Color darkGrey = Color(0xFF2F3234);
 }

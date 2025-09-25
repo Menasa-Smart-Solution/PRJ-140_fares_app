@@ -18,6 +18,8 @@ class AppImages {
 
   static const String imagesDelivery = "assets/images/delivery.svg";
 
+  static const String imagesEmptyMessages = "assets/images/empty_messages.svg";
+
   static const String imagesInDelivery = "assets/images/in_delivery.svg";
 
   static const String imagesOnboarding = "assets/images/onboarding.jpg";
@@ -27,6 +29,8 @@ class AppImages {
   static const String imagesSearch = "assets/images/search.svg";
 
   static const String imagesSearchPng = "assets/images/search_png.png";
+
+  static const String imagesSend = "assets/images/send.svg";
 
   static const String imagesSubtract = "assets/images/subtract.svg";
 
