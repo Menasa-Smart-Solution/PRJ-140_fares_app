@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:fares/core/di/dependency_injection.dart';
 import 'package:fares/core/helpers/cache_helper.dart';
 import 'package:fares/fares_app.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await CacheHelper().init();
+  await setupDependencyInjection();
 
   runApp(
     EasyLocalization(

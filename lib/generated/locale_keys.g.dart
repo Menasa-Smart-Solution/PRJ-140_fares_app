@@ -107,5 +107,13 @@ abstract class  LocaleKeys {
   static const policies = 'policies';
   static const termsAndConditions = 'termsAndConditions';
   static const logout = 'logout';
+  static const connectionTimeout = 'connectionTimeout';
+  static const sendTimeout = 'sendTimeout';
+  static const receiveTimeout = 'receiveTimeout';
+  static const badCertificate = 'badCertificate';
+  static const cancelApiError = 'cancelApiError';
+  static const connectionError = 'connectionError';
+  static const unknown = 'unknown';
+  static const socketException = 'socketException';
 
 }
