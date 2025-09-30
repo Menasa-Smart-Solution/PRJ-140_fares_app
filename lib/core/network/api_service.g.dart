@@ -30,7 +30,7 @@ class _ApiService implements ApiService {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/login',
+            'login',
             queryParameters: queryParameters,
             data: _data,
           )
