@@ -7,6 +7,8 @@ class AppTextFormField extends StatelessWidget {
   const AppTextFormField({
     super.key,
     this.contentPadding,
+    this.showLabel = false,
+    this.titleColor,
     this.focusedBorder,
     this.enabledBorder,
     this.onChanged,
@@ -55,15 +57,19 @@ class AppTextFormField extends StatelessWidget {
   final void Function(String)? onFieldSubmitted;
   final TextInputAction? textInputAction;
   final bool showFocusedBorder;
+  final Color? titleColor;
+  final bool? showLabel;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (title != null) ...[
+        if (title != null && showLabel == false) ...[
           Text(
             title ?? "",
-            style: AppTextStyles.med14.copyWith(color: AppColors.black500),
+            style: AppTextStyles.med14.copyWith(
+              color: titleColor ?? AppColors.black500,
+            ),
           ),
           verticalSpace(8),
         ],
@@ -88,10 +94,19 @@ class AppTextFormField extends StatelessWidget {
           decoration: InputDecoration(
             hintText: hintText,
             suffixIcon: suffixIcon,
+            floatingLabelBehavior: FloatingLabelBehavior.always,
 
             prefixIcon: prefixIcon,
             fillColor: backgroundColor ?? AppColors.textFormFieldBg,
             filled: true,
+            label: title != null && showLabel == true
+                ? Text(
+                    title!,
+                    style: AppTextStyles.reg14.copyWith(
+                      color: titleColor ?? AppColors.black500,
+                    ),
+                  )
+                : null,
             hintStyle:
                 hintStyle ??
                 AppTextStyles.reg14.copyWith(color: AppColors.grey500),

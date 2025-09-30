@@ -90,7 +90,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 CustomFadeInUp(
                   duration: 900,
                   child: AppTextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.pushReplacementNamed(Routes.mainDriverRoute);
+                    },
                     text: LocaleKeys.login.tr(),
                   ),
                 ),

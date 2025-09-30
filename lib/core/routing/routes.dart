@@ -18,4 +18,7 @@ class Routes {
   static const String conversationRoute = '/ConversationView';
   static const String chatRoute = '/ChatView';
   static const String searchRoute = '/SearchView';
+  static const String profileRoute = '/ProfileView';
+  static const String updatePasswordRoute = '/UpdatePasswordView';
+  static const String mainDriverRoute = '/MainDriverView';
 }
