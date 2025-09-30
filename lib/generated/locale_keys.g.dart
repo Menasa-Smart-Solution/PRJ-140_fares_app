@@ -118,5 +118,6 @@ abstract class  LocaleKeys {
   static const emailOrPhoneNumberRequired = 'emailOrPhoneNumberRequired';
   static const emailOrPhoneNumberInvalid = 'emailOrPhoneNumberInvalid';
   static const passwordMinLength = 'passwordMinLength';
+  static const loginSuccess = 'loginSuccess';
 
 }

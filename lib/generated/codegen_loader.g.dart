@@ -129,7 +129,8 @@ class CodegenLoader extends AssetLoader{
   "socketException": "لا يوجد اتصال بالإنترنت.",
   "emailOrPhoneNumberRequired": "يرجى إدخال البريد الإلكتروني أو رقم الهاتف الخاص بك",
   "emailOrPhoneNumberInvalid": "يرجى إدخال بريد إلكتروني أو رقم هاتف صحيح.",
-  "passwordMinLength": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل"
+  "passwordMinLength": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل",
+  "loginSuccess": "تم تسجيل الدخول بنجاح"
 };
 static const Map<String,dynamic> _en = {};
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
