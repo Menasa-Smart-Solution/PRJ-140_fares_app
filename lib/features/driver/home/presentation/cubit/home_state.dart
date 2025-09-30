@@ -1,10 +1,27 @@
-// part of 'home_cubit.dart';
+part of 'home_cubit.dart';
 
-// abstract class HomeState extends Equatable {
-//   const HomeState();
+class HomeState extends Equatable {
+  final StateType getAllSummaryState;
+  final SummaryResponseModel? summary;
+  final String? errorMessage;
 
-//   @override
-//   List<Object> get props => [];
-// }
+  const HomeState({
+    this.getAllSummaryState = StateType.loading,
+    this.summary,
+    this.errorMessage = '',
+  });
+  @override
+  List<Object> get props => [getAllSummaryState, ?summary, errorMessage ?? ''];
 
-// class HomeInitial extends HomeState {}
+  HomeState copyWith({
+    StateType? getAllSummaryState,
+    SummaryResponseModel? summary,
+    String? errorMessage,
+  }) {
+    return HomeState(
+      getAllSummaryState: getAllSummaryState ?? this.getAllSummaryState,
+      summary: summary ?? this.summary,
+      errorMessage: errorMessage ?? this.errorMessage,
+    );
+  }
+}
