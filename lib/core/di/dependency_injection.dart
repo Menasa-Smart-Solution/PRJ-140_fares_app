@@ -4,6 +4,7 @@ import 'package:fares/core/network/auth_interceptor.dart';
 import 'package:fares/core/network/language_interceptor.dart';
 import 'package:fares/core/services/internet_service.dart';
 import 'package:fares/core/utils/env_variables.dart';
+import 'package:fares/features/auth/auth_di.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
@@ -14,6 +15,7 @@ final getIt = GetIt.instance;
 Future<void> setupDependencyInjection() async {
   // Initialize core dependencies
   await _initCoreDependencies();
+  await initAuthDI();
 }
 
 Future<void> _initCoreDependencies() async {
