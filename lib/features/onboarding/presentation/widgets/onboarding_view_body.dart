@@ -2,12 +2,14 @@ import 'dart:developer';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fares/core/common_ui/widgets/animate_do.dart';
+import 'package:fares/core/helpers/cache_helper.dart';
 import 'package:fares/core/helpers/extensions.dart';
 import 'package:fares/core/helpers/spacing.dart';
 import 'package:fares/core/routing/routes.dart';
 import 'package:fares/core/theme/app_colors.dart';
 import 'package:fares/core/theme/app_text_styles.dart';
 import 'package:fares/core/utils/app_images.dart';
+import 'package:fares/core/utils/prefs_keys.dart';
 import 'package:fares/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +30,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
       width: double.infinity,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(AppImages.imagesOnboarding),
+          image: const AssetImage(AppImages.imagesOnboarding),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
             Colors.black.withAlpha(100),
@@ -73,7 +75,12 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                   child: Material(
                     color: Colors.transparent,
                     child: InkWell(
-                      onTap: () {
+                      onTap: () async {
+                        await CacheHelper().saveData(
+                          key: PrefsKeys.onboarding,
+                          value: true,
+                        );
+                        if (!context.mounted) return;
                         context.pushReplacementNamed(Routes.welcomeRoute);
                       },
                       borderRadius: BorderRadius.circular(32),
@@ -87,7 +94,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            SizedBox(width: 20),
+                            const SizedBox(width: 20),
                             Text(
                               LocaleKeys.startNow.tr(),
                               style: AppTextStyles.bold16,
@@ -95,11 +102,11 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                             Container(
                               width: 48,
                               height: 48,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: AppColors.primaryColor,
                               ),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.arrow_forward,
                                 color: AppColors.white,
                               ),
@@ -119,9 +126,14 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
   }
 
   Future<void> _precacheImage() async {
-    if (!_imageLoaded) {
-      await precacheImage(AssetImage(AppImages.imagesOnboarding), context);
-      _imageLoaded = true;
+    if (!_imageLoaded && mounted) {
+      await precacheImage(
+        const AssetImage(AppImages.imagesOnboarding),
+        context,
+      );
+      if (mounted) {
+        _imageLoaded = true;
+      }
     }
   }
 }

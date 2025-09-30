@@ -5,7 +5,7 @@ class AppLogger {
   AppLogger._();
 
   static final Logger _logger = Logger(
-    level: kReleaseMode ? Level.off : Level.debug,
+    level: kDebugMode ? Level.debug : Level.off,
     printer: PrettyPrinter(
       methodCount: 2,
       errorMethodCount: 5,

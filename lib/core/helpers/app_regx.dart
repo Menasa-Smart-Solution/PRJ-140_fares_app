@@ -12,7 +12,8 @@ class AppRegex {
   }
 
   static bool isPhoneNumberValid(String phone) {
-    return RegExp(r'^\+?[0-9]+$').hasMatch(phone);
+    final regex = RegExp(r'^(?:\+218|0)(9[1-9])[0-9]{6}$');
+    return regex.hasMatch(phone);
   }
 
   static bool hasLowerCase(String password) {

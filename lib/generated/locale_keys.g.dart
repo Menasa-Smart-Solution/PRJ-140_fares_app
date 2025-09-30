@@ -115,5 +115,8 @@ abstract class  LocaleKeys {
   static const connectionError = 'connectionError';
   static const unknown = 'unknown';
   static const socketException = 'socketException';
+  static const emailOrPhoneNumberRequired = 'emailOrPhoneNumberRequired';
+  static const emailOrPhoneNumberInvalid = 'emailOrPhoneNumberInvalid';
+  static const passwordMinLength = 'passwordMinLength';
 
 }

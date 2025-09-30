@@ -126,7 +126,10 @@ class CodegenLoader extends AssetLoader{
   "cancelApiError": "تم إلغاء الطلب. يرجى المحاولة مرة أخرى.",
   "connectionError": "تعذر الاتصال بالخادم. يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى.",
   "unknown": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى في وقت لاحق.",
-  "socketException": "لا يوجد اتصال بالإنترنت."
+  "socketException": "لا يوجد اتصال بالإنترنت.",
+  "emailOrPhoneNumberRequired": "يرجى إدخال البريد الإلكتروني أو رقم الهاتف الخاص بك",
+  "emailOrPhoneNumberInvalid": "يرجى إدخال بريد إلكتروني أو رقم هاتف صحيح.",
+  "passwordMinLength": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل"
 };
 static const Map<String,dynamic> _en = {};
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

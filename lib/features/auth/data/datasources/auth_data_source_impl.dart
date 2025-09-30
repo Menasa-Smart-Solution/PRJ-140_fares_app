@@ -15,7 +15,7 @@ class AuthDataSourceImpl extends AuthDataSource {
   Future<AuthResponseModel> login(LoginRequestModel body) async {
     try {
       final response = await _apiService.login(body);
-      AppLogger.log('Login Success: $response');
+      AppLogger.log('Login Success');
       return response;
     } catch (e, stackTrace) {
       AppLogger.error(

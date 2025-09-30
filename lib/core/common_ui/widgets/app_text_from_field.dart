@@ -120,12 +120,12 @@ class AppTextFormField extends StatelessWidget {
                 _buildBorder(
                   color: showFocusedBorder ? AppColors.primaryColor : null,
                 ),
-            errorStyle: const TextStyle(
-              height: 0,
-              color: Colors.red,
-              fontSize: 0,
-            ),
 
+            // errorStyle: const TextStyle(
+            //   height: 0,
+            //   color: Colors.red,
+            //   fontSize: 0,
+            // ),
             errorBorder: _buildErrorBorder(),
             focusedErrorBorder: _buildErrorBorder(),
           ),
