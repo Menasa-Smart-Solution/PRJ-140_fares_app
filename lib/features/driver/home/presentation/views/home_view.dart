@@ -5,18 +5,11 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
-        children: [
-          // Header Section
-          const HomeHeaderWidget(balance: '500 د.ل'),
-          verticalSpace(20),
-          const HomeSearchBarWidget(),
-          verticalSpace(20),
-          const DashboardGridWidget(),
-          verticalSpace(20),
-        ],
-      ).withPadding(vertical: 20, horizontal: 16),
+    return BlocProvider(
+      create: (context) => getIt<HomeCubit>()..getAllSummary(),
+      child: SafeArea(
+        child: const HomeViewBody().withPadding(vertical: 20, horizontal: 16),
+      ),
     );
   }
 }

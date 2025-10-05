@@ -16,3 +16,5 @@ export 'package:fares/core/common_ui/widgets/custom_loading.dart';
 export 'package:fares/core/common_ui/widgets/full_screen_loading.dart';
 export 'package:fares/core/helpers/overlay_helper.dart';
 export 'package:fares/core/enums/enums.dart';
+export 'package:fares/core/di/dependency_injection.dart';
+export 'package:flutter_bloc/flutter_bloc.dart';

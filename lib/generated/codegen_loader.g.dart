@@ -130,7 +130,11 @@ class CodegenLoader extends AssetLoader{
   "emailOrPhoneNumberRequired": "يرجى إدخال البريد الإلكتروني أو رقم الهاتف الخاص بك",
   "emailOrPhoneNumberInvalid": "يرجى إدخال بريد إلكتروني أو رقم هاتف صحيح.",
   "passwordMinLength": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل",
-  "loginSuccess": "تم تسجيل الدخول بنجاح"
+  "loginSuccess": "تم تسجيل الدخول بنجاح",
+  "availablePackages": "{value} حزمة متاحة",
+  "companyDues": "مستحقات الشركه",
+  "delivery": "تسليم الطلب",
+  "orderFailed": "تعذر الطلب"
 };
 static const Map<String,dynamic> _en = {};
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

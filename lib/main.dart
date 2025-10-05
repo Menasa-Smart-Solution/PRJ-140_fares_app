@@ -3,6 +3,7 @@ import 'package:fares/core/di/dependency_injection.dart';
 import 'package:fares/core/helpers/cache_helper.dart';
 import 'package:fares/core/routing/routes.dart';
 import 'package:fares/core/utils/app_logger.dart';
+import 'package:fares/core/utils/env_variables.dart';
 import 'package:fares/core/utils/prefs_keys.dart';
 import 'package:fares/fares_app.dart';
 import 'package:flutter/material.dart';
@@ -43,6 +44,7 @@ Future<String> _initializeApp() async {
 }
 
 Future<String> _getInitialRoute() async {
+  AppLogger.warning('API URL: ${Env.apiUrl}');
   final String userToken =
       await CacheHelper.getSecuredString(PrefsKeys.token) ?? '';
   AppLogger.info('userToken: $userToken');

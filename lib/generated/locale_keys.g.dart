@@ -119,5 +119,9 @@ abstract class  LocaleKeys {
   static const emailOrPhoneNumberInvalid = 'emailOrPhoneNumberInvalid';
   static const passwordMinLength = 'passwordMinLength';
   static const loginSuccess = 'loginSuccess';
+  static const availablePackages = 'availablePackages';
+  static const companyDues = 'companyDues';
+  static const delivery = 'delivery';
+  static const orderFailed = 'orderFailed';
 
 }

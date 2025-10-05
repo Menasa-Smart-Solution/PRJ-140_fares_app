@@ -1,14 +1,21 @@
+import 'package:fares/core/helpers/helper_func.dart';
+import 'package:fares/features/driver/home/data/models/summary_response_model.dart';
+import 'package:fares/features/driver/home/presentation/cubit/home_cubit.dart';
+import 'package:skeletonizer/skeletonizer.dart';
+
 import '../../../../../core/utils/exports.dart';
 import 'package:flutter/material.dart';
 part "home/home_header_widget.dart";
 part "home/home_search_bar_widget.dart";
 part "home/dashboard_card_widget.dart";
+part "home/home_view_body.dart";
 part "home/home_bottom_navigation_widget.dart";
 part "home/home_drawer.dart";
 part "home/logout_alert_dialog.dart";
 part "home/dashboard_grid_widget.dart";
 part "home/logout_widget.dart";
 part "home/drawer_item.dart";
+part "home/new_flights.dart";
 part "../views/home_view.dart";
 part "../views/search_view.dart";
 part 'notifications/notification_list_view.dart';
