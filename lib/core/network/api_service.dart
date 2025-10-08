@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:fares/core/network/api_constants.dart';
 import 'package:fares/features/auth/data/models/auth_request_model.dart';
 import 'package:fares/features/auth/data/models/auth_response_model.dart';
+import 'package:fares/features/driver/home/data/models/parcels_response_model.dart';
 import 'package:fares/features/driver/home/data/models/summary_response_model.dart';
 import 'package:retrofit/retrofit.dart';
 part 'api_service.g.dart';
@@ -15,4 +16,11 @@ abstract class ApiService {
 
   @GET(ApiConstants.deliverySummary)
   Future<SummaryResponseModel> getAllSummary();
+
+  @GET(ApiConstants.parcels)
+  Future<ParcelsResponseModel> getParcels({
+    @Query('status') String? status,
+    @Query('query') int? id,
+    @Query('page') int? page,
+  });
 }
