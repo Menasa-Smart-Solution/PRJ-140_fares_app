@@ -21,7 +21,10 @@ class DashboardGridWidget extends StatelessWidget {
             namedArgs: {'value': statuses[index].count.toString()},
           ),
           imagePath: getImage(statuses[index].id.toString()),
-          onTap: () => context.pushNamed(Routes.allOrdersRoute),
+          onTap: () => context.pushNamed(
+            Routes.allOrdersRoute,
+            arguments: statuses[index].id.toString(),
+          ),
         );
       },
     );

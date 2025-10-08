@@ -1,7 +1,6 @@
 import 'package:fares/core/utils/exports.dart';
 import 'package:fares/features/driver/chat/feature_imports.dart';
 import 'package:fares/features/driver/home/presentation/widgets/widgets.dart';
-import 'package:fares/features/driver/orders/feature_imports.dart';
 import 'package:flutter/material.dart';
 
 class DriverMain extends StatefulWidget {
@@ -14,8 +13,8 @@ class DriverMain extends StatefulWidget {
 class _DriverMainState extends State<DriverMain> {
   final List<Widget> _pages = const [
     HomeView(),
-    AllOrdersView(),
-    AllOrdersView(),
+    HomeView(),
+    ConversationsView(),
     ConversationsView(),
   ];
 

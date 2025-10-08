@@ -3,7 +3,7 @@ part 'parcels_response_model.g.dart';
 
 @JsonSerializable(checked: true)
 class ParcelsResponseModel {
-  final ParcelsDataModel? data;
+  final ParcelsDateDataModel? data;
   @JsonKey(name: 'status_code')
   final int? statusCode;
 
@@ -11,22 +11,23 @@ class ParcelsResponseModel {
 
   factory ParcelsResponseModel.fromJson(Map<String, dynamic> json) =>
       _$ParcelsResponseModelFromJson(json);
+}
 
-  // Dummy data factory
-  factory ParcelsResponseModel.dummy() {
-    return ParcelsResponseModel(
-      data: ParcelsDataModel.dummy(),
-      statusCode: 201,
-    );
-  }
+@JsonSerializable(checked: true)
+class ParcelsDateDataModel {
+  @JsonKey(name: 'parcels_count')
+  final int? parcelsCount;
+  @JsonKey(name: 'parcels_price')
+  final int? parcelsPrice;
+  final ParcelsDataModel? parcels;
+
+  ParcelsDateDataModel({this.parcels, this.parcelsCount, this.parcelsPrice});
+  factory ParcelsDateDataModel.fromJson(Map<String, dynamic> json) =>
+      _$ParcelsDateDataModelFromJson(json);
 }
 
 @JsonSerializable(checked: true)
 class ParcelsDataModel {
-  @JsonKey(name: 'parcels_count')
-  final int? parcelsCount;
-  @JsonKey(name: 'parcels_price')
-  final String? parcelsPrice;
   @JsonKey(name: 'current_page')
   final int? currentPage;
   final List<ParcelModel>? data;
@@ -49,8 +50,6 @@ class ParcelsDataModel {
   final int? total;
 
   ParcelsDataModel({
-    this.parcelsCount,
-    this.parcelsPrice,
     this.currentPage,
     this.data,
     this.firstPageUrl,
@@ -70,9 +69,6 @@ class ParcelsDataModel {
       _$ParcelsDataModelFromJson(json);
 
   // Dummy data factory
-  factory ParcelsDataModel.dummy() {
-    return ParcelsDataModel(parcelsCount: 10, parcelsPrice: '1226');
-  }
 }
 
 @JsonSerializable(checked: true)
@@ -229,7 +225,7 @@ class ParcelModel {
   @JsonKey(name: 'flight_id')
   final String? flightId;
   @JsonKey(name: 'call_record_count')
-  final String? callRecordCount;
+  final int? callRecordCount;
   @JsonKey(name: 'tracking_code')
   final String? trackingCode;
   @JsonKey(name: 'share_tracking_code_link')
@@ -362,7 +358,7 @@ class ParcelModel {
       statusChangeAt: '2025-09-27 14:41:45',
       notes: null,
       deliveryNotes: null,
-      callRecordCount: '0',
+      callRecordCount: 0,
       trackingCode: '2333.1.$parcelId',
       shareTrackingCodeLink:
           'https://faris.com.ly/tracking?code=2333.1.$parcelId',

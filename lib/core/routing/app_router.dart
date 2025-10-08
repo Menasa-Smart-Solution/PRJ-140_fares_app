@@ -18,7 +18,9 @@ import 'package:flutter/material.dart';
 
 class AppRouter {
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
   Route? onGenerateRoute(RouteSettings settings) {
+    final args = settings.arguments;
     switch (settings.name) {
       case Routes.onBoardingRoute:
         return _buildRoute(builder: (_) => const OnBoardingView());
@@ -43,7 +45,9 @@ class AppRouter {
       case Routes.trackOrderRoute:
         return _buildRoute(builder: (_) => const TrackOrderView());
       case Routes.allOrdersRoute:
-        return _buildRoute(builder: (_) => const AllOrdersView());
+        return _buildRoute(
+          builder: (_) => AllOrdersView(status: args as String),
+        );
 
       case Routes.orderQrCodeRoute:
         return _buildRoute(builder: (_) => const OrderQrCodeView());

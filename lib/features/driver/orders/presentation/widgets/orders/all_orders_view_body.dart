@@ -19,26 +19,7 @@ class AllOrdersViewBody extends StatelessWidget {
           ).withPadding(all: 12),
         ),
         verticalSpace(16),
-        Expanded(
-          child: ListView.builder(
-            itemBuilder: (_, index) {
-              return Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(24),
-                  highlightColor: AppColors.lightPrimaryColor,
-                  hoverColor: AppColors.lightPrimaryColor,
-
-                  onTap: () {
-                    context.pushNamed(Routes.trackOrderRoute);
-                  },
-                  child: const OrderCardItem().withPadding(bottom: 8),
-                ),
-              );
-            },
-            itemCount: 10,
-          ),
-        ),
+        const OrdersBlocBuilder(),
       ],
     );
   }

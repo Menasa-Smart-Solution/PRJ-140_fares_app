@@ -1,8 +1,8 @@
 part of '../../feature_imports.dart';
 
 class OrderCardItem extends StatelessWidget {
-  const OrderCardItem({super.key});
-
+  const OrderCardItem({super.key, required this.parcel});
+  final ParcelModel parcel;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,7 +34,7 @@ class OrderCardItem extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'F - Y29RKS9I',
+                      parcel.id.toString(),
                       style: AppTextStyles.med24.copyWith(
                         color: AppColors.white,
                       ),
@@ -49,7 +49,7 @@ class OrderCardItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(50),
                 ),
                 child: Text(
-                  LocaleKeys.shippingStatusUnderReview.tr(),
+                  translateStatus(parcel.status ?? ''),
                   style: AppTextStyles.med12.copyWith(color: AppColors.white),
                 ),
               ),
@@ -60,6 +60,7 @@ class OrderCardItem extends StatelessWidget {
           _buildDivider(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                 child: Column(
@@ -72,12 +73,12 @@ class OrderCardItem extends StatelessWidget {
                     verticalSpace(16),
                     OrderDetailsWidget(
                       title: LocaleKeys.description.tr(),
-                      value: 'ملبس نسائي',
+                      value: parcel.desc ?? '',
                     ),
                     verticalSpace(16),
                     OrderDetailsWidget(
                       title: LocaleKeys.creationDate.tr(),
-                      value: '25 يوليو 2025',
+                      value: formatToArabicDate(parcel.createdAt ?? ''),
                     ),
                   ],
                 ),
@@ -88,17 +89,17 @@ class OrderCardItem extends StatelessWidget {
                   children: [
                     OrderDetailsWidget(
                       title: LocaleKeys.to.tr(),
-                      value: 'بنغازي، ليبيا',
+                      value: parcel.tocity?.name ?? '',
                     ),
                     verticalSpace(16),
                     OrderDetailsWidget(
                       title: LocaleKeys.recipient.tr(),
-                      value: 'Albert Stevano',
+                      value: parcel.recipientNumber ?? '',
                     ),
                     verticalSpace(16),
                     OrderDetailsWidget(
                       title: LocaleKeys.pieces.tr(),
-                      value: '3',
+                      value: parcel.qty.toString(),
                     ),
                   ],
                 ),

@@ -1,6 +1,6 @@
 import 'package:fares/core/helpers/helper_func.dart';
 import 'package:fares/features/driver/home/data/models/summary_response_model.dart';
-import 'package:fares/features/driver/home/presentation/cubit/home_cubit.dart';
+import 'package:fares/features/driver/home/presentation/cubit/home/home_cubit.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../core/utils/exports.dart';

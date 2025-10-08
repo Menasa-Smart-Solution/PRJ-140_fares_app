@@ -1,10 +1,28 @@
-// part of 'orders_cubit.dart';
+part of 'orders_cubit.dart';
 
-// abstract class OrdersState extends Equatable {
-//   const OrdersState();
+class OrdersState extends Equatable {
+  final StateType ordersState;
+  final ParcelsResponseModel? orders;
+  final String? errorMessage;
 
-//   @override
-//   List<Object> get props => [];
-// }
+  const OrdersState({
+    this.ordersState = StateType.loading,
+    this.orders,
+    this.errorMessage,
+  });
 
-// class OrdersInitial extends OrdersState {}
+  OrdersState copyWith({
+    StateType? ordersState,
+    ParcelsResponseModel? orders,
+    String? errorMessage,
+  }) {
+    return OrdersState(
+      ordersState: ordersState ?? this.ordersState,
+      orders: orders ?? this.orders,
+      errorMessage: errorMessage ?? this.errorMessage,
+    );
+  }
+
+  @override
+  List<Object?> get props => [ordersState, orders, errorMessage];
+}

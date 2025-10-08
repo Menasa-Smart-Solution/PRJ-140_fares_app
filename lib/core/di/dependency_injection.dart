@@ -6,6 +6,7 @@ import 'package:fares/core/services/internet_service.dart';
 import 'package:fares/core/utils/env_variables.dart';
 import 'package:fares/features/auth/auth_di.dart';
 import 'package:fares/features/driver/home/home_di.dart';
+import 'package:fares/features/driver/orders/orders_di.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
@@ -18,6 +19,7 @@ Future<void> setupDependencyInjection() async {
   await _initCoreDependencies();
   await initAuthDI();
   await initHomeDI();
+  await initOrdersDI();
 }
 
 Future<void> _initCoreDependencies() async {
