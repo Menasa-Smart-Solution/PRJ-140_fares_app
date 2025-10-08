@@ -69,6 +69,21 @@ class ParcelsDataModel {
       _$ParcelsDataModelFromJson(json);
 
   // Dummy data factory
+  factory ParcelsDataModel.dummy() {
+    return ParcelsDataModel(
+      currentPage: 1,
+      data: List.generate(10, (index) => ParcelModel.dummy(id: 155473 + index)),
+      firstPageUrl: 'https://api.fares.com.ly/api/parcels?page=1',
+      from: 1,
+      lastPage: 5,
+      lastPageUrl: 'https://api.fares.com.ly/api/parcels?page=5',
+      links: [],
+      nextPageUrl: 'https://api.fares.com.ly/api/parcels?page=2',
+      path: 'https://api.fares.com.ly/api/parcels',
+      perPage: 10,
+      prevPageUrl: null,
+    );
+  }
 }
 
 @JsonSerializable(checked: true)

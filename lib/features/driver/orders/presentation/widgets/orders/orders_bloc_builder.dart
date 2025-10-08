@@ -9,9 +9,16 @@ class OrdersBlocBuilder extends StatelessWidget {
       builder: (context, state) {
         switch (state.ordersState) {
           case StateType.loading:
-            return const Center(child: CircularProgressIndicator.adaptive());
+            return Expanded(
+              child: Skeletonizer(
+                enabled: true,
+                child: OrdersListView(parcel: ParcelsDataModel.dummy()),
+              ),
+            );
           case StateType.success:
-            return OrdersListView(parcel: state.orders!.data!.parcels!);
+            return Expanded(
+              child: OrdersListView(parcel: state.orders!.data!.parcels!),
+            );
           case StateType.error:
             return Center(
               child: Text(state.errorMessage ?? LocaleKeys.unknown.tr()),

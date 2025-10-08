@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:fares/core/helpers/helper_func.dart';
 import 'package:fares/features/driver/orders/data/models/parcels_response_model.dart';
 import 'package:fares/features/driver/orders/presentation/cubit/orders_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../core/utils/exports.dart';
 
@@ -28,3 +31,4 @@ part 'presentation/widgets/order_qrcode/order_qr_code_view_body.dart';
 part 'presentation/widgets/orders/all_orders_view_body.dart';
 part 'presentation/widgets/orders/orders_list_view.dart';
 part 'presentation/widgets/orders/orders_bloc_builder.dart';
+part 'presentation/widgets/orders/search_order_text_form_field.dart';

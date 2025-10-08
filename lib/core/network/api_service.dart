@@ -20,7 +20,7 @@ abstract class ApiService {
   @GET(ApiConstants.parcels)
   Future<ParcelsResponseModel> getParcels({
     @Query('status') String? status,
-    @Query('query') int? id,
+    @Query('query') String? id,
     @Query('page') int? page,
   });
 }

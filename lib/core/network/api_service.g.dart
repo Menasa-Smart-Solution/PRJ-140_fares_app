@@ -77,7 +77,7 @@ class _ApiService implements ApiService {
   @override
   Future<ParcelsResponseModel> getParcels({
     String? status,
-    int? id,
+    String? id,
     int? page,
   }) async {
     final _extra = <String, dynamic>{};

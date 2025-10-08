@@ -7,17 +7,7 @@ class AllOrdersViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        AppTextFormField(
-          hintText: LocaleKeys.searchHint.tr(),
-          borderColor: AppColors.textFormBorderColor,
-          backgroundColor: AppColors.white,
-          validator: (value) {},
-          prefixIcon: Image.asset(
-            AppImages.imagesSearchPng,
-            width: 20,
-            height: 20,
-          ).withPadding(all: 12),
-        ),
+        const SearchOrderTextFormField(),
         verticalSpace(16),
         const OrdersBlocBuilder(),
       ],

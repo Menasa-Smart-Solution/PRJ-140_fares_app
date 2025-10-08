@@ -11,7 +11,7 @@ class OrdersRepo {
 
   Future<Either<Failure, ParcelsResponseModel>> getOrders({
     String? status,
-    int? id,
+    String? id,
     int? page,
   }) async {
     try {

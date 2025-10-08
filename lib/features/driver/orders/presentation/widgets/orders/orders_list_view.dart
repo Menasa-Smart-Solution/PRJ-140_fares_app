@@ -5,27 +5,23 @@ class OrdersListView extends StatelessWidget {
   final ParcelsDataModel parcel;
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        itemBuilder: (_, index) {
-          return Material(
-            color: Colors.transparent,
-            child: InkWell(
-              borderRadius: BorderRadius.circular(24),
-              highlightColor: AppColors.lightPrimaryColor,
-              hoverColor: AppColors.lightPrimaryColor,
+    return ListView.builder(
+      itemBuilder: (_, index) {
+        return Material(
+          color: Colors.transparent,
+          child: InkWell(
+            borderRadius: BorderRadius.circular(24),
 
-              onTap: () {
-                context.pushNamed(Routes.trackOrderRoute);
-              },
-              child: OrderCardItem(
-                parcel: parcel.data![index],
-              ).withPadding(bottom: 8),
-            ),
-          );
-        },
-        itemCount: parcel.data?.length,
-      ),
+            onTap: () {
+              context.pushNamed(Routes.trackOrderRoute);
+            },
+            child: OrderCardItem(
+              parcel: parcel.data![index],
+            ).withPadding(bottom: 8),
+          ),
+        );
+      },
+      itemCount: parcel.data?.length,
     );
   }
 }

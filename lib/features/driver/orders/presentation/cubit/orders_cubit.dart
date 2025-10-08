@@ -14,7 +14,7 @@ class OrdersCubit extends Cubit<OrdersState> {
 
   Future<void> getOrders({
     String? status,
-    int? id,
+    String? id,
     int? page,
     bool isRefresh = false,
   }) async {
