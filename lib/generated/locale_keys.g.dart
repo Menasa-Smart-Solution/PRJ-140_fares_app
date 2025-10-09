@@ -123,5 +123,6 @@ abstract class  LocaleKeys {
   static const companyDues = 'companyDues';
   static const delivery = 'delivery';
   static const orderFailed = 'orderFailed';
+  static const addCallLog = 'addCallLog';
 
 }

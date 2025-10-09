@@ -9,7 +9,9 @@ class TrackOrderViewBody extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(child: OrderCardItem(parcel: parcel)),
-        const ShippingStatusDropdown(),
+        parcel.status == 'FinancialSettlementPending'
+            ? const SliverToBoxAdapter(child: SizedBox())
+            : const ShippingStatusDropdown(),
       ],
     );
   }

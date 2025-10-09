@@ -67,6 +67,8 @@ class AppRouter {
         return _buildRoute(builder: (_) => const UpdatePasswordView());
       case Routes.mainDriverRoute:
         return _buildRoute(builder: (_) => const DriverMain());
+      case Routes.callLogsRoute:
+        return _buildRoute(builder: (_) => CallLogsView(id: args as int));
 
       default:
         return null;

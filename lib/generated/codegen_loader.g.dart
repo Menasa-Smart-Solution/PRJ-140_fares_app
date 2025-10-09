@@ -134,7 +134,8 @@ class CodegenLoader extends AssetLoader{
   "availablePackages": "{value} حزمة متاحة",
   "companyDues": "مستحقات الشركه",
   "delivery": "تسليم الطلب",
-  "orderFailed": "تعذر الطلب"
+  "orderFailed": "تعذر الطلب",
+  "addCallLog": "أضف سجل المكالمات"
 };
 static const Map<String,dynamic> _en = {};
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

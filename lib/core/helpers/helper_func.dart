@@ -1,6 +1,7 @@
 import 'package:fares/core/utils/app_images.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:intl/date_symbol_data_local.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 String getImage(String status) {
   switch (status) {
@@ -57,5 +58,24 @@ String translateStatus(String status) {
       return "قيد المراجعة";
     default:
       return "كل الشحنات"; // fallback لو الحالة مش موجودة
+  }
+}
+
+Future<void> openWhatsApp(String phoneNumber) async {
+  final Uri whatsappUri = Uri.parse("https://wa.me/$phoneNumber");
+
+  if (await canLaunchUrl(whatsappUri)) {
+    await launchUrl(whatsappUri, mode: LaunchMode.externalApplication);
+  } else {
+    debugPrint("WhatsApp is not installed on this device");
+    // Or show a Snackbar, Dialog, or Toast message
+  }
+}
+
+Future<void> makePhoneCall(String phoneNumber) async {
+  final Uri phoneUri = Uri(scheme: 'tel', path: phoneNumber);
+
+  if (!await launchUrl(phoneUri)) {
+    throw Exception('Could not make the call');
   }
 }

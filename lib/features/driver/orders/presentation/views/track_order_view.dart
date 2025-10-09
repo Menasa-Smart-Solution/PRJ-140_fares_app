@@ -17,7 +17,7 @@ class TrackOrderView extends StatelessWidget {
   CustomAppBar _buildAppBar() {
     return CustomAppBar(
       title: LocaleKeys.trackOrder.tr(),
-      actions: const [OrderMenu()],
+      actions: [OrderMenu(parcel: parcel)],
     );
   }
 }

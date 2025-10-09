@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:fares/core/network/api_constants.dart';
 import 'package:fares/features/auth/data/models/auth_request_model.dart';
 import 'package:fares/features/auth/data/models/auth_response_model.dart';
+import 'package:fares/features/driver/orders/data/models/call_images_response.dart';
 import 'package:fares/features/driver/orders/data/models/parcels_response_model.dart';
 import 'package:fares/features/driver/home/data/models/summary_response_model.dart';
 import 'package:retrofit/retrofit.dart';
@@ -22,5 +23,10 @@ abstract class ApiService {
     @Query('status') String? status,
     @Query('query') String? id,
     @Query('page') int? page,
+  });
+
+  @GET('${ApiConstants.callRecords}/{parcel_id}')
+  Future<CallImagesResponse> getCallImages({
+    @Path('parcel_id') required int parcelId,
   });
 }

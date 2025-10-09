@@ -3,6 +3,7 @@ import 'package:fares/core/errors/exceptions.dart';
 import 'package:fares/core/errors/failure.dart';
 import 'package:fares/core/utils/exports.dart';
 import 'package:fares/features/driver/orders/data/datasources/orders_data_source.dart';
+import 'package:fares/features/driver/orders/data/models/call_images_response.dart';
 import 'package:fares/features/driver/orders/data/models/parcels_response_model.dart';
 
 class OrdersRepo {
@@ -20,6 +21,19 @@ class OrdersRepo {
         id: id,
         page: page,
       );
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(message: e.message));
+    } catch (e) {
+      return Left(Failure(message: LocaleKeys.unknown.tr()));
+    }
+  }
+
+  Future<Either<Failure, CallImagesResponse>> getCallImages({
+    required int parcelId,
+  }) async {
+    try {
+      final result = await _ataSource.getCallImages(parcelId: parcelId);
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(message: e.message));

@@ -3,4 +3,5 @@ class ApiConstants {
   static const String login = "/login";
   static const String deliverySummary = "/delivery-man/summary";
   static const String parcels = "/delivery-man/parcels";
+  static const String callRecords = "/delivery-man/call-records";
 }
