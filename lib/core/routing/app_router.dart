@@ -10,6 +10,7 @@ import 'package:fares/features/auth/presentation/views/verification_code_view.da
 import 'package:fares/features/driver/chat/feature_imports.dart';
 import 'package:fares/features/driver/home/presentation/widgets/widgets.dart';
 import 'package:fares/features/driver/main/presentations/driver_main.dart';
+import 'package:fares/features/driver/orders/data/models/parcels_response_model.dart';
 import 'package:fares/features/driver/orders/feature_imports.dart';
 import 'package:fares/features/onboarding/presentation/views/on_boarding_view.dart';
 import 'package:fares/features/onboarding/presentation/views/welcome_view.dart';
@@ -43,7 +44,9 @@ class AppRouter {
       case Routes.notificationsRoute:
         return _buildRoute(builder: (_) => const NotificationsView());
       case Routes.trackOrderRoute:
-        return _buildRoute(builder: (_) => const TrackOrderView());
+        return _buildRoute(
+          builder: (_) => TrackOrderView(parcel: args as ParcelModel),
+        );
       case Routes.allOrdersRoute:
         return _buildRoute(
           builder: (_) => AllOrdersView(status: args as String),

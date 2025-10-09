@@ -9,7 +9,7 @@ class AllOrdersView extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<OrdersCubit>()..getOrders(status: status),
       child: Scaffold(
-        appBar: CustomAppBar(title: LocaleKeys.shippingStatusUnderReview.tr()),
+        appBar: CustomAppBar(title: translateStatus(status)),
         body: const AllOrdersViewBody().withPadding(
           vertical: 20,
           horizontal: 16,

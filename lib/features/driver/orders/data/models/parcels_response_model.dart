@@ -12,6 +12,7 @@ class ParcelsResponseModel {
   factory ParcelsResponseModel.fromJson(Map<String, dynamic> json) =>
       _$ParcelsResponseModelFromJson(json);
 }
+//(v) => v is String ? int.parse(v) : (v as num?)?.toInt(),
 
 @JsonSerializable(checked: true)
 class ParcelsDateDataModel {

@@ -53,7 +53,9 @@ String translateStatus(String status) {
       return "تم التوصيل";
     case "Closed":
       return "تم الإقفال";
+    case "UnderChecking":
+      return "قيد المراجعة";
     default:
-      return "غير معروف"; // fallback لو الحالة مش موجودة
+      return "كل الشحنات"; // fallback لو الحالة مش موجودة
   }
 }

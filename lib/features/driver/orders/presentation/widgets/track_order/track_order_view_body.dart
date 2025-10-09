@@ -1,12 +1,14 @@
 part of '../../../feature_imports.dart';
 
 class TrackOrderViewBody extends StatelessWidget {
-  const TrackOrderViewBody({super.key});
+  const TrackOrderViewBody({super.key, required this.parcel});
+  final ParcelModel parcel;
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        SliverToBoxAdapter(child: OrderCardItem(parcel: ParcelModel())),
+        SliverToBoxAdapter(child: OrderCardItem(parcel: parcel)),
         const ShippingStatusDropdown(),
       ],
     );

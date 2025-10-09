@@ -1,7 +1,36 @@
 part of '../../../feature_imports.dart';
 
-class OrdersBlocBuilder extends StatelessWidget {
+class OrdersBlocBuilder extends StatefulWidget {
   const OrdersBlocBuilder({super.key});
+
+  @override
+  State<OrdersBlocBuilder> createState() => _OrdersBlocBuilderState();
+}
+
+class _OrdersBlocBuilderState extends State<OrdersBlocBuilder> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _onScroll() {
+    if (_scrollController.position.pixels >=
+        _scrollController.position.maxScrollExtent * 0.9) {
+      final cubit = context.read<OrdersCubit>();
+      if (cubit.state.hasMorePages && !cubit.state.isLoadingMore) {
+        cubit.loadMoreOrders();
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,12 +41,19 @@ class OrdersBlocBuilder extends StatelessWidget {
             return Expanded(
               child: Skeletonizer(
                 enabled: true,
-                child: OrdersListView(parcel: ParcelsDataModel.dummy()),
+                child: OrdersListView(
+                  parcel: ParcelsDataModel.dummy(),
+                  hasMorePages: false,
+                ),
               ),
             );
           case StateType.success:
             return Expanded(
-              child: OrdersListView(parcel: state.orders!.data!.parcels!),
+              child: OrdersListView(
+                parcel: state.orders!.data!.parcels!,
+                controller: _scrollController,
+                hasMorePages: state.hasMorePages,
+              ),
             );
           case StateType.error:
             return Center(
