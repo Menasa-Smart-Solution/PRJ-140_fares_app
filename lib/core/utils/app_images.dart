@@ -24,7 +24,11 @@ class AppImages {
 
   static const String imagesEdit = "assets/images/edit.svg";
 
+  static const String imagesEmpty = "assets/images/empty.png";
+
   static const String imagesEmptyMessages = "assets/images/empty_messages.svg";
+
+  static const String imagesError = "assets/images/error.png";
 
   static const String imagesGlobal = "assets/images/global.svg";
 
@@ -33,6 +37,8 @@ class AppImages {
   static const String imagesInDelivery = "assets/images/in_delivery.svg";
 
   static const String imagesLogout = "assets/images/logout.svg";
+
+  static const String imagesNoInternet = "assets/images/no-internet.png";
 
   static const String imagesOnboarding = "assets/images/onboarding.jpg";
 

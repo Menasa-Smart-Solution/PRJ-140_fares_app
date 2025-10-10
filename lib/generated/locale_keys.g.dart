@@ -124,5 +124,10 @@ abstract class  LocaleKeys {
   static const delivery = 'delivery';
   static const orderFailed = 'orderFailed';
   static const addCallLog = 'addCallLog';
+  static const noNetworkConnection = 'noNetworkConnection';
+  static const checkYourInternet = 'checkYourInternet';
+  static const retry = 'retry';
+  static const noImagesUploaded = 'noImagesUploaded';
+  static const somethingWentWrong = 'somethingWentWrong';
 
 }

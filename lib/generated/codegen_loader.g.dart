@@ -135,7 +135,12 @@ class CodegenLoader extends AssetLoader{
   "companyDues": "مستحقات الشركه",
   "delivery": "تسليم الطلب",
   "orderFailed": "تعذر الطلب",
-  "addCallLog": "أضف سجل المكالمات"
+  "addCallLog": "أضف سجل المكالمات",
+  "noNetworkConnection": "لا يوجد اتصال بالشبكة",
+  "checkYourInternet": "يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى.",
+  "retry": "إعادة المحاولة",
+  "noImagesUploaded": "لم يتم رفع أي صور بعد لهذا الطلب",
+  "somethingWentWrong": "أوه لا، لقد حدث خطأ ما!"
 };
 static const Map<String,dynamic> _en = {};
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

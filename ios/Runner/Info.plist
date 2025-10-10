@@ -58,6 +58,9 @@
 		<string>whatsapp</string>
 		<string>tel</string>
 		</array>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>We need access to your photo library so drivers can upload photos as proof of completed client deliveries.</string>
+
 
 	</dict>
 </plist>
