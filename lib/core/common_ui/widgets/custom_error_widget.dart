@@ -1,45 +1,47 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fares/core/common_ui/widgets/custom_app_bar.dart';
+import 'package:fares/core/helpers/extensions.dart';
 import 'package:fares/core/helpers/spacing.dart';
 import 'package:fares/core/theme/app_colors.dart';
 import 'package:fares/core/theme/app_text_styles.dart';
 import 'package:fares/core/utils/app_images.dart';
 import 'package:fares/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomErrorWidget extends StatelessWidget {
   const CustomErrorWidget({
     super.key,
     required this.message,
     this.imagePath,
-    this.showScaffold,
+    this.showScaffold = false,
     this.onPressed,
   });
   final String message;
   final String? imagePath;
   final VoidCallback? onPressed;
-  final bool? showScaffold;
+  final bool showScaffold;
+
   @override
   Widget build(BuildContext context) {
     return showScaffold == true
         ? Scaffold(
             appBar: const CustomAppBar(title: SizedBox()),
-            body: _body(),
+            body: _body(context),
           )
-        : _body();
+        : _body(context);
   }
 
-  Column _body() {
+  Column _body(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Image.asset(
           imagePath ?? AppImages.imagesError,
-          height: 0.3.sh,
+          height: 0.3 * context.height,
           fit: BoxFit.fill,
         ),
+        verticalSpace(20),
         Text(
           LocaleKeys.somethingWentWrong.tr(),
           textAlign: TextAlign.center,
@@ -60,7 +62,7 @@ class CustomErrorWidget extends StatelessWidget {
             label: Text(LocaleKeys.retry.tr()),
 
             style: ElevatedButton.styleFrom(
-              minimumSize: Size(0.8.sw, 50.h),
+              minimumSize: const Size(0.8, 50),
               textStyle: AppTextStyles.med16.copyWith(
                 fontFamily: AppTextStyles.fontFamily,
               ),

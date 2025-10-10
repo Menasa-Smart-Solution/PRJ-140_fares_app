@@ -10,8 +10,9 @@ class HomeState extends Equatable {
     this.summary,
     this.errorMessage = '',
   });
+
   @override
-  List<Object> get props => [getAllSummaryState, ?summary, errorMessage ?? ''];
+  List<Object?> get props => [getAllSummaryState, summary, errorMessage];
 
   HomeState copyWith({
     StateType? getAllSummaryState,

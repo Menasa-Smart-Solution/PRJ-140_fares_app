@@ -5,6 +5,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:fares/core/network/api_error_model.dart';
 import 'package:fares/generated/locale_keys.g.dart';
 
+import '../utils/app_logger.dart';
+
 class ErrorHandler {
   static ApiErrorModel handle(dynamic error) {
     if (error is DioException) {
@@ -48,5 +50,28 @@ class ErrorHandler {
 
 ApiErrorModel _handleError(Response? response) {
   var result = response?.data;
+  final errors = result?['errors'];
+  final List<String> messages = [];
+  // errors can be map or list
+  if (errors != null) {
+    if (errors is Map) {
+      errors.forEach((key, value) {
+        if (value is List) {
+          for (var msg in value) {
+            messages.add("${key.toString()}: $msg");
+          }
+        } else {
+          messages.add("${key.toString()}: ${value.toString()}");
+        }
+      });
+    } else if (errors is List) {
+      for (var msg in errors) {
+        messages.add(msg.toString());
+      }
+    }
+  }
+  if (messages.isNotEmpty) {
+    result['message'] = messages.join('\n');
+  }
   return ApiErrorModel.fromJson(result);
 }

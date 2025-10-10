@@ -4,11 +4,18 @@ class CallRecordsState extends Equatable {
   final StateType callRecordsState;
   final List<CallImageModel>? callImages;
   final String? errorMessage;
+
   const CallRecordsState({
     this.callRecordsState = StateType.loading,
     this.callImages,
     this.errorMessage,
   });
+
+  @override
+  List<Object?> get props => [callRecordsState, callImages, errorMessage];
+
+  @override
+  bool get stringify => true;
 
   CallRecordsState copyWith({
     StateType? callRecordsState,
@@ -21,11 +28,4 @@ class CallRecordsState extends Equatable {
       errorMessage: errorMessage ?? this.errorMessage,
     );
   }
-
-  @override
-  List<Object> get props => [
-    callRecordsState,
-    callImages ?? '',
-    errorMessage ?? '',
-  ];
 }

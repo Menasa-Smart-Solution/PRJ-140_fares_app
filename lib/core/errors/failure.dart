@@ -5,8 +5,9 @@ class Failure extends Equatable {
   final int? code;
 
   const Failure({required this.message, this.code});
+
   @override
-  List<Object> get props => [message];
+  List<Object?> get props => [message, code];
 }
 
 class ServerFailure extends Failure {

@@ -2,6 +2,7 @@ import 'package:fares/core/helpers/spacing.dart';
 import 'package:fares/core/theme/app_colors.dart';
 import 'package:fares/core/theme/app_text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class AppTextFormField extends StatelessWidget {
   const AppTextFormField({
@@ -15,6 +16,7 @@ class AppTextFormField extends StatelessWidget {
     this.inputTextStyle,
     this.prefixIcon,
     required this.hintText,
+    this.inputFormatters,
     this.hintStyle,
     this.isObscureText,
     this.suffixIcon,
@@ -59,6 +61,7 @@ class AppTextFormField extends StatelessWidget {
   final bool showFocusedBorder;
   final Color? titleColor;
   final bool? showLabel;
+  final List<TextInputFormatter>? inputFormatters;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -79,6 +82,7 @@ class AppTextFormField extends StatelessWidget {
           textInputAction: textInputAction,
           onChanged: onChanged,
           onFieldSubmitted: onFieldSubmitted,
+          inputFormatters: inputFormatters,
           onTapOutside: (event) {
             FocusManager.instance.primaryFocus?.unfocus();
           },

@@ -5,6 +5,9 @@ class OrderCardItem extends StatelessWidget {
   final ParcelModel parcel;
   @override
   Widget build(BuildContext context) {
+    final totalPrice =
+        double.parse(parcel.productPrice ?? '0') +
+        double.parse(parcel.shippingPrice ?? '0');
     return Skeleton.leaf(
       child: Container(
         width: double.infinity,
@@ -117,7 +120,7 @@ class OrderCardItem extends StatelessWidget {
                   style: AppTextStyles.bold16.copyWith(color: AppColors.white),
                 ),
                 Text(
-                  '205.0 د.ل',
+                  '$totalPrice د.ل',
                   style: AppTextStyles.bold16.copyWith(color: AppColors.white),
                 ),
               ],

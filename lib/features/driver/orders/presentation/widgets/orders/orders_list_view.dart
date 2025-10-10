@@ -32,11 +32,18 @@ class OrdersListView extends StatelessWidget {
             child: InkWell(
               borderRadius: BorderRadius.circular(24),
 
-              onTap: () {
-                context.pushNamed(
+              onTap: () async {
+                final result = await context.pushNamed(
                   Routes.trackOrderRoute,
                   arguments: parcel.data![index],
                 );
+                if (result is bool && result == true) {
+                  if (!context.mounted) return;
+                  context.read<OrdersCubit>().getOrders(
+                    isRefresh: true,
+                    status: parcel.data![index].status,
+                  );
+                }
               },
               child: OrderCardItem(
                 parcel: parcel.data![index],

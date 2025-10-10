@@ -11,10 +11,9 @@ class CallLogsView extends StatelessWidget {
           getIt<CallRecordsCubit>()..getCallImages(parcelId: id),
       child: Scaffold(
         appBar: CustomAppBar(title: 'سجل لشحنة $id'),
-        body: const CallLogsViewBody().withPadding(
-          vertical: 20,
-          horizontal: 16,
-        ),
+        body: CallLogsViewBody(
+          parcelId: id,
+        ).withPadding(vertical: 20, horizontal: 16),
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () {},
           icon: const Icon(Icons.add_a_photo),

@@ -6,11 +6,14 @@ class TrackOrderView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _buildAppBar(),
-      body: TrackOrderViewBody(
-        parcel: parcel,
-      ).withPadding(vertical: 20, horizontal: 16),
+    return BlocProvider(
+      create: (context) => getIt<OrderOperationCubit>(),
+      child: Scaffold(
+        appBar: _buildAppBar(),
+        body: TrackOrderViewBody(
+          parcel: parcel,
+        ).withPadding(vertical: 20, horizontal: 16),
+      ),
     );
   }
 

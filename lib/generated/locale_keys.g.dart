@@ -129,5 +129,6 @@ abstract class  LocaleKeys {
   static const retry = 'retry';
   static const noImagesUploaded = 'noImagesUploaded';
   static const somethingWentWrong = 'somethingWentWrong';
+  static const underReview = 'underReview';
 
 }

@@ -11,7 +11,8 @@ class TrackOrderViewBody extends StatelessWidget {
         SliverToBoxAdapter(child: OrderCardItem(parcel: parcel)),
         parcel.status == 'FinancialSettlementPending'
             ? const SliverToBoxAdapter(child: SizedBox())
-            : const ShippingStatusDropdown(),
+            : ShippingStatusDropdown(parcel: parcel),
+        const SliverToBoxAdapter(child: ChangeStatusBlocListener()),
       ],
     );
   }

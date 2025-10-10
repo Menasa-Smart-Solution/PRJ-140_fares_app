@@ -1,7 +1,9 @@
 part of '../../../feature_imports.dart';
 
 class CallLogsBlocBuilder extends StatelessWidget {
-  const CallLogsBlocBuilder({super.key});
+  const CallLogsBlocBuilder({super.key, required this.parcelId});
+
+  final int parcelId;
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +17,9 @@ class CallLogsBlocBuilder extends StatelessWidget {
           case StateType.error:
             return SliverFillRemaining(
               hasScrollBody: false,
-              child: CustomErrorWidget(
-                message:
-                    state.errorMessage ?? LocaleKeys.somethingWentWrong.tr(),
-
-                onPressed: () {
-                  context.read<CallRecordsCubit>().getCallImages(parcelId: 0);
-                },
+              child: CustomEmptyWidget(
+                message: state.errorMessage ?? LocaleKeys.unknown.tr(),
+                imagePath: AppImages.imagesEmpty,
               ),
             );
           case StateType.empty:
@@ -37,7 +35,9 @@ class CallLogsBlocBuilder extends StatelessWidget {
               hasScrollBody: false,
               child: InternetConnectionWidget(
                 onPressed: () {
-                  context.read<CallRecordsCubit>().getCallImages(parcelId: 0);
+                  context.read<CallRecordsCubit>().getCallImages(
+                    parcelId: parcelId,
+                  );
                 },
               ),
             );
@@ -55,22 +55,20 @@ class CallImagesLoadingShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverFillRemaining(
-      child: Expanded(
-        child: Skeletonizer(
-          enabled: true,
-          child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-              childAspectRatio: 1,
-            ),
-            itemCount: 10,
-            itemBuilder: (context, index) => Container(
-              decoration: BoxDecoration(
-                color: Colors.grey[200],
-                borderRadius: const BorderRadius.all(Radius.circular(16)),
-              ),
+      child: Skeletonizer(
+        enabled: true,
+        child: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
+            childAspectRatio: 1,
+          ),
+          itemCount: 10,
+          itemBuilder: (context, index) => Container(
+            decoration: BoxDecoration(
+              color: Colors.grey[200],
+              borderRadius: const BorderRadius.all(Radius.circular(16)),
             ),
           ),
         ),
