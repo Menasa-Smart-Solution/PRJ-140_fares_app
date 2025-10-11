@@ -73,10 +73,14 @@ class HomeViewBody extends StatelessWidget {
               const Spacer(),
               CustomIconButton(
                 onTap: () {
+                  final cubit = context.read<HomeCubit>();
                   showDialog(
                     barrierDismissible: false,
                     context: context,
-                    builder: (context) => const LogoutAlertDialog(),
+                    builder: (context) => BlocProvider.value(
+                      value: cubit,
+                      child: const LogoutAlertDialog(),
+                    ),
                   );
                 },
                 icon: Icons.logout,
@@ -90,7 +94,9 @@ class HomeViewBody extends StatelessWidget {
         const SliverToBoxAdapter(
           child: Skeleton.leaf(child: HomeSearchBarWidget()),
         ),
+        const SliverToBoxAdapter(child: LogoutBlocListener()),
         SliverToBoxAdapter(child: verticalSpace(20)),
+        const SliverToBoxAdapter(child: FlightsBlocListener()),
         DashboardGridWidget(statuses: model.statuses),
         SliverToBoxAdapter(child: verticalSpace(12)),
         SliverToBoxAdapter(

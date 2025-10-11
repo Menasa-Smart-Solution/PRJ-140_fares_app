@@ -1,13 +1,14 @@
-part of '../../../feature_imports.dart';
+part of '../widgets.dart';
 
-class OrdersBlocBuilder extends StatefulWidget {
-  const OrdersBlocBuilder({super.key});
-
+class SearchBlocBuilder extends StatefulWidget {
+  const SearchBlocBuilder({super.key, required this.searchController});
+  final TextEditingController
+  searchController; // Controller for the search input
   @override
-  State<OrdersBlocBuilder> createState() => _OrdersBlocBuilderState();
+  State<SearchBlocBuilder> createState() => _SearchBlocBuilderState();
 }
 
-class _OrdersBlocBuilderState extends State<OrdersBlocBuilder> {
+class _SearchBlocBuilderState extends State<SearchBlocBuilder> {
   final ScrollController _scrollController = ScrollController();
 
   @override
@@ -61,7 +62,13 @@ class _OrdersBlocBuilderState extends State<OrdersBlocBuilder> {
                 CustomErrorWidget(
                   message: state.errorMessage!,
                   onPressed: () {
-                    context.read<OrdersCubit>().getOrders(isRefresh: true);
+                    context.read<OrdersCubit>().getOrders(
+                      isRefresh: true,
+                      isSearch: true,
+                      id: widget.searchController.text.isEmpty
+                          ? null
+                          : widget.searchController.text,
+                    );
                   },
                 ),
                 context,
@@ -70,7 +77,7 @@ class _OrdersBlocBuilderState extends State<OrdersBlocBuilder> {
           case StateType.empty:
             return Expanded(
               child: buildWidget(
-                const CustomEmptyWidget(message: 'لا توجد طلبات حالياً'),
+                const CustomEmptyWidget(message: 'لا توجد شحنات بعد 👋'),
                 context,
               ),
             );
@@ -79,7 +86,13 @@ class _OrdersBlocBuilderState extends State<OrdersBlocBuilder> {
               child: buildWidget(
                 InternetConnectionWidget(
                   onPressed: () {
-                    context.read<OrdersCubit>().getOrders(isRefresh: true);
+                    context.read<OrdersCubit>().getOrders(
+                      isRefresh: true,
+                      isSearch: true,
+                      id: widget.searchController.text.isEmpty
+                          ? null
+                          : widget.searchController.text,
+                    );
                   },
                 ),
                 context,

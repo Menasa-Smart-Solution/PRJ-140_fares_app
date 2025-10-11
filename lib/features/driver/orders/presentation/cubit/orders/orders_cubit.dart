@@ -17,6 +17,7 @@ class OrdersCubit extends Cubit<OrdersState> {
     String? status,
     String? id,
     bool isRefresh = false,
+    bool isSearch = false,
   }) async {
     if (isRefresh) {
       // Reset pagination state on refresh
@@ -34,6 +35,19 @@ class OrdersCubit extends Cubit<OrdersState> {
 
     if (!await _internetService.isConnected()) {
       emit(state.copyWith(ordersState: StateType.noInternet));
+      return;
+    }
+
+    if (isSearch == true && id == null) {
+      emit(
+        state.copyWith(
+          ordersState: StateType.initial,
+          orders: state.orders,
+          allParcels: [],
+          currentPage: 1,
+          hasMorePages: false,
+        ),
+      );
       return;
     }
 

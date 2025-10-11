@@ -21,7 +21,10 @@ class LogoutAlertDialog extends StatelessWidget {
             children: [
               Expanded(
                 child: AppTextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.pop();
+                    context.read<HomeCubit>().logOut();
+                  },
                   text: "تسجيل الخروج",
                   backgroundColor: Colors.transparent,
                   textColor: AppColors.red,

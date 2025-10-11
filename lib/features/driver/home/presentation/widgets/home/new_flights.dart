@@ -15,7 +15,7 @@ class NewFlights extends StatelessWidget {
               Column(
                 children: List.generate(
                   flights.length,
-                  (index) => _buildNewsFlightsItem(flights[index]),
+                  (index) => _buildNewsFlightsItem(flights[index], context),
                 ),
               ),
             ],
@@ -23,14 +23,16 @@ class NewFlights extends StatelessWidget {
         : const SizedBox();
   }
 
-  Widget _buildNewsFlightsItem(int flight) {
+  Widget _buildNewsFlightsItem(int flight, BuildContext context) {
     return Skeleton.leaf(
       child: ListTile(
         tileColor: AppColors.pastelGreen,
         title: Text("$flight", style: AppTextStyles.med16),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         trailing: RoundedIconButton(
-          onTap: () {},
+          onTap: () {
+            context.read<HomeCubit>().receiveParcels(flight.toString());
+          },
           icon: Icons.done,
           iconColor: Colors.white,
           backgroundColor: AppColors.lightPrimaryColor,

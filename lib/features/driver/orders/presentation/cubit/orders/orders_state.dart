@@ -10,7 +10,7 @@ class OrdersState extends Equatable {
   final bool isLoadingMore;
 
   const OrdersState({
-    this.ordersState = StateType.loading,
+    this.ordersState = StateType.initial,
     this.orders,
     this.errorMessage,
     this.allParcels = const [],

@@ -5,9 +5,15 @@ class SearchView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: const SearchViewBody().withPadding(horizontal: 16, vertical: 20),
+    return BlocProvider(
+      create: (context) => getIt<OrdersCubit>(),
+      child: Scaffold(
+        body: SafeArea(
+          child: const SearchViewBody().withPadding(
+            horizontal: 16,
+            vertical: 20,
+          ),
+        ),
       ),
     );
   }

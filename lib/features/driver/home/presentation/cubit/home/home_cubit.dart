@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:fares/core/enums/enums.dart';
 import 'package:fares/core/services/internet_service.dart';
+import 'package:fares/core/utils/app_logger.dart';
 import 'package:fares/features/driver/home/data/models/summary_response_model.dart';
 import 'package:fares/features/driver/home/data/repositories/home_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,6 +56,7 @@ class HomeCubit extends Cubit<HomeState> {
         );
       },
       (result) {
+        AppLogger.log('Home Cubit: log out success');
         emit(state.copyWith(logOutState: StateType.success));
       },
     );
