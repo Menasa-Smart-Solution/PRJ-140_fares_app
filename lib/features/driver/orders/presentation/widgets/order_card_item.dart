@@ -72,7 +72,7 @@ class OrderCardItem extends StatelessWidget {
                     children: [
                       OrderDetailsWidget(
                         title: LocaleKeys.from.tr(),
-                        value: 'طرابلس، ليبيا',
+                        value: parcel.originBranch?.name ?? '',
                       ),
                       verticalSpace(16),
                       OrderDetailsWidget(

@@ -7,4 +7,8 @@ class ApiConstants {
   static const String changeStatus =
       "/delivery-man/parcels/multi-change-status";
   static const String partialDelivery = "/delivery-man/partial-delivery";
+
+  static const String chat = "/chats";
+
+  static const String conversationMessages = '/chats/{chatId}/messages/store';
 }

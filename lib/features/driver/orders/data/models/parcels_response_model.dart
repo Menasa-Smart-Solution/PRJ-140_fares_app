@@ -252,6 +252,9 @@ class ParcelModel {
   final String? suggestedShelf;
   final ParcelStoreModel? store;
   final ParcelCityModel? tocity;
+  @JsonKey(name: 'origin_branch')
+  final BranchModel? originBranch;
+  final BranchModel? branch;
 
   ParcelModel({
     this.id,
@@ -318,6 +321,8 @@ class ParcelModel {
     this.deletedAt,
     this.deletedUserId,
     this.createdAt,
+    this.originBranch,
+    this.branch,
     this.updatedAt,
     this.systemPayment,
     this.warehouse,
@@ -437,4 +442,16 @@ class ParcelCityModel {
   factory ParcelCityModel.dummy() {
     return ParcelCityModel(id: 1, name: 'طرابلس المركز');
   }
+}
+
+@JsonSerializable(checked: true)
+class BranchModel {
+  final int? id;
+  final String? name;
+  final String? phone;
+
+  BranchModel({this.id, this.name, this.phone});
+
+  factory BranchModel.fromJson(Map<String, dynamic> json) =>
+      _$BranchModelFromJson(json);
 }
