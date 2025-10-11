@@ -80,11 +80,11 @@ class _ShippingStatusDropdownState extends State<ShippingStatusDropdown> {
           when text == LocaleKeys.shippingStatusPartiallyDelivered.tr():
         return PartialShipmentDeliveryBottomSheet(parcel: parcel);
       case final text when text == LocaleKeys.shippingStatusInTransit.tr():
-        return const PendingShipmentDeliveryBottomSheet();
+        return PendingShipmentDeliveryBottomSheet(parcel: parcel);
       case final text when text == LocaleKeys.shippingStatusUnderReview.tr():
-        return const UnderReviewBottomSheet();
+        return UnderReviewBottomSheet(parcel: parcel);
       case final text when text == LocaleKeys.shippingStatusDeliveryFailed.tr():
-        return const ShipmentDeliveryFailedBottomSheet();
+        return ShipmentDeliveryFailedBottomSheet(parcel: parcel);
       case final text when text == LocaleKeys.shippingStatusDelivered.tr():
         return ConfirmOrderShippingBottomSheet(parcel: parcel);
       default:

@@ -8,7 +8,7 @@ class HomeView extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<HomeCubit>()..getAllSummary(),
       child: SafeArea(
-        child: const HomeViewBody().withPadding(vertical: 20, horizontal: 16),
+        child: const HomeViewBody().withPadding(bottom: 20, horizontal: 16),
       ),
     );
   }

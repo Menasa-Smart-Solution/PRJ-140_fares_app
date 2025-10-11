@@ -34,7 +34,15 @@ class AppImages {
 
   static const String imagesHelp = "assets/images/help.svg";
 
+  static const String imagesIconPrimary = "assets/images/icon-primary.png";
+
+  static const String imagesIconWhite = "assets/images/icon-white.png";
+
   static const String imagesInDelivery = "assets/images/in_delivery.svg";
+
+  static const String imagesLogoFullDark = "assets/images/logo-full-dark.png";
+
+  static const String imagesLogoFullWhite = "assets/images/logo-full-white.png";
 
   static const String imagesLogout = "assets/images/logout.svg";
 

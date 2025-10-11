@@ -49,11 +49,13 @@ class AppRouter {
         );
       case Routes.allOrdersRoute:
         return _buildRoute(
-          builder: (_) => AllOrdersView(status: args as String),
+          builder: (_) => AllOrdersView(params: args as AllOrdersParams),
         );
 
       case Routes.orderQrCodeRoute:
-        return _buildRoute(builder: (_) => const OrderQrCodeView());
+        return _buildRoute(
+          builder: (_) => OrderQrCodeView(isConfirmOrder: args as bool),
+        );
       case Routes.conversationRoute:
         return _buildRoute(builder: (_) => const ConversationsView());
       case Routes.chatRoute:

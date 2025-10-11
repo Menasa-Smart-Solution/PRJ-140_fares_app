@@ -17,7 +17,7 @@ import 'package:fares/features/driver/orders/presentation/cubit/orders/orders_cu
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-
+import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
 import '../../../core/utils/exports.dart';
 
 part 'presentation/views/track_order_view.dart';

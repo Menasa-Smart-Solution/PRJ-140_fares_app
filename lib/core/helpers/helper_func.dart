@@ -1,4 +1,6 @@
 import 'package:fares/core/utils/app_images.dart';
+import 'package:fares/core/utils/exports.dart';
+import 'package:fares/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -56,6 +58,8 @@ String translateStatus(String status) {
       return "تم الإقفال";
     case "UnderChecking":
       return "قيد المراجعة";
+    case "companyDues":
+      return LocaleKeys.companyDues.tr();
     default:
       return "كل الشحنات"; // fallback لو الحالة مش موجودة
   }

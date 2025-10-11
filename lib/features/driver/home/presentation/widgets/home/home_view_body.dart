@@ -10,10 +10,17 @@ class HomeViewBody extends StatelessWidget {
         switch (state.getAllSummaryState) {
           case StateType.loading:
             return Expanded(
-              child: Skeletonizer(child: _buildBody(SummaryDataModel.dummy())),
+              child: Skeletonizer(
+                child: _buildBody(SummaryDataModel.dummy(), context),
+              ),
             );
           case StateType.success:
-            return _buildBody(state.summary!.data);
+            return RefreshIndicator(
+              onRefresh: () async {
+                await context.read<HomeCubit>().getAllSummary();
+              },
+              child: _buildBody(state.summary!.data, context),
+            );
           case StateType.error:
             return const Center(child: Text("Error"));
           case StateType.empty:
@@ -21,26 +28,38 @@ class HomeViewBody extends StatelessWidget {
           default:
             return const SizedBox();
         }
-
-        // return Column(
-        //   children: [
-        //     // Header Section
-        //     // const HomeHeaderWidget(balance: '500 د.ل'),
-        //     // verticalSpace(20),
-        //     const AcceptedParcels(),
-        //     const HomeSearchBarWidget(),
-        //     verticalSpace(20),
-        //     const HomeBlocBuilder(),
-        //     verticalSpace(20),
-        //   ],
-        // );
       },
     );
   }
 
-  CustomScrollView _buildBody(SummaryDataModel model) {
+  CustomScrollView _buildBody(SummaryDataModel model, BuildContext context) {
     return CustomScrollView(
       slivers: [
+        SliverAppBar(
+          pinned: true,
+          automaticallyImplyLeading: false,
+          surfaceTintColor: Colors.transparent,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          titleSpacing: 0,
+          title: Row(
+            children: [
+              Skeleton.keep(
+                child: Image.asset(
+                  AppImages.imagesLogoFullDark,
+                  width: 100,
+                  height: 50,
+                ),
+              ),
+              const Spacer(),
+              CustomIconButton(
+                onTap: () {},
+                icon: Icons.logout,
+                color: AppColors.red,
+              ),
+            ],
+          ),
+        ),
+        SliverToBoxAdapter(child: verticalSpace(20)),
         SliverToBoxAdapter(child: NewFlights(flights: model.flights)),
         const SliverToBoxAdapter(
           child: Skeleton.leaf(child: HomeSearchBarWidget()),
@@ -76,6 +95,13 @@ class HomeViewBody extends StatelessWidget {
                       title: LocaleKeys.companyDues.tr(),
                       subtitle: model.due.toString(),
                       imagePath: AppImages.imagesCompanyDues,
+                      onTap: () => context.pushNamed(
+                        Routes.allOrdersRoute,
+                        arguments: AllOrdersParams(
+                          status: 'FinancialSettlementPending',
+                          title: LocaleKeys.companyDues.tr(),
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -96,6 +122,12 @@ class HomeViewBody extends StatelessWidget {
                     child: DashboardCardWidget(
                       title: LocaleKeys.delivery.tr(),
                       imagePath: AppImages.imagesQrCode,
+                      onTap: () {
+                        context.pushNamed(
+                          Routes.orderQrCodeRoute,
+                          arguments: true,
+                        );
+                      },
                     ),
                   ),
                 ),
@@ -106,10 +138,15 @@ class HomeViewBody extends StatelessWidget {
                   child: SizedBox(
                     width: 188,
                     height: 158,
-
                     child: DashboardCardWidget(
                       title: LocaleKeys.orderFailed.tr(),
                       imagePath: AppImages.imagesQrCode,
+                      onTap: () {
+                        context.pushNamed(
+                          Routes.orderQrCodeRoute,
+                          arguments: false,
+                        );
+                      },
                     ),
                   ),
                 ),
