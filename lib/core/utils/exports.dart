@@ -1,4 +1,4 @@
-export 'package:easy_localization/easy_localization.dart';
+export 'package:easy_localization/easy_localization.dart' hide TextDirection;
 export 'package:fares/generated/locale_keys.g.dart';
 export 'package:fares/core/helpers/spacing.dart';
 export 'package:flutter_svg/svg.dart';

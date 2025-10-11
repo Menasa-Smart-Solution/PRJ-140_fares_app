@@ -33,7 +33,7 @@ class ConversationMessagesModel {
   @JsonKey(name: "parcel_id")
   final String? parcelId;
   @JsonKey(name: "last_message_id")
-  final String? lastMessageId;
+  final int? lastMessageId;
   @JsonKey(name: "created_at")
   final String? createdAt;
   @JsonKey(name: "updated_at")

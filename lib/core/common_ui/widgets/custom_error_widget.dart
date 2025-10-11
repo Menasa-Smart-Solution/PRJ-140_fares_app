@@ -62,7 +62,7 @@ class CustomErrorWidget extends StatelessWidget {
             label: Text(LocaleKeys.retry.tr()),
 
             style: ElevatedButton.styleFrom(
-              minimumSize: const Size(0.8, 50),
+              minimumSize: Size(0.8 * context.width, 50),
               textStyle: AppTextStyles.med16.copyWith(
                 fontFamily: AppTextStyles.fontFamily,
               ),

@@ -7,8 +7,14 @@ class NotificationsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: CustomAppBar(title: LocaleKeys.notifications.tr()),
-      body: NotificationViewBody().withPadding(vertical: 20, horizontal: 16),
+      appBar: CustomAppBar(
+        title: LocaleKeys.notifications.tr(),
+        showBackButton: false,
+      ),
+      body: const NotificationViewBody().withPadding(
+        vertical: 20,
+        horizontal: 16,
+      ),
     );
   }
 }

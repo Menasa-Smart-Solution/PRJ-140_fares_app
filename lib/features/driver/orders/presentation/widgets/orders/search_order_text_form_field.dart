@@ -23,13 +23,16 @@ class _SearchOrderTextFormFieldState extends State<SearchOrderTextFormField> {
   Timer? _debounce;
   // Search function with debounce
   void _onSearchChanged(String? query) {
-    if (query == null || query.isEmpty) {
-      return;
-    }
     if (_debounce?.isActive ?? false) _debounce?.cancel();
-    _debounce = Timer(const Duration(milliseconds: 500), () {
-      context.read<OrdersCubit>().getOrders(id: query);
-      // You can call your search API or filter logic here
+    _debounce = Timer(const Duration(milliseconds: 300), () {
+      // Call API with search query or null to get all orders
+      if (query == null || query.isEmpty) {
+        // When search is cleared, fetch all orders
+        context.read<OrdersCubit>().getOrders(isRefresh: true);
+      } else {
+        // When searching, call API with the ID parameter
+        context.read<OrdersCubit>().getOrders(id: query, isRefresh: true);
+      }
     });
   }
 

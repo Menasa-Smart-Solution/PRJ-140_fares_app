@@ -11,5 +11,5 @@ Future<void> initHomeDI() async {
 
   getIt.registerLazySingleton(() => HomeRepo(homeDataSource: getIt()));
 
-  getIt.registerFactory(() => HomeCubit(getIt()));
+  getIt.registerFactory(() => HomeCubit(getIt(), getIt()));
 }

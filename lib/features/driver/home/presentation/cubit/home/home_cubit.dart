@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:fares/core/enums/enums.dart';
+import 'package:fares/core/services/internet_service.dart';
 import 'package:fares/features/driver/home/data/models/summary_response_model.dart';
 import 'package:fares/features/driver/home/data/repositories/home_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,10 +8,15 @@ part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   final HomeRepo homeRepo;
-  HomeCubit(this.homeRepo) : super(const HomeState());
+  HomeCubit(this.homeRepo, this._internetService) : super(const HomeState());
+  final InternetService _internetService;
 
   Future<void> getAllSummary() async {
     emit(state.copyWith(getAllSummaryState: StateType.loading));
+    if (!await _internetService.isConnected()) {
+      emit(state.copyWith(getAllSummaryState: StateType.noInternet));
+      return;
+    }
     final result = await homeRepo.getAllSummary();
     result.fold(
       (failure) {

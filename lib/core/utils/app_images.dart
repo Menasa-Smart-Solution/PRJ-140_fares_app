@@ -46,6 +46,8 @@ class AppImages {
 
   static const String imagesLogout = "assets/images/logout.svg";
 
+  static const String imagesMan = "assets/images/man.png";
+
   static const String imagesNoInternet = "assets/images/no-internet.png";
 
   static const String imagesOnboarding = "assets/images/onboarding.jpg";
@@ -63,6 +65,8 @@ class AppImages {
   static const String imagesSend = "assets/images/send.svg";
 
   static const String imagesShieldSecurity = "assets/images/shield-security.svg";
+
+  static const String imagesStore = "assets/images/store.png";
 
   static const String imagesSubtract = "assets/images/subtract.svg";
 

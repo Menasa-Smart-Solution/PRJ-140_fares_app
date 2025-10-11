@@ -22,9 +22,29 @@ class HomeViewBody extends StatelessWidget {
               child: _buildBody(state.summary!.data, context),
             );
           case StateType.error:
-            return const Center(child: Text("Error"));
+            return buildWidget(
+              CustomErrorWidget(
+                message: state.errorMessage!,
+                onPressed: () {
+                  context.read<HomeCubit>().getAllSummary();
+                },
+              ),
+              context,
+            );
+          case StateType.noInternet:
+            return buildWidget(
+              InternetConnectionWidget(
+                onPressed: () {
+                  context.read<HomeCubit>().getAllSummary();
+                },
+              ),
+              context,
+            );
           case StateType.empty:
-            return const Center(child: Text("No Data"));
+            return buildWidget(
+              const CustomEmptyWidget(message: 'لا توجد بيانات'),
+              context,
+            );
           default:
             return const SizedBox();
         }
@@ -52,7 +72,13 @@ class HomeViewBody extends StatelessWidget {
               ),
               const Spacer(),
               CustomIconButton(
-                onTap: () {},
+                onTap: () {
+                  showDialog(
+                    barrierDismissible: false,
+                    context: context,
+                    builder: (context) => const LogoutAlertDialog(),
+                  );
+                },
                 icon: Icons.logout,
                 color: AppColors.red,
               ),
@@ -80,6 +106,7 @@ class HomeViewBody extends StatelessWidget {
                       title: LocaleKeys.chats.tr(),
                       subtitle: model.chatsCount.toString(),
                       imagePath: AppImages.imagesChats,
+                      onTap: () => context.read<DriverMainCubit>().changeTab(2),
                     ),
                   ),
                 ),

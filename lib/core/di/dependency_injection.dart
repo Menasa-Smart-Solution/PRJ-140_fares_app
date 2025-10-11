@@ -5,7 +5,9 @@ import 'package:fares/core/network/language_interceptor.dart';
 import 'package:fares/core/services/internet_service.dart';
 import 'package:fares/core/utils/env_variables.dart';
 import 'package:fares/features/auth/auth_di.dart';
+import 'package:fares/features/driver/chat/chat_di.dart';
 import 'package:fares/features/driver/home/home_di.dart';
+import 'package:fares/features/driver/main/navigation_di.dart';
 import 'package:fares/features/driver/orders/orders_di.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
@@ -18,8 +20,10 @@ Future<void> setupDependencyInjection() async {
   // Initialize core dependencies
   await _initCoreDependencies();
   await initAuthDI();
+  await initNavigationDI();
   await initHomeDI();
   await initOrdersDI();
+  await initChatDI();
 }
 
 Future<void> _initCoreDependencies() async {

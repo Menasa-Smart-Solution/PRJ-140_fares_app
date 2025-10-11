@@ -83,3 +83,16 @@ Future<void> makePhoneCall(String phoneNumber) async {
     throw Exception('Could not make the call');
   }
 }
+
+Widget buildWidget(Widget widget, BuildContext context) {
+  return SingleChildScrollView(
+    child: SizedBox(
+      height:
+          MediaQuery.of(context).size.height -
+          kToolbarHeight -
+          MediaQuery.of(context).padding.bottom -
+          MediaQuery.of(context).padding.top,
+      child: Center(child: widget),
+    ),
+  );
+}

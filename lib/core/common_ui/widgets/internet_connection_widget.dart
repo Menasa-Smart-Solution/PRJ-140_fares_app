@@ -37,7 +37,7 @@ class InternetConnectionWidget extends StatelessWidget {
           children: [
             Image.asset(
               AppImages.imagesNoInternet,
-              height: 0.35 * context.height,
+              height: 0.2 * context.height,
             ),
             verticalSpace(20),
             Text(

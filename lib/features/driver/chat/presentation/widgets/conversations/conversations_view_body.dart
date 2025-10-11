@@ -1,45 +1,76 @@
 part of '../../../feature_imports.dart';
 
-class ConversationsViewBody extends StatelessWidget {
+class ConversationsViewBody extends StatefulWidget {
   const ConversationsViewBody({super.key});
 
   @override
+  State<ConversationsViewBody> createState() => _ConversationsViewBodyState();
+}
+
+class _ConversationsViewBodyState extends State<ConversationsViewBody> {
+  final TextEditingController _searchController = TextEditingController();
+  Timer? _debounce;
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    _debounce?.cancel();
+
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  void _onSearchChanged(String? value) {
+    if (_debounce?.isActive ?? false) _debounce!.cancel();
+
+    _debounce = Timer(const Duration(milliseconds: 300), () {
+      context.read<ChatCubit>().filterConversationsByParcelId(
+        value == null || value.isEmpty ? null : value,
+      );
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-          child: AppTextFormField(
-            hintText: LocaleKeys.searchHint.tr(),
-            validator: (value) {},
-            prefixIcon: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Image.asset(
-                AppImages.imagesSearchPng,
-                width: 20,
-                height: 20,
+    return RefreshIndicator(
+      onRefresh: () async {
+        context.read<ChatCubit>().getConversations();
+      },
+      child: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            pinned: true,
+            stretch: true,
+            backgroundColor: AppColors.white,
+            automaticallyImplyLeading: false,
+            titleSpacing: 0,
+            surfaceTintColor: Colors.transparent,
+            title: AppTextFormField(
+              hintText: LocaleKeys.searchHint.tr(),
+              validator: (value) {},
+              onChanged: (value) {
+                _onSearchChanged(value);
+              },
+              controller: _searchController,
+              prefixIcon: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Image.asset(
+                  AppImages.imagesSearchPng,
+                  width: 20,
+                  height: 20,
+                ),
               ),
             ),
           ),
-        ),
+          SliverToBoxAdapter(child: verticalSpace(16)),
 
-        SliverFillRemaining(
-          hasScrollBody: false,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgPicture.asset(AppImages.imagesEmptyMessages),
-              verticalSpace(20),
-              Text(LocaleKeys.noMessages.tr(), style: AppTextStyles.semiBold24),
-              Text(
-                LocaleKeys.noMessagesSubtitle.tr(),
-                textAlign: TextAlign.center,
-                style: AppTextStyles.med14.copyWith(color: AppColors.grey),
-              ),
-            ],
-          ),
-        ),
-      ],
+          const ConversationsBlocBuilder(),
+        ],
+      ),
     );
   }
 }

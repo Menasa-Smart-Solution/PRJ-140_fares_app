@@ -9,6 +9,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.title,
     this.actions,
     this.centerTitle = true,
+    this.showBackButton = true,
   });
 
   @override
@@ -17,6 +18,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final dynamic title;
   final List<Widget>? actions;
   final bool centerTitle;
+  final bool showBackButton;
 
   @override
   Widget build(BuildContext context) {
@@ -29,26 +31,26 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: centerTitle,
       actionsPadding: const EdgeInsetsDirectional.only(end: 10),
       surfaceTintColor: Colors.transparent,
-      leading:
-          leading ??
-          InkWell(
-            borderRadius: BorderRadius.circular(100),
-            onTap: () {
-              context.pop();
-            },
-            child: Container(
-              width: 35,
-              height: 35,
-              margin: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Color(0xffF1F1F1),
-              ),
-              child: Center(
-                child: Icon(Icons.arrow_back, color: Colors.black, size: 20),
+      leading: leading != null || showBackButton == false
+          ? null
+          : InkWell(
+              borderRadius: BorderRadius.circular(100),
+              onTap: () {
+                context.pop();
+              },
+              child: Container(
+                width: 35,
+                height: 35,
+                margin: const EdgeInsets.all(10),
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color(0xffF1F1F1),
+                ),
+                child: const Center(
+                  child: Icon(Icons.arrow_back, color: Colors.black, size: 20),
+                ),
               ),
             ),
-          ),
     );
   }
 }
