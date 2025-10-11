@@ -11,4 +11,7 @@ class ApiConstants {
   static const String chat = "/chats";
 
   static const String conversationMessages = '/chats/{chatId}/messages/store';
+  static const String logout = '/logout';
+  static const String receiveParcels =
+      "delivery-man/flights/{flightId}/receive";
 }

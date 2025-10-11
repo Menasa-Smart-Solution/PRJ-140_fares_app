@@ -22,4 +22,26 @@ class HomeDataSourceImpl extends HomeDataSource {
       throw ServerException(message: ErrorHandler.handle(e).message!);
     }
   }
+
+  @override
+  Future<void> logOut() async {
+    try {
+      await _apiService.logOut();
+      AppLogger.log('Home Data Source: log out success');
+    } catch (e, s) {
+      AppLogger.error('Home Data Source: log out failed', e, s);
+      throw ServerException(message: ErrorHandler.handle(e).message!);
+    }
+  }
+
+  @override
+  Future<void> receiveParcels(String parcelId) async {
+    try {
+      await _apiService.receiveParcels(parcelId);
+      AppLogger.log('Home Data Source: receive parcels success');
+    } catch (e, s) {
+      AppLogger.error('Home Data Source: receive parcels failed', e, s);
+      throw ServerException(message: ErrorHandler.handle(e).message!);
+    }
+  }
 }

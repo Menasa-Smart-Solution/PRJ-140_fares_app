@@ -54,4 +54,10 @@ abstract class ApiService {
     @Path('chatId') required String chatId,
     @Body() required SendMessageRequestModel body,
   });
+
+  @POST(ApiConstants.logout)
+  Future<void> logOut();
+
+  @POST(ApiConstants.receiveParcels)
+  Future<void> receiveParcels(@Path('flightId') String flightId);
 }

@@ -37,4 +37,48 @@ class HomeCubit extends Cubit<HomeState> {
       },
     );
   }
+
+  Future<void> logOut() async {
+    emit(state.copyWith(logOutState: StateType.loading));
+    if (!await _internetService.isConnected()) {
+      emit(state.copyWith(logOutState: StateType.noInternet));
+      return;
+    }
+    final result = await homeRepo.logOut();
+    result.fold(
+      (failure) {
+        emit(
+          state.copyWith(
+            logOutState: StateType.error,
+            errorMessage: failure.message,
+          ),
+        );
+      },
+      (result) {
+        emit(state.copyWith(logOutState: StateType.success));
+      },
+    );
+  }
+
+  Future<void> receiveParcels(String parcelId) async {
+    emit(state.copyWith(receiveParcelsState: StateType.loading));
+    if (!await _internetService.isConnected()) {
+      emit(state.copyWith(receiveParcelsState: StateType.noInternet));
+      return;
+    }
+    final result = await homeRepo.receiveParcels(parcelId);
+    result.fold(
+      (failure) {
+        emit(
+          state.copyWith(
+            receiveParcelsState: StateType.error,
+            errorMessage: failure.message,
+          ),
+        );
+      },
+      (result) {
+        emit(state.copyWith(receiveParcelsState: StateType.success));
+      },
+    );
+  }
 }
