@@ -7,7 +7,7 @@ class TrackOrderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<OrderOperationCubit>(),
+      create: (context) => getIt<OrderOperationCubit>()..cancelOrderReasons(),
       child: Scaffold(
         appBar: _buildAppBar(),
         body: TrackOrderViewBody(

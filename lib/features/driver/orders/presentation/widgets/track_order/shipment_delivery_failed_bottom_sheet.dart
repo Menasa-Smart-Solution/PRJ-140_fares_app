@@ -19,16 +19,6 @@ class _ShipmentDeliveryFailedBottomSheetState
     super.dispose();
   }
 
-  final List<String> statusOptions = [
-    "خطأ فى رقم الهاتف",
-    "المنتج غير مطابق",
-    "خطأ فى العنوان",
-    "لم يتم تأكيد الحجز",
-    "الهاتف مقفل",
-  ];
-
-  String? selectedStatus;
-
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -49,45 +39,55 @@ class _ShipmentDeliveryFailedBottomSheetState
                 textAlign: TextAlign.center,
               ),
               verticalSpace(24),
-              DropdownButtonFormField(
-                hint: Text(LocaleKeys.selectStatus.tr()),
-                initialValue: selectedStatus,
-                items: statusOptions
-                    .map(
-                      (status) =>
-                          DropdownMenuItem(value: status, child: Text(status)),
-                    )
-                    .toList(),
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: AppColors.white,
-                  contentPadding: const EdgeInsets.symmetric(
-                    horizontal: 15,
-                    vertical: 15,
-                  ),
-                  border: _buildBorder(),
-                  enabledBorder: _buildBorder(),
-                  focusedBorder: _buildBorder(color: AppColors.primaryColor),
-                ),
+              BlocBuilder<OrderOperationCubit, OrderOperationState>(
+                builder: (context, state) {
+                  return state.cancelOrderReasonsState.isSuccess
+                      ? DropdownButtonFormField<ReasonsModel>(
+                          hint: Text(LocaleKeys.selectStatus.tr()),
+                          initialValue: state.selectedReason,
+                          items: state.cancelOrderReasons
+                              .map(
+                                (status) => DropdownMenuItem(
+                                  value: status,
+                                  child: Text(status.name),
+                                ),
+                              )
+                              .toList(),
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: AppColors.white,
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 15,
+                              vertical: 15,
+                            ),
+                            border: _buildBorder(),
+                            enabledBorder: _buildBorder(),
+                            focusedBorder: _buildBorder(
+                              color: AppColors.primaryColor,
+                            ),
+                          ),
 
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return LocaleKeys.fieldRequired.tr();
-                  }
-                  return null;
-                },
-                onChanged: (value) {
-                  setState(() {
-                    selectedStatus = value;
-                  });
+                          validator: (value) {
+                            if (value == null) {
+                              return LocaleKeys.fieldRequired.tr();
+                            }
+                            return null;
+                          },
+                          onChanged: (value) {
+                            context.read<OrderOperationCubit>().selectReason(
+                              value,
+                            );
+                          },
+                        )
+                      : AppTextFormField(
+                          hintText: LocaleKeys.selectStatus.tr(),
+                          backgroundColor: AppColors.white,
+                          suffixIcon: const Icon(Icons.arrow_drop_down),
+                          validator: (value) {},
+                        );
                 },
               ),
-              // AppTextFormField(
-              //   hintText: LocaleKeys.selectStatus.tr(),
-              //   backgroundColor: AppColors.white,
-              //   suffixIcon: const Icon(Icons.arrow_drop_down),
-              //   validator: (value) {},
-              // ),
+
               verticalSpace(8),
               AppTextFormField(
                 hintText: LocaleKeys.additionalNote.tr(),
@@ -107,7 +107,11 @@ class _ShipmentDeliveryFailedBottomSheetState
                         ids: [widget.parcel.id!],
                         status: "RewindInProgress",
                         notes: _notesController.text,
-                        unableDeliveryTypeId: selectedStatus,
+                        unableDeliveryTypeId: context
+                            .read<OrderOperationCubit>()
+                            .state
+                            .selectedReason!
+                            .id,
                       ),
                     );
                   }

@@ -2,6 +2,7 @@ import 'package:fares/core/errors/exceptions.dart';
 import 'package:fares/core/network/api_service.dart';
 import 'package:fares/core/network/error_handler.dart';
 import 'package:fares/features/driver/orders/data/models/call_images_response.dart';
+import 'package:fares/features/driver/orders/data/models/cancel_order_reasons_response.dart';
 import 'package:fares/features/driver/orders/data/models/change_order_status_request.dart';
 import 'package:fares/features/driver/orders/data/models/parcels_response_model.dart';
 import 'package:fares/features/driver/orders/data/datasources/orders_data_source.dart';
@@ -75,6 +76,24 @@ class OrdersDataSourceImpl implements OrdersDataSource {
       AppLogger.log('Orders Data Source: update order status success');
     } catch (e, s) {
       AppLogger.error('Orders Data Source: update order status failed', e, s);
+      throw ServerException(message: ErrorHandler.handle(e).message!);
+    }
+  }
+
+  @override
+  Future<CancelOrderReasonsResponse> reasons() async {
+    try {
+      final response = await _apiService.getCancelOrderReasons();
+      AppLogger.log(
+        'Orders Data Source: get cancel order reasons success:${response.reasons.length}',
+      );
+      return response;
+    } catch (e, s) {
+      AppLogger.error(
+        'Orders Data Source: get cancel order reasons failed',
+        e,
+        s,
+      );
       throw ServerException(message: ErrorHandler.handle(e).message!);
     }
   }

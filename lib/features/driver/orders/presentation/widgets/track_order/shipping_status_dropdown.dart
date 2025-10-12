@@ -51,6 +51,7 @@ class _ShippingStatusDropdownState extends State<ShippingStatusDropdown> {
                 .toList(),
             onChanged: (value) {
               final cubit = context.read<OrderOperationCubit>();
+              cubit.cancelOrderReasons();
 
               showModalBottomSheet(
                 context: context,

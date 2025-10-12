@@ -6,6 +6,7 @@ import 'package:fares/features/driver/chat/data/models/conversation_messages_res
 import 'package:fares/features/driver/chat/data/models/conversations_response_model.dart';
 import 'package:fares/features/driver/chat/data/models/send_message_request_model.dart';
 import 'package:fares/features/driver/orders/data/models/call_images_response.dart';
+import 'package:fares/features/driver/orders/data/models/cancel_order_reasons_response.dart';
 import 'package:fares/features/driver/orders/data/models/change_order_status_request.dart';
 import 'package:fares/features/driver/orders/data/models/parcels_response_model.dart';
 import 'package:fares/features/driver/home/data/models/summary_response_model.dart';
@@ -60,4 +61,7 @@ abstract class ApiService {
 
   @POST(ApiConstants.receiveParcels)
   Future<void> receiveParcels(@Path('flightId') String flightId);
+
+  @GET(ApiConstants.reasons)
+  Future<CancelOrderReasonsResponse> getCancelOrderReasons();
 }
