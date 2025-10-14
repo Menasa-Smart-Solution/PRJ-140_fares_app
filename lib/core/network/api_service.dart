@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:fares/core/network/api_constants.dart';
 import 'package:fares/features/auth/data/models/auth_request_model.dart';
@@ -68,4 +70,11 @@ abstract class ApiService {
 
   @GET(ApiConstants.notifications)
   Future<NotificationsResponseModel> getNotifications();
+
+  @POST(ApiConstants.uploadCallImage)
+  @MultiPart()
+  Future<void> uploadCallImage({
+    @Path('parcelId') required int parcelId,
+    @Part() required File image,
+  });
 }

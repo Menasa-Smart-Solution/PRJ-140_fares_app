@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:fares/core/errors/exceptions.dart';
 import 'package:fares/core/network/api_service.dart';
 import 'package:fares/core/network/error_handler.dart';
@@ -94,6 +96,20 @@ class OrdersDataSourceImpl implements OrdersDataSource {
         e,
         s,
       );
+      throw ServerException(message: ErrorHandler.handle(e).message!);
+    }
+  }
+
+  @override
+  Future<void> uploadCallImage({
+    required int parcelId,
+    required File image,
+  }) async {
+    try {
+      await _apiService.uploadCallImage(parcelId: parcelId, image: image);
+      AppLogger.log('Orders Data Source: upload call image success');
+    } catch (e, s) {
+      AppLogger.error('Orders Data Source: upload call image failed', e, s);
       throw ServerException(message: ErrorHandler.handle(e).message!);
     }
   }

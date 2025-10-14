@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:fares/features/driver/orders/data/models/call_images_response.dart';
 import 'package:fares/features/driver/orders/data/models/cancel_order_reasons_response.dart';
 import 'package:fares/features/driver/orders/data/models/change_order_status_request.dart';
@@ -18,4 +20,6 @@ abstract class OrdersDataSource {
   Future<void> partialOrderStatus({required PartialDeliveryRequest body});
 
   Future<CancelOrderReasonsResponse> reasons();
+
+  Future<void> uploadCallImage({required int parcelId, required File image});
 }

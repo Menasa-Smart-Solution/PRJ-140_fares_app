@@ -18,13 +18,15 @@ class _OrderMenuState extends State<OrderMenu> {
       LocaleKeys.contactMerchant.tr(),
       LocaleKeys.whatsapp.tr(),
       LocaleKeys.storeChat.tr(),
-      LocaleKeys.requestLocation.tr(),
       LocaleKeys.addCallLog.tr(),
     ];
   }
 
   Future<void> openStoreChat() async {
-    // Implementation for opening store chat
+    context.pushNamed(
+      Routes.chatRoute,
+      arguments: ChatParam(parcelId: widget.parcel.id!),
+    );
   }
 
   Future<void> requestLocation() async {
@@ -60,7 +62,7 @@ class _OrderMenuState extends State<OrderMenu> {
         switch (value) {
           case String contactMerchantKey
               when contactMerchantKey == LocaleKeys.contactMerchant.tr():
-            await makePhoneCall('2222222222');
+            await makePhoneCall(widget.parcel.recipientNumber ?? '');
             break;
           case String whatsappKey when whatsappKey == LocaleKeys.whatsapp.tr():
             await openWhatsApp(widget.parcel.recipientNumber ?? '');
@@ -69,10 +71,7 @@ class _OrderMenuState extends State<OrderMenu> {
               when storeChatKey == LocaleKeys.storeChat.tr():
             await openStoreChat();
             break;
-          case String requestLocationKey
-              when requestLocationKey == LocaleKeys.requestLocation.tr():
-            await requestLocation();
-            break;
+
           case String addCallLogKey
               when addCallLogKey == LocaleKeys.addCallLog.tr():
             context.pushNamed(

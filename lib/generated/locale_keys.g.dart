@@ -130,5 +130,11 @@ abstract class  LocaleKeys {
   static const noImagesUploaded = 'noImagesUploaded';
   static const somethingWentWrong = 'somethingWentWrong';
   static const underReview = 'underReview';
+  static const accessPermissionRequired = 'accessPermissionRequired';
+  static const camera = 'camera';
+  static const gallery = 'gallery';
+  static const cameraPremissionDesc = 'cameraPremissionDesc';
+  static const openSettings = 'openSettings';
+  static const sorry = 'sorry';
 
 }

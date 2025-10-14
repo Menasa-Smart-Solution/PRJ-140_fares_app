@@ -14,10 +14,16 @@ class CallLogsView extends StatelessWidget {
         body: CallLogsViewBody(
           parcelId: id,
         ).withPadding(vertical: 20, horizontal: 16),
-        floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {},
-          icon: const Icon(Icons.add_a_photo),
-          label: const Text('أضافة صورة سجل المكالمات'),
+        floatingActionButton: Builder(
+          builder: (context) {
+            return FloatingActionButton.extended(
+              onPressed: () async {
+                await context.read<CallRecordsCubit>().pickImage();
+              },
+              icon: const Icon(Icons.add_a_photo),
+              label: const Text('أضافة صورة سجل المكالمات'),
+            );
+          },
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
       ),

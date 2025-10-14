@@ -5,17 +5,22 @@ class NotificationViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        // SliverToBoxAdapter(
-        //   child: Text(
-        //     LocaleKeys.allNotifications.tr(),
-        //     style: AppTextStyles.bold16,
-        //   ),
-        // ),
-        SliverToBoxAdapter(child: verticalSpace(16)),
-        const NotificationsBlocBuilder(),
-      ],
+    return RefreshIndicator(
+      onRefresh: () async {
+        await context.read<NotificationsCubit>().getAllNotifications();
+      },
+      child: CustomScrollView(
+        slivers: [
+          // SliverToBoxAdapter(
+          //   child: Text(
+          //     LocaleKeys.allNotifications.tr(),
+          //     style: AppTextStyles.bold16,
+          //   ),
+          // ),
+          SliverToBoxAdapter(child: verticalSpace(16)),
+          const NotificationsBlocBuilder(),
+        ],
+      ),
     );
   }
 }

@@ -25,6 +25,6 @@ class ChatView extends StatelessWidget {
 
 class ChatParam {
   final int parcelId;
-  final ChatCubit chatCubit;
-  ChatParam({required this.parcelId, required this.chatCubit});
+  final ChatCubit? chatCubit;
+  ChatParam({required this.parcelId, this.chatCubit});
 }

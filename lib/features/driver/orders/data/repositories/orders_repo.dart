@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:fares/core/errors/exceptions.dart';
 import 'package:fares/core/errors/failure.dart';
@@ -75,6 +77,23 @@ class OrdersRepo {
   getCancelOrderReasons() async {
     try {
       final result = await _ataSource.reasons();
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(message: e.message));
+    } catch (e) {
+      return Left(Failure(message: LocaleKeys.unknown.tr()));
+    }
+  }
+
+  Future<Either<Failure, void>> uploadCallImage({
+    required int parcelId,
+    required File image,
+  }) async {
+    try {
+      final result = await _ataSource.uploadCallImage(
+        parcelId: parcelId,
+        image: image,
+      );
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(message: e.message));

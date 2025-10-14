@@ -141,7 +141,13 @@ class CodegenLoader extends AssetLoader{
   "retry": "إعادة المحاولة",
   "noImagesUploaded": "لم يتم رفع أي صور بعد لهذا الطلب",
   "somethingWentWrong": "أوه لا، لقد حدث خطأ ما!",
-  "underReview": "طلب قيد مراجعة للشحنة"
+  "underReview": "طلب قيد مراجعة للشحنة",
+  "accessPermissionRequired": "صلاحية الوصول مطلوبة",
+  "camera": "الكاميرا",
+  "gallery": "معرض الصور",
+  "cameraPremissionDesc": "لإكمال هذا الإجراء، يرجى السماح بالوصول إلى {name} من إعدادات جهازك.",
+  "openSettings": "فتح الإعدادات",
+  "sorry": "عذرًا!"
 };
 static const Map<String,dynamic> _en = {};
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

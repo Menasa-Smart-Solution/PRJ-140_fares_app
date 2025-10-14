@@ -15,7 +15,7 @@ Future<void> initOrdersDI() async {
 
   getIt.registerFactory(() => OrdersCubit(getIt(), getIt()));
 
-  getIt.registerFactory(() => CallRecordsCubit(getIt(), getIt()));
+  getIt.registerFactory(() => CallRecordsCubit(getIt(), getIt(), getIt()));
 
   getIt.registerFactory(() => OrderOperationCubit(getIt(), getIt()));
 }

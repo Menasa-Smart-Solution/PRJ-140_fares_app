@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:fares/core/network/api_service.dart';
 import 'package:fares/core/network/auth_interceptor.dart';
 import 'package:fares/core/network/language_interceptor.dart';
+import 'package:fares/core/services/image_picker_service.dart';
 import 'package:fares/core/services/internet_service.dart';
 import 'package:fares/core/utils/env_variables.dart';
 import 'package:fares/features/auth/auth_di.dart';
@@ -68,4 +69,5 @@ Future<void> _initCoreDependencies() async {
   });
   // ApiService
   getIt.registerLazySingleton<ApiService>(() => ApiService(getIt<Dio>()));
+  getIt.registerLazySingleton<ImagePickerService>(() => ImagePickerService());
 }

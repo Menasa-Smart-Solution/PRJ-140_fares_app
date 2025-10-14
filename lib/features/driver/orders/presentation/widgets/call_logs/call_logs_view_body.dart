@@ -7,6 +7,20 @@ class CallLogsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(slivers: [CallLogsBlocBuilder(parcelId: parcelId)]);
+    return RefreshIndicator(
+      onRefresh: () async {
+        await Future.wait([
+          context.read<CallRecordsCubit>().getCallImages(parcelId: parcelId),
+        ]);
+      },
+      child: CustomScrollView(
+        slivers: [
+          CallLogsBlocBuilder(parcelId: parcelId),
+          SliverToBoxAdapter(
+            child: UploadImageBlocListener(parcelId: parcelId),
+          ),
+        ],
+      ),
+    );
   }
 }
