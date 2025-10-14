@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:fares/core/enums/enums.dart';
 import 'package:fares/features/auth/data/models/auth_request_model.dart';
-import 'package:fares/features/auth/data/models/user_model.dart';
+import 'package:fares/features/auth/data/models/auth_response_model.dart';
 import 'package:fares/features/auth/data/repositories/auth_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,12 +23,7 @@ class AuthCubit extends Cubit<AuthState> {
         );
       },
       (response) {
-        emit(
-          state.copyWith(
-            type: StateType.success,
-            userModel: response.data.user,
-          ),
-        );
+        emit(state.copyWith(type: StateType.success, userModel: response.data));
       },
     );
   }

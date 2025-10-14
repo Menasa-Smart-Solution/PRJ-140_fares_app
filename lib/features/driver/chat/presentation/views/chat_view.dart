@@ -1,21 +1,30 @@
 part of '../../feature_imports.dart';
 
 class ChatView extends StatelessWidget {
-  const ChatView({super.key});
+  const ChatView({super.key, required this.chatParam});
+  final ChatParam chatParam;
 
   @override
   Widget build(BuildContext context) {
-    final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
-    return Scaffold(
-      appBar: CustomAppBar(
-        title: tr(
-          LocaleKeys.shipmentConversation,
-          namedArgs: const {'value': '1356'},
+    return BlocProvider(
+      create: (context) =>
+          getIt<ChatCubit>()..getConversationMessages(chatParam.parcelId),
+      child: Scaffold(
+        appBar: CustomAppBar(
+          title: tr(
+            LocaleKeys.shipmentConversation,
+            namedArgs: {'value': '${chatParam.parcelId}'},
+          ),
         ),
-      ),
 
-      body: const ChatViewBody().withPadding(vertical: 20, horizontal: 16),
-      bottomSheet: SendMessageFormField(bottomPadding: bottomPadding),
+        body: ChatViewBody(parcelId: chatParam.parcelId),
+      ),
     );
   }
+}
+
+class ChatParam {
+  final int parcelId;
+  final ChatCubit chatCubit;
+  ChatParam({required this.parcelId, required this.chatCubit});
 }

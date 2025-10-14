@@ -1,8 +1,19 @@
 class ApiConstants {
   const ApiConstants._();
-  static const String login = "login";
-  static const String register = "register";
-  static const String verifyCode = "verify-code";
-  static const String sendCode = "send/code";
-  static const String resetPassword = 'reset/password';
+  static const String login = "/login";
+  static const String deliverySummary = "/delivery-man/summary";
+  static const String parcels = "/delivery-man/parcels";
+  static const String callRecords = "/delivery-man/call-records";
+  static const String changeStatus =
+      "/delivery-man/parcels/multi-change-status";
+  static const String partialDelivery = "/delivery-man/partial-delivery";
+
+  static const String chat = "/chats";
+  static const String notifications = "/notifications";
+  static const String reasons = "/delivery-man/reasons";
+
+  static const String conversationMessages = '/chats/{chatId}/messages/store';
+  static const String logout = '/logout';
+  static const String receiveParcels =
+      "delivery-man/flights/{flightId}/receive";
 }

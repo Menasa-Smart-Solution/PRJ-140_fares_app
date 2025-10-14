@@ -53,5 +53,15 @@
 			<string>ar</string>
 			<!-- <string>en</string> -->
 		</array>
+		<key>LSApplicationQueriesSchemes</key>
+		<array>
+		<string>whatsapp</string>
+		<string>tel</string>
+		</array>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>We need access to your photo library so drivers can upload photos as proof of completed client deliveries.</string>
+		<key>NSCameraUsageDescription</key>
+		<string>We need access to the camera so the driver can scan QR codes to confirm or cancel deliveries.</string>
+
 	</dict>
 </plist>

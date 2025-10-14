@@ -24,15 +24,31 @@ class AppImages {
 
   static const String imagesEdit = "assets/images/edit.svg";
 
+  static const String imagesEmpty = "assets/images/empty.png";
+
   static const String imagesEmptyMessages = "assets/images/empty_messages.svg";
+
+  static const String imagesError = "assets/images/error.png";
 
   static const String imagesGlobal = "assets/images/global.svg";
 
   static const String imagesHelp = "assets/images/help.svg";
 
+  static const String imagesIconPrimary = "assets/images/icon-primary.png";
+
+  static const String imagesIconWhite = "assets/images/icon-white.png";
+
   static const String imagesInDelivery = "assets/images/in_delivery.svg";
 
+  static const String imagesLogoFullDark = "assets/images/logo-full-dark.png";
+
+  static const String imagesLogoFullWhite = "assets/images/logo-full-white.png";
+
   static const String imagesLogout = "assets/images/logout.svg";
+
+  static const String imagesMan = "assets/images/man.png";
+
+  static const String imagesNoInternet = "assets/images/no-internet.png";
 
   static const String imagesOnboarding = "assets/images/onboarding.jpg";
 
@@ -49,6 +65,8 @@ class AppImages {
   static const String imagesSend = "assets/images/send.svg";
 
   static const String imagesShieldSecurity = "assets/images/shield-security.svg";
+
+  static const String imagesStore = "assets/images/store.png";
 
   static const String imagesSubtract = "assets/images/subtract.svg";
 

@@ -1,7 +1,8 @@
 part of '../../../feature_imports.dart';
 
 class ShippingStatusDropdown extends StatefulWidget {
-  const ShippingStatusDropdown({super.key});
+  const ShippingStatusDropdown({super.key, required this.parcel});
+  final ParcelModel parcel;
 
   @override
   State<ShippingStatusDropdown> createState() => _ShippingStatusDropdownState();
@@ -49,13 +50,19 @@ class _ShippingStatusDropdownState extends State<ShippingStatusDropdown> {
                 )
                 .toList(),
             onChanged: (value) {
+              final cubit = context.read<OrderOperationCubit>();
+              cubit.cancelOrderReasons();
+
               showModalBottomSheet(
                 context: context,
                 backgroundColor: AppColors.white,
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
                 ),
-                builder: (context) => const ShipmentDeliveryFailedBottomSheet(),
+                builder: (context) => BlocProvider.value(
+                  value: cubit,
+                  child: _statusTypes(value!, widget.parcel),
+                ),
               );
             },
             hint: Text(
@@ -66,5 +73,23 @@ class _ShippingStatusDropdownState extends State<ShippingStatusDropdown> {
         ).withPadding(bottom: 40),
       ),
     );
+  }
+
+  Widget _statusTypes(String value, ParcelModel parcel) {
+    switch (value) {
+      case final text
+          when text == LocaleKeys.shippingStatusPartiallyDelivered.tr():
+        return PartialShipmentDeliveryBottomSheet(parcel: parcel);
+      case final text when text == LocaleKeys.shippingStatusInTransit.tr():
+        return PendingShipmentDeliveryBottomSheet(parcel: parcel);
+      case final text when text == LocaleKeys.shippingStatusUnderReview.tr():
+        return UnderReviewBottomSheet(parcel: parcel);
+      case final text when text == LocaleKeys.shippingStatusDeliveryFailed.tr():
+        return ShipmentDeliveryFailedBottomSheet(parcel: parcel);
+      case final text when text == LocaleKeys.shippingStatusDelivered.tr():
+        return ConfirmOrderShippingBottomSheet(parcel: parcel);
+      default:
+        return const SizedBox();
+    }
   }
 }

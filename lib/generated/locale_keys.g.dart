@@ -118,5 +118,17 @@ abstract class  LocaleKeys {
   static const emailOrPhoneNumberRequired = 'emailOrPhoneNumberRequired';
   static const emailOrPhoneNumberInvalid = 'emailOrPhoneNumberInvalid';
   static const passwordMinLength = 'passwordMinLength';
+  static const loginSuccess = 'loginSuccess';
+  static const availablePackages = 'availablePackages';
+  static const companyDues = 'companyDues';
+  static const delivery = 'delivery';
+  static const orderFailed = 'orderFailed';
+  static const addCallLog = 'addCallLog';
+  static const noNetworkConnection = 'noNetworkConnection';
+  static const checkYourInternet = 'checkYourInternet';
+  static const retry = 'retry';
+  static const noImagesUploaded = 'noImagesUploaded';
+  static const somethingWentWrong = 'somethingWentWrong';
+  static const underReview = 'underReview';
 
 }

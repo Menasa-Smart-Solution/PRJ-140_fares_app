@@ -1,7 +1,8 @@
 part of '../../../feature_imports.dart';
 
 class ConfirmOrderShippingBottomSheet extends StatelessWidget {
-  const ConfirmOrderShippingBottomSheet({super.key});
+  const ConfirmOrderShippingBottomSheet({super.key, required this.parcel});
+  final ParcelModel parcel;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class ConfirmOrderShippingBottomSheet extends StatelessWidget {
             SvgPicture.asset(AppImages.imagesSuccess),
             verticalSpace(16),
             Text(
-              '${LocaleKeys.confirmDelivery.tr()} \n#147077',
+              '${LocaleKeys.confirmDelivery.tr()} \n#${parcel.id}',
               style: AppTextStyles.semiBold24,
               textAlign: TextAlign.center,
             ),
@@ -24,13 +25,28 @@ class ConfirmOrderShippingBottomSheet extends StatelessWidget {
             Text(
               tr(
                 LocaleKeys.confirmDeliveryQuestion,
-                namedArgs: {'price': '125.0 د.ل'},
+                namedArgs: {'price': '${parcel.productPrice} '},
               ),
               textAlign: TextAlign.center,
               style: AppTextStyles.med18.copyWith(color: AppColors.grey),
             ),
             verticalSpace(24),
-            BottomSheetActions(title: LocaleKeys.yes.tr()),
+            BottomSheetActions(
+              title: LocaleKeys.yes.tr(),
+              onPressed: () {
+                context.pop();
+                AppLogger.info(
+                  'Updating order ${parcel.id} to status ${parcel.status}',
+                );
+                context.read<OrderOperationCubit>().updateOrderStatus(
+                  ChangeOrderStatusRequest(
+                    ids: [parcel.id!],
+                    status: "FinancialSettlementPending",
+                    notes: "توصيل لعند باب الحوش",
+                  ),
+                );
+              },
+            ),
             verticalSpace(20),
           ],
         ).withPadding(vertical: 20, horizontal: 16),

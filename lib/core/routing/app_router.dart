@@ -10,6 +10,7 @@ import 'package:fares/features/auth/presentation/views/verification_code_view.da
 import 'package:fares/features/driver/chat/feature_imports.dart';
 import 'package:fares/features/driver/home/presentation/widgets/widgets.dart';
 import 'package:fares/features/driver/main/presentations/driver_main.dart';
+import 'package:fares/features/driver/orders/data/models/parcels_response_model.dart';
 import 'package:fares/features/driver/orders/feature_imports.dart';
 import 'package:fares/features/onboarding/presentation/views/on_boarding_view.dart';
 import 'package:fares/features/onboarding/presentation/views/welcome_view.dart';
@@ -18,7 +19,9 @@ import 'package:flutter/material.dart';
 
 class AppRouter {
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
   Route? onGenerateRoute(RouteSettings settings) {
+    final args = settings.arguments;
     switch (settings.name) {
       case Routes.onBoardingRoute:
         return _buildRoute(builder: (_) => const OnBoardingView());
@@ -41,16 +44,24 @@ class AppRouter {
       case Routes.notificationsRoute:
         return _buildRoute(builder: (_) => const NotificationsView());
       case Routes.trackOrderRoute:
-        return _buildRoute(builder: (_) => const TrackOrderView());
+        return _buildRoute(
+          builder: (_) => TrackOrderView(parcel: args as ParcelModel),
+        );
       case Routes.allOrdersRoute:
-        return _buildRoute(builder: (_) => const AllOrdersView());
+        return _buildRoute(
+          builder: (_) => AllOrdersView(params: args as AllOrdersParams),
+        );
 
       case Routes.orderQrCodeRoute:
-        return _buildRoute(builder: (_) => const OrderQrCodeView());
+        return _buildRoute(
+          builder: (_) => OrderQrCodeView(isConfirmOrder: args as bool),
+        );
       case Routes.conversationRoute:
         return _buildRoute(builder: (_) => const ConversationsView());
       case Routes.chatRoute:
-        return _buildRoute(builder: (_) => const ChatView());
+        return _buildRoute(
+          builder: (_) => ChatView(chatParam: args as ChatParam),
+        );
       case Routes.searchRoute:
         return _buildRoute(builder: (_) => const SearchView());
       case Routes.profileRoute:
@@ -60,6 +71,8 @@ class AppRouter {
         return _buildRoute(builder: (_) => const UpdatePasswordView());
       case Routes.mainDriverRoute:
         return _buildRoute(builder: (_) => const DriverMain());
+      case Routes.callLogsRoute:
+        return _buildRoute(builder: (_) => CallLogsView(id: args as int));
 
       default:
         return null;

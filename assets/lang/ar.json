@@ -113,5 +113,17 @@
   "socketException": "لا يوجد اتصال بالإنترنت.",
   "emailOrPhoneNumberRequired": "يرجى إدخال البريد الإلكتروني أو رقم الهاتف الخاص بك",
   "emailOrPhoneNumberInvalid": "يرجى إدخال بريد إلكتروني أو رقم هاتف صحيح.",
-  "passwordMinLength": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل"
+  "passwordMinLength": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل",
+  "loginSuccess": "تم تسجيل الدخول بنجاح",
+  "availablePackages": "{value} حزمة متاحة",
+  "companyDues": "مستحقات الشركه",
+  "delivery": "تسليم الطلب",
+  "orderFailed": "تعذر الطلب",
+  "addCallLog": "أضف سجل المكالمات",
+  "noNetworkConnection": "لا يوجد اتصال بالشبكة",
+  "checkYourInternet": "يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى.",
+  "retry": "إعادة المحاولة",
+  "noImagesUploaded": "لم يتم رفع أي صور بعد لهذا الطلب",
+  "somethingWentWrong": "أوه لا، لقد حدث خطأ ما!",
+  "underReview": "طلب قيد مراجعة للشحنة"
 }

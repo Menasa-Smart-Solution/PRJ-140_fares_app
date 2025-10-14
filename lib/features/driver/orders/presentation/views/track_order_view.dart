@@ -1,15 +1,18 @@
 part of '../../feature_imports.dart';
 
 class TrackOrderView extends StatelessWidget {
-  const TrackOrderView({super.key});
+  const TrackOrderView({super.key, required this.parcel});
+  final ParcelModel parcel;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _buildAppBar(),
-      body: const TrackOrderViewBody().withPadding(
-        vertical: 20,
-        horizontal: 16,
+    return BlocProvider(
+      create: (context) => getIt<OrderOperationCubit>()..cancelOrderReasons(),
+      child: Scaffold(
+        appBar: _buildAppBar(),
+        body: TrackOrderViewBody(
+          parcel: parcel,
+        ).withPadding(vertical: 20, horizontal: 16),
       ),
     );
   }
@@ -17,7 +20,7 @@ class TrackOrderView extends StatelessWidget {
   CustomAppBar _buildAppBar() {
     return CustomAppBar(
       title: LocaleKeys.trackOrder.tr(),
-      actions: const [OrderMenu()],
+      actions: [OrderMenu(parcel: parcel)],
     );
   }
 }

@@ -1,19 +1,40 @@
 part of '../../../feature_imports.dart';
 
 class OrderMenu extends StatefulWidget {
-  const OrderMenu({super.key});
+  const OrderMenu({super.key, required this.parcel});
+  final ParcelModel parcel;
 
   @override
   State<OrderMenu> createState() => _OrderMenuState();
 }
 
 class _OrderMenuState extends State<OrderMenu> {
-  final List<String> options = [
-    LocaleKeys.contactMerchant.tr(),
-    LocaleKeys.whatsapp.tr(),
-    LocaleKeys.storeChat.tr(),
-    LocaleKeys.requestLocation.tr(),
-  ];
+  late final List<String> options;
+
+  @override
+  void initState() {
+    super.initState();
+    options = [
+      LocaleKeys.contactMerchant.tr(),
+      LocaleKeys.whatsapp.tr(),
+      LocaleKeys.storeChat.tr(),
+      LocaleKeys.requestLocation.tr(),
+      LocaleKeys.addCallLog.tr(),
+    ];
+  }
+
+  Future<void> openStoreChat() async {
+    // Implementation for opening store chat
+  }
+
+  Future<void> requestLocation() async {
+    // Implementation for requesting location
+  }
+
+  Future<void> addCallLog() async {
+    // Implementation for adding call log
+  }
+
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
@@ -35,9 +56,31 @@ class _OrderMenuState extends State<OrderMenu> {
             )
             .toList();
       },
-      onSelected: (value) {
-        // Handle menu item selection
-        print('Selected: $value');
+      onSelected: (value) async {
+        switch (value) {
+          case String contactMerchantKey
+              when contactMerchantKey == LocaleKeys.contactMerchant.tr():
+            await makePhoneCall('2222222222');
+            break;
+          case String whatsappKey when whatsappKey == LocaleKeys.whatsapp.tr():
+            await openWhatsApp(widget.parcel.recipientNumber ?? '');
+            break;
+          case String storeChatKey
+              when storeChatKey == LocaleKeys.storeChat.tr():
+            await openStoreChat();
+            break;
+          case String requestLocationKey
+              when requestLocationKey == LocaleKeys.requestLocation.tr():
+            await requestLocation();
+            break;
+          case String addCallLogKey
+              when addCallLogKey == LocaleKeys.addCallLog.tr():
+            context.pushNamed(
+              Routes.callLogsRoute,
+              arguments: widget.parcel.id,
+            );
+            break;
+        }
       },
     );
   }

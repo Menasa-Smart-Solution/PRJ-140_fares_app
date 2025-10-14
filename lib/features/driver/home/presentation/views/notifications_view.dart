@@ -5,10 +5,19 @@ class NotificationsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: CustomAppBar(title: LocaleKeys.notifications.tr()),
-      body: NotificationViewBody().withPadding(vertical: 20, horizontal: 16),
+    return BlocProvider(
+      create: (context) => getIt<NotificationsCubit>()..getAllNotifications(),
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: CustomAppBar(
+          title: LocaleKeys.notifications.tr(),
+          showBackButton: false,
+        ),
+        body: const NotificationViewBody().withPadding(
+          vertical: 20,
+          horizontal: 16,
+        ),
+      ),
     );
   }
 }

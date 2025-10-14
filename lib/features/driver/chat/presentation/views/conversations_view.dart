@@ -5,11 +5,17 @@ class ConversationsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(title: LocaleKeys.conversations.tr()),
-      body: const ConversationsViewBody().withPadding(
-        vertical: 20,
-        horizontal: 16,
+    return BlocProvider(
+      create: (context) => getIt<ChatCubit>()..getConversations(),
+      child: Scaffold(
+        appBar: CustomAppBar(
+          title: LocaleKeys.conversations.tr(),
+          showBackButton: false,
+        ),
+        body: const ConversationsViewBody().withPadding(
+          bottom: 20,
+          horizontal: 16,
+        ),
       ),
     );
   }

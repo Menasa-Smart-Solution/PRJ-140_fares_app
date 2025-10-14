@@ -1,15 +1,15 @@
 part of '../widgets.dart';
 
 class NotificationsListView extends StatelessWidget {
-  const NotificationsListView({super.key});
-
+  const NotificationsListView({super.key, required this.notifications});
+  final List<NotificationModel> notifications;
   @override
   Widget build(BuildContext context) {
     return SliverList.builder(
       itemBuilder: (context, index) {
-        return NotificationItem();
+        return NotificationItem(notification: notifications[index]);
       },
-      itemCount: 10,
+      itemCount: notifications.length,
     );
   }
 }

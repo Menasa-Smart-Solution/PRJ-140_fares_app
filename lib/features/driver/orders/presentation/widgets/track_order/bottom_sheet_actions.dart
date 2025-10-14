@@ -1,19 +1,15 @@
 part of '../../../feature_imports.dart';
 
 class BottomSheetActions extends StatelessWidget {
-  const BottomSheetActions({super.key, required this.title});
+  const BottomSheetActions({super.key, required this.title, this.onPressed});
   final String title;
+  final VoidCallback? onPressed;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Expanded(
-          child: AppTextButton(
-            onPressed: () {
-              // Handle confirm button press
-            },
-            text: title,
-          ),
+          child: AppTextButton(onPressed: onPressed ?? () {}, text: title),
         ),
         horizontalSpace(8),
         Expanded(

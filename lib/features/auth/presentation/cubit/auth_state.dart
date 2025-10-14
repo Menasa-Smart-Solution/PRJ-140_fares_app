@@ -2,7 +2,7 @@ part of 'auth_cubit.dart';
 
 class AuthState extends Equatable {
   final StateType type;
-  final UserModel? userModel;
+  final AuthModel? userModel;
   final String? errorMessage;
 
   const AuthState({
@@ -16,7 +16,7 @@ class AuthState extends Equatable {
 
   AuthState copyWith({
     StateType? type,
-    UserModel? userModel,
+    AuthModel? userModel,
     String? errorMessage,
   }) {
     return AuthState(

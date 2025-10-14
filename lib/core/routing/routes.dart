@@ -21,4 +21,5 @@ class Routes {
   static const String profileRoute = '/ProfileView';
   static const String updatePasswordRoute = '/UpdatePasswordView';
   static const String mainDriverRoute = '/MainDriverView';
+  static const String callLogsRoute = '/CallLogsView';
 }
