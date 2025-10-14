@@ -3,8 +3,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:fares/core/helpers/extensions.dart';
 import 'package:fares/core/theme/app_colors.dart';
 import 'package:fares/core/theme/app_text_styles.dart';
+import 'package:fares/features/auth/data/models/send_otp_request_model.dart';
+import 'package:fares/features/auth/presentation/cubit/reset_password/forget_password_cubit.dart';
 import 'package:fares/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OtpResendCode extends StatefulWidget {
   const OtpResendCode({super.key, required this.email});
@@ -74,8 +77,11 @@ class _OtpResendCodeState extends State<OtpResendCode> {
                   color: AppColors.primaryColor,
                 ),
               ).onTap(
-                function: () {
+                function: () async {
                   if (_isButtonEnabled) {
+                    await context.read<ForgetPasswordCubit>().sendOtp(
+                      SendOtpRequestModel(email: widget.email),
+                    );
                     _startTimer();
                   }
                 },
