@@ -21,7 +21,7 @@ class ChatViewBody extends StatelessWidget {
                 onPressed: () {
                   context.read<ChatCubit>().getConversationMessages(parcelId);
                 },
-              ),
+              ).withPadding(horizontal: 16),
               context,
             );
 
@@ -31,7 +31,7 @@ class ChatViewBody extends StatelessWidget {
                 onPressed: () {
                   context.read<ChatCubit>().getConversationMessages(parcelId);
                 },
-              ),
+              ).withPadding(horizontal: 16),
               context,
             );
 

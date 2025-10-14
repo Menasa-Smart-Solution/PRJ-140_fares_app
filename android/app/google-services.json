@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "592673726223",
+    "project_id": "faris-delivery",
+    "storage_bucket": "faris-delivery.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592673726223:android:bf0f699fd3a6d437ed287a",
+        "android_client_info": {
+          "package_name": "com.example.fares"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSuXJD3URaGiZqcHw6t_Dv0yc4ALFzI2E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

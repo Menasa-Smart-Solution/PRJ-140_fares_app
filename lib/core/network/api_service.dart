@@ -5,6 +5,7 @@ import 'package:fares/features/auth/data/models/auth_response_model.dart';
 import 'package:fares/features/driver/chat/data/models/conversation_messages_response_model.dart';
 import 'package:fares/features/driver/chat/data/models/conversations_response_model.dart';
 import 'package:fares/features/driver/chat/data/models/send_message_request_model.dart';
+import 'package:fares/features/driver/home/data/models/notifications_response_model.dart';
 import 'package:fares/features/driver/orders/data/models/call_images_response.dart';
 import 'package:fares/features/driver/orders/data/models/cancel_order_reasons_response.dart';
 import 'package:fares/features/driver/orders/data/models/change_order_status_request.dart';
@@ -64,4 +65,7 @@ abstract class ApiService {
 
   @GET(ApiConstants.reasons)
   Future<CancelOrderReasonsResponse> getCancelOrderReasons();
+
+  @GET(ApiConstants.notifications)
+  Future<NotificationsResponseModel> getNotifications();
 }

@@ -1,8 +1,8 @@
 part of '../widgets.dart';
 
 class NotificationItem extends StatelessWidget {
-  const NotificationItem({super.key});
-
+  const NotificationItem({super.key, required this.notification});
+  final NotificationModel notification;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,7 +19,7 @@ class NotificationItem extends StatelessWidget {
               color: AppColors.pastelGreen,
               borderRadius: BorderRadius.circular(8),
             ),
-            child: Icon(
+            child: const Icon(
               AppIcons.package,
               color: AppColors.complimentaryGreen,
               size: 20,
@@ -31,7 +31,7 @@ class NotificationItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "لقد تم تسليم الطرد الخاص بك بنجاح",
+                  notification.title ?? '',
                   style: AppTextStyles.med16,
                   textAlign: TextAlign.right,
                   maxLines: 2,
@@ -39,7 +39,7 @@ class NotificationItem extends StatelessWidget {
                 ),
                 verticalSpace(4),
                 Text(
-                  "11:36 صباحًا",
+                  notification.body ?? '',
                   style: AppTextStyles.reg14.copyWith(
                     color: AppColors.grey,
                     fontSize: 12,
@@ -53,7 +53,10 @@ class NotificationItem extends StatelessWidget {
           horizontalSpace(12),
 
           Text(
-            "اليوم",
+            DateFormat(
+              'hh:mm a',
+              'en',
+            ).format(DateTime.parse(notification.createdAt ?? '')),
             style: AppTextStyles.reg12.copyWith(color: AppColors.grey),
           ),
         ],

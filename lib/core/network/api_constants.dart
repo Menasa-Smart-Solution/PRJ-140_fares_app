@@ -9,6 +9,7 @@ class ApiConstants {
   static const String partialDelivery = "/delivery-man/partial-delivery";
 
   static const String chat = "/chats";
+  static const String notifications = "/notifications";
   static const String reasons = "/delivery-man/reasons";
 
   static const String conversationMessages = '/chats/{chatId}/messages/store';

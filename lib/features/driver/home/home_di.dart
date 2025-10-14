@@ -3,6 +3,7 @@ import 'package:fares/features/driver/home/data/datasources/home_data_source.dar
 import 'package:fares/features/driver/home/data/datasources/home_data_source_impl.dart';
 import 'package:fares/features/driver/home/data/repositories/home_repo.dart';
 import 'package:fares/features/driver/home/presentation/cubit/home/home_cubit.dart';
+import 'package:fares/features/driver/home/presentation/cubit/notifications/notifications_cubit.dart';
 
 Future<void> initHomeDI() async {
   getIt.registerLazySingleton<HomeDataSource>(
@@ -12,4 +13,7 @@ Future<void> initHomeDI() async {
   getIt.registerLazySingleton(() => HomeRepo(homeDataSource: getIt()));
 
   getIt.registerFactory(() => HomeCubit(getIt(), getIt()));
+  getIt.registerFactory(
+    () => NotificationsCubit(internetService: getIt(), homeRepo: getIt()),
+  );
 }

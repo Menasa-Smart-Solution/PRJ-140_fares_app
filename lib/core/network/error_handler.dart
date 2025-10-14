@@ -5,8 +5,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:fares/core/network/api_error_model.dart';
 import 'package:fares/generated/locale_keys.g.dart';
 
-import '../utils/app_logger.dart';
-
 class ErrorHandler {
   static ApiErrorModel handle(dynamic error) {
     if (error is DioException) {

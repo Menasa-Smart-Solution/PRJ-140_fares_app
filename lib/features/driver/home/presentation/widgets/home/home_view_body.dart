@@ -9,10 +9,8 @@ class HomeViewBody extends StatelessWidget {
       builder: (context, state) {
         switch (state.getAllSummaryState) {
           case StateType.loading:
-            return Expanded(
-              child: Skeletonizer(
-                child: _buildBody(SummaryDataModel.dummy(), context),
-              ),
+            return Skeletonizer(
+              child: _buildBody(SummaryDataModel.dummy(), context),
             );
           case StateType.success:
             return RefreshIndicator(

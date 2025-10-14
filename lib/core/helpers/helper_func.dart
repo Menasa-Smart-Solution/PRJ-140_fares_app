@@ -1,8 +1,5 @@
-import 'package:fares/core/utils/app_images.dart';
 import 'package:fares/core/utils/exports.dart';
-import 'package:fares/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 String getImage(String status) {

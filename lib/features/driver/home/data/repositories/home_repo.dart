@@ -3,6 +3,7 @@ import 'package:fares/core/errors/exceptions.dart';
 import 'package:fares/core/errors/failure.dart';
 import 'package:fares/core/utils/exports.dart';
 import 'package:fares/features/driver/home/data/datasources/home_data_source.dart';
+import 'package:fares/features/driver/home/data/models/notifications_response_model.dart';
 import 'package:fares/features/driver/home/data/models/summary_response_model.dart';
 
 class HomeRepo {
@@ -34,6 +35,18 @@ class HomeRepo {
   Future<Either<Failure, void>> receiveParcels(String parcelId) async {
     try {
       final result = await homeDataSource.receiveParcels(parcelId);
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(message: e.message));
+    } catch (e) {
+      return Left(Failure(message: LocaleKeys.unknown.tr()));
+    }
+  }
+
+  Future<Either<Failure, NotificationsResponseModel>>
+  getAllNotifications() async {
+    try {
+      final result = await homeDataSource.getAllNotifications();
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(message: e.message));
