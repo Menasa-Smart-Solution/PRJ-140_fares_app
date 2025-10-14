@@ -4,6 +4,12 @@ import 'package:dio/dio.dart';
 import 'package:fares/core/network/api_constants.dart';
 import 'package:fares/features/auth/data/models/auth_request_model.dart';
 import 'package:fares/features/auth/data/models/auth_response_model.dart';
+import 'package:fares/features/auth/data/models/branches_response_model.dart';
+import 'package:fares/features/auth/data/models/message_response_model.dart';
+import 'package:fares/features/auth/data/models/register_request_model.dart';
+import 'package:fares/features/auth/data/models/register_response_model.dart';
+import 'package:fares/features/auth/data/models/send_otp_request_model.dart';
+import 'package:fares/features/auth/data/models/verify_otp_request_model.dart';
 import 'package:fares/features/driver/chat/data/models/conversation_messages_response_model.dart';
 import 'package:fares/features/driver/chat/data/models/conversations_response_model.dart';
 import 'package:fares/features/driver/chat/data/models/send_message_request_model.dart';
@@ -15,6 +21,8 @@ import 'package:fares/features/driver/orders/data/models/parcels_response_model.
 import 'package:fares/features/driver/home/data/models/summary_response_model.dart';
 import 'package:fares/features/driver/orders/data/models/partial_delivery_request.dart';
 import 'package:retrofit/retrofit.dart';
+
+import '../../features/auth/data/models/reset_password_request_model.dart';
 part 'api_service.g.dart';
 
 @RestApi()
@@ -77,4 +85,19 @@ abstract class ApiService {
     @Path('parcelId') required int parcelId,
     @Part() required File image,
   });
+
+  @POST(ApiConstants.resetPassword)
+  Future<MessageResponseModel> resetPassword(
+    @Body() ResetPasswordRequestModel body,
+  );
+  @POST(ApiConstants.verifyOtp)
+  Future<MessageResponseModel> verifyOtp(@Body() VerifyOtpRequestModel body);
+  @POST(ApiConstants.sendOtp)
+  Future<MessageResponseModel> sendOtp({
+    @Body() required SendOtpRequestModel body,
+  });
+  @POST(ApiConstants.register)
+  Future<RegisterResponseModel> register(@Body() RegisterRequestModel body);
+  @GET(ApiConstants.branches)
+  Future<BranchesResponseModel> getBranches();
 }

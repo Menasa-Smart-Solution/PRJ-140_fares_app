@@ -147,7 +147,21 @@ class CodegenLoader extends AssetLoader{
   "gallery": "معرض الصور",
   "cameraPremissionDesc": "لإكمال هذا الإجراء، يرجى السماح بالوصول إلى {name} من إعدادات جهازك.",
   "openSettings": "فتح الإعدادات",
-  "sorry": "عذرًا!"
+  "sorry": "عذرًا!",
+  "storeName": "اسم المتجر",
+  "storeNameHint": "ادخل اسم المتجر",
+  "storeManagerName": "اسم المسؤول",
+  "storeManagerNameHint": "ادخل اسم المسؤول",
+  "storeLocation": "العنوان",
+  "storeLocationHint": "ادخل العنوان",
+  "phone": "الهاتف",
+  "phoneHint": "ادخل رقم الهاتف",
+  "phone2": "الهاتف الاحتياطي",
+  "phone2Hint": "ادخل رقم الهاتف الاحتياطي",
+  "branch": "اختر الفرع",
+  "phoneNumberInvalid": "رقم الهاتف غير صالح",
+  "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
+  "registerSuccess": "تم التسجيل بنجاح"
 };
 static const Map<String,dynamic> _en = {};
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};

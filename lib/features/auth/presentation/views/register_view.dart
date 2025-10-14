@@ -1,4 +1,5 @@
-import 'package:fares/core/helpers/extensions.dart';
+import 'package:fares/core/utils/exports.dart';
+import 'package:fares/features/auth/presentation/cubit/auth/auth_cubit.dart';
 import 'package:fares/features/auth/presentation/widgets/register/register_view_body.dart';
 import 'package:flutter/material.dart';
 
@@ -7,8 +8,14 @@ class RegisterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: RegisterViewBody().withPadding(horizontal: 16, vertical: 20),
+    return BlocProvider(
+      create: (context) => getIt<AuthCubit>()..getAllBranches(),
+      child: Scaffold(
+        body: const RegisterViewBody().withPadding(
+          horizontal: 16,
+          vertical: 20,
+        ),
+      ),
     );
   }
 }

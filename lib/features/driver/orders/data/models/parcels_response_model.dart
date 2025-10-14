@@ -18,13 +18,19 @@ class ParcelsResponseModel {
 class ParcelsDateDataModel {
   @JsonKey(name: 'parcels_count')
   final int? parcelsCount;
-  @JsonKey(name: 'parcels_price')
+  @JsonKey(name: 'parcels_price', fromJson: _priceFromJson)
   final int? parcelsPrice;
   final ParcelsDataModel? parcels;
 
   ParcelsDateDataModel({this.parcels, this.parcelsCount, this.parcelsPrice});
   factory ParcelsDateDataModel.fromJson(Map<String, dynamic> json) =>
       _$ParcelsDateDataModelFromJson(json);
+
+  static int? _priceFromJson(dynamic v) => v == null
+      ? null
+      : v is String
+      ? int.tryParse(v)
+      : (v as num?)?.toInt();
 }
 
 @JsonSerializable(checked: true)

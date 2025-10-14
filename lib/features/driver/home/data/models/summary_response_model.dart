@@ -20,6 +20,7 @@ class SummaryResponseModel {
 class SummaryDataModel {
   @JsonKey(name: 'chats_count')
   final num chatsCount;
+  @JsonKey(fromJson: _dueFromJson)
   final String due;
   final List<int> flights;
   final List<SummaryStatusModel> statuses;
@@ -30,6 +31,16 @@ class SummaryDataModel {
     required this.flights,
     required this.statuses,
   });
+
+  static String _dueFromJson(dynamic value) {
+    if (value is num) {
+      return value.toStringAsFixed(2);
+    } else if (value is String) {
+      return value;
+    } else {
+      return '0.00';
+    }
+  }
 
   factory SummaryDataModel.fromJson(Map<String, dynamic> json) =>
       _$SummaryDataModelFromJson(json);
