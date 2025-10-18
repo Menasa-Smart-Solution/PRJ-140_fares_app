@@ -3,7 +3,6 @@ import 'package:fares/core/common_ui/widgets/animate_do.dart';
 import 'package:fares/core/common_ui/widgets/app_text_button.dart';
 import 'package:fares/core/helpers/extensions.dart';
 import 'package:fares/core/helpers/spacing.dart';
-import 'package:fares/core/routing/routes.dart';
 import 'package:fares/core/theme/app_colors.dart';
 import 'package:fares/core/theme/app_text_styles.dart';
 import 'package:fares/features/auth/data/models/reset_password_request_model.dart';
