@@ -20,8 +20,10 @@ class AuthInterceptor extends Interceptor {
   }
 
   @override
-  void onError(DioException err, ErrorInterceptorHandler handler) {
+  void onError(DioException err, ErrorInterceptorHandler handler) async {
     if (err.response?.statusCode == 401) {
+      await CacheHelper.clearAllSecuredData();
+
       AppRouter.navigatorKey.currentState!.context.pushNamedAndRemoveUntil(
         Routes.loginRoute,
         predicate: (route) {

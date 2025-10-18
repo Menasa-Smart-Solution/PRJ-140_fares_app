@@ -8,10 +8,10 @@ import 'package:fares/core/helpers/spacing.dart';
 import 'package:fares/core/routing/routes.dart';
 import 'package:fares/core/theme/app_colors.dart';
 import 'package:fares/core/theme/app_text_styles.dart';
-import 'package:fares/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:fares/features/auth/presentation/cubit/auth/auth_cubit.dart';
 import 'package:fares/features/auth/presentation/widgets/auth_welcome.dart';
 import 'package:fares/features/auth/presentation/widgets/have_or_dont_have_account.dart';
-import 'package:fares/features/auth/presentation/widgets/login/login_bloc_listener.dart';
+import 'package:fares/features/auth/presentation/widgets/login/auth_bloc_listener.dart';
 import 'package:fares/features/auth/presentation/widgets/password_form_field.dart';
 import 'package:fares/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
@@ -120,7 +120,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     text: LocaleKeys.login.tr(),
                   ),
                 ),
-                const LoginBlocListener(),
+                const AuthBlocListener(),
                 verticalSpace(16),
                 CustomFadeInUp(
                   duration: 1000,

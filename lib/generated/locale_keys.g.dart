@@ -136,5 +136,19 @@ abstract class  LocaleKeys {
   static const cameraPremissionDesc = 'cameraPremissionDesc';
   static const openSettings = 'openSettings';
   static const sorry = 'sorry';
+  static const storeName = 'storeName';
+  static const storeNameHint = 'storeNameHint';
+  static const storeManagerName = 'storeManagerName';
+  static const storeManagerNameHint = 'storeManagerNameHint';
+  static const storeLocation = 'storeLocation';
+  static const storeLocationHint = 'storeLocationHint';
+  static const phone = 'phone';
+  static const phoneHint = 'phoneHint';
+  static const phone2 = 'phone2';
+  static const phone2Hint = 'phone2Hint';
+  static const branch = 'branch';
+  static const phoneNumberInvalid = 'phoneNumberInvalid';
+  static const passwordsDoNotMatch = 'passwordsDoNotMatch';
+  static const registerSuccess = 'registerSuccess';
 
 }

@@ -12,7 +12,9 @@ class AppRegex {
   }
 
   static bool isPhoneNumberValid(String phone) {
-    final regex = RegExp(r'^(?:\+218|0)(9[1-9])[0-9]{6}$');
+    final regex = RegExp(
+      r'^(?:\+2189[1-9]\d{7}|002189[1-9]\d{7}|09[1-9]\d{7})$',
+    );
     return regex.hasMatch(phone);
   }
 

@@ -1,6 +1,8 @@
 import 'package:fares/core/helpers/spacing.dart';
 import 'package:fares/core/theme/app_colors.dart';
 import 'package:fares/core/theme/app_text_styles.dart';
+import 'package:fares/core/utils/exports.dart';
+import 'package:fares/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
@@ -23,12 +25,12 @@ class OtpPinInput extends StatelessWidget {
 
     return FormField<String>(
       validator: (value) {
-        // if (controller.text.isEmpty) {
-        //   return LocaleKeys.pleaseEnterverificationCode.tr();
-        // }
-        // if (controller.text.length < 6) {
-        //   return LocaleKeys.verificationCodeLengthValidation.tr();
-        // }
+        if (controller.text.isEmpty) {
+          return LocaleKeys.pleaseEnterverificationCode.tr();
+        }
+        if (controller.text.length < 6) {
+          return LocaleKeys.verificationCodeLengthValidation.tr();
+        }
         return null;
       },
       builder: (state) {
@@ -39,12 +41,9 @@ class OtpPinInput extends StatelessWidget {
             Pinput(
               controller: controller,
               forceErrorState: true,
-              length: 4,
+              length: 6,
               validator: (pin) {
-                if (pin == '2224') return null;
-
-                /// Text will be displayed under the Pinput
-                return 'Pin is incorrect';
+                return null;
               },
               defaultPinTheme: defaultPinTheme,
               focusedPinTheme: defaultPinTheme.copyWith(

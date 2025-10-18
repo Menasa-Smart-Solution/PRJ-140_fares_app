@@ -2,12 +2,12 @@ import 'package:fares/core/helpers/cache_helper.dart';
 import 'package:fares/core/helpers/show_snackbar.dart';
 import 'package:fares/core/utils/exports.dart';
 import 'package:fares/core/utils/prefs_keys.dart';
-import 'package:fares/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:fares/features/auth/presentation/cubit/auth/auth_cubit.dart';
+import 'package:fares/features/auth/presentation/cubit/auth/auth_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-class LoginBlocListener extends StatelessWidget {
-  const LoginBlocListener({super.key});
+class AuthBlocListener extends StatelessWidget {
+  const AuthBlocListener({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,19 +19,23 @@ class LoginBlocListener extends StatelessWidget {
           OverlayHelper.hideLoadingOverlay();
           await CacheHelper.setSecuredString(
             PrefsKeys.token,
-            state.userModel!.token,
+            state.isRegistered
+                ? state.registeredUser!.token
+                : state.userModel!.token,
           );
-          await CacheHelper.setSecuredString(
-            PrefsKeys.role,
-            state.userModel!.user.type,
-          );
+          if (!state.isRegistered) {
+            await CacheHelper.setSecuredString(
+              PrefsKeys.role,
+              state.userModel!.user.type,
+            );
+          }
           if (!context.mounted) return;
           context.pushNamedAndRemoveUntil(
             Routes.mainDriverRoute,
             predicate: (_) => false,
           );
           showSnackBar(
-            message: LocaleKeys.loginSuccess.tr(),
+            message: state.successMessage ?? 'Success',
             type: SnackType.success,
           );
         } else if (state.type.isError) {

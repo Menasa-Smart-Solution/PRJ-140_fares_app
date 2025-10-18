@@ -32,11 +32,16 @@ class AppRouter {
       case Routes.registerRoute:
         return _buildRoute(builder: (_) => const RegisterView());
       case Routes.verificationCodeRoute:
-        return _buildRoute(builder: (_) => const VerificationCodeView());
+        return _buildRoute(
+          builder: (_) => VerificationCodeView(email: args as String),
+        );
       case Routes.forgetPasswordRoute:
         return _buildRoute(builder: (_) => const ForgetPasswordView());
       case Routes.changePasswordRoute:
-        return _buildRoute(builder: (_) => const ChangePasswordView());
+        return _buildRoute(
+          builder: (_) =>
+              ChangePasswordView(params: args as ChangePasswordParams),
+        );
       case Routes.passwordChangedSuccessRoute:
         return _buildRoute(builder: (_) => const PasswordChangedSuccessView());
       case Routes.homeRoute:

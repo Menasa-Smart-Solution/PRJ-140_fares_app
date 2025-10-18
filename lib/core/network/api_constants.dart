@@ -1,6 +1,12 @@
 class ApiConstants {
   const ApiConstants._();
   static const String login = "/login";
+  static const String register = "/register";
+  static const String branches = "/branches";
+  static const String sendOtp = "/otp/request";
+  static const String verifyOtp = "/otp/verify";
+  static const String resetPassword = "/otp/reset-password";
+
   static const String deliverySummary = "/delivery-man/summary";
   static const String parcels = "/delivery-man/parcels";
   static const String callRecords = "/delivery-man/call-records";
