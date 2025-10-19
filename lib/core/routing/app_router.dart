@@ -15,6 +15,7 @@ import 'package:fares/features/driver/orders/feature_imports.dart';
 import 'package:fares/features/onboarding/presentation/views/on_boarding_view.dart';
 import 'package:fares/features/onboarding/presentation/views/welcome_view.dart';
 import 'package:fares/features/profile/feature_imports.dart';
+import 'package:fares/features/store/shipment/feature_imports.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
@@ -78,6 +79,16 @@ class AppRouter {
         return _buildRoute(builder: (_) => const DriverMain());
       case Routes.callLogsRoute:
         return _buildRoute(builder: (_) => CallLogsView(id: args as int));
+      case Routes.createShipmentRoute:
+        return _buildRoute(builder: (_) => const CreateShipmentView());
+      case Routes.addCollectionRequestRoute:
+        return _buildRoute(builder: (_) => const AddCollectionRequestView());
+      case Routes.collectionSettlementsRoute:
+        return _buildRoute(builder: (_) => const CollectionSettlementsView());
+      case Routes.financialSettlementRoute:
+        return _buildRoute(builder: (_) => const FinancialSettlementView());
+      case Routes.storeParcelsRoute:
+        return _buildRoute(builder: (_) => const StoreParcelsView());
 
       default:
         return null;

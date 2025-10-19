@@ -22,4 +22,12 @@ class Routes {
   static const String updatePasswordRoute = '/UpdatePasswordView';
   static const String mainDriverRoute = '/MainDriverView';
   static const String callLogsRoute = '/CallLogsView';
+
+  static const String createShipmentRoute = '/CreateShipmentView';
+
+  static const String addCollectionRequestRoute = '/AddCollectionRequestView';
+  static const String collectionSettlementsRoute = '/CollectionSettlementsView';
+  static const String financialSettlementRoute = '/FinancialSettlementView';
+
+  static const String storeParcelsRoute = '/StoreParcelsView';
 }
