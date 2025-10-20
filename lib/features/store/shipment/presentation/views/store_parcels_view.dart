@@ -5,6 +5,12 @@ class StoreParcelsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(appBar: CustomAppBar(title: 'كل الشحنات'));
+    return Scaffold(
+      appBar: const CustomAppBar(title: 'كل الشحنات'),
+      body: const StoreParcelsListView().withPadding(
+        vertical: 20,
+        horizontal: 16,
+      ),
+    );
   }
 }

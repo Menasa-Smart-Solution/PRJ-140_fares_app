@@ -201,5 +201,8 @@ abstract class  LocaleKeys {
   static const netValue = 'netValue';
   static const createdAt = 'createdAt';
   static const currency = 'currency';
+  static const notes = 'notes';
+  static const contactCourier = 'contactCourier';
+  static const chatWithCourier = 'chatWithCourier';
 
 }

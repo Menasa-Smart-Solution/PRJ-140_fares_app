@@ -212,7 +212,10 @@ class CodegenLoader extends AssetLoader{
   "discount": "الخصم",
   "netValue": "الصافي",
   "createdAt": "الإنشاء",
-  "currency": "د.ل"
+  "currency": "د.ل",
+  "notes": "ملاحظات",
+  "contactCourier": "الاتصال بالمندوب",
+  "chatWithCourier": "محادثات المندوب"
 };
 static const Map<String,dynamic> _en = {
   "trackingTitle": "تتبع حالة \nشحناتك \nوانت في مكانك",

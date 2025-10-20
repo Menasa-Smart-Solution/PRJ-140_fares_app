@@ -196,5 +196,8 @@
   "discount": "الخصم",
   "netValue": "الصافي",
   "createdAt": "الإنشاء",
-  "currency": "د.ل"
+  "currency": "د.ل",
+  "notes": "ملاحظات",
+  "contactCourier": "الاتصال بالمندوب",
+  "chatWithCourier": "محادثات المندوب"
 }

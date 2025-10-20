@@ -1,6 +1,7 @@
 import 'package:fares/core/common_ui/widgets/animate_do.dart';
 import 'package:fares/core/common_ui/widgets/custom_dropdown_field.dart';
 import 'package:fares/core/common_ui/widgets/custom_dropdown_search_list.dart';
+import 'package:fares/features/driver/orders/feature_imports.dart';
 
 import '../../../core/utils/exports.dart';
 import 'package:fares/core/services/image_picker_service.dart';
@@ -24,3 +25,6 @@ part 'presentation/widgets/settlement_details/shipment_item_card.dart';
 part 'presentation/widgets/settlement_details/shipment_card.dart';
 
 part 'presentation/views/store_parcels_view.dart';
+part 'presentation/widgets/store_parcels/store_parcels_menu.dart';
+part 'presentation/widgets/store_parcels/store_parcels_item.dart';
+part 'presentation/widgets/store_parcels/store_parcels_list_view.dart';
