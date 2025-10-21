@@ -14,15 +14,6 @@ part 'presentation/widgets/create_shipment/shipment_options.dart';
 part 'presentation/widgets/add_collection_request/collection_request_options.dart';
 part 'presentation/views/add_collection_request_view.dart';
 part 'presentation/widgets/add_collection_request/add_collection_request_view_body.dart';
-part 'presentation/views/collection_settlements_view.dart';
-part 'presentation/widgets/collection_settlements/collection_settlements_view_body.dart';
-part 'presentation/widgets/collection_settlements/settlement_card.dart';
-part 'presentation/widgets/collection_settlements/settlement_header.dart';
-part 'presentation/widgets/collection_settlements/value_column.dart';
-part 'presentation/views/financial_settlement_view.dart';
-part 'presentation/widgets/settlement_details/settlement_info_card.dart';
-part 'presentation/widgets/settlement_details/shipment_item_card.dart';
-part 'presentation/widgets/settlement_details/shipment_card.dart';
 
 part 'presentation/views/store_parcels_view.dart';
 part 'presentation/widgets/store_parcels/store_parcels_menu.dart';

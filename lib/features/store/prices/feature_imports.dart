@@ -13,3 +13,13 @@ part '../prices/presentations/widgets/cities_prices/city_price_card.dart';
 part '../prices/presentations/widgets/cities_prices/cities_prices_view_body.dart';
 part '../prices/presentations/widgets/cities_prices/cities_prices_list_view.dart';
 part '../prices/presentations/widgets/cities_prices/cities_prices_bloc_builder.dart';
+
+part '../prices/presentations/views/collection_settlements_view.dart';
+part '../prices/presentations/widgets/collection_settlements/collection_settlements_view_body.dart';
+part '../prices/presentations/widgets/collection_settlements/settlement_card.dart';
+part '../prices/presentations/widgets/collection_settlements/settlement_header.dart';
+part '../prices/presentations/widgets/collection_settlements/value_column.dart';
+part '../prices/presentations/views/financial_settlement_view.dart';
+part '../prices/presentations/widgets/settlement_details/settlement_info_card.dart';
+part '../prices/presentations/widgets/settlement_details/shipment_item_card.dart';
+part '../prices/presentations/widgets/settlement_details/shipment_card.dart';
