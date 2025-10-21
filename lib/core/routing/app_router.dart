@@ -18,6 +18,8 @@ import 'package:fares/features/profile/feature_imports.dart';
 import 'package:fares/features/store/shipment/feature_imports.dart';
 import 'package:flutter/material.dart';
 
+import '../../features/store/prices/feature_imports.dart';
+
 class AppRouter {
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 

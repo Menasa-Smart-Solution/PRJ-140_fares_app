@@ -1,14 +1,14 @@
 import 'package:dartz/dartz.dart';
 import 'package:fares/core/errors/exceptions.dart';
 import 'package:fares/core/errors/failure.dart';
-import 'package:fares/features/store/shipment/data/datasources/store_data_source.dart';
-import 'package:fares/features/store/shipment/data/models/city_response_model.dart';
-import 'package:fares/features/store/shipment/data/models/receipt_response_model.dart';
+import 'package:fares/features/store/prices/data/datasource/prices_data_source.dart';
+import 'package:fares/features/store/prices/data/models/city_response_model.dart';
+import 'package:fares/features/store/prices/data/models/receipt_response_model.dart';
 
-class StoreRepo {
-  final StoreDataSource storeDataSource;
+class PricesRepo {
+  final PricesDataSource storeDataSource;
 
-  StoreRepo(this.storeDataSource);
+  PricesRepo(this.storeDataSource);
 
   Future<Either<Failure, CityResponseModel>> getCities() async {
     try {

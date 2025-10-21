@@ -4,12 +4,14 @@ import 'package:fares/core/network/auth_interceptor.dart';
 import 'package:fares/core/network/language_interceptor.dart';
 import 'package:fares/core/services/image_picker_service.dart';
 import 'package:fares/core/services/internet_service.dart';
+import 'package:fares/core/utils/app_logger.dart';
 import 'package:fares/core/utils/env_variables.dart';
 import 'package:fares/features/auth/auth_di.dart';
 import 'package:fares/features/driver/chat/chat_di.dart';
 import 'package:fares/features/driver/home/home_di.dart';
 import 'package:fares/features/driver/main/navigation_di.dart';
 import 'package:fares/features/driver/orders/orders_di.dart';
+import 'package:fares/features/store/prices/prices_di.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
@@ -25,6 +27,7 @@ Future<void> setupDependencyInjection() async {
   await initHomeDI();
   await initOrdersDI();
   await initChatDI();
+  await initPricesDi();
 }
 
 Future<void> _initCoreDependencies() async {
@@ -48,6 +51,7 @@ Future<void> _initCoreDependencies() async {
   );
 
   getIt.registerLazySingleton<Dio>(() {
+    AppLogger.info('Setting up Dio with base URL: ${Env.apiUrl}');
     final dio = Dio();
     dio.options
       ..baseUrl = Env.apiUrl

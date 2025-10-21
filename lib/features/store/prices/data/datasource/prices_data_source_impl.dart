@@ -2,14 +2,14 @@ import 'package:fares/core/errors/exceptions.dart';
 import 'package:fares/core/network/api_service.dart';
 import 'package:fares/core/network/error_handler.dart';
 import 'package:fares/core/utils/app_logger.dart';
-import 'package:fares/features/store/shipment/data/datasources/store_data_source.dart';
-import 'package:fares/features/store/shipment/data/models/city_response_model.dart';
-import 'package:fares/features/store/shipment/data/models/receipt_response_model.dart';
+import 'package:fares/features/store/prices/data/datasource/prices_data_source.dart';
+import 'package:fares/features/store/prices/data/models/city_response_model.dart';
+import 'package:fares/features/store/prices/data/models/receipt_response_model.dart';
 
-class StoreDataSourceImpl extends StoreDataSource {
+class PricesDataSourceImpl extends PricesDataSource {
   final ApiService _apiService;
 
-  StoreDataSourceImpl(this._apiService);
+  PricesDataSourceImpl(this._apiService);
 
   @override
   Future<CityResponseModel> getCities() async {

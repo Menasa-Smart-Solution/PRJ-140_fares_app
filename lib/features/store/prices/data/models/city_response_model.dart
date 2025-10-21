@@ -15,7 +15,7 @@ class CityModel {
   final int id;
   final String name;
   @JsonKey(name: 'created_at')
-  final String createdAt;
+  final String? createdAt;
   final String price;
   @JsonKey(name: 'downpayment')
   final String downPayment;
@@ -23,7 +23,7 @@ class CityModel {
   CityModel({
     required this.id,
     required this.name,
-    required this.createdAt,
+    this.createdAt,
     required this.price,
     required this.downPayment,
   });

@@ -1,17 +1,11 @@
 part of '../../../feature_imports.dart';
 
 class CityPriceCard extends StatelessWidget {
-  final Map<String, dynamic> cityData;
-  final int index;
-
-  const CityPriceCard({super.key, required this.cityData, required this.index});
+  final CityModel city;
+  const CityPriceCard({super.key, required this.city});
 
   @override
   Widget build(BuildContext context) {
-    final String city = cityData['city'] as String;
-    final double price = cityData['price'] as double;
-    final bool isActive = cityData['isActive'] as bool;
-
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(20),
@@ -19,16 +13,12 @@ class CityPriceCard extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: isActive
-              ? AppColors.lightPrimaryColor.withOpacity(0.2)
-              : Colors.grey.withOpacity(0.2),
+          color: AppColors.lightPrimaryColor.withOpacity(0.2),
           width: 1.5,
         ),
         boxShadow: [
           BoxShadow(
-            color: isActive
-                ? AppColors.primaryColor.withOpacity(0.05)
-                : Colors.grey.withOpacity(0.03),
+            color: AppColors.primaryColor.withOpacity(0.05),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -49,18 +39,20 @@ class CityPriceCard extends StatelessWidget {
             ),
           ),
           horizontalSpace(12),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'المدينة',
-                style: AppTextStyles.med14.copyWith(color: AppColors.grey),
-              ),
-              verticalSpace(4),
-              Text(city, style: AppTextStyles.bold16),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'المدينة',
+                  style: AppTextStyles.med14.copyWith(color: AppColors.grey),
+                ),
+                verticalSpace(4),
+                Text(city.name, style: AppTextStyles.semiBold16),
+              ],
+            ),
           ),
-          const Spacer(),
+          horizontalSpace(8),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -79,7 +71,7 @@ class CityPriceCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
-                  '$price د.ل',
+                  '${city.price} د.ل',
                   style: AppTextStyles.bold16.copyWith(
                     color: AppColors.primaryColor,
                   ),
