@@ -1,6 +1,6 @@
 part of 'shipment_cubit.dart';
 
-abstract class ShipmentState extends Equatable {
+class ShipmentState extends Equatable {
   const ShipmentState();
 
   @override
