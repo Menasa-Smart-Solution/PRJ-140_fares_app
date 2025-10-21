@@ -30,4 +30,7 @@ class Routes {
   static const String financialSettlementRoute = '/FinancialSettlementView';
 
   static const String storeParcelsRoute = '/StoreParcelsView';
+  static const String storeParcelDetailsRoute = '/storeParcelDetails';
+  static const String citiesPricesRoute = '/citiesPrices';
+  static const String contactInfoRoute = '/contactInfo';
 }

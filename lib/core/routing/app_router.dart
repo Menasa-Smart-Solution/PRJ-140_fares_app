@@ -89,6 +89,12 @@ class AppRouter {
         return _buildRoute(builder: (_) => const FinancialSettlementView());
       case Routes.storeParcelsRoute:
         return _buildRoute(builder: (_) => const StoreParcelsView());
+      case Routes.storeParcelDetailsRoute:
+        return _buildRoute(builder: (_) => const StoreParcelDetailsView());
+      case Routes.citiesPricesRoute:
+        return MaterialPageRoute(builder: (_) => const CitiesPricesView());
+      case Routes.contactInfoRoute:
+        return MaterialPageRoute(builder: (_) => const ContactInfoView());
 
       default:
         return null;
