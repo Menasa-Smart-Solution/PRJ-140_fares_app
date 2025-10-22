@@ -563,10 +563,9 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<ReceiptResponseModel> getReceipts({int? page}) async {
+  Future<ReceiptResponseModel> getReceipts({int page = 1}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'page': page};
-    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<ReceiptResponseModel>(
@@ -591,25 +590,27 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<ReceiptResponseModel> getReceiptDetails({required int id}) async {
+  Future<ReceiptDetailsResponseModel> getReceiptDetails({
+    required int id,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<ReceiptResponseModel>(
+    final _options = _setStreamType<ReceiptDetailsResponseModel>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/receipts/${id}/${id}',
+            '/receipts/${id}',
             queryParameters: queryParameters,
             data: _data,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late ReceiptResponseModel _value;
+    late ReceiptDetailsResponseModel _value;
     try {
-      _value = ReceiptResponseModel.fromJson(_result.data!);
+      _value = ReceiptDetailsResponseModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

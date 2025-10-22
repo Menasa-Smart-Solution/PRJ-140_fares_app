@@ -86,6 +86,7 @@ Widget buildWidget(Widget widget, BuildContext context) {
     child: SizedBox(
       height:
           MediaQuery.of(context).size.height -
+          40 -
           kToolbarHeight -
           MediaQuery.of(context).padding.bottom -
           MediaQuery.of(context).padding.top,

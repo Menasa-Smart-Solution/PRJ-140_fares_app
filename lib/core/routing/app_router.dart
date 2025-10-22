@@ -88,7 +88,9 @@ class AppRouter {
       case Routes.collectionSettlementsRoute:
         return _buildRoute(builder: (_) => const CollectionSettlementsView());
       case Routes.financialSettlementRoute:
-        return _buildRoute(builder: (_) => const FinancialSettlementView());
+        return _buildRoute(
+          builder: (_) => FinancialSettlementView(id: args as int),
+        );
       case Routes.storeParcelsRoute:
         return _buildRoute(builder: (_) => const StoreParcelsView());
       case Routes.storeParcelDetailsRoute:

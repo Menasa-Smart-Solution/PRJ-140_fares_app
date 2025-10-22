@@ -1,32 +1,28 @@
 part of '../../../feature_imports.dart';
 
 class SettlementCard extends StatelessWidget {
-  final String date;
-  final String reference;
-  final int parcels;
-  final double total;
-  final double discount;
-  final double net;
+  final ReceiptModel receiptModel;
 
-  const SettlementCard({
-    super.key,
-    required this.date,
-    required this.reference,
-    required this.parcels,
-    required this.total,
-    required this.discount,
-    required this.net,
-  });
+  const SettlementCard({super.key, required this.receiptModel});
 
   @override
   Widget build(BuildContext context) {
-    final hasDiscount = discount > 0;
+    final totalPrice =
+        int.parse(receiptModel.totalPrice) -
+        (receiptModel.withdrawalTransaction != null &&
+                receiptModel.withdrawalTransaction!.isNotEmpty
+            ? int.parse(receiptModel.withdrawalTransaction!)
+            : 0);
+
     return Material(
       color: Colors.transparent,
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
         onTap: () {
-          context.pushNamed(Routes.financialSettlementRoute);
+          context.pushNamed(
+            Routes.financialSettlementRoute,
+            arguments: receiptModel.id,
+          );
         },
         child: Container(
           decoration: BoxDecoration(
@@ -46,10 +42,14 @@ class SettlementCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SettlementHeader(
-                reference: reference,
-                date: date,
-                parcels: parcels,
-                hasDiscount: hasDiscount,
+                reference: receiptModel.id.toString(),
+                date: DateFormat(
+                  'yyyy-MM-dd',
+                ).format(DateTime.parse(receiptModel.createdAt.toString())),
+                parcels: receiptModel.parcelsCount,
+                hasDiscount:
+                    receiptModel.withdrawalTransaction != null &&
+                    receiptModel.withdrawalTransaction!.isNotEmpty,
               ),
 
               const SizedBox(height: 12),
@@ -61,7 +61,7 @@ class SettlementCard extends StatelessWidget {
                   Expanded(
                     child: ValueColumn(
                       label: LocaleKeys.total.tr(),
-                      value: total.toStringAsFixed(2),
+                      value: receiptModel.totalPrice,
                       valueColor: AppColors.primaryColor,
                     ),
                   ),
@@ -69,7 +69,11 @@ class SettlementCard extends StatelessWidget {
                   Expanded(
                     child: ValueColumn(
                       label: LocaleKeys.discount.tr(),
-                      value: discount.toStringAsFixed(2),
+                      value:
+                          receiptModel.withdrawalTransaction != null &&
+                              receiptModel.withdrawalTransaction!.isNotEmpty
+                          ? receiptModel.withdrawalTransaction!
+                          : ' 0.0',
                       valueColor: AppColors.tertiaryColor,
                       isDiscount: true,
                     ),
@@ -78,7 +82,7 @@ class SettlementCard extends StatelessWidget {
                   Expanded(
                     child: ValueColumn(
                       label: LocaleKeys.net.tr(),
-                      value: net.toStringAsFixed(2),
+                      value: totalPrice.toString(),
                       valueColor: AppColors.lightPrimaryColor,
                     ),
                   ),

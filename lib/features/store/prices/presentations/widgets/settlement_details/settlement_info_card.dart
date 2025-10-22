@@ -1,12 +1,19 @@
 part of '../../../feature_imports.dart';
 
 class SettlementInfoCard extends StatelessWidget {
-  final Map<String, dynamic> settlementData;
+  final ReceiptModel receiptModel;
 
-  const SettlementInfoCard({super.key, required this.settlementData});
+  const SettlementInfoCard({super.key, required this.receiptModel});
 
   @override
   Widget build(BuildContext context) {
+    final totalPrice =
+        int.parse(receiptModel.totalPrice) -
+        (receiptModel.withdrawalTransaction != null &&
+                receiptModel.withdrawalTransaction!.isNotEmpty
+            ? int.parse(receiptModel.withdrawalTransaction!)
+            : 0);
+
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
       padding: const EdgeInsets.all(24),
@@ -49,7 +56,7 @@ class SettlementInfoCard extends StatelessWidget {
           verticalSpace(20),
           _buildInfoRow(
             label: LocaleKeys.code.tr(),
-            value: settlementData['code'] as String,
+            value: receiptModel.id.toString(),
             valueColor: AppColors.primaryColor,
             valueStyle: AppTextStyles.bold16,
           ),
@@ -58,8 +65,7 @@ class SettlementInfoCard extends StatelessWidget {
           verticalSpace(16),
           _buildInfoRow(
             label: LocaleKeys.totalValue.tr(),
-            value:
-                '${settlementData['totalValue']} ${LocaleKeys.currency.tr()}',
+            value: '${receiptModel.totalPrice} ${LocaleKeys.currency.tr()}',
             valueColor: AppColors.primaryColor,
             valueStyle: AppTextStyles.bold16,
           ),
@@ -68,7 +74,8 @@ class SettlementInfoCard extends StatelessWidget {
           verticalSpace(16),
           _buildInfoRow(
             label: LocaleKeys.discount.tr(),
-            value: '${settlementData['discount']} ${LocaleKeys.currency.tr()}',
+            value:
+                '${receiptModel.withdrawalTransaction} ${LocaleKeys.currency.tr()}',
             valueColor: Colors.red,
             valueStyle: AppTextStyles.bold16,
           ),
@@ -77,7 +84,7 @@ class SettlementInfoCard extends StatelessWidget {
           verticalSpace(16),
           _buildInfoRow(
             label: LocaleKeys.netValue.tr(),
-            value: '${settlementData['netValue']} ${LocaleKeys.currency.tr()}',
+            value: '$totalPrice ${LocaleKeys.currency.tr()}',
             valueColor: AppColors.lightPrimaryColor,
             valueStyle: AppTextStyles.bold16,
           ),
@@ -86,7 +93,9 @@ class SettlementInfoCard extends StatelessWidget {
           verticalSpace(16),
           _buildInfoRow(
             label: LocaleKeys.createdAt.tr(),
-            value: settlementData['createdAt'] as String,
+            value: DateFormat(
+              'yyyy-MM-dd',
+            ).format(DateTime.parse(receiptModel.createdAt.toString())),
             valueColor: AppColors.grey,
             valueStyle: AppTextStyles.med16,
           ),

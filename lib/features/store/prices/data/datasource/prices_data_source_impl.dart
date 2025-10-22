@@ -4,6 +4,7 @@ import 'package:fares/core/network/error_handler.dart';
 import 'package:fares/core/utils/app_logger.dart';
 import 'package:fares/features/store/prices/data/datasource/prices_data_source.dart';
 import 'package:fares/features/store/prices/data/models/city_response_model.dart';
+import 'package:fares/features/store/prices/data/models/receipt_details_response_model.dart';
 import 'package:fares/features/store/prices/data/models/receipt_response_model.dart';
 
 class PricesDataSourceImpl extends PricesDataSource {
@@ -24,7 +25,9 @@ class PricesDataSourceImpl extends PricesDataSource {
   }
 
   @override
-  Future<ReceiptResponseModel> getReceiptDetails({required int id}) async {
+  Future<ReceiptDetailsResponseModel> getReceiptDetails({
+    required int id,
+  }) async {
     try {
       final response = await _apiService.getReceiptDetails(id: id);
       AppLogger.info('StoreDataSourceImpl: Get Receipt Details Success');
@@ -36,7 +39,7 @@ class PricesDataSourceImpl extends PricesDataSource {
   }
 
   @override
-  Future<ReceiptResponseModel> getReceipts({int? page}) async {
+  Future<ReceiptResponseModel> getReceipts({int page = 1}) async {
     try {
       final response = await _apiService.getReceipts(page: page);
       AppLogger.info('StoreDataSourceImpl: Get Receipts Success');

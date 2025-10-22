@@ -1,22 +1,12 @@
 part of '../../../feature_imports.dart';
 
 class ShipmentItemCard extends StatelessWidget {
-  final Map<String, dynamic> shipmentData;
-  final int index;
+  final ParcelModel parcel;
 
-  const ShipmentItemCard({
-    super.key,
-    required this.shipmentData,
-    required this.index,
-  });
+  const ShipmentItemCard({super.key, required this.parcel});
 
   @override
   Widget build(BuildContext context) {
-    final String id = shipmentData['id'] as String;
-    final String title = shipmentData['title'] as String;
-    final double amount = shipmentData['amount'] as double;
-    final String phoneNumber = shipmentData['phoneNumber'] as String;
-
     return Container(
       margin: const EdgeInsets.only(right: 20, left: 20, bottom: 12),
       padding: const EdgeInsets.all(20),
@@ -41,7 +31,7 @@ class ShipmentItemCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(
-                  id,
+                  parcel.id.toString(),
                   style: AppTextStyles.bold16.copyWith(
                     color: AppColors.primaryColor,
                   ),
@@ -57,7 +47,7 @@ class ShipmentItemCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(
-                  '$amount ${LocaleKeys.currency.tr()}',
+                  '${parcel.productPrice} ${LocaleKeys.currency.tr()}',
                   style: AppTextStyles.bold16.copyWith(
                     color: AppColors.primaryColor,
                   ),
@@ -66,9 +56,18 @@ class ShipmentItemCard extends StatelessWidget {
             ],
           ),
           verticalSpace(12),
-          Text(
-            title,
-            style: AppTextStyles.med16.copyWith(color: AppColors.black),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                parcel.desc ?? '',
+                style: AppTextStyles.med16.copyWith(color: AppColors.black),
+              ),
+              Text(
+                parcel.tocity?.name ?? '',
+                style: AppTextStyles.med16.copyWith(color: AppColors.black),
+              ),
+            ],
           ),
           verticalSpace(8),
           Row(
@@ -76,7 +75,7 @@ class ShipmentItemCard extends StatelessWidget {
               const Icon(Icons.phone_outlined, size: 16, color: AppColors.grey),
               horizontalSpace(6),
               Text(
-                phoneNumber,
+                parcel.recipientNumber ?? '',
                 style: AppTextStyles.reg14.copyWith(color: AppColors.black),
               ),
             ],

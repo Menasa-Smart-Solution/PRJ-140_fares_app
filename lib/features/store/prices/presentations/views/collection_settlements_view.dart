@@ -5,9 +5,12 @@ class CollectionSettlementsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(title: LocaleKeys.financialSettlement.tr()),
-      body: const CollectionSettlementsViewBody(),
+    return BlocProvider(
+      create: (context) => getIt<ReceiptsCubit>()..getReceipts(),
+      child: Scaffold(
+        appBar: CustomAppBar(title: LocaleKeys.financialSettlement.tr()),
+        body: const CollectionSettlementsViewBody(),
+      ),
     );
   }
 }
