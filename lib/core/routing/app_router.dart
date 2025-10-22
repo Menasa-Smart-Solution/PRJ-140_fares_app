@@ -15,6 +15,7 @@ import 'package:fares/features/driver/orders/feature_imports.dart';
 import 'package:fares/features/onboarding/presentation/views/on_boarding_view.dart';
 import 'package:fares/features/onboarding/presentation/views/welcome_view.dart';
 import 'package:fares/features/profile/feature_imports.dart';
+import 'package:fares/features/store/parcels/feature_imports.dart';
 import 'package:fares/features/store/shipment/feature_imports.dart';
 import 'package:flutter/material.dart';
 

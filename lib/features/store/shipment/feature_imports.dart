@@ -15,16 +15,6 @@ part 'presentation/widgets/add_collection_request/collection_request_options.dar
 part 'presentation/views/add_collection_request_view.dart';
 part 'presentation/widgets/add_collection_request/add_collection_request_view_body.dart';
 
-part 'presentation/views/store_parcels_view.dart';
-part 'presentation/widgets/store_parcels/store_parcels_menu.dart';
-part 'presentation/widgets/store_parcels/store_parcels_item.dart';
-part 'presentation/widgets/store_parcels/store_parcels_list_view.dart';
-part 'presentation/views/store_parcel_details_view.dart';
-part 'presentation/widgets/store_parcels/parcel_info_section.dart';
-part 'presentation/widgets/store_parcels/recipient_info_section.dart';
-part 'presentation/widgets/store_parcels/parcel_timeline_section.dart';
-part 'presentation/widgets/store_parcels/timeline_item.dart';
-part 'presentation/widgets/store_parcels/info_row.dart';
 part 'presentation/views/contact_info_view.dart';
 part 'presentation/widgets/contact_info/contact_info_header.dart';
 part 'presentation/widgets/contact_info/addresses_section.dart';
