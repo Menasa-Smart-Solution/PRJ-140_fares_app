@@ -8,6 +8,7 @@ import 'package:fares/features/store/parcels/data/models/store_parcels_response_
 class StoreParcelsDatasourceImpl implements StoreParcelsDataSource {
   final ApiService _apiService;
   StoreParcelsDatasourceImpl(this._apiService);
+
   @override
   Future<StoreParcelsDetailsResponseModel> getStoreParcelDetails(int id) async {
     try {

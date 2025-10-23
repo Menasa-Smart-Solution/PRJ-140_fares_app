@@ -6,6 +6,8 @@ class StoreParcelsBlocBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<StoreParcelsCubit, StoreParcelsState>(
+      buildWhen: (previous, current) =>
+          previous.getAllStoreParcelsState != current.getAllStoreParcelsState,
       builder: (context, state) {
         switch (state.getAllStoreParcelsState) {
           case StateType.loading:
