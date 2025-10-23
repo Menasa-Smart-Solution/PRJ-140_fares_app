@@ -23,4 +23,9 @@ class ApiConstants {
   static const String logout = '/logout';
   static const String receiveParcels =
       "delivery-man/flights/{flightId}/receive";
+  static const String cities = "/prices";
+  static const String receipts = "/receipts";
+  static const String receiptDetails = "/receipts/{id}";
+  static const String parcelsDetails = "/parcels/{id}";
+  static const String parcelsStore = "/parcels";
 }

@@ -15,7 +15,11 @@ import 'package:fares/features/driver/orders/feature_imports.dart';
 import 'package:fares/features/onboarding/presentation/views/on_boarding_view.dart';
 import 'package:fares/features/onboarding/presentation/views/welcome_view.dart';
 import 'package:fares/features/profile/feature_imports.dart';
+import 'package:fares/features/store/parcels/feature_imports.dart';
+import 'package:fares/features/store/shipment/feature_imports.dart';
 import 'package:flutter/material.dart';
+
+import '../../features/store/prices/feature_imports.dart';
 
 class AppRouter {
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -78,6 +82,26 @@ class AppRouter {
         return _buildRoute(builder: (_) => const DriverMain());
       case Routes.callLogsRoute:
         return _buildRoute(builder: (_) => CallLogsView(id: args as int));
+      case Routes.createShipmentRoute:
+        return _buildRoute(builder: (_) => const CreateShipmentView());
+      case Routes.addCollectionRequestRoute:
+        return _buildRoute(builder: (_) => const AddCollectionRequestView());
+      case Routes.collectionSettlementsRoute:
+        return _buildRoute(builder: (_) => const CollectionSettlementsView());
+      case Routes.financialSettlementRoute:
+        return _buildRoute(
+          builder: (_) => FinancialSettlementView(id: args as int),
+        );
+      case Routes.storeParcelsRoute:
+        return _buildRoute(builder: (_) => const StoreParcelsView());
+      case Routes.storeParcelDetailsRoute:
+        return _buildRoute(
+          builder: (_) => StoreParcelDetailsView(parcelId: args as int),
+        );
+      case Routes.citiesPricesRoute:
+        return MaterialPageRoute(builder: (_) => const CitiesPricesView());
+      case Routes.contactInfoRoute:
+        return MaterialPageRoute(builder: (_) => const ContactInfoView());
 
       default:
         return null;

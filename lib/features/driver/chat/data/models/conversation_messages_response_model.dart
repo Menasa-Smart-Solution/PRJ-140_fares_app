@@ -28,8 +28,9 @@ class ConversationMessagesModel {
   final int? id;
   @JsonKey(name: "branch_id")
   final String? branchId;
-  @JsonKey(name: "store_id")
-  final String? storeId;
+
+  @JsonKey(name: "store_id", fromJson: _priceFromJson)
+  final int? storeId;
   @JsonKey(name: "parcel_id")
   final String? parcelId;
   @JsonKey(name: "last_message_id")
@@ -39,7 +40,11 @@ class ConversationMessagesModel {
   @JsonKey(name: "updated_at")
   final String? updatedAt;
   final List<MessageModel>? messages;
-
+  static int? _priceFromJson(dynamic v) => v == null
+      ? null
+      : v is String
+      ? int.tryParse(v)
+      : (v as num?)?.toInt();
   ConversationMessagesModel({
     this.id,
     this.branchId,

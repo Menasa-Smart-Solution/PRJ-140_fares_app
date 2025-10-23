@@ -1,12 +1,4 @@
 import 'dart:async';
-
-import 'package:fares/core/common_ui/widgets/custom_cached_image.dart';
-import 'package:fares/core/common_ui/widgets/custom_empty_widget.dart';
-import 'package:fares/core/common_ui/widgets/custom_error_widget.dart';
-import 'package:fares/core/common_ui/widgets/internet_connection_widget.dart';
-import 'package:fares/core/helpers/helper_func.dart';
-import 'package:fares/core/helpers/show_snackbar.dart';
-import 'package:fares/core/utils/app_logger.dart';
 import 'package:fares/features/driver/chat/feature_imports.dart';
 import 'package:fares/features/driver/orders/data/models/call_images_response.dart';
 import 'package:fares/features/driver/orders/data/models/cancel_order_reasons_response.dart';
@@ -17,9 +9,7 @@ import 'package:fares/features/driver/orders/presentation/cubit/call_records/cal
 import 'package:fares/features/driver/orders/presentation/cubit/order_operation/order_operation_cubit.dart';
 import 'package:fares/features/driver/orders/presentation/cubit/order_operation/order_operation_state.dart';
 import 'package:fares/features/driver/orders/presentation/cubit/orders/orders_cubit.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:skeletonizer/skeletonizer.dart';
+
 import 'package:simple_barcode_scanner/simple_barcode_scanner.dart';
 import '../../../core/utils/exports.dart';
 

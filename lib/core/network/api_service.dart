@@ -20,6 +20,11 @@ import 'package:fares/features/driver/orders/data/models/change_order_status_req
 import 'package:fares/features/driver/orders/data/models/parcels_response_model.dart';
 import 'package:fares/features/driver/home/data/models/summary_response_model.dart';
 import 'package:fares/features/driver/orders/data/models/partial_delivery_request.dart';
+import 'package:fares/features/store/parcels/data/models/store_parcels_details_response_model.dart';
+import 'package:fares/features/store/parcels/data/models/store_parcels_response_model.dart';
+import 'package:fares/features/store/prices/data/models/city_response_model.dart';
+import 'package:fares/features/store/prices/data/models/receipt_details_response_model.dart';
+import 'package:fares/features/store/prices/data/models/receipt_response_model.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../features/auth/data/models/reset_password_request_model.dart';
@@ -100,4 +105,26 @@ abstract class ApiService {
   Future<RegisterResponseModel> register(@Body() RegisterRequestModel body);
   @GET(ApiConstants.branches)
   Future<BranchesResponseModel> getBranches();
+
+  @GET(ApiConstants.cities)
+  Future<CityResponseModel> getCities();
+
+  @GET(ApiConstants.receipts)
+  Future<ReceiptResponseModel> getReceipts({@Query('page') int page = 1});
+  @GET(ApiConstants.receiptDetails)
+  Future<ReceiptDetailsResponseModel> getReceiptDetails({
+    @Path('id') required int id,
+  });
+
+  @GET(ApiConstants.parcelsStore)
+  Future<StoreParcelsResponseModel> getStoreParcels({
+    @Query('status') String? status,
+    @Query('query') String? id,
+    @Query('page') int? page,
+  });
+
+  @GET(ApiConstants.parcelsDetails)
+  Future<StoreParcelsDetailsResponseModel> getStoreParcelDetails({
+    @Path('id') required int id,
+  });
 }

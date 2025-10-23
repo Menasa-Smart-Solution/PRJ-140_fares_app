@@ -14,7 +14,7 @@ class CustomLoading extends StatelessWidget {
             shape: BoxShape.circle,
             color: index.isEven
                 ? AppColors.primaryColor
-                : AppColors.pastelGreen,
+                : AppColors.lightPrimaryColor,
           ),
         );
       },
