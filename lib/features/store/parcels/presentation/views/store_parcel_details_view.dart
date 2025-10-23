@@ -1,75 +1,16 @@
 part of '../../feature_imports.dart';
 
 class StoreParcelDetailsView extends StatelessWidget {
-  const StoreParcelDetailsView({super.key});
-
-  static const Map<String, dynamic> _parcelData = {
-    'code': '165252',
-    'description': 'قطعتان اخضر م -',
-    'status': 'مستلم بالشركة',
-    'pieces': '1 مقطعة',
-    'productPrice': 145.0,
-    'shippingPrice': 30.0,
-    'total': 175.0,
-    'createdAt': '12-10-2025 11:47',
-    'notes': '-',
-  };
-
-  static const Map<String, dynamic> _recipientData = {
-    'name': '',
-    'phone': '0921367456',
-    'backupPhone': '',
-    'city': 'الصابعه',
-    'address': 'الصابعه',
-  };
-
-  static const List<Map<String, dynamic>> _timeline = [
-    {'title': 'تم طباعة بوليصة للشحنة', 'date': '12-10-2025 14:51'},
-    {'title': 'تم إستلام الشحنة بالمستودع بنجاح', 'date': '12-10-2025 14:57'},
-    {
-      'title': 'تم إدخال الشحنة علي الرحلة : 23523 - معز صفر',
-      'date': '13-10-2025 05:57',
-    },
-    {'title': 'تم إستلام الشحنة من قبل المندوب', 'date': '14-10-2025 10:04'},
-    {
-      'title': 'تم تغيير حالة الشحنة الى قيد المراجعة',
-      'date': '14-10-2025 12:41',
-    },
-    {
-      'title': 'تعذر تسليم الشحنة بسبب : المستلم لا يرد -',
-      'date': '16-10-2025 04:19',
-    },
-  ];
-
+  const StoreParcelDetailsView({super.key, required this.parcelId});
+  final int parcelId;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(title: 'بيانات الشحنة # ${_parcelData['code']}'),
-      body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(child: verticalSpace(16)),
-          const SliverToBoxAdapter(
-            child: CustomFadeInDown(
-              duration: 400,
-              child: ParcelInfoSection(parcelData: _parcelData),
-            ),
-          ),
-          SliverToBoxAdapter(child: verticalSpace(16)),
-          const SliverToBoxAdapter(
-            child: CustomFadeInUp(
-              duration: 500,
-              child: RecipientInfoSection(recipientData: _recipientData),
-            ),
-          ),
-          SliverToBoxAdapter(child: verticalSpace(16)),
-          const SliverToBoxAdapter(
-            child: CustomFadeInUp(
-              duration: 600,
-              child: ParcelTimelineSection(timeline: _timeline),
-            ),
-          ),
-          SliverToBoxAdapter(child: verticalSpace(24)),
-        ],
+    return BlocProvider(
+      create: (context) =>
+          getIt<StoreParcelsCubit>()..getStoreParcelDetails(parcelId),
+      child: Scaffold(
+        appBar: CustomAppBar(title: 'بيانات الشحنة # ${parcelId.toString()}'),
+        body: const StoreParcelsDetailsBlocBuilder(),
       ),
     );
   }

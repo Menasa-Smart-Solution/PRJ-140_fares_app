@@ -1,22 +1,21 @@
 part of '../../../feature_imports.dart';
 
-class StoreParcelsBlocBuilder extends StatelessWidget {
-  const StoreParcelsBlocBuilder({super.key});
+class StoreParcelsDetailsBlocBuilder extends StatelessWidget {
+  const StoreParcelsDetailsBlocBuilder({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<StoreParcelsCubit, StoreParcelsState>(
       buildWhen: (previous, current) =>
-          previous.getAllStoreParcelsState != current.getAllStoreParcelsState ||
-          previous.isLoadingMore != current.isLoadingMore,
+          previous.getStoreParcelDetailsState !=
+          current.getStoreParcelDetailsState,
       builder: (context, state) {
-        switch (state.getAllStoreParcelsState) {
+        switch (state.getStoreParcelDetailsState) {
           case StateType.loading:
             return const Center(child: CustomLoading());
           case StateType.success:
-            return StoreParcelsListView(
-              storeParcels: state.storeParcels,
-              isLoadingMore: state.isLoadingMore,
+            return StoreParcelsDetailsViewBody(
+              storeParcel: state.storeParcelDetails!,
             );
           case StateType.error:
             return buildWidget(
@@ -30,7 +29,7 @@ class StoreParcelsBlocBuilder extends StatelessWidget {
             );
           case StateType.empty:
             return buildWidget(
-              const CustomEmptyWidget(message: 'لا توجد شحنات متاحة حالياً..!'),
+              const CustomEmptyWidget(message: 'لا توجد شحنة متاحة حالياً..!'),
               context,
             );
           case StateType.noInternet:

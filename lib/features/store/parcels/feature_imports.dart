@@ -16,5 +16,7 @@ part 'presentation/widgets/store_parcels/recipient_info_section.dart';
 part 'presentation/widgets/store_parcels/parcel_timeline_section.dart';
 part 'presentation/widgets/store_parcels/timeline_item.dart';
 part 'presentation/widgets/store_parcels/store_parcels_bloc_builder.dart';
+part 'presentation/widgets/store_parcels/store_parcels_details_view_body.dart';
+part 'presentation/widgets/store_parcels/store_parcels_details_bloc_builder.dart';
 
 part 'presentation/widgets/store_parcels/info_row.dart';

@@ -11,7 +11,10 @@ class StoreParcelsItem extends StatelessWidget {
     return Skeleton.leaf(
       child: InkWell(
         onTap: () {
-          context.pushNamed(Routes.storeParcelDetailsRoute);
+          context.pushNamed(
+            Routes.storeParcelDetailsRoute,
+            arguments: storeParcelModel.id,
+          );
         },
         child: Container(
           width: double.infinity,

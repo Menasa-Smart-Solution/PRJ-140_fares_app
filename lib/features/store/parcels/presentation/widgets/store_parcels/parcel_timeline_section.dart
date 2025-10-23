@@ -1,9 +1,9 @@
 part of '../../../feature_imports.dart';
 
 class ParcelTimelineSection extends StatelessWidget {
-  final List<Map<String, dynamic>> timeline;
+  final List<ParcelsRecord> records;
 
-  const ParcelTimelineSection({super.key, required this.timeline});
+  const ParcelTimelineSection({super.key, required this.records});
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +26,12 @@ class ParcelTimelineSection extends StatelessWidget {
         children: [
           _buildSectionHeader(),
           verticalSpace(20),
-          ...List.generate(timeline.length, (index) {
-            final item = timeline[index];
+          ...List.generate(records.length, (index) {
+            final item = records[index];
             return TimelineItem(
-              title: item['title'] as String,
-              date: item['date'] as String,
-              isLast: index == timeline.length - 1,
+              title: item.details ?? '-',
+              date: formatToArabicDate(item.createdAt ?? '-'),
+              isLast: index == records.length - 1,
             );
           }),
         ],

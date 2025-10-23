@@ -1,6 +1,7 @@
 import 'package:fares/core/errors/exceptions.dart';
 import 'package:fares/core/network/api_service.dart';
 import 'package:fares/core/network/error_handler.dart';
+import 'package:fares/core/utils/app_logger.dart';
 import 'package:fares/features/store/parcels/data/datasource/store_parcels_datasource.dart';
 import 'package:fares/features/store/parcels/data/models/store_parcels_details_response_model.dart';
 import 'package:fares/features/store/parcels/data/models/store_parcels_response_model.dart';
@@ -13,8 +14,14 @@ class StoreParcelsDatasourceImpl implements StoreParcelsDataSource {
   Future<StoreParcelsDetailsResponseModel> getStoreParcelDetails(int id) async {
     try {
       final response = await _apiService.getStoreParcelDetails(id: id);
+      AppLogger.info(
+        'StoreParcelsDatasource: Get StoreParcelDetails Success: $response',
+      );
       return response;
     } catch (e) {
+      AppLogger.error(
+        'StoreParcelsDatasource: Get StoreParcelDetails Error: $e',
+      );
       throw ServerException(message: ErrorHandler.handle(e).message!);
     }
   }
@@ -31,8 +38,12 @@ class StoreParcelsDatasourceImpl implements StoreParcelsDataSource {
         id: id,
         page: page,
       );
+      AppLogger.info(
+        'StoreParcelsDatasource: Get StoreParcels Success: $response',
+      );
       return response;
     } catch (e) {
+      AppLogger.error('StoreParcelsDatasource: Get StoreParcels Error: $e');
       throw ServerException(message: ErrorHandler.handle(e).message!);
     }
   }

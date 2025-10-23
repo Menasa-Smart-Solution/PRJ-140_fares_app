@@ -8,7 +8,7 @@ class StoreParcelsRepo {
   final StoreParcelsDataSource _dataSource;
   StoreParcelsRepo(this._dataSource);
 
-  Future<Either<Failure, List<StoreParcelModel>>> getStoreParcels({
+  Future<Either<Failure, StoreParcelsResponseModel>> getStoreParcels({
     String? status,
     String? id,
     int? page,
@@ -19,7 +19,7 @@ class StoreParcelsRepo {
         id: id,
         page: page,
       );
-      return Right(response.data.parcels);
+      return Right(response);
     } on ServerException catch (e) {
       return Left(ServerFailure(message: e.message));
     }

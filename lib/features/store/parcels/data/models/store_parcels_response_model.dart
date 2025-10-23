@@ -41,6 +41,8 @@ class StoreParcelModel {
   final String? productPrice;
   @JsonKey(name: 'recipient_number')
   final String? recipientNumber;
+  @JsonKey(name: 'recipient_number_2')
+  final String? recipientNumberTwo;
   @JsonKey(name: 'customer_name')
   final String? customerName;
   @JsonKey(name: 'origin_qty')
@@ -66,6 +68,7 @@ class StoreParcelModel {
   final DeliverymanModel? deliveryman;
   @JsonKey(name: 'created_at')
   final String? createdAt;
+  final List<ParcelsRecord>? records;
 
   StoreParcelModel({
     required this.id,
@@ -87,6 +90,8 @@ class StoreParcelModel {
     this.store,
     this.deliveryman,
     this.createdAt,
+    this.recipientNumberTwo,
+    this.records,
   });
 
   factory StoreParcelModel.fromJson(Map<String, dynamic> json) =>

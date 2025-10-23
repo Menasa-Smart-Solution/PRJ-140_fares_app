@@ -95,7 +95,9 @@ class AppRouter {
       case Routes.storeParcelsRoute:
         return _buildRoute(builder: (_) => const StoreParcelsView());
       case Routes.storeParcelDetailsRoute:
-        return _buildRoute(builder: (_) => const StoreParcelDetailsView());
+        return _buildRoute(
+          builder: (_) => StoreParcelDetailsView(parcelId: args as int),
+        );
       case Routes.citiesPricesRoute:
         return MaterialPageRoute(builder: (_) => const CitiesPricesView());
       case Routes.contactInfoRoute:

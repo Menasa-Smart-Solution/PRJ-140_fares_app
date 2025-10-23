@@ -1,9 +1,9 @@
 part of '../../../feature_imports.dart';
 
 class RecipientInfoSection extends StatelessWidget {
-  final Map<String, dynamic> recipientData;
+  final StoreParcelModel storeParcel;
 
-  const RecipientInfoSection({super.key, required this.recipientData});
+  const RecipientInfoSection({super.key, required this.storeParcel});
 
   @override
   Widget build(BuildContext context) {
@@ -25,22 +25,25 @@ class RecipientInfoSection extends StatelessWidget {
         children: [
           _buildSectionHeader(),
           verticalSpace(20),
-          InfoRow(label: 'الاسم', value: recipientData['name'] as String),
+          InfoRow(label: 'الاسم', value: storeParcel.customerName ?? '-'),
           verticalSpace(12),
           InfoRow(
             label: 'الهاتف',
-            value: recipientData['phone'] as String,
+            value: storeParcel.recipientNumber ?? '-',
             valueColor: AppColors.primaryColor,
           ),
           verticalSpace(12),
           InfoRow(
             label: 'الهاتف الإحتياطي',
-            value: recipientData['backupPhone'] as String,
+            value: storeParcel.recipientNumberTwo ?? '-',
           ),
           verticalSpace(12),
-          InfoRow(label: 'المدينة', value: recipientData['city'] as String),
+          InfoRow(
+            label: 'المدينة',
+            value: storeParcel.originBranch?.name ?? '-',
+          ),
           verticalSpace(12),
-          InfoRow(label: 'العنوان', value: recipientData['address'] as String),
+          InfoRow(label: 'العنوان', value: storeParcel.city ?? '-'),
         ],
       ),
     );

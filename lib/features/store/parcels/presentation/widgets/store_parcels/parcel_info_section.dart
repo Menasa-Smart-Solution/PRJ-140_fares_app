@@ -1,12 +1,16 @@
 part of '../../../feature_imports.dart';
 
 class ParcelInfoSection extends StatelessWidget {
-  final Map<String, dynamic> parcelData;
+  final StoreParcelModel storeParcel;
 
-  const ParcelInfoSection({super.key, required this.parcelData});
+  const ParcelInfoSection({super.key, required this.storeParcel});
 
   @override
   Widget build(BuildContext context) {
+    final totalPrice =
+        int.parse(storeParcel.productPrice ?? '0') +
+        int.parse(storeParcel.shippingPrice ?? '0');
+
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
       padding: const EdgeInsets.all(24),
@@ -22,29 +26,29 @@ class ParcelInfoSection extends StatelessWidget {
         children: [
           _buildSectionHeader(),
           verticalSpace(20),
-          InfoRow(label: 'الكود', value: parcelData['code'] as String),
+          InfoRow(label: 'الكود', value: storeParcel.id.toString()),
           verticalSpace(12),
-          InfoRow(label: 'الوصف', value: parcelData['description'] as String),
+          InfoRow(label: 'الوصف', value: storeParcel.desc ?? ''),
           verticalSpace(12),
           InfoRow(
             label: 'الحالة',
-            value: parcelData['status'] as String,
+            value: storeParcel.status ?? '',
             valueColor: AppColors.lightPrimaryColor,
           ),
           verticalSpace(12),
-          InfoRow(label: 'عدد القطع', value: parcelData['pieces'] as String),
+          InfoRow(label: 'عدد القطع', value: storeParcel.qty.toString()),
           verticalSpace(16),
           Divider(color: AppColors.primaryColor.withOpacity(0.2)),
           verticalSpace(16),
           InfoRow(
             label: 'سعر المنتج',
-            value: '${parcelData['productPrice']} د.ل',
+            value: '${storeParcel.productPrice} د.ل',
             valueStyle: AppTextStyles.bold16,
           ),
           verticalSpace(12),
           InfoRow(
             label: 'سعر الشحن',
-            value: '${parcelData['shippingPrice']} د.ل',
+            value: '${storeParcel.shippingPrice} د.ل',
             valueStyle: AppTextStyles.bold16,
           ),
           verticalSpace(16),
@@ -52,14 +56,17 @@ class ParcelInfoSection extends StatelessWidget {
           verticalSpace(16),
           InfoRow(
             label: 'الإجمالي',
-            value: '${parcelData['total']} د.ل',
+            value: '$totalPrice د.ل',
             valueStyle: AppTextStyles.bold16,
             valueColor: AppColors.primaryColor,
           ),
           verticalSpace(12),
-          InfoRow(label: 'الإنشاء', value: parcelData['createdAt'] as String),
+          InfoRow(
+            label: 'الإنشاء',
+            value: formatToArabicDate(storeParcel.createdAt ?? ''),
+          ),
           verticalSpace(12),
-          InfoRow(label: 'ملاحظة', value: parcelData['notes'] as String),
+          InfoRow(label: 'ملاحظة', value: storeParcel.notes ?? ''),
         ],
       ),
     );
