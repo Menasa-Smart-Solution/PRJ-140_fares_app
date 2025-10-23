@@ -11,6 +11,7 @@ import 'package:fares/features/driver/chat/chat_di.dart';
 import 'package:fares/features/driver/home/home_di.dart';
 import 'package:fares/features/driver/main/navigation_di.dart';
 import 'package:fares/features/driver/orders/orders_di.dart';
+import 'package:fares/features/store/parcels/store_parcels_di.dart';
 import 'package:fares/features/store/prices/prices_di.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
@@ -28,6 +29,7 @@ Future<void> setupDependencyInjection() async {
   await initOrdersDI();
   await initChatDI();
   await initPricesDi();
+  await initStoreParcelsDi();
 }
 
 Future<void> _initCoreDependencies() async {

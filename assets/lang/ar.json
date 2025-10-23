@@ -199,5 +199,7 @@
   "currency": "د.ل",
   "notes": "ملاحظات",
   "contactCourier": "الاتصال بالمندوب",
-  "chatWithCourier": "محادثات المندوب"
+  "chatWithCourier": "محادثات المندوب",
+  "copyShipmentLink": "نسخ رابط الشحنة",
+  "copyShipmentLinkSuccess": "لقد تم نسخ رابط الشحنة بنجاح.يمكنكم ارسال الرابط للمستلم لمتابعة حالة شحنته"
 }

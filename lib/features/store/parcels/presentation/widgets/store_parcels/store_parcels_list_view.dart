@@ -1,14 +1,16 @@
 part of '../../../feature_imports.dart';
 
 class StoreParcelsListView extends StatelessWidget {
-  const StoreParcelsListView({super.key});
+  const StoreParcelsListView({super.key, required this.storeParcels});
+  final List<StoreParcelModel> storeParcels;
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      itemBuilder: (context, index) => const StoreParcelsItem(),
+      itemBuilder: (context, index) =>
+          StoreParcelsItem(storeParcelModel: storeParcels[index]),
       separatorBuilder: (context, index) => verticalSpace(8),
-      itemCount: 10,
+      itemCount: storeParcels.length,
     );
   }
 }

@@ -1,10 +1,13 @@
 part of '../../../feature_imports.dart';
 
 class StoreParcelsItem extends StatelessWidget {
-  const StoreParcelsItem({super.key});
-
+  const StoreParcelsItem({super.key, required this.storeParcelModel});
+  final StoreParcelModel storeParcelModel;
   @override
   Widget build(BuildContext context) {
+    final totalPrice =
+        int.parse(storeParcelModel.productPrice ?? '0') +
+        int.parse(storeParcelModel.shippingPrice ?? '0');
     return Skeleton.leaf(
       child: InkWell(
         onTap: () {
@@ -40,7 +43,7 @@ class StoreParcelsItem extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '125415',
+                          storeParcelModel.id.toString(),
                           style: AppTextStyles.med24.copyWith(
                             color: AppColors.white,
                           ),
@@ -55,14 +58,14 @@ class StoreParcelsItem extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: Text(
-                      translateStatus('pending'),
+                      translateStatus(storeParcelModel.status ?? ''),
                       style: AppTextStyles.med12.copyWith(
                         color: AppColors.white,
                       ),
                     ),
                   ),
                   horizontalSpace(8),
-                  const StoreParcelsMenu(),
+                  StoreParcelsMenu(storeParcelModel: storeParcelModel),
                 ],
               ),
               _buildDivider(),
@@ -77,23 +80,25 @@ class StoreParcelsItem extends StatelessWidget {
                       children: [
                         OrderDetailsWidget(
                           title: LocaleKeys.description.tr(),
-                          value: 'paasdasd',
+                          value: storeParcelModel.desc ?? '',
                         ),
                         OrderDetailsWidget(
                           title: LocaleKeys.recipient.tr(),
-                          value: 'paasdasd',
+                          value: storeParcelModel.recipientNumber ?? '',
                         ),
                         OrderDetailsWidget(
                           title: LocaleKeys.creationDate.tr(),
-                          value: formatToArabicDate('10-5-2024' ?? ''),
+                          value: formatToArabicDate(
+                            storeParcelModel.createdAt ?? '',
+                          ),
                         ),
-                        const OrderDetailsWidget(
+                        OrderDetailsWidget(
                           title: 'سعر المنتج',
-                          value: '200 د.ل',
+                          value: '${storeParcelModel.productPrice} د.ل',
                         ),
-                        const OrderDetailsWidget(
+                        OrderDetailsWidget(
                           title: 'سعر الشحن',
-                          value: '50 د.ل',
+                          value: '${storeParcelModel.shippingPrice} د.ل',
                         ),
                       ],
                     ),
@@ -105,20 +110,20 @@ class StoreParcelsItem extends StatelessWidget {
                       children: [
                         OrderDetailsWidget(
                           title: LocaleKeys.pieces.tr(),
-                          value: 'paasdasd',
+                          value: '${storeParcelModel.qty}',
                         ),
-                        const OrderDetailsWidget(
+                        OrderDetailsWidget(
                           title: 'الملاحظات',
-                          value: 'asdasdas',
+                          value: storeParcelModel.notes ?? '-',
                         ),
 
-                        const OrderDetailsWidget(
+                        OrderDetailsWidget(
                           title: 'مندوب التوصيل',
-                          value: 'اسم المندوب',
+                          value: storeParcelModel.deliveryman?.name ?? '-',
                         ),
-                        const OrderDetailsWidget(
+                        OrderDetailsWidget(
                           title: 'رقم نقال المندوب',
-                          value: '0123456789',
+                          value: storeParcelModel.deliveryman?.phone ?? '-',
                         ),
                       ],
                     ),
@@ -138,7 +143,7 @@ class StoreParcelsItem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '99 د.ل',
+                    '$totalPrice د.ل',
                     style: AppTextStyles.bold16.copyWith(
                       color: AppColors.white,
                     ),

@@ -215,7 +215,9 @@ class CodegenLoader extends AssetLoader{
   "currency": "د.ل",
   "notes": "ملاحظات",
   "contactCourier": "الاتصال بالمندوب",
-  "chatWithCourier": "محادثات المندوب"
+  "chatWithCourier": "محادثات المندوب",
+  "copyShipmentLink": "نسخ رابط الشحنة",
+  "copyShipmentLinkSuccess": "لقد تم نسخ رابط الشحنة بنجاح.يمكنكم ارسال الرابط للمستلم لمتابعة حالة شحنته"
 };
 static const Map<String,dynamic> _en = {
   "trackingTitle": "تتبع حالة \nشحناتك \nوانت في مكانك",

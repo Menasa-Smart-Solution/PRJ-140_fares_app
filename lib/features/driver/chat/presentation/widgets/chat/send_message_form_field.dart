@@ -86,14 +86,17 @@ class _SendMessageFormFieldState extends State<SendMessageFormField> {
                                 widget.conversationMessages.id!.toString(),
                                 SendMessageRequestModel(
                                   message: _messageController.text,
-                                  parcelId:
-                                      widget.conversationMessages.parcelId!,
+                                  parcelId: widget
+                                      .conversationMessages
+                                      .parcelId!
+                                      .toString(),
                                   type: type == 'store'
                                       ? 'store'
                                       : 'deliveryman ',
                                 ),
                                 int.parse(
-                                  widget.conversationMessages.parcelId!,
+                                  widget.conversationMessages.parcelId!
+                                      .toString(),
                                 ),
                               );
                               _messageController.clear();

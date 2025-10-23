@@ -204,5 +204,7 @@ abstract class  LocaleKeys {
   static const notes = 'notes';
   static const contactCourier = 'contactCourier';
   static const chatWithCourier = 'chatWithCourier';
+  static const copyShipmentLink = 'copyShipmentLink';
+  static const copyShipmentLinkSuccess = 'copyShipmentLinkSuccess';
 
 }

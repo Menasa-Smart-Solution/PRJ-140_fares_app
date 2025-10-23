@@ -5,11 +5,14 @@ class StoreParcelsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppBar(title: 'كل الشحنات'),
-      body: const StoreParcelsListView().withPadding(
-        vertical: 20,
-        horizontal: 16,
+    return BlocProvider(
+      create: (context) => getIt<StoreParcelsCubit>()..getStoreParcels(),
+      child: Scaffold(
+        appBar: const CustomAppBar(title: 'كل الشحنات'),
+        body: const StoreParcelsBlocBuilder().withPadding(
+          vertical: 20,
+          horizontal: 16,
+        ),
       ),
     );
   }

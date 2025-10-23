@@ -438,8 +438,9 @@ class ParcelStoreModel {
 class ParcelCityModel {
   final int? id;
   final String? name;
+  final String? price;
 
-  ParcelCityModel({this.id, this.name});
+  ParcelCityModel({this.id, this.name, this.price});
 
   factory ParcelCityModel.fromJson(Map<String, dynamic> json) =>
       _$ParcelCityModelFromJson(json);
@@ -455,8 +456,10 @@ class BranchModel {
   final int? id;
   final String? name;
   final String? phone;
+  @JsonKey(name: 'phone_2')
+  final String? phone2;
 
-  BranchModel({this.id, this.name, this.phone});
+  BranchModel({this.id, this.name, this.phone, this.phone2});
 
   factory BranchModel.fromJson(Map<String, dynamic> json) =>
       _$BranchModelFromJson(json);
