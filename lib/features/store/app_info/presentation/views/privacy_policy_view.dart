@@ -5,9 +5,15 @@ class PrivacyPolicyView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(title: LocaleKeys.privacyPolicy.tr()),
-      body: const Center(child: Text('Privacy Policy Content Goes Here')),
+    return BlocProvider(
+      create: (context) => getIt<AppInfoCubit>()..getPrivacyPolicyInfo(),
+      child: Scaffold(
+        appBar: CustomAppBar(title: LocaleKeys.privacyPolicy.tr()),
+        body: const PrivacyPolicyBlocBuilder().withPadding(
+          horizontal: 16,
+          vertical: 25,
+        ),
+      ),
     );
   }
 }

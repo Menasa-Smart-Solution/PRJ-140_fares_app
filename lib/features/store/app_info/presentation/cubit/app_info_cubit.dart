@@ -43,4 +43,38 @@ class AppInfoCubit extends Cubit<AppInfoState> {
       },
     );
   }
+
+  Future<void> getPrivacyPolicyInfo() async {
+    emit(
+      state.copyWith(
+        getPrivacyPolicyState: StateType.loading,
+        errorMessage: null,
+      ),
+    );
+    final isConnected = await _internetService.isConnected();
+    if (!isConnected) {
+      emit(state.copyWith(getPrivacyPolicyState: StateType.noInternet));
+      return;
+    }
+
+    final privacyPolicyInfo = await _appInfoRepo.getPrivacyPolicyInfo();
+    privacyPolicyInfo.fold(
+      (failure) {
+        emit(
+          state.copyWith(
+            getPrivacyPolicyState: StateType.error,
+            errorMessage: failure.message,
+          ),
+        );
+      },
+      (response) {
+        emit(
+          state.copyWith(
+            getPrivacyPolicyState: StateType.success,
+            privacyPolicy: response.data.privacyPolicy,
+          ),
+        );
+      },
+    );
+  }
 }

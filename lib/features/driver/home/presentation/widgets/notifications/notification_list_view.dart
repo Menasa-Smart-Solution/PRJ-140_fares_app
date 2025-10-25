@@ -5,7 +5,7 @@ class NotificationsListView extends StatelessWidget {
   final List<NotificationModel> notifications;
   @override
   Widget build(BuildContext context) {
-    return SliverList.builder(
+    return ListView.builder(
       itemBuilder: (context, index) {
         return NotificationItem(notification: notifications[index]);
       },

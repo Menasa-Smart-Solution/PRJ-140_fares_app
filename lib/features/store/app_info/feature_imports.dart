@@ -10,3 +10,4 @@ part 'presentation/views/privacy_policy_view.dart';
 part 'presentation/widgets/contact_item_widget.dart';
 part 'presentation/widgets/contact_us_list_view.dart';
 part 'presentation/widgets/contact_us_bloc_builder.dart';
+part 'presentation/widgets/privacy_policy_bloc_builder.dart';

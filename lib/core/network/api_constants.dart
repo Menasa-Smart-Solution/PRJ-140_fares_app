@@ -32,4 +32,5 @@ class ApiConstants {
   static const String createParcels = "/parcels/store";
   static const String productsStore = "/products";
   static const String contactUs = "/contact";
+  static const String privacyPolicy = "/privacy-policy";
 }
