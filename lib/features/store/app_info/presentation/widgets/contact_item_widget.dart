@@ -59,7 +59,7 @@ class ContactItemWidget extends StatelessWidget {
               ],
             ),
           ),
-          verticalSpace(16),
+          verticalSpace(8),
 
           // Primary Phone
           if (phone != null && phone!.isNotEmpty) ...[
