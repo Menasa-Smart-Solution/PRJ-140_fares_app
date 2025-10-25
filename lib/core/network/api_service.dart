@@ -20,6 +20,7 @@ import 'package:fares/features/driver/orders/data/models/change_order_status_req
 import 'package:fares/features/driver/orders/data/models/parcels_response_model.dart';
 import 'package:fares/features/driver/home/data/models/summary_response_model.dart';
 import 'package:fares/features/driver/orders/data/models/partial_delivery_request.dart';
+import 'package:fares/features/store/app_info/data/models/contact_us_response_model.dart';
 import 'package:fares/features/store/parcels/data/models/store_parcels_details_response_model.dart';
 import 'package:fares/features/store/parcels/data/models/store_parcels_response_model.dart';
 import 'package:fares/features/store/prices/data/models/city_response_model.dart';
@@ -143,4 +144,7 @@ abstract class ApiService {
 
   @POST(ApiConstants.createParcels)
   Future<void> addDeposit({@Body() required AddDepositRequestModel body});
+
+  @GET(ApiConstants.contactUs)
+  Future<ContactUsResponseModel> getContactUsInfo();
 }

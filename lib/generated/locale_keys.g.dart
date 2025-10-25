@@ -216,5 +216,6 @@ abstract class  LocaleKeys {
   static const prices = 'prices';
   static const contactUs = 'contactUs';
   static const products = 'products';
+  static const privacyPolicy = 'privacyPolicy';
 
 }

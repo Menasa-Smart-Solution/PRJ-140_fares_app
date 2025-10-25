@@ -35,3 +35,8 @@ part 'presentation/widgets/contact_info/addresses_section.dart';
 part 'presentation/widgets/contact_info/address_item.dart';
 part 'presentation/widgets/contact_info/phone_numbers_section.dart';
 part 'presentation/widgets/contact_info/phone_number_item.dart';
+
+part 'presentation/views/products_view.dart';
+part 'presentation/widgets/products/product_item_widget.dart';
+part 'presentation/widgets/products/products_list_view.dart';
+part 'presentation/widgets/products/products_bloc_builder.dart';

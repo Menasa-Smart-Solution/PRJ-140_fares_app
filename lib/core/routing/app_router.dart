@@ -15,6 +15,7 @@ import 'package:fares/features/driver/orders/feature_imports.dart';
 import 'package:fares/features/onboarding/presentation/views/on_boarding_view.dart';
 import 'package:fares/features/onboarding/presentation/views/welcome_view.dart';
 import 'package:fares/features/profile/feature_imports.dart';
+import 'package:fares/features/store/app_info/feature_imports.dart';
 import 'package:fares/features/store/home/presentations/views/store_home_view.dart';
 import 'package:fares/features/store/main/presentations/views/main_store_view.dart';
 import 'package:fares/features/store/parcels/feature_imports.dart';
@@ -110,6 +111,12 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const MainStoreView());
       case Routes.storeHomeRoute:
         return MaterialPageRoute(builder: (_) => const StoreHomeView());
+      case Routes.productsRoute:
+        return MaterialPageRoute(builder: (_) => const ProductsView());
+      case Routes.privacyPolicyRoute:
+        return MaterialPageRoute(builder: (_) => const PrivacyPolicyView());
+      case Routes.contactUsRoute:
+        return MaterialPageRoute(builder: (_) => const ContactUsView());
 
       default:
         return null;

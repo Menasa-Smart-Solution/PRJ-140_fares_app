@@ -227,7 +227,8 @@ class CodegenLoader extends AssetLoader{
   "financial": "المالية",
   "prices": "الأسعار",
   "contactUs": "تواصل معنا",
-  "products": "المنتجات"
+  "products": "المنتجات",
+  "privacyPolicy": "سياسة الخصوصية"
 };
 static const Map<String,dynamic> _en = {
   "trackingTitle": "تتبع حالة \nشحناتك \nوانت في مكانك",
