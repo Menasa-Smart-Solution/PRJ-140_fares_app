@@ -5,11 +5,21 @@ class CreateShipmentView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(title: LocaleKeys.addShipment.tr()),
-      body: const CreateShipmentViewBody().withPadding(
-        horizontal: 16,
-        vertical: 20,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<CreateParcelsCubit>()..getProducts(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<CitiesPriceCubit>()..getCitiesPrices(),
+        ),
+      ],
+      child: Scaffold(
+        appBar: CustomAppBar(title: LocaleKeys.addShipment.tr()),
+        body: const CreateParcelsBlocBuilder().withPadding(
+          horizontal: 16,
+          vertical: 20,
+        ),
       ),
     );
   }

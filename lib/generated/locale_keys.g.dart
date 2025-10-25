@@ -156,6 +156,7 @@ abstract class  LocaleKeys {
   static const additionalNotesHint = 'additionalNotesHint';
   static const saveRequest = 'saveRequest';
   static const chooseSpecs = 'chooseSpecs';
+  static const breakable = 'breakable';
   static const nonMeasurable = 'nonMeasurable';
   static const measurable = 'measurable';
   static const nonOpenable = 'nonOpenable';
@@ -206,5 +207,9 @@ abstract class  LocaleKeys {
   static const chatWithCourier = 'chatWithCourier';
   static const copyShipmentLink = 'copyShipmentLink';
   static const copyShipmentLinkSuccess = 'copyShipmentLinkSuccess';
+  static const market = 'market';
+  static const customer = 'customer';
+  static const chooseProduct = 'chooseProduct';
+  static const productHint = 'productHint';
 
 }

@@ -25,6 +25,8 @@ import 'package:fares/features/store/parcels/data/models/store_parcels_response_
 import 'package:fares/features/store/prices/data/models/city_response_model.dart';
 import 'package:fares/features/store/prices/data/models/receipt_details_response_model.dart';
 import 'package:fares/features/store/prices/data/models/receipt_response_model.dart';
+import 'package:fares/features/store/shipment/data/models/products_response_model.dart';
+import 'package:fares/features/store/shipment/data/models/store_collect_request_model.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../features/auth/data/models/reset_password_request_model.dart';
@@ -127,4 +129,14 @@ abstract class ApiService {
   Future<StoreParcelsDetailsResponseModel> getStoreParcelDetails({
     @Path('id') required int id,
   });
+
+  @POST(ApiConstants.collectsStore)
+  Future<void> createStoreCollects({
+    @Body() required StoreCollectRequestModel body,
+  });
+  @POST(ApiConstants.createParcels)
+  Future<void> createParcels({@Body() required FormData body});
+
+  @GET(ApiConstants.productsStore)
+  Future<ProductsResponseModel> getProducts();
 }

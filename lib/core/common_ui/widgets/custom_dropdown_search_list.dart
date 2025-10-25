@@ -22,6 +22,7 @@ class CustomDropdownSearchList<T> extends StatelessWidget {
     required this.hintText,
     this.showLabel,
     this.title,
+    this.validator,
     this.titleColor,
   });
   final List<T> items;
@@ -37,6 +38,7 @@ class CustomDropdownSearchList<T> extends StatelessWidget {
   final bool showRemove;
   final bool? showLabel;
   final String? title;
+  final String? Function(T?)? validator;
   final Color? titleColor;
 
   @override
@@ -50,6 +52,7 @@ class CustomDropdownSearchList<T> extends StatelessWidget {
         compareFn: (item1, item2) => item1 == item2,
         items: (filter, infiniteScrollProps) => items,
         itemAsString: itemAsString,
+        validator: validator,
         onChanged: (value) {
           onChanged(value);
         },
@@ -70,12 +73,8 @@ class CustomDropdownSearchList<T> extends StatelessWidget {
         selectedItem: initialValue,
         suffixProps: DropdownSuffixProps(
           clearButtonProps: ClearButtonProps(
-            isVisible: showRemove,
-            icon: const Icon(
-              Icons.delete_outline,
-              size: 22,
-              color: AppColors.red,
-            ),
+            isVisible: showRemove && initialValue != null,
+            icon: const Icon(Icons.close, size: 20, color: AppColors.red),
           ),
         ),
         popupProps: PopupProps.menu(

@@ -168,6 +168,7 @@ class CodegenLoader extends AssetLoader{
   "additionalNotesHint": "أدخل ملاحظات إضافية هنا",
   "saveRequest": "حفظ الطلب",
   "chooseSpecs": "اختر المواصفات (يمكن اختيار عدة خيارات)",
+  "breakable": "قابل للكسر",
   "nonMeasurable": "غير قابل للقياس",
   "measurable": "قابل للقياس",
   "nonOpenable": "غير قابل للفتح",
@@ -217,7 +218,11 @@ class CodegenLoader extends AssetLoader{
   "contactCourier": "الاتصال بالمندوب",
   "chatWithCourier": "محادثات المندوب",
   "copyShipmentLink": "نسخ رابط الشحنة",
-  "copyShipmentLinkSuccess": "لقد تم نسخ رابط الشحنة بنجاح.يمكنكم ارسال الرابط للمستلم لمتابعة حالة شحنته"
+  "copyShipmentLinkSuccess": "لقد تم نسخ رابط الشحنة بنجاح.يمكنكم ارسال الرابط للمستلم لمتابعة حالة شحنته",
+  "market": "المرسل",
+  "customer": "المستلم",
+  "chooseProduct": "أختر المنتج",
+  "productHint": "أختر المنتج هنا"
 };
 static const Map<String,dynamic> _en = {
   "trackingTitle": "تتبع حالة \nشحناتك \nوانت في مكانك",

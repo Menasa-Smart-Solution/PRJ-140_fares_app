@@ -28,4 +28,7 @@ class ApiConstants {
   static const String receiptDetails = "/receipts/{id}";
   static const String parcelsDetails = "/parcels/{id}";
   static const String parcelsStore = "/parcels";
+  static const String collectsStore = "/collects";
+  static const String createParcels = "/parcels/store";
+  static const String productsStore = "/products";
 }

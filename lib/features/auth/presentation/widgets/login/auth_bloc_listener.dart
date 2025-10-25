@@ -17,21 +17,37 @@ class AuthBlocListener extends StatelessWidget {
           OverlayHelper.showLoadingOverlay(context);
         } else if (state.type.isSuccess) {
           OverlayHelper.hideLoadingOverlay();
+          if (state.isRegistered) {
+            if (!context.mounted) return;
+            context.pushNamedAndRemoveUntil(
+              Routes.loginRoute,
+              predicate: (_) => false,
+            );
+            return;
+          }
+          await CacheHelper.setSecuredString(
+            PrefsKeys.role,
+            state.userModel!.user.type,
+          );
+          await CacheHelper.setSecuredString(
+            PrefsKeys.address,
+            state.userModel!.user.address,
+          );
+          await CacheHelper.setSecuredString(
+            PrefsKeys.phone,
+            state.userModel!.user.phone,
+          );
           await CacheHelper.setSecuredString(
             PrefsKeys.token,
             state.isRegistered
                 ? state.registeredUser!.token
                 : state.userModel!.token,
           );
-          if (!state.isRegistered) {
-            await CacheHelper.setSecuredString(
-              PrefsKeys.role,
-              state.userModel!.user.type,
-            );
-          }
           if (!context.mounted) return;
           context.pushNamedAndRemoveUntil(
-            Routes.mainDriverRoute,
+            state.userModel!.user.type == "store"
+                ? Routes.collectionSettlementsRoute
+                : Routes.mainDriverRoute,
             predicate: (_) => false,
           );
           showSnackBar(
