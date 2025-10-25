@@ -6,6 +6,8 @@ class ContactUsBlocBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppInfoCubit, AppInfoState>(
+      buildWhen: (previous, current) =>
+          current.getContactUsState != previous.getContactUsState,
       builder: (context, state) {
         switch (state.getContactUsState) {
           case StateType.loading:
