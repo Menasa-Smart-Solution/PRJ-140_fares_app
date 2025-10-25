@@ -1,8 +1,13 @@
 part of '../../../feature_imports.dart';
 
 class CreateShipmentViewBody extends StatefulWidget {
-  const CreateShipmentViewBody({super.key, required this.products});
+  const CreateShipmentViewBody({
+    super.key,
+    required this.products,
+    required this.isDeposit,
+  });
   final List<ProductModel> products;
+  final bool isDeposit;
 
   @override
   State<CreateShipmentViewBody> createState() => _CreateShipmentViewBodyState();
@@ -16,6 +21,7 @@ class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
   final TextEditingController _addressDetailedController =
       TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _quantityController = TextEditingController();
 
   @override
   void dispose() {
@@ -115,7 +121,7 @@ class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
                         return LocaleKeys.fieldRequired.tr();
                       }
                     },
-                    controller: cubit.quantityController,
+                    controller: _quantityController,
                     showLabel: true,
                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     radius: 10,
@@ -157,16 +163,31 @@ class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
               backgroundColor: AppColors.textFormFieldBg,
               radius: 10,
             ),
-            const ChooseShipmentImage(),
-            const ShipmentOptions(),
+            if (!widget.isDeposit) ...[
+              const ChooseShipmentImage(),
+              const ShipmentOptions(),
+            ],
+            const CreateParcelsBlocListener(),
             AppTextButton(
               onPressed: () {
+                final cubit = context.read<CreateParcelsCubit>();
                 if (_formKey.currentState!.validate()) {
-                  context.read<CreateParcelsCubit>().createParcels(
+                  if (widget.isDeposit) {
+                    cubit.addDeposit(
+                      phone: _phoneController.text,
+                      address: _addressDetailedController.text,
+                      recipientName: _recipientNameController.text,
+                      recipientPhone2: _phone2Controller.text,
+                      qty: _quantityController.text,
+                    );
+                    return;
+                  }
+                  cubit.createParcels(
                     phone: _phoneController.text,
                     address: _addressDetailedController.text,
                     recipientName: _recipientNameController.text,
                     recipientPhone2: _phone2Controller.text,
+                    qty: _quantityController.text,
                   );
                 }
               },

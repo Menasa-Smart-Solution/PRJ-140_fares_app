@@ -2,6 +2,7 @@ import 'package:fares/core/errors/exceptions.dart';
 import 'package:fares/core/network/error_handler.dart';
 import 'package:fares/core/utils/app_logger.dart';
 import 'package:fares/features/store/shipment/data/datasources/shipment_data_source.dart';
+import 'package:fares/features/store/shipment/data/models/add_deposit_request_model.dart';
 import 'package:fares/features/store/shipment/data/models/create_parcels_request_body.dart';
 import 'package:fares/features/store/shipment/data/models/products_response_model.dart';
 import 'package:fares/features/store/shipment/data/models/store_collect_request_model.dart';
@@ -46,6 +47,18 @@ class ShipmentDataSourceImpl extends ShipmentDataSource {
       return response;
     } catch (e) {
       AppLogger.error('ShipmentDataSource: Get Products Error: $e');
+      throw ServerException(message: ErrorHandler.handle(e).message!);
+    }
+  }
+
+  @override
+  Future<void> addDeposit({required AddDepositRequestModel body}) async {
+    try {
+      final response = await _apiService.addDeposit(body: body);
+      AppLogger.log('ShipmentDataSource: Add Deposit Success');
+      return response;
+    } catch (e) {
+      AppLogger.log('ShipmentDataSource: Add Deposit Failed: $e');
       throw ServerException(message: ErrorHandler.handle(e).message!);
     }
   }

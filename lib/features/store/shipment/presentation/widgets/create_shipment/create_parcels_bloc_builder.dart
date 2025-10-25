@@ -1,7 +1,8 @@
 part of '../../../feature_imports.dart';
 
 class CreateParcelsBlocBuilder extends StatelessWidget {
-  const CreateParcelsBlocBuilder({super.key});
+  const CreateParcelsBlocBuilder({super.key, required this.isDeposit});
+  final bool isDeposit;
 
   @override
   Widget build(BuildContext context) {
@@ -9,12 +10,18 @@ class CreateParcelsBlocBuilder extends StatelessWidget {
       builder: (context, state) {
         switch (state.getProductsState) {
           case StateType.loading:
-            return const Skeletonizer(
+            return Skeletonizer(
               enabled: true,
-              child: CreateShipmentViewBody(products: []),
+              child: CreateShipmentViewBody(
+                products: const [],
+                isDeposit: isDeposit,
+              ),
             );
           case StateType.success:
-            return CreateShipmentViewBody(products: state.products);
+            return CreateShipmentViewBody(
+              products: state.products,
+              isDeposit: isDeposit,
+            );
           case StateType.error:
             return CustomErrorWidget(
               message: state.errorMessage!,

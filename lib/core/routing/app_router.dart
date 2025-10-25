@@ -15,6 +15,8 @@ import 'package:fares/features/driver/orders/feature_imports.dart';
 import 'package:fares/features/onboarding/presentation/views/on_boarding_view.dart';
 import 'package:fares/features/onboarding/presentation/views/welcome_view.dart';
 import 'package:fares/features/profile/feature_imports.dart';
+import 'package:fares/features/store/home/presentations/views/store_home_view.dart';
+import 'package:fares/features/store/main/presentations/views/main_store_view.dart';
 import 'package:fares/features/store/parcels/feature_imports.dart';
 import 'package:fares/features/store/shipment/feature_imports.dart';
 import 'package:flutter/material.dart';
@@ -83,7 +85,9 @@ class AppRouter {
       case Routes.callLogsRoute:
         return _buildRoute(builder: (_) => CallLogsView(id: args as int));
       case Routes.createShipmentRoute:
-        return _buildRoute(builder: (_) => const CreateShipmentView());
+        return _buildRoute(
+          builder: (_) => CreateShipmentView(isDeposit: args as bool),
+        );
       case Routes.addCollectionRequestRoute:
         return _buildRoute(builder: (_) => const AddCollectionRequestView());
       case Routes.collectionSettlementsRoute:
@@ -102,6 +106,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const CitiesPricesView());
       case Routes.contactInfoRoute:
         return MaterialPageRoute(builder: (_) => const ContactInfoView());
+      case Routes.mainStoreRoute:
+        return MaterialPageRoute(builder: (_) => const MainStoreView());
+      case Routes.storeHomeRoute:
+        return MaterialPageRoute(builder: (_) => const StoreHomeView());
 
       default:
         return null;

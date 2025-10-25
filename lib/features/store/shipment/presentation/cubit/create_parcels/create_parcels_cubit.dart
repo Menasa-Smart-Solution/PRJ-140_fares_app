@@ -4,6 +4,7 @@ import 'package:fares/core/services/image_picker_service.dart';
 import 'package:fares/core/services/internet_service.dart';
 import 'package:fares/core/utils/exports.dart';
 import 'package:fares/features/store/prices/data/models/city_response_model.dart';
+import 'package:fares/features/store/shipment/data/models/add_deposit_request_model.dart';
 import 'package:fares/features/store/shipment/data/models/create_parcels_request_body.dart';
 import 'package:fares/features/store/shipment/data/models/products_response_model.dart';
 import 'package:fares/features/store/shipment/data/repositories/shipment_repo.dart';
@@ -19,19 +20,21 @@ class CreateParcelsCubit extends Cubit<CreateParcelsState> {
     this._internetService,
   ) : super(const CreateParcelsState());
   final TextEditingController descriptionController = TextEditingController();
-  final TextEditingController quantityController = TextEditingController();
   final TextEditingController productPriceController = TextEditingController();
 
   Future<void> createParcels({
     required String phone,
     required String address,
+    required String qty,
     String? recipientName,
     String? recipientPhone2,
   }) async {
-    emit(state.copyWith(createParcelsState: StateType.loading));
+    emit(
+      state.copyWith(createParcelsState: StateType.loading, isDeposit: false),
+    );
     final parcels = CreateParcelsRequestBody(
       customerName: recipientName,
-      qty: int.parse(quantityController.text),
+      qty: int.parse(qty),
       desc: descriptionController.text,
       recipientNumber: phone,
       recipientNumber2: recipientPhone2,
@@ -59,6 +62,47 @@ class CreateParcelsCubit extends Cubit<CreateParcelsState> {
       },
       (_) {
         emit(state.copyWith(createParcelsState: StateType.success));
+      },
+    );
+  }
+
+  void addDeposit({
+    required String phone,
+    required String address,
+    required String qty,
+    String? recipientName,
+    String? recipientPhone2,
+  }) async {
+    emit(state.copyWith(createParcelsState: StateType.loading));
+    final body = AddDepositRequestModel(
+      customerName: recipientName,
+      qty: int.parse(qty),
+      desc: descriptionController.text,
+      recipientNumber: phone,
+      recipientNumber2: recipientPhone2,
+      productPrice: num.parse(productPriceController.text),
+      address: address,
+      cityId: state.selectedCity!.id,
+      deliveryOn: state.onDeliveryType ?? LocaleKeys.customer,
+      downPayment: 1, // Example down payment value),
+    );
+    final result = await _repo.addDeposit(body: body);
+    result.fold(
+      (failure) {
+        emit(
+          state.copyWith(
+            createParcelsState: StateType.error,
+            errorMessage: failure.message,
+          ),
+        );
+      },
+      (_) {
+        emit(
+          state.copyWith(
+            createParcelsState: StateType.success,
+            isDeposit: true,
+          ),
+        );
       },
     );
   }
@@ -129,7 +173,6 @@ class CreateParcelsCubit extends Cubit<CreateParcelsState> {
   void setSelectedProduct(ProductModel? product) {
     AppLogger.info('Selected Product: ${product?.name}');
     descriptionController.text = product?.name ?? '';
-    quantityController.text = product?.qty.toString() ?? '';
     productPriceController.text = product?.price.toString() ?? '';
     emit(state.copyWith(selectedProduct: product, clearSelectedProduct: false));
   }
@@ -141,7 +184,6 @@ class CreateParcelsCubit extends Cubit<CreateParcelsState> {
   @override
   Future<void> close() {
     descriptionController.dispose();
-    quantityController.dispose();
     productPriceController.dispose();
     return super.close();
   }

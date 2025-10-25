@@ -2,6 +2,10 @@
 class AppImages {
   AppImages._();
   
+  static const String imagesAdd = "assets/images/add.svg";
+
+  static const String imagesAddSequre = "assets/images/add_sequre.svg";
+
   static const String imagesAllOrders = "assets/images/all_orders.svg";
 
   static const String imagesAndroid12Splash = "assets/images/android12_splash.png";
@@ -19,6 +23,8 @@ class AppImages {
   static const String imagesConversations = "assets/images/conversations.svg";
 
   static const String imagesDelivery = "assets/images/delivery.svg";
+
+  static const String imagesDeposit = "assets/images/deposit.svg";
 
   static const String imagesDocumentText = "assets/images/document-text.svg";
 
@@ -48,11 +54,15 @@ class AppImages {
 
   static const String imagesMan = "assets/images/man.png";
 
+  static const String imagesMoney = "assets/images/money.svg";
+
   static const String imagesNoInternet = "assets/images/no-internet.png";
 
   static const String imagesOnboarding = "assets/images/onboarding.jpg";
 
   static const String imagesOrders = "assets/images/orders.svg";
+
+  static const String imagesProduct = "assets/images/product.svg";
 
   static const String imagesProfile = "assets/images/profile.svg";
 
@@ -65,6 +75,8 @@ class AppImages {
   static const String imagesSend = "assets/images/send.svg";
 
   static const String imagesShieldSecurity = "assets/images/shield-security.svg";
+
+  static const String imagesShipping = "assets/images/shipping.svg";
 
   static const String imagesStore = "assets/images/store.png";
 

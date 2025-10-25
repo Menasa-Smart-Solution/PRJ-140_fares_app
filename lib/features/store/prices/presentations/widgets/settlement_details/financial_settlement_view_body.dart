@@ -42,10 +42,7 @@ class FinancialSettlementViewBody extends StatelessWidget {
         SliverList.builder(
           itemCount: receiptModel.parcels!.length,
           itemBuilder: (context, index) {
-            return CustomFadeInUp(
-              duration: 600 + (index * 100),
-              child: ShipmentItemCard(parcel: receiptModel.parcels![index]),
-            );
+            return ShipmentItemCard(parcel: receiptModel.parcels![index]);
           },
         ),
         SliverToBoxAdapter(child: verticalSpace(24)),

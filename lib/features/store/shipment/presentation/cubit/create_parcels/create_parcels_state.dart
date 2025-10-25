@@ -10,6 +10,7 @@ class CreateParcelsState extends Equatable {
   final StateType getProductsState;
   final List<ProductModel> products;
   final ProductModel? selectedProduct;
+  final bool isDeposit;
 
   const CreateParcelsState({
     this.createParcelsState = StateType.initial,
@@ -21,6 +22,7 @@ class CreateParcelsState extends Equatable {
     this.getProductsState = StateType.loading,
     this.products = const [],
     this.selectedProduct,
+    this.isDeposit = false,
   });
 
   @override
@@ -34,6 +36,7 @@ class CreateParcelsState extends Equatable {
     getProductsState,
     selectedProduct,
     products,
+    isDeposit,
   ];
 
   CreateParcelsState copyWith({
@@ -48,6 +51,7 @@ class CreateParcelsState extends Equatable {
     List<ProductModel>? products,
     ProductModel? selectedProduct,
     bool clearSelectedProduct = false,
+    bool? isDeposit,
   }) {
     return CreateParcelsState(
       createParcelsState: createParcelsState ?? this.createParcelsState,
@@ -63,6 +67,7 @@ class CreateParcelsState extends Equatable {
       selectedProduct: clearSelectedProduct
           ? null
           : selectedProduct ?? this.selectedProduct,
+      isDeposit: isDeposit ?? this.isDeposit,
     );
   }
 }

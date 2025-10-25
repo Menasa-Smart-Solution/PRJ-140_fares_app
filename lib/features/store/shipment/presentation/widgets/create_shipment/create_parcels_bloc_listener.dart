@@ -13,8 +13,11 @@ class CreateParcelsBlocListener extends StatelessWidget {
           OverlayHelper.showLoadingOverlay(context);
         } else if (state.createParcelsState.isSuccess) {
           OverlayHelper.hideLoadingOverlay();
+          context.pop();
           showSnackBar(
-            message: 'تم أضافة شحنة جديدة بنجاح',
+            message: state.isDeposit == true
+                ? "تم أضافة عربون بنجاح"
+                : 'تم أضافة شحنة جديدة بنجاح',
             type: SnackType.success,
           );
           // Navigator.of(context).pop();

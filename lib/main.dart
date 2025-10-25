@@ -25,7 +25,7 @@ void main() async {
       path: 'assets/lang',
       fallbackLocale: const Locale('ar'),
       startLocale: const Locale('ar'),
-      child: const FaresApp(initialRoute: Routes.createShipmentRoute),
+      child: const FaresApp(initialRoute: Routes.mainStoreRoute),
     ),
   );
 }

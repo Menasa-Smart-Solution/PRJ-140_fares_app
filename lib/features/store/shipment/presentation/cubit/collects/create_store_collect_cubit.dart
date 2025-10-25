@@ -8,6 +8,7 @@ part 'create_store_collect_state.dart';
 
 class CreateStoreCollectCubit extends Cubit<CreateStoreCollectState> {
   final ShipmentRepo _repo;
+
   CreateStoreCollectCubit(this._repo) : super(const CreateStoreCollectState());
 
   Future<void> createStoreCollects({
@@ -60,15 +61,13 @@ class CreateStoreCollectCubit extends Cubit<CreateStoreCollectState> {
   }
 
   void toggleServiceSelection(String service) {
-    final currentSelected = Set<String>.from(state.selectedServices);
-
-    if (currentSelected.contains(service)) {
-      currentSelected.remove(service);
+    final selectedServices = Set<String>.from(state.selectedServices);
+    if (selectedServices.contains(service)) {
+      selectedServices.remove(service);
     } else {
-      currentSelected.add(service);
+      selectedServices.add(service);
     }
-
-    emit(state.copyWith(selectedServices: currentSelected));
+    emit(state.copyWith(selectedServices: selectedServices));
   }
 
   void clearServiceSelection() {

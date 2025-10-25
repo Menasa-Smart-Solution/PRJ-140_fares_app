@@ -150,7 +150,6 @@ abstract class  LocaleKeys {
   static const phoneNumberInvalid = 'phoneNumberInvalid';
   static const passwordsDoNotMatch = 'passwordsDoNotMatch';
   static const registerSuccess = 'registerSuccess';
-  static const addCollectionRequest = 'addCollectionRequest';
   static const collectionRequestData = 'collectionRequestData';
   static const services = 'services';
   static const additionalNotesHint = 'additionalNotesHint';
@@ -211,5 +210,11 @@ abstract class  LocaleKeys {
   static const customer = 'customer';
   static const chooseProduct = 'chooseProduct';
   static const productHint = 'productHint';
+  static const addDeposit = 'addDeposit';
+  static const addCollectionRequest = 'addCollectionRequest';
+  static const financial = 'financial';
+  static const prices = 'prices';
+  static const contactUs = 'contactUs';
+  static const products = 'products';
 
 }

@@ -25,6 +25,7 @@ import 'package:fares/features/store/parcels/data/models/store_parcels_response_
 import 'package:fares/features/store/prices/data/models/city_response_model.dart';
 import 'package:fares/features/store/prices/data/models/receipt_details_response_model.dart';
 import 'package:fares/features/store/prices/data/models/receipt_response_model.dart';
+import 'package:fares/features/store/shipment/data/models/add_deposit_request_model.dart';
 import 'package:fares/features/store/shipment/data/models/products_response_model.dart';
 import 'package:fares/features/store/shipment/data/models/store_collect_request_model.dart';
 import 'package:retrofit/retrofit.dart';
@@ -139,4 +140,7 @@ abstract class ApiService {
 
   @GET(ApiConstants.productsStore)
   Future<ProductsResponseModel> getProducts();
+
+  @POST(ApiConstants.createParcels)
+  Future<void> addDeposit({@Body() required AddDepositRequestModel body});
 }

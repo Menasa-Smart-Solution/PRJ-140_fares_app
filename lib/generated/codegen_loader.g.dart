@@ -162,7 +162,6 @@ class CodegenLoader extends AssetLoader{
   "phoneNumberInvalid": "رقم الهاتف غير صالح",
   "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
   "registerSuccess": "تم التسجيل بنجاح",
-  "addCollectionRequest": "طلب تجميع جديد",
   "collectionRequestData": "بيانات طلب التجميع",
   "services": "الخدمات",
   "additionalNotesHint": "أدخل ملاحظات إضافية هنا",
@@ -222,7 +221,13 @@ class CodegenLoader extends AssetLoader{
   "market": "المرسل",
   "customer": "المستلم",
   "chooseProduct": "أختر المنتج",
-  "productHint": "أختر المنتج هنا"
+  "productHint": "أختر المنتج هنا",
+  "addDeposit": "أضافة عربون",
+  "addCollectionRequest": "أضافة طلب تجميع",
+  "financial": "المالية",
+  "prices": "الأسعار",
+  "contactUs": "تواصل معنا",
+  "products": "المنتجات"
 };
 static const Map<String,dynamic> _en = {
   "trackingTitle": "تتبع حالة \nشحناتك \nوانت في مكانك",
