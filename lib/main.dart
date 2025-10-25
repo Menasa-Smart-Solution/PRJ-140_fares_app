@@ -25,7 +25,7 @@ void main() async {
       path: 'assets/lang',
       fallbackLocale: const Locale('ar'),
       startLocale: const Locale('ar'),
-      child: const FaresApp(initialRoute: Routes.mainStoreRoute),
+      child: FaresApp(initialRoute: initialRoute),
     ),
   );
 }
@@ -55,11 +55,12 @@ Future<String> _getInitialRoute() async {
   final String userToken =
       await CacheHelper.getSecuredString(PrefsKeys.token) ?? '';
   AppLogger.info('userToken: $userToken');
+  final userType = await CacheHelper.getSecuredString(PrefsKeys.role) ?? '';
   final bool hasSeenOnboarding =
       CacheHelper().getBool(key: PrefsKeys.onboarding) ?? false;
 
   if (userToken.isNotEmpty) {
-    return Routes.mainDriverRoute;
+    return userType == 'store' ? Routes.mainStoreRoute : Routes.mainDriverRoute;
   } else {
     if (hasSeenOnboarding) {
       return Routes.welcomeRoute;

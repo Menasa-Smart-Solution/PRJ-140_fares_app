@@ -5,9 +5,15 @@ class EditProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppBar(title: "الحساب"),
-      body: const ProfileViewBody().withPadding(horizontal: 16, vertical: 20),
+    return BlocProvider(
+      create: (context) => getIt<ProfileCubit>()..getUserInfo(),
+      child: Scaffold(
+        appBar: const CustomAppBar(title: "الحساب"),
+        body: const ProfileBlocBuilder().withPadding(
+          horizontal: 16,
+          vertical: 20,
+        ),
+      ),
     );
   }
 }

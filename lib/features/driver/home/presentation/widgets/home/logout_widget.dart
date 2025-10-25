@@ -16,7 +16,10 @@ class LogoutWidget extends StatelessWidget {
           showDialog(
             barrierDismissible: false,
             context: context,
-            builder: (context) => const LogoutAlertDialog(),
+            builder: (context) => BlocProvider(
+              create: (context) => getIt<HomeCubit>(),
+              child: const LogoutAlertDialog(),
+            ),
           );
         },
       ),

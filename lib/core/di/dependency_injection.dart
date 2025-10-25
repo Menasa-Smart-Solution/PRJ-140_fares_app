@@ -11,7 +11,9 @@ import 'package:fares/features/driver/chat/chat_di.dart';
 import 'package:fares/features/driver/home/home_di.dart';
 import 'package:fares/features/driver/main/navigation_di.dart';
 import 'package:fares/features/driver/orders/orders_di.dart';
+import 'package:fares/features/profile/profile_di.dart';
 import 'package:fares/features/store/app_info/app_info_di.dart';
+import 'package:fares/features/store/home/home_store_di.dart';
 import 'package:fares/features/store/parcels/store_parcels_di.dart';
 import 'package:fares/features/store/prices/prices_di.dart';
 import 'package:fares/features/store/shipment/store_shipment_di.dart';
@@ -34,6 +36,8 @@ Future<void> setupDependencyInjection() async {
   await initStoreParcelsDi();
   await initStoreShipmentDI();
   await initAppInfoDI();
+  await initProfileDi();
+  await initHomeStoreDi();
 }
 
 Future<void> _initCoreDependencies() async {

@@ -105,6 +105,7 @@ class HomeDrawer extends StatelessWidget {
             hasScrollBody: false,
             child: LogoutWidget(),
           ),
+          const SliverToBoxAdapter(child: LogoutBlocListener()),
         ],
       ).withPadding(vertical: 30, horizontal: 16),
     );

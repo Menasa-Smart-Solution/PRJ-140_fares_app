@@ -33,4 +33,6 @@ class ApiConstants {
   static const String productsStore = "/products";
   static const String contactUs = "/contact";
   static const String privacyPolicy = "/privacy-policy";
+  static const String user = "/user";
+  static const String tickets = "/tickets";
 }

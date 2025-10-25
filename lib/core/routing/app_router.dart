@@ -16,7 +16,7 @@ import 'package:fares/features/onboarding/presentation/views/on_boarding_view.da
 import 'package:fares/features/onboarding/presentation/views/welcome_view.dart';
 import 'package:fares/features/profile/feature_imports.dart';
 import 'package:fares/features/store/app_info/feature_imports.dart';
-import 'package:fares/features/store/home/presentations/views/store_home_view.dart';
+import 'package:fares/features/store/home/presentation/views/store_home_view.dart';
 import 'package:fares/features/store/main/presentations/views/main_store_view.dart';
 import 'package:fares/features/store/parcels/feature_imports.dart';
 import 'package:fares/features/store/shipment/feature_imports.dart';

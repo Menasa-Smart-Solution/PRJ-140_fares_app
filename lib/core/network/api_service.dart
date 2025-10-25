@@ -20,8 +20,11 @@ import 'package:fares/features/driver/orders/data/models/change_order_status_req
 import 'package:fares/features/driver/orders/data/models/parcels_response_model.dart';
 import 'package:fares/features/driver/home/data/models/summary_response_model.dart';
 import 'package:fares/features/driver/orders/data/models/partial_delivery_request.dart';
+import 'package:fares/features/profile/data/models/user_response_model.dart';
 import 'package:fares/features/store/app_info/data/models/contact_us_response_model.dart';
 import 'package:fares/features/store/app_info/data/models/privacy_policy_response_model.dart';
+import 'package:fares/features/store/home/data/models/create_ticket_request_model.dart';
+import 'package:fares/features/store/home/data/models/tickets_response_models.dart';
 import 'package:fares/features/store/parcels/data/models/store_parcels_details_response_model.dart';
 import 'package:fares/features/store/parcels/data/models/store_parcels_response_model.dart';
 import 'package:fares/features/store/prices/data/models/city_response_model.dart';
@@ -151,4 +154,13 @@ abstract class ApiService {
 
   @GET(ApiConstants.privacyPolicy)
   Future<PrivacyPolicyResponseModel> getPrivacyPolicyInfo();
+
+  @GET(ApiConstants.user)
+  Future<UserResponseModel> getUserInfo();
+
+  @GET(ApiConstants.tickets)
+  Future<TicketsResponseModels> getTickets();
+
+  @POST(ApiConstants.tickets)
+  Future<void> createTickets({@Body() required CreateTicketRequestModel body});
 }

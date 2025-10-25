@@ -1,10 +1,36 @@
-// part of 'profile_cubit.dart';
+part of 'profile_cubit.dart';
 
-// abstract class ProfileState extends Equatable {
-//   const ProfileState();
+class ProfileState extends Equatable {
+  final StateType getUserInfo;
+  final UserModel? userModel;
+  final StateType logoutUser;
+  final String? errorMessage;
 
-//   @override
-//   List<Object> get props => [];
-// }
+  const ProfileState({
+    this.getUserInfo = StateType.loading,
+    this.userModel,
+    this.logoutUser = StateType.initial,
+    this.errorMessage,
+  });
+  @override
+  List<Object?> get props => [
+    getUserInfo,
+    userModel,
+    logoutUser,
+    errorMessage ?? '',
+  ];
 
-// class ProfileInitial extends ProfileState {}
+  ProfileState copyWith({
+    StateType? getUserInfo,
+    UserModel? userModel,
+    StateType? logoutUser,
+    String? errorMessage,
+  }) {
+    return ProfileState(
+      getUserInfo: getUserInfo ?? this.getUserInfo,
+      userModel: userModel ?? this.userModel,
+      logoutUser: logoutUser ?? this.logoutUser,
+      errorMessage: errorMessage ?? this.errorMessage,
+    );
+  }
+}

@@ -14,10 +14,10 @@ class AuthInterceptor extends Interceptor {
     final token = await CacheHelper.getSecuredString(PrefsKeys.token);
 
     if (token != null && token.isNotEmpty) {
-      // options.headers['Authorization'] = 'Bearer $token';
+      options.headers['Authorization'] = 'Bearer $token';
     }
-    options.headers['Authorization'] =
-        'Bearer 151649|op8Vx5UYqZHAK29pxve2sY5Txv8lq0ahIy6vLj65';
+    // options.headers['Authorization'] =
+    //     'Bearer 151649|op8Vx5UYqZHAK29pxve2sY5Txv8lq0ahIy6vLj65';
     return super.onRequest(options, handler);
   }
 

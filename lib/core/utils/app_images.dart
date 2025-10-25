@@ -34,6 +34,8 @@ class AppImages {
 
   static const String imagesEmptyMessages = "assets/images/empty_messages.svg";
 
+  static const String imagesEmptyTickets = "assets/images/empty_tickets.png";
+
   static const String imagesError = "assets/images/error.png";
 
   static const String imagesGlobal = "assets/images/global.svg";

@@ -228,7 +228,16 @@ class CodegenLoader extends AssetLoader{
   "prices": "الأسعار",
   "contactUs": "تواصل معنا",
   "products": "المنتجات",
-  "privacyPolicy": "سياسة الخصوصية"
+  "privacyPolicy": "سياسة الخصوصية",
+  "deleteAccount": "حذف الحساب",
+  "tickets": "التذاكر",
+  "createTicket": "انشاء تذكرة",
+  "noSupportTickets": "ليس لديك تذاكر دعم حتي الآن !",
+  "createNewTicket": "انشاء تذكره",
+  "parcelId": "رقم الشحنة",
+  "desc": "الوصف",
+  "parcelIdHint": "ادخل رقم الشحنة",
+  "descHint": "ادخل وصف التذكرة"
 };
 static const Map<String,dynamic> _en = {
   "trackingTitle": "تتبع حالة \nشحناتك \nوانت في مكانك",

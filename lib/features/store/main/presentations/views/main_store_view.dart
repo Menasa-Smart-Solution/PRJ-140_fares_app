@@ -1,8 +1,8 @@
-import 'package:fares/core/common_ui/widgets/bottom_navbar_item.dart';
 import 'package:fares/core/utils/exports.dart';
 import 'package:fares/features/driver/chat/feature_imports.dart';
 import 'package:fares/features/driver/home/presentation/widgets/widgets.dart';
-import 'package:fares/features/store/home/presentations/views/store_home_view.dart';
+import 'package:fares/features/store/home/features_imports.dart';
+import 'package:fares/features/store/home/presentation/views/store_home_view.dart';
 import 'package:fares/features/store/main/presentations/cubit/main_store_cubit.dart';
 
 class MainStoreView extends StatelessWidget {
@@ -24,7 +24,7 @@ class MainStore extends StatelessWidget {
     StoreHomeView(),
     NotificationsView(),
     ConversationsView(),
-    Center(child: Text('Profile View')),
+    TicketsView(),
   ];
 
   @override
@@ -60,14 +60,15 @@ class MainStore extends StatelessWidget {
                 icon: const Icon(Icons.home, color: AppColors.grey200),
                 selectedIcon: const Icon(
                   Icons.home,
+
                   color: AppColors.primaryColor,
                 ),
                 label: LocaleKeys.home.tr(),
               ),
               NavigationDestination(
-                icon: const Icon(AppIcons.wallet, color: AppColors.grey200),
+                icon: const Icon(Icons.notifications, color: AppColors.grey200),
                 selectedIcon: const Icon(
-                  AppIcons.notifications,
+                  Icons.notifications,
                   color: AppColors.primaryColor,
                 ),
                 label: LocaleKeys.notifications.tr(),
@@ -75,25 +76,25 @@ class MainStore extends StatelessWidget {
 
               NavigationDestination(
                 icon: const Icon(
-                  AppIcons.conversations,
+                  Icons.chat_bubble_rounded,
                   color: AppColors.grey200,
                 ),
                 selectedIcon: const Icon(
-                  AppIcons.conversations,
+                  Icons.chat_bubble_rounded,
                   color: AppColors.primaryColor,
                 ),
                 label: LocaleKeys.chats.tr(),
               ),
               NavigationDestination(
                 icon: const Icon(
-                  AppIcons.conversations,
+                  Icons.confirmation_num_outlined,
                   color: AppColors.grey200,
                 ),
                 selectedIcon: const Icon(
-                  AppIcons.conversations,
+                  Icons.confirmation_num_outlined,
                   color: AppColors.primaryColor,
                 ),
-                label: LocaleKeys.chats.tr(),
+                label: LocaleKeys.tickets.tr(),
               ),
             ],
           ),

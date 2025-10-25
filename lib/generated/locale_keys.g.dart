@@ -217,5 +217,14 @@ abstract class  LocaleKeys {
   static const contactUs = 'contactUs';
   static const products = 'products';
   static const privacyPolicy = 'privacyPolicy';
+  static const deleteAccount = 'deleteAccount';
+  static const tickets = 'tickets';
+  static const createTicket = 'createTicket';
+  static const noSupportTickets = 'noSupportTickets';
+  static const createNewTicket = 'createNewTicket';
+  static const parcelId = 'parcelId';
+  static const desc = 'desc';
+  static const parcelIdHint = 'parcelIdHint';
+  static const descHint = 'descHint';
 
 }

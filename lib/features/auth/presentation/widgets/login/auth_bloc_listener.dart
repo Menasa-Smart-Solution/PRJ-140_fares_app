@@ -1,10 +1,8 @@
 import 'package:fares/core/helpers/cache_helper.dart';
-import 'package:fares/core/helpers/show_snackbar.dart';
 import 'package:fares/core/utils/exports.dart';
 import 'package:fares/core/utils/prefs_keys.dart';
 import 'package:fares/features/auth/presentation/cubit/auth/auth_cubit.dart';
 import 'package:fares/features/auth/presentation/cubit/auth/auth_state.dart';
-import 'package:flutter/material.dart';
 
 class AuthBlocListener extends StatelessWidget {
   const AuthBlocListener({super.key});
@@ -46,7 +44,7 @@ class AuthBlocListener extends StatelessWidget {
           if (!context.mounted) return;
           context.pushNamedAndRemoveUntil(
             state.userModel!.user.type == "store"
-                ? Routes.collectionSettlementsRoute
+                ? Routes.mainStoreRoute
                 : Routes.mainDriverRoute,
             predicate: (_) => false,
           );
