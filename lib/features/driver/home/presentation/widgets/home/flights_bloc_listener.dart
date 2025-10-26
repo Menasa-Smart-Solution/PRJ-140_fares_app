@@ -6,17 +6,19 @@ class FlightsBlocListener extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<HomeCubit, HomeState>(
+      listenWhen: (previous, current) =>
+          previous.receiveParcelsState != current.receiveParcelsState,
       listener: (context, state) async {
-        if (state.logOutState.isSuccess) {
+        if (state.receiveParcelsState.isSuccess) {
           OverlayHelper.hideLoadingOverlay();
           await context.read<HomeCubit>().getAllSummary();
           showSnackBar(message: 'تم قبول الطلب بنجاح', type: SnackType.success);
-        } else if (state.logOutState.isLoading) {
+        } else if (state.receiveParcelsState.isLoading) {
           OverlayHelper.showLoadingOverlay(context);
-        } else if (state.logOutState.isError) {
+        } else if (state.receiveParcelsState.isError) {
           OverlayHelper.hideLoadingOverlay();
           showSnackBar(message: state.errorMessage!, type: SnackType.error);
-        } else if (state.logOutState.isNoInternet) {
+        } else if (state.receiveParcelsState.isNoInternet) {
           OverlayHelper.hideLoadingOverlay();
           showSnackBar(
             message: LocaleKeys.noNetworkConnection.tr(),

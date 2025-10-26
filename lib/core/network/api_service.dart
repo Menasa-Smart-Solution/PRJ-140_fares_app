@@ -90,7 +90,10 @@ abstract class ApiService {
   Future<CancelOrderReasonsResponse> getCancelOrderReasons();
 
   @GET(ApiConstants.notifications)
-  Future<NotificationsResponseModel> getNotifications();
+  Future<NotificationsResponseModel> getNotifications({
+    @Query('page') int page = 1,
+    @Query('per_page') int perPage = 10,
+  });
 
   @POST(ApiConstants.uploadCallImage)
   @MultiPart()

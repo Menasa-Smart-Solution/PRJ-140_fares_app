@@ -12,6 +12,8 @@ class NotificationsBlocBuilder extends StatelessWidget {
             return Skeletonizer(
               enabled: true,
               child: NotificationsListView(
+                isLoadingMore: false,
+                hasMore: false,
                 notifications: List.generate(
                   5,
                   (index) => NotificationModel(
@@ -24,7 +26,11 @@ class NotificationsBlocBuilder extends StatelessWidget {
               ),
             );
           case StateType.success:
-            return NotificationsListView(notifications: state.notifications);
+            return NotificationsListView(
+              notifications: state.notifications,
+              isLoadingMore: state.isLoadingMore,
+              hasMore: state.hasMoreData,
+            );
           case StateType.error:
             return buildWidget(
               CustomErrorWidget(

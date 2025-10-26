@@ -43,10 +43,15 @@ class HomeRepo {
     }
   }
 
-  Future<Either<Failure, NotificationsResponseModel>>
-  getAllNotifications() async {
+  Future<Either<Failure, NotificationsResponseModel>> getAllNotifications({
+    int page = 1,
+    int perPage = 10,
+  }) async {
     try {
-      final result = await homeDataSource.getAllNotifications();
+      final result = await homeDataSource.getAllNotifications(
+        page: page,
+        perPage: perPage,
+      );
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(message: e.message));

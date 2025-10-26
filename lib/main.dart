@@ -1,23 +1,19 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:fares/core/di/dependency_injection.dart';
 import 'package:fares/core/helpers/cache_helper.dart';
-import 'package:fares/core/routing/routes.dart';
 import 'package:fares/core/services/notification_service.dart';
-import 'package:fares/core/utils/app_logger.dart';
+import 'package:fares/core/utils/app_bloc_observer.dart';
 import 'package:fares/core/utils/env_variables.dart';
+import 'package:fares/core/utils/exports.dart';
 import 'package:fares/core/utils/prefs_keys.dart';
 import 'package:fares/fares_app.dart';
 import 'package:fares/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   final initialRoute = await _initializeApp();
-
+  Bloc.observer = AppBlocObserver();
   runApp(
     EasyLocalization(
       useOnlyLangCode: true,

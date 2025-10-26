@@ -5,5 +5,8 @@ abstract class HomeDataSource {
   Future<SummaryResponseModel> getAllSummary();
   Future<void> logOut();
   Future<void> receiveParcels(String parcelId);
-  Future<NotificationsResponseModel> getAllNotifications();
+  Future<NotificationsResponseModel> getAllNotifications({
+    int page = 1,
+    int perPage = 10,
+  });
 }

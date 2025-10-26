@@ -4,12 +4,29 @@ part 'notifications_response_model.g.dart';
 @JsonSerializable(checked: true)
 class NotificationsResponseModel {
   @JsonKey(name: 'data')
-  final List<NotificationModel> notifications;
+  final NotificationsDataModel notificationData;
 
   factory NotificationsResponseModel.fromJson(Map<String, dynamic> json) =>
       _$NotificationsResponseModelFromJson(json);
 
-  NotificationsResponseModel({required this.notifications});
+  NotificationsResponseModel({required this.notificationData});
+}
+
+@JsonSerializable(checked: true)
+class NotificationsDataModel {
+  @JsonKey(name: 'current_page')
+  final int currentPage;
+  @JsonKey(name: 'last_page')
+  final int lastPage;
+  @JsonKey(name: 'data')
+  final List<NotificationModel> notifications;
+  NotificationsDataModel({
+    required this.currentPage,
+    required this.lastPage,
+    required this.notifications,
+  });
+  factory NotificationsDataModel.fromJson(Map<String, dynamic> json) =>
+      _$NotificationsDataModelFromJson(json);
 }
 
 @JsonSerializable(checked: true)
