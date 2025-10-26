@@ -32,7 +32,7 @@ class ParcelInfoSection extends StatelessWidget {
           verticalSpace(12),
           InfoRow(
             label: 'الحالة',
-            value: storeParcel.status ?? '',
+            value: getStatusNameAr(storeParcel.status ?? ''),
             valueColor: AppColors.lightPrimaryColor,
           ),
           verticalSpace(12),

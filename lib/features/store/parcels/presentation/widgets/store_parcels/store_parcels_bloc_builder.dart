@@ -2,7 +2,6 @@ part of '../../../feature_imports.dart';
 
 class StoreParcelsBlocBuilder extends StatelessWidget {
   const StoreParcelsBlocBuilder({super.key});
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<StoreParcelsCubit, StoreParcelsState>(

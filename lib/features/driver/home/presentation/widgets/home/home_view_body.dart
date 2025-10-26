@@ -95,7 +95,11 @@ class HomeViewBody extends StatelessWidget {
                     context: context,
                     builder: (context) => BlocProvider.value(
                       value: cubit,
-                      child: const LogoutAlertDialog(),
+                      child: LogoutAlertDialog(
+                        onTap: () {
+                          cubit.logOut();
+                        },
+                      ),
                     ),
                   );
                 },
@@ -107,8 +111,14 @@ class HomeViewBody extends StatelessWidget {
         ),
         SliverToBoxAdapter(child: verticalSpace(20)),
         SliverToBoxAdapter(child: NewFlights(flights: model.flights)),
-        const SliverToBoxAdapter(
-          child: Skeleton.leaf(child: HomeSearchBarWidget()),
+        SliverToBoxAdapter(
+          child: Skeleton.leaf(
+            child: HomeSearchBarWidget(
+              onTap: () {
+                context.pushNamed(Routes.searchRoute);
+              },
+            ),
+          ),
         ),
         SliverToBoxAdapter(child: verticalSpace(20)),
         DashboardGridWidget(statuses: model.statuses),

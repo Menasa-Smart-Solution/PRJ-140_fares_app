@@ -61,7 +61,7 @@ class StoreParcelsItem extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: Text(
-                      translateStatus(storeParcelModel.status ?? ''),
+                      getStatusNameAr(storeParcelModel.status ?? ''),
                       style: AppTextStyles.med12.copyWith(
                         color: AppColors.white,
                       ),

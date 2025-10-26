@@ -98,7 +98,9 @@ class AppRouter {
           builder: (_) => FinancialSettlementView(id: args as int),
         );
       case Routes.storeParcelsRoute:
-        return _buildRoute(builder: (_) => const StoreParcelsView());
+        return _buildRoute(
+          builder: (_) => StoreParcelsView(params: args as StoreParcelsParams),
+        );
       case Routes.storeParcelDetailsRoute:
         return _buildRoute(
           builder: (_) => StoreParcelDetailsView(parcelId: args as int),

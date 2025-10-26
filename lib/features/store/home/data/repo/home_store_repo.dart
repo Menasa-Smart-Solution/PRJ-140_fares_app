@@ -3,6 +3,7 @@ import 'package:fares/core/errors/exceptions.dart';
 import 'package:fares/core/errors/failure.dart';
 import 'package:fares/features/store/home/data/datasource/store_home_datasource.dart';
 import 'package:fares/features/store/home/data/models/create_ticket_request_model.dart';
+import 'package:fares/features/store/home/data/models/store_home_response_model.dart';
 import 'package:fares/features/store/home/data/models/tickets_response_models.dart';
 
 class HomeStoreRepo {
@@ -24,6 +25,24 @@ class HomeStoreRepo {
     try {
       final response = await _dataSource.getTickets();
       return Right(response);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(message: e.message));
+    }
+  }
+
+  Future<Either<Failure, StoreHomeResponseModel>> getStoreHome() async {
+    try {
+      final response = await _dataSource.getStoreHome();
+      return Right(response);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(message: e.message));
+    }
+  }
+
+  Future<Either<Failure, void>> logout() async {
+    try {
+      await _dataSource.logout();
+      return const Right(null);
     } on ServerException catch (e) {
       return Left(ServerFailure(message: e.message));
     }

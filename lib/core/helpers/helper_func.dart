@@ -14,8 +14,43 @@ String getImage(String status) {
       return AppImages.imagesDelivery;
     case 'UnderChecking':
       return AppImages.imagesUnderReviews;
+    case 'chats':
+      return AppImages.imagesChats;
     default:
       return AppImages.imagesAllOrders;
+  }
+}
+
+String getStatusNameAr(String id) {
+  switch (id) {
+    case 'UnderPreparation':
+      return 'عند العميل';
+    case 'charging':
+      return 'قيد التجهيز';
+    case 'preparedInWarehouse':
+      return 'في الشركة';
+    case "WaitingForDelivery":
+    case "DeliveryToBranch":
+    case 'ConnectingNow':
+      return 'قيد التوصيل';
+    case "UnderBranchSettlement":
+    case "onGoingUnderBranchSettlement":
+    case 'FinancialSettlementPending':
+      return 'تم التسليم للزبون';
+    case 'Delay':
+      return 'قيد التسليم';
+    case 'RewindInProgress':
+      return 'عدم أكتمال عملية الشحن';
+    case 'UnderChecking':
+      return 'قيد المراجعة';
+    case 'Returned':
+      return 'مسترد بالشركة';
+    case 'Delivered':
+      return 'تحت تسوية الشركة';
+    case 'Closed':
+      return 'تم الأقفال';
+    default:
+      return 'غير معروف'; // في حال الـ id مش موجود
   }
 }
 

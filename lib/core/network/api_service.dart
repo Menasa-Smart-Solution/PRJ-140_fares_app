@@ -24,6 +24,7 @@ import 'package:fares/features/profile/data/models/user_response_model.dart';
 import 'package:fares/features/store/app_info/data/models/contact_us_response_model.dart';
 import 'package:fares/features/store/app_info/data/models/privacy_policy_response_model.dart';
 import 'package:fares/features/store/home/data/models/create_ticket_request_model.dart';
+import 'package:fares/features/store/home/data/models/store_home_response_model.dart';
 import 'package:fares/features/store/home/data/models/tickets_response_models.dart';
 import 'package:fares/features/store/parcels/data/models/store_parcels_details_response_model.dart';
 import 'package:fares/features/store/parcels/data/models/store_parcels_response_model.dart';
@@ -166,4 +167,7 @@ abstract class ApiService {
 
   @POST(ApiConstants.tickets)
   Future<void> createTickets({@Body() required CreateTicketRequestModel body});
+
+  @GET(ApiConstants.storeHome)
+  Future<StoreHomeResponseModel> getStoreHome();
 }

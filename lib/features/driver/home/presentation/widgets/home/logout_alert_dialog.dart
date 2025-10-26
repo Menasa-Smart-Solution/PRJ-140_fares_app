@@ -1,8 +1,8 @@
 part of '../widgets.dart';
 
 class LogoutAlertDialog extends StatelessWidget {
-  const LogoutAlertDialog({super.key});
-
+  const LogoutAlertDialog({super.key, required this.onTap});
+  final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -23,7 +23,7 @@ class LogoutAlertDialog extends StatelessWidget {
                 child: AppTextButton(
                   onPressed: () {
                     context.pop();
-                    context.read<HomeCubit>().logOut();
+                    onTap();
                   },
                   text: "تسجيل الخروج",
                   backgroundColor: Colors.transparent,

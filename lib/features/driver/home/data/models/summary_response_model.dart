@@ -23,7 +23,7 @@ class SummaryDataModel {
   @JsonKey(fromJson: _dueFromJson)
   final String due;
   final List<int> flights;
-  final List<SummaryStatusModel> statuses;
+  final List<StatusModel> statuses;
 
   SummaryDataModel({
     required this.chatsCount,
@@ -52,41 +52,37 @@ class SummaryDataModel {
       due: '2500.50 د.ل',
       flights: [],
       statuses: [
-        SummaryStatusModel.dummy(id: 1, count: 25, nameAr: 'جميع الطلبات'),
-        SummaryStatusModel.dummy(id: 2, count: 12, nameAr: 'قيد المراجعة'),
-        SummaryStatusModel.dummy(id: 3, count: 8, nameAr: 'قيد التسليم'),
-        SummaryStatusModel.dummy(id: 4, count: 5, nameAr: 'تم التسليم'),
-        SummaryStatusModel.dummy(id: 5, count: 3, nameAr: 'تسليم جزئي'),
-        SummaryStatusModel.dummy(id: 6, count: 2, nameAr: 'تعذر التسليم'),
-        SummaryStatusModel.dummy(id: 7, count: 10, nameAr: 'المستحقات'),
-        SummaryStatusModel.dummy(id: 8, count: 7, nameAr: 'المحادثات'),
+        StatusModel.dummy(id: 1, count: 25, nameAr: 'جميع الطلبات'),
+        StatusModel.dummy(id: 2, count: 12, nameAr: 'قيد المراجعة'),
+        StatusModel.dummy(id: 3, count: 8, nameAr: 'قيد التسليم'),
+        StatusModel.dummy(id: 4, count: 5, nameAr: 'تم التسليم'),
+        StatusModel.dummy(id: 5, count: 3, nameAr: 'تسليم جزئي'),
+        StatusModel.dummy(id: 6, count: 2, nameAr: 'تعذر التسليم'),
+        StatusModel.dummy(id: 7, count: 10, nameAr: 'المستحقات'),
+        StatusModel.dummy(id: 8, count: 7, nameAr: 'المحادثات'),
       ],
     );
   }
 }
 
 @JsonSerializable(checked: true)
-class SummaryStatusModel {
+class StatusModel {
   final dynamic id;
   final num count;
   @JsonKey(name: 'name_ar')
   final String nameAr;
 
-  SummaryStatusModel({
-    required this.id,
-    required this.count,
-    required this.nameAr,
-  });
+  StatusModel({required this.id, required this.count, required this.nameAr});
 
-  factory SummaryStatusModel.fromJson(Map<String, dynamic> json) =>
-      _$SummaryStatusModelFromJson(json);
+  factory StatusModel.fromJson(Map<String, dynamic> json) =>
+      _$StatusModelFromJson(json);
 
   // Dummy data factory
-  factory SummaryStatusModel.dummy({
+  factory StatusModel.dummy({
     required dynamic id,
     required num count,
     required String nameAr,
   }) {
-    return SummaryStatusModel(id: id, count: count, nameAr: nameAr);
+    return StatusModel(id: id, count: count, nameAr: nameAr);
   }
 }
