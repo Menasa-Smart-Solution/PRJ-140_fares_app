@@ -148,3 +148,54 @@ class ParcelsRecord {
   factory ParcelsRecord.fromJson(Map<String, dynamic> json) =>
       _$ParcelsRecordFromJson(json);
 }
+
+final List<StoreParcelModel> dummyParcels = List.generate(10, (index) {
+  return StoreParcelModel(
+    id: index + 1,
+    city: ['Tripoli', 'Benghazi', 'Misrata', 'Zliten', 'Sabha'][index % 5],
+    desc: 'Parcel number ${index + 1} - Test description',
+    productPrice: '${(index + 1) * 50}',
+    recipientNumber: '09${(index + 10) * 123456 % 9999999}',
+    recipientNumberTwo: '09${(index + 20) * 987654 % 9999999}',
+    customerName: 'Customer ${index + 1}',
+    qty: '${(index % 3) + 1}',
+    deliveryOn: '2025-10-${20 + (index % 10)}',
+    shippingPrice: '${(index % 5) * 5 + 10}',
+    status: ['Pending', 'In Transit', 'Delivered'][index % 3],
+    notes: 'Note for parcel ${index + 1}',
+    deliveryNotes: index.isEven ? 'Delivered successfully' : 'Still in transit',
+    callRecordCount: index % 4,
+    shareTrackingCodeLink: 'https://myapp.ly/track/${index + 1000}',
+    toCity: ParcelCityModel(
+      id: (index % 5) + 1,
+      name: ['Tripoli', 'Benghazi', 'Misrata', 'Zliten', 'Sabha'][index % 5],
+    ),
+    originBranch: BranchModel(
+      id: (index % 3) + 1,
+      name: ['Main Branch', 'East Branch', 'West Branch'][index % 3],
+    ),
+    store: StoreModel(
+      id: (index % 4) + 1,
+      name: 'Store ${index + 1}',
+      ownerName: 'Owner ${index + 1}',
+      totalParcelsCount: 50 + index * 2,
+      balance: '${500 + index * 100}',
+    ),
+    deliveryman: DeliverymanModel(
+      id: index + 10,
+      name: 'Driver ${index + 1}',
+      phone: '0911${index + 12345}',
+    ),
+    createdAt: '2025-10-${19 + (index % 5)}T08:00:00Z',
+    records: List.generate(2, (rIndex) {
+      return ParcelsRecord(
+        id: index * 10 + rIndex,
+        details: rIndex == 0
+            ? 'Picked up by courier'
+            : 'Delivered to customer ${index + 1}',
+        createdAt: '2025-10-${19 + (index % 5)}T0${rIndex + 9}:00:00Z',
+        parcelId: '${index + 1}',
+      );
+    }),
+  );
+});

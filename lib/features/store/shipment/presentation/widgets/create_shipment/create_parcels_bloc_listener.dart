@@ -13,7 +13,15 @@ class CreateParcelsBlocListener extends StatelessWidget {
           OverlayHelper.showLoadingOverlay(context);
         } else if (state.createParcelsState.isSuccess) {
           OverlayHelper.hideLoadingOverlay();
-          context.pop();
+          state.isDeposit
+              ? context.pop()
+              : context.pushReplacementNamed(
+                  Routes.storeParcelsRoute,
+                  arguments: StoreParcelsParams(
+                    name: getStatusNameAr('UnderPreparation'),
+                    id: 'UnderPreparation',
+                  ),
+                );
           showSnackBar(
             message: state.isDeposit == true
                 ? "تم أضافة عربون بنجاح"

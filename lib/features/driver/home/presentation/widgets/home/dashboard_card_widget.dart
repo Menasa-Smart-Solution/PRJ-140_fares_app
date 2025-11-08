@@ -30,7 +30,9 @@ class DashboardCardWidget extends StatelessWidget {
           onTap: onTap,
           child: Container(
             padding: const EdgeInsets.all(8),
+            alignment: Alignment.center,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 FittedBox(
                   fit: BoxFit.scaleDown,

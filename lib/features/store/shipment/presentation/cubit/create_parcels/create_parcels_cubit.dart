@@ -41,7 +41,6 @@ class CreateParcelsCubit extends Cubit<CreateParcelsState> {
       productPrice: num.parse(productPriceController.text),
       address: address,
       cityId: state.selectedCity!.id,
-      imagePath: state.selectedImage,
       deliveryOn: state.onDeliveryType ?? LocaleKeys.customer,
       breakable: isServiceSelected(LocaleKeys.breakable) ? 1 : 0,
       unmeasurable: isServiceSelected(LocaleKeys.nonMeasurable) ? 1 : 0,
@@ -50,7 +49,10 @@ class CreateParcelsCubit extends Cubit<CreateParcelsState> {
       measurable: isServiceSelected(LocaleKeys.measurable) ? 1 : 0,
       unreturnable: isServiceSelected(LocaleKeys.nonReturnable) ? 1 : 0,
     );
-    final result = await _repo.createShipment(body: parcels);
+    final result = await _repo.createShipment(
+      body: parcels,
+      image: state.selectedImage,
+    );
     result.fold(
       (failure) {
         emit(

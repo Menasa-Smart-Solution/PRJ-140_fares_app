@@ -35,35 +35,42 @@ class StoreParcelsItem extends StatelessWidget {
                     child: SvgPicture.asset(AppImages.imagesSubtract),
                   ),
                   horizontalSpace(12),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          LocaleKeys.trackingNumber.tr(),
-                          style: AppTextStyles.med12.copyWith(
-                            color: AppColors.white,
+                  Flexible(
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            LocaleKeys.trackingNumber.tr(),
+                            style: AppTextStyles.med12.copyWith(
+                              color: AppColors.white,
+                            ),
                           ),
-                        ),
-                        Text(
-                          storeParcelModel.id.toString(),
-                          style: AppTextStyles.med24.copyWith(
-                            color: AppColors.white,
+                          Text(
+                            storeParcelModel.id.toString(),
+                            style: AppTextStyles.med24.copyWith(
+                              color: AppColors.white,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withAlpha(50),
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    child: Text(
-                      getStatusNameAr(storeParcelModel.status ?? ''),
-                      style: AppTextStyles.med12.copyWith(
-                        color: AppColors.white,
+                  horizontalSpace(5),
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withAlpha(50),
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      child: Text(
+                        getStatusNameAr(storeParcelModel.status ?? ''),
+                        style: AppTextStyles.med12.copyWith(
+                          color: AppColors.white,
+                        ),
                       ),
                     ),
                   ),

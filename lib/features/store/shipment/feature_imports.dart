@@ -5,6 +5,7 @@ import 'package:fares/core/common_ui/widgets/custom_dropdown_field.dart';
 import 'package:fares/core/common_ui/widgets/custom_dropdown_search_list.dart';
 import 'package:fares/core/helpers/cache_helper.dart';
 import 'package:fares/core/utils/prefs_keys.dart';
+import 'package:fares/features/store/parcels/feature_imports.dart';
 import 'package:fares/features/store/prices/data/models/city_response_model.dart';
 import 'package:fares/features/store/prices/presentations/cubits/cities_prices/cities_price_cubit.dart';
 import 'package:fares/features/store/shipment/data/models/products_response_model.dart';

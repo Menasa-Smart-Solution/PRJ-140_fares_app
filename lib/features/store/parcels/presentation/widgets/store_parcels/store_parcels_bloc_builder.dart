@@ -1,7 +1,13 @@
 part of '../../../feature_imports.dart';
 
 class StoreParcelsBlocBuilder extends StatelessWidget {
-  const StoreParcelsBlocBuilder({super.key});
+  const StoreParcelsBlocBuilder({
+    super.key,
+    this.status,
+    this.fromSearch = false,
+  });
+  final String? status;
+  final bool fromSearch;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<StoreParcelsCubit, StoreParcelsState>(
@@ -11,19 +17,28 @@ class StoreParcelsBlocBuilder extends StatelessWidget {
       builder: (context, state) {
         switch (state.getAllStoreParcelsState) {
           case StateType.loading:
-            return const Center(child: CustomLoading());
+            return Skeletonizer(
+              enabled: true,
+              child: StoreParcelsListView(
+                storeParcels: dummyParcels,
+                isLoadingMore: false,
+              ),
+            );
           case StateType.success:
             return StoreParcelsListView(
               storeParcels: state.storeParcels,
               isLoadingMore: state.isLoadingMore,
+              status: status,
             );
           case StateType.error:
             return buildWidget(
               CustomErrorWidget(
                 message: state.errorMessage!,
-                onPressed: () {
-                  context.read<StoreParcelsCubit>().getStoreParcels();
-                },
+                onPressed: fromSearch
+                    ? null
+                    : () {
+                        context.read<StoreParcelsCubit>().getStoreParcels();
+                      },
               ),
               context,
             );
@@ -35,9 +50,11 @@ class StoreParcelsBlocBuilder extends StatelessWidget {
           case StateType.noInternet:
             return buildWidget(
               InternetConnectionWidget(
-                onPressed: () {
-                  context.read<StoreParcelsCubit>().getStoreParcels();
-                },
+                onPressed: fromSearch
+                    ? null
+                    : () {
+                        context.read<StoreParcelsCubit>().getStoreParcels();
+                      },
               ),
               context,
             );

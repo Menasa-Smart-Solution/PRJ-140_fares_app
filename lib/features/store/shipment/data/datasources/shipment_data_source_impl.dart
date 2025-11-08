@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:fares/core/errors/exceptions.dart';
 import 'package:fares/core/network/error_handler.dart';
 import 'package:fares/core/utils/app_logger.dart';
@@ -6,6 +8,7 @@ import 'package:fares/features/store/shipment/data/models/add_deposit_request_mo
 import 'package:fares/features/store/shipment/data/models/create_parcels_request_body.dart';
 import 'package:fares/features/store/shipment/data/models/products_response_model.dart';
 import 'package:fares/features/store/shipment/data/models/store_collect_request_model.dart';
+import 'package:fares/features/store/shipment/data/models/uplaod_parcels_image_repsonse.dart';
 
 import '../../../../../core/network/api_service.dart';
 
@@ -29,8 +32,7 @@ class ShipmentDataSourceImpl extends ShipmentDataSource {
   @override
   Future<void> createShipment({required CreateParcelsRequestBody body}) async {
     try {
-      final fromData = await body.toFormData();
-      final response = await _apiService.createParcels(body: fromData);
+      final response = await _apiService.createParcels(body: body);
       AppLogger.log('ShipmentDataSource: Create Shipment Success');
       return response;
     } catch (e) {
@@ -59,6 +61,20 @@ class ShipmentDataSourceImpl extends ShipmentDataSource {
       return response;
     } catch (e) {
       AppLogger.log('ShipmentDataSource: Add Deposit Failed: $e');
+      throw ServerException(message: ErrorHandler.handle(e).message!);
+    }
+  }
+
+  @override
+  Future<UploadParcelsImageResponse> uploadParcelsImage({
+    required File image,
+  }) async {
+    try {
+      final response = await _apiService.uploadParcelsImage(image: image);
+      AppLogger.log('ShipmentDataSource: Upload Parcels Image Success');
+      return response;
+    } catch (e) {
+      AppLogger.log('ShipmentDataSource: Upload Parcels Image Failed: $e');
       throw ServerException(message: ErrorHandler.handle(e).message!);
     }
   }

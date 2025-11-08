@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:fares/features/driver/chat/feature_imports.dart';
 import 'package:fares/features/driver/orders/feature_imports.dart';
 import 'package:fares/features/store/parcels/data/models/store_parcels_response_model.dart';
@@ -18,5 +20,7 @@ part 'presentation/widgets/store_parcels/timeline_item.dart';
 part 'presentation/widgets/store_parcels/store_parcels_bloc_builder.dart';
 part 'presentation/widgets/store_parcels/store_parcels_details_view_body.dart';
 part 'presentation/widgets/store_parcels/store_parcels_details_bloc_builder.dart';
+
+part 'presentation/widgets/store_parcels/store_parcels_search_field.dart';
 
 part 'presentation/widgets/store_parcels/info_row.dart';

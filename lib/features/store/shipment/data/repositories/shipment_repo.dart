@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:fares/core/errors/exceptions.dart';
 import 'package:fares/core/errors/failure.dart';
@@ -25,8 +27,15 @@ class ShipmentRepo {
 
   Future<Either<Failure, void>> createShipment({
     required CreateParcelsRequestBody body,
+    File? image,
   }) async {
     try {
+      String? imageUrl;
+      if (image != null) {
+        final result = await _dataSource.uploadParcelsImage(image: image);
+        imageUrl = result.imageUrl;
+      }
+      body.imagePath = imageUrl;
       await _dataSource.createShipment(body: body);
       return const Right(null);
     } on ServerException catch (e) {

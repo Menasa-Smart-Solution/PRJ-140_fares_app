@@ -38,4 +38,5 @@ class Routes {
   static const String productsRoute = '/products';
   static const String privacyPolicyRoute = '/privacyPolicy';
   static const String contactUsRoute = '/contactUs';
+  static const String storeHomeSearchRoute = '/StoreHomeSearchView';
 }

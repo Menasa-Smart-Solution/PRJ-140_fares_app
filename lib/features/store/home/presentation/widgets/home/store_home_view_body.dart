@@ -42,28 +42,34 @@ class StoreHomeViewBody extends StatelessWidget {
         SliverToBoxAdapter(
           child: Skeleton.leaf(
             child: HomeSearchBarWidget(
-              onTap: () {},
+              onTap: () {
+                context.pushNamed(Routes.storeHomeSearchRoute);
+              },
             ).withPadding(horizontal: 16),
           ),
         ),
         SliverToBoxAdapter(child: verticalSpace(20)),
-        DashboardGridWidget(
-          isStore: true,
-          statuses: [
-            ...storeHomeModel.statuses,
-            StatusModel(
-              id: 'chats',
-              count: storeHomeModel.chatCounts ?? 0,
-              nameAr: LocaleKeys.chats.tr(),
-            ),
-            // StatusModel(
-            //   id: 'all',
-            //   count:
-            //       double.tryParse(storeHomeModel.balance ?? '0')?.toInt() ?? 0,
-            //   nameAr: LocaleKeys.companyDues.tr(),
-            // ),
-          ],
+        SliverPadding(
+          padding: const EdgeInsetsGeometry.symmetric(horizontal: 16),
+          sliver: DashboardGridWidget(
+            isStore: true,
+            statuses: [
+              ...storeHomeModel.statuses,
+              StatusModel(
+                id: 'chats',
+                count: storeHomeModel.chatCounts ?? 0,
+                nameAr: LocaleKeys.chats.tr(),
+              ),
+              // StatusModel(
+              //   id: 'all',
+              //   count:
+              //       double.tryParse(storeHomeModel.balance ?? '0')?.toInt() ?? 0,
+              //   nameAr: LocaleKeys.companyDues.tr(),
+              // ),
+            ],
+          ),
         ),
+
         // SliverToBoxAdapter(
         //   child: Row(
         //     children: [

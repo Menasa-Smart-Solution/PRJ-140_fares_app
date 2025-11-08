@@ -32,7 +32,7 @@ class ReceiptsBlocBuilder extends StatelessWidget {
               child: CustomErrorWidget(
                 message: state.errorMessage ?? 'حدث خطأ ما',
                 onPressed: () {
-                  context.read<CitiesPriceCubit>().getCitiesPrices();
+                  context.read<ReceiptsCubit>().getReceipts();
                 },
               ),
             );
@@ -48,7 +48,7 @@ class ReceiptsBlocBuilder extends StatelessWidget {
               hasScrollBody: false,
               child: InternetConnectionWidget(
                 onPressed: () {
-                  context.read<CitiesPriceCubit>().getCitiesPrices();
+                  context.read<ReceiptsCubit>().getReceipts();
                 },
               ),
             );

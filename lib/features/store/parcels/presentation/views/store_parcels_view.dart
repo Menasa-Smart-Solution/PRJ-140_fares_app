@@ -10,10 +10,13 @@ class StoreParcelsView extends StatelessWidget {
           getIt<StoreParcelsCubit>()..getStoreParcels(status: params.id),
       child: Scaffold(
         appBar: CustomAppBar(title: params.name),
-        body: const StoreParcelsBlocBuilder().withPadding(
-          vertical: 20,
-          horizontal: 16,
-        ),
+        body: Column(
+          children: [
+            StoreParcelsSearchField(status: params.id),
+            verticalSpace(12),
+            Expanded(child: StoreParcelsBlocBuilder(status: params.id)),
+          ],
+        ).withPadding(vertical: 20, horizontal: 16),
       ),
     );
   }

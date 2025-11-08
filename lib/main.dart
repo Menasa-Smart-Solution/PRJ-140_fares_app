@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:fares/core/helpers/cache_helper.dart';
 import 'package:fares/core/services/notification_service.dart';
 import 'package:fares/core/utils/app_bloc_observer.dart';
@@ -7,6 +8,7 @@ import 'package:fares/core/utils/prefs_keys.dart';
 import 'package:fares/fares_app.dart';
 import 'package:fares/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +23,11 @@ void main() async {
       path: 'assets/lang',
       fallbackLocale: const Locale('ar'),
       startLocale: const Locale('ar'),
-      child: FaresApp(initialRoute: initialRoute),
+      child: DevicePreview(
+        enabled: !kReleaseMode,
+        builder: (context) =>
+            FaresApp(initialRoute: initialRoute), // Wrap your app
+      ),
     ),
   );
 }

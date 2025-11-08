@@ -1,8 +1,3 @@
-import 'dart:io';
-
-import 'package:dio/dio.dart';
-import 'package:path/path.dart';
-
 class CreateParcelsRequestBody {
   final String desc;
   final String? customerName;
@@ -14,7 +9,7 @@ class CreateParcelsRequestBody {
   final int cityId;
   final String deliveryOn;
   final String? notes;
-  final File? imagePath;
+  String? imagePath;
   final int breakable;
   final int replacing;
   final int unmeasurable;
@@ -42,8 +37,8 @@ class CreateParcelsRequestBody {
     this.unopenable = 0,
   });
 
-  Future<FormData> toFormData() async {
-    final Map<String, dynamic> data = {
+  Map<String, dynamic> toJson() {
+    return {
       'desc': desc,
       'customer_name': customerName,
       'qty': qty.toString(),
@@ -60,16 +55,7 @@ class CreateParcelsRequestBody {
       'measurable': measurable.toString(),
       'unreturnable': unreturnable.toString(),
       'unopenable': unopenable.toString(),
+      'image_path': imagePath,
     };
-
-    // Add file if exists
-    if (imagePath != null) {
-      data['image_path'] = await MultipartFile.fromFile(
-        imagePath!.path,
-        filename: basename(imagePath!.path),
-      );
-    }
-
-    return FormData.fromMap(data);
   }
 }

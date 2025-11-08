@@ -32,8 +32,10 @@ import 'package:fares/features/store/prices/data/models/city_response_model.dart
 import 'package:fares/features/store/prices/data/models/receipt_details_response_model.dart';
 import 'package:fares/features/store/prices/data/models/receipt_response_model.dart';
 import 'package:fares/features/store/shipment/data/models/add_deposit_request_model.dart';
+import 'package:fares/features/store/shipment/data/models/create_parcels_request_body.dart';
 import 'package:fares/features/store/shipment/data/models/products_response_model.dart';
 import 'package:fares/features/store/shipment/data/models/store_collect_request_model.dart';
+import 'package:fares/features/store/shipment/data/models/uplaod_parcels_image_repsonse.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../features/auth/data/models/reset_password_request_model.dart';
@@ -133,6 +135,7 @@ abstract class ApiService {
     @Query('status') String? status,
     @Query('query') String? id,
     @Query('page') int? page,
+    @Query('per_page') int perPage = 10,
   });
 
   @GET(ApiConstants.parcelsDetails)
@@ -145,7 +148,7 @@ abstract class ApiService {
     @Body() required StoreCollectRequestModel body,
   });
   @POST(ApiConstants.createParcels)
-  Future<void> createParcels({@Body() required FormData body});
+  Future<void> createParcels({@Body() required CreateParcelsRequestBody body});
 
   @GET(ApiConstants.productsStore)
   Future<ProductsResponseModel> getProducts();
@@ -170,4 +173,10 @@ abstract class ApiService {
 
   @GET(ApiConstants.storeHome)
   Future<StoreHomeResponseModel> getStoreHome();
+
+  @POST(ApiConstants.uploadImage)
+  @MultiPart()
+  Future<UploadParcelsImageResponse> uploadParcelsImage({
+    @Part() required File image,
+  });
 }
