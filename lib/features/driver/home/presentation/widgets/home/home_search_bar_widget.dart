@@ -1,15 +1,14 @@
 part of '../widgets.dart';
 
 class HomeSearchBarWidget extends StatelessWidget {
-  const HomeSearchBarWidget({super.key});
+  const HomeSearchBarWidget({super.key, required this.onTap});
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(16),
-      onTap: () {
-        context.pushNamed(Routes.searchRoute);
-      },
+      onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(

@@ -47,9 +47,15 @@ class HomeDataSourceImpl extends HomeDataSource {
   }
 
   @override
-  Future<NotificationsResponseModel> getAllNotifications() async {
+  Future<NotificationsResponseModel> getAllNotifications({
+    int page = 1,
+    int perPage = 10,
+  }) async {
     try {
-      final response = await _apiService.getNotifications();
+      final response = await _apiService.getNotifications(
+        page: page,
+        perPage: perPage,
+      );
       AppLogger.log('Home Data Source: get all notifications success');
       return response;
     } catch (e, s) {

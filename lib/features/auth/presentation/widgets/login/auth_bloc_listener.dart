@@ -1,10 +1,8 @@
 import 'package:fares/core/helpers/cache_helper.dart';
-import 'package:fares/core/helpers/show_snackbar.dart';
 import 'package:fares/core/utils/exports.dart';
 import 'package:fares/core/utils/prefs_keys.dart';
 import 'package:fares/features/auth/presentation/cubit/auth/auth_cubit.dart';
 import 'package:fares/features/auth/presentation/cubit/auth/auth_state.dart';
-import 'package:flutter/material.dart';
 
 class AuthBlocListener extends StatelessWidget {
   const AuthBlocListener({super.key});
@@ -17,21 +15,37 @@ class AuthBlocListener extends StatelessWidget {
           OverlayHelper.showLoadingOverlay(context);
         } else if (state.type.isSuccess) {
           OverlayHelper.hideLoadingOverlay();
+          if (state.isRegistered) {
+            if (!context.mounted) return;
+            context.pushNamedAndRemoveUntil(
+              Routes.loginRoute,
+              predicate: (_) => false,
+            );
+            return;
+          }
+          await CacheHelper.setSecuredString(
+            PrefsKeys.role,
+            state.userModel!.user.type,
+          );
+          await CacheHelper.setSecuredString(
+            PrefsKeys.address,
+            state.userModel!.user.address,
+          );
+          await CacheHelper.setSecuredString(
+            PrefsKeys.phone,
+            state.userModel!.user.phone,
+          );
           await CacheHelper.setSecuredString(
             PrefsKeys.token,
             state.isRegistered
                 ? state.registeredUser!.token
                 : state.userModel!.token,
           );
-          if (!state.isRegistered) {
-            await CacheHelper.setSecuredString(
-              PrefsKeys.role,
-              state.userModel!.user.type,
-            );
-          }
           if (!context.mounted) return;
           context.pushNamedAndRemoveUntil(
-            Routes.mainDriverRoute,
+            state.userModel!.user.type == "store"
+                ? Routes.mainStoreRoute
+                : Routes.mainDriverRoute,
             predicate: (_) => false,
           );
           showSnackBar(

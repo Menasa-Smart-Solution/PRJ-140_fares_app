@@ -6,7 +6,15 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
+      buildWhen: (oldState, newState) =>
+          oldState.getAllSummaryState != newState.getAllSummaryState &&
+          newState.logOutState != StateType.success,
       builder: (context, state) {
+        // Don't render anything if logged out
+        if (state.logOutState == StateType.success) {
+          return const SizedBox();
+        }
+
         switch (state.getAllSummaryState) {
           case StateType.loading:
             return Skeletonizer(
@@ -15,7 +23,11 @@ class HomeViewBody extends StatelessWidget {
           case StateType.success:
             return RefreshIndicator(
               onRefresh: () async {
-                await context.read<HomeCubit>().getAllSummary();
+                // Check if not logged out before refreshing
+                final cubit = context.read<HomeCubit>();
+                if (cubit.state.logOutState != StateType.success) {
+                  await cubit.getAllSummary();
+                }
               },
               child: _buildBody(state.summary!.data, context),
             );
@@ -24,7 +36,10 @@ class HomeViewBody extends StatelessWidget {
               CustomErrorWidget(
                 message: state.errorMessage!,
                 onPressed: () {
-                  context.read<HomeCubit>().getAllSummary();
+                  final cubit = context.read<HomeCubit>();
+                  if (cubit.state.logOutState != StateType.success) {
+                    cubit.getAllSummary();
+                  }
                 },
               ),
               context,
@@ -33,7 +48,10 @@ class HomeViewBody extends StatelessWidget {
             return buildWidget(
               InternetConnectionWidget(
                 onPressed: () {
-                  context.read<HomeCubit>().getAllSummary();
+                  final cubit = context.read<HomeCubit>();
+                  if (cubit.state.logOutState != StateType.success) {
+                    cubit.getAllSummary();
+                  }
                 },
               ),
               context,
@@ -77,7 +95,11 @@ class HomeViewBody extends StatelessWidget {
                     context: context,
                     builder: (context) => BlocProvider.value(
                       value: cubit,
-                      child: const LogoutAlertDialog(),
+                      child: LogoutAlertDialog(
+                        onTap: () {
+                          cubit.logOut();
+                        },
+                      ),
                     ),
                   );
                 },
@@ -89,12 +111,16 @@ class HomeViewBody extends StatelessWidget {
         ),
         SliverToBoxAdapter(child: verticalSpace(20)),
         SliverToBoxAdapter(child: NewFlights(flights: model.flights)),
-        const SliverToBoxAdapter(
-          child: Skeleton.leaf(child: HomeSearchBarWidget()),
+        SliverToBoxAdapter(
+          child: Skeleton.leaf(
+            child: HomeSearchBarWidget(
+              onTap: () {
+                context.pushNamed(Routes.searchRoute);
+              },
+            ),
+          ),
         ),
-        const SliverToBoxAdapter(child: LogoutBlocListener()),
         SliverToBoxAdapter(child: verticalSpace(20)),
-        const SliverToBoxAdapter(child: FlightsBlocListener()),
         DashboardGridWidget(statuses: model.statuses),
         SliverToBoxAdapter(child: verticalSpace(12)),
         SliverToBoxAdapter(

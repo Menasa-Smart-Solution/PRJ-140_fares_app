@@ -33,4 +33,10 @@ class Routes {
   static const String storeParcelDetailsRoute = '/storeParcelDetails';
   static const String citiesPricesRoute = '/citiesPrices';
   static const String contactInfoRoute = '/contactInfo';
+  static const String mainStoreRoute = '/MainStoreView';
+  static const String storeHomeRoute = '/StoreHomeView';
+  static const String productsRoute = '/products';
+  static const String privacyPolicyRoute = '/privacyPolicy';
+  static const String contactUsRoute = '/contactUs';
+  static const String storeHomeSearchRoute = '/StoreHomeSearchView';
 }

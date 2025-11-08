@@ -15,6 +15,10 @@ import 'package:fares/features/driver/orders/feature_imports.dart';
 import 'package:fares/features/onboarding/presentation/views/on_boarding_view.dart';
 import 'package:fares/features/onboarding/presentation/views/welcome_view.dart';
 import 'package:fares/features/profile/feature_imports.dart';
+import 'package:fares/features/store/app_info/feature_imports.dart';
+import 'package:fares/features/store/home/features_imports.dart';
+import 'package:fares/features/store/home/presentation/views/store_home_view.dart';
+import 'package:fares/features/store/main/presentations/views/main_store_view.dart';
 import 'package:fares/features/store/parcels/feature_imports.dart';
 import 'package:fares/features/store/shipment/feature_imports.dart';
 import 'package:flutter/material.dart';
@@ -83,7 +87,9 @@ class AppRouter {
       case Routes.callLogsRoute:
         return _buildRoute(builder: (_) => CallLogsView(id: args as int));
       case Routes.createShipmentRoute:
-        return _buildRoute(builder: (_) => const CreateShipmentView());
+        return _buildRoute(
+          builder: (_) => CreateShipmentView(isDeposit: args as bool),
+        );
       case Routes.addCollectionRequestRoute:
         return _buildRoute(builder: (_) => const AddCollectionRequestView());
       case Routes.collectionSettlementsRoute:
@@ -93,7 +99,9 @@ class AppRouter {
           builder: (_) => FinancialSettlementView(id: args as int),
         );
       case Routes.storeParcelsRoute:
-        return _buildRoute(builder: (_) => const StoreParcelsView());
+        return _buildRoute(
+          builder: (_) => StoreParcelsView(params: args as StoreParcelsParams),
+        );
       case Routes.storeParcelDetailsRoute:
         return _buildRoute(
           builder: (_) => StoreParcelDetailsView(parcelId: args as int),
@@ -102,6 +110,18 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const CitiesPricesView());
       case Routes.contactInfoRoute:
         return MaterialPageRoute(builder: (_) => const ContactInfoView());
+      case Routes.mainStoreRoute:
+        return MaterialPageRoute(builder: (_) => const MainStoreView());
+      case Routes.storeHomeRoute:
+        return MaterialPageRoute(builder: (_) => const StoreHomeView());
+      case Routes.productsRoute:
+        return MaterialPageRoute(builder: (_) => const ProductsView());
+      case Routes.privacyPolicyRoute:
+        return MaterialPageRoute(builder: (_) => const PrivacyPolicyView());
+      case Routes.contactUsRoute:
+        return MaterialPageRoute(builder: (_) => const ContactUsView());
+      case Routes.storeHomeSearchRoute:
+        return MaterialPageRoute(builder: (_) => const StoreHomeSearchView());
 
       default:
         return null;

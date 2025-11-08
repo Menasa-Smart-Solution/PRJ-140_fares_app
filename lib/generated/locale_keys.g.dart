@@ -150,12 +150,12 @@ abstract class  LocaleKeys {
   static const phoneNumberInvalid = 'phoneNumberInvalid';
   static const passwordsDoNotMatch = 'passwordsDoNotMatch';
   static const registerSuccess = 'registerSuccess';
-  static const addCollectionRequest = 'addCollectionRequest';
   static const collectionRequestData = 'collectionRequestData';
   static const services = 'services';
   static const additionalNotesHint = 'additionalNotesHint';
   static const saveRequest = 'saveRequest';
   static const chooseSpecs = 'chooseSpecs';
+  static const breakable = 'breakable';
   static const nonMeasurable = 'nonMeasurable';
   static const measurable = 'measurable';
   static const nonOpenable = 'nonOpenable';
@@ -206,5 +206,25 @@ abstract class  LocaleKeys {
   static const chatWithCourier = 'chatWithCourier';
   static const copyShipmentLink = 'copyShipmentLink';
   static const copyShipmentLinkSuccess = 'copyShipmentLinkSuccess';
+  static const market = 'market';
+  static const customer = 'customer';
+  static const chooseProduct = 'chooseProduct';
+  static const productHint = 'productHint';
+  static const addDeposit = 'addDeposit';
+  static const addCollectionRequest = 'addCollectionRequest';
+  static const financial = 'financial';
+  static const prices = 'prices';
+  static const contactUs = 'contactUs';
+  static const products = 'products';
+  static const privacyPolicy = 'privacyPolicy';
+  static const deleteAccount = 'deleteAccount';
+  static const tickets = 'tickets';
+  static const createTicket = 'createTicket';
+  static const noSupportTickets = 'noSupportTickets';
+  static const createNewTicket = 'createNewTicket';
+  static const parcelId = 'parcelId';
+  static const desc = 'desc';
+  static const parcelIdHint = 'parcelIdHint';
+  static const descHint = 'descHint';
 
 }

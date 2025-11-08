@@ -20,11 +20,22 @@ import 'package:fares/features/driver/orders/data/models/change_order_status_req
 import 'package:fares/features/driver/orders/data/models/parcels_response_model.dart';
 import 'package:fares/features/driver/home/data/models/summary_response_model.dart';
 import 'package:fares/features/driver/orders/data/models/partial_delivery_request.dart';
+import 'package:fares/features/profile/data/models/user_response_model.dart';
+import 'package:fares/features/store/app_info/data/models/contact_us_response_model.dart';
+import 'package:fares/features/store/app_info/data/models/privacy_policy_response_model.dart';
+import 'package:fares/features/store/home/data/models/create_ticket_request_model.dart';
+import 'package:fares/features/store/home/data/models/store_home_response_model.dart';
+import 'package:fares/features/store/home/data/models/tickets_response_models.dart';
 import 'package:fares/features/store/parcels/data/models/store_parcels_details_response_model.dart';
 import 'package:fares/features/store/parcels/data/models/store_parcels_response_model.dart';
 import 'package:fares/features/store/prices/data/models/city_response_model.dart';
 import 'package:fares/features/store/prices/data/models/receipt_details_response_model.dart';
 import 'package:fares/features/store/prices/data/models/receipt_response_model.dart';
+import 'package:fares/features/store/shipment/data/models/add_deposit_request_model.dart';
+import 'package:fares/features/store/shipment/data/models/create_parcels_request_body.dart';
+import 'package:fares/features/store/shipment/data/models/products_response_model.dart';
+import 'package:fares/features/store/shipment/data/models/store_collect_request_model.dart';
+import 'package:fares/features/store/shipment/data/models/uplaod_parcels_image_repsonse.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../features/auth/data/models/reset_password_request_model.dart';
@@ -82,7 +93,10 @@ abstract class ApiService {
   Future<CancelOrderReasonsResponse> getCancelOrderReasons();
 
   @GET(ApiConstants.notifications)
-  Future<NotificationsResponseModel> getNotifications();
+  Future<NotificationsResponseModel> getNotifications({
+    @Query('page') int page = 1,
+    @Query('per_page') int perPage = 10,
+  });
 
   @POST(ApiConstants.uploadCallImage)
   @MultiPart()
@@ -121,10 +135,48 @@ abstract class ApiService {
     @Query('status') String? status,
     @Query('query') String? id,
     @Query('page') int? page,
+    @Query('per_page') int perPage = 10,
   });
 
   @GET(ApiConstants.parcelsDetails)
   Future<StoreParcelsDetailsResponseModel> getStoreParcelDetails({
     @Path('id') required int id,
+  });
+
+  @POST(ApiConstants.collectsStore)
+  Future<void> createStoreCollects({
+    @Body() required StoreCollectRequestModel body,
+  });
+  @POST(ApiConstants.createParcels)
+  Future<void> createParcels({@Body() required CreateParcelsRequestBody body});
+
+  @GET(ApiConstants.productsStore)
+  Future<ProductsResponseModel> getProducts();
+
+  @POST(ApiConstants.createParcels)
+  Future<void> addDeposit({@Body() required AddDepositRequestModel body});
+
+  @GET(ApiConstants.contactUs)
+  Future<ContactUsResponseModel> getContactUsInfo();
+
+  @GET(ApiConstants.privacyPolicy)
+  Future<PrivacyPolicyResponseModel> getPrivacyPolicyInfo();
+
+  @GET(ApiConstants.user)
+  Future<UserResponseModel> getUserInfo();
+
+  @GET(ApiConstants.tickets)
+  Future<TicketsResponseModels> getTickets();
+
+  @POST(ApiConstants.tickets)
+  Future<void> createTickets({@Body() required CreateTicketRequestModel body});
+
+  @GET(ApiConstants.storeHome)
+  Future<StoreHomeResponseModel> getStoreHome();
+
+  @POST(ApiConstants.uploadImage)
+  @MultiPart()
+  Future<UploadParcelsImageResponse> uploadParcelsImage({
+    @Part() required File image,
   });
 }

@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:fares/core/services/internet_service.dart';
-import 'package:fares/core/utils/app_logger.dart';
 import 'package:fares/core/utils/exports.dart';
 import 'package:fares/features/driver/home/data/models/notifications_response_model.dart';
 import 'package:fares/features/driver/home/data/repositories/home_repo.dart';
@@ -18,29 +17,71 @@ class NotificationsCubit extends Cubit<NotificationsState> {
   final InternetService _internetService;
   final HomeRepo _homeRepo;
 
-  Future<void> getAllNotifications() async {
-    emit(state.copyWith(notificationState: StateType.loading));
+  Future<void> getAllNotifications({bool isLoadMore = false}) async {
+    // Prevent duplicate calls
+    if (state.notificationState == StateType.loading) return;
+    if (isLoadMore && (state.isLoadingMore || !state.hasMoreData)) return;
+
+    final currentPage = isLoadMore ? state.currentPage + 1 : 1;
+
+    if (isLoadMore) {
+      emit(state.copyWith(isLoadingMore: true));
+    } else {
+      emit(
+        state.copyWith(
+          notificationState: StateType.loading,
+          currentPage: 1,
+          hasMoreData: true,
+          notifications: [],
+        ),
+      );
+    }
+
     if (!await _internetService.isConnected()) {
-      emit(state.copyWith(notificationState: StateType.noInternet));
+      emit(
+        state.copyWith(
+          notificationState: StateType.noInternet,
+          isLoadingMore: false,
+        ),
+      );
       return;
     }
-    final result = await _homeRepo.getAllNotifications();
+
+    final result = await _homeRepo.getAllNotifications(
+      page: currentPage,
+      perPage: 10,
+    );
+
     result.fold(
       (failure) {
         emit(
           state.copyWith(
-            notificationState: StateType.error,
+            notificationState: isLoadMore
+                ? state.notificationState
+                : StateType.error,
             errorMessage: failure.message,
+            isLoadingMore: false,
           ),
         );
       },
       (response) {
-        AppLogger.log('Notifications: ${response.notifications}');
+        final notificationItems = response.notificationData.notifications;
+        final allNotifications = isLoadMore
+            ? [...state.notifications, ...notificationItems]
+            : notificationItems;
+        final hasMoreData =
+            response.notificationData.currentPage <
+            response.notificationData.lastPage;
 
         emit(
           state.copyWith(
-            notificationState: StateType.success,
-            notifications: response.notifications,
+            notificationState: allNotifications.isEmpty
+                ? StateType.empty
+                : StateType.success,
+            notifications: allNotifications,
+            currentPage: currentPage,
+            hasMoreData: hasMoreData,
+            isLoadingMore: false,
           ),
         );
       },

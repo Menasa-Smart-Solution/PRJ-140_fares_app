@@ -28,4 +28,13 @@ class ApiConstants {
   static const String receiptDetails = "/receipts/{id}";
   static const String parcelsDetails = "/parcels/{id}";
   static const String parcelsStore = "/parcels";
+  static const String collectsStore = "/collects";
+  static const String createParcels = "/parcels/store";
+  static const String productsStore = "/products";
+  static const String contactUs = "/contact";
+  static const String privacyPolicy = "/privacy-policy";
+  static const String user = "/user";
+  static const String tickets = "/tickets";
+  static const String storeHome = "/home";
+  static const String uploadImage = "/parcels/imageUpload";
 }

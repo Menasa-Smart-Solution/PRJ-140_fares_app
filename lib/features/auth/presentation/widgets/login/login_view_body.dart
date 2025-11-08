@@ -79,8 +79,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return LocaleKeys.fieldRequired.tr();
-                      } else if (value.length < 8) {
-                        return LocaleKeys.passwordMinLength.tr();
                       }
                       return null;
                     },

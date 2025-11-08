@@ -14,18 +14,67 @@ String getImage(String status) {
       return AppImages.imagesDelivery;
     case 'UnderChecking':
       return AppImages.imagesUnderReviews;
+    case 'chats':
+      return AppImages.imagesChats;
     default:
       return AppImages.imagesAllOrders;
   }
 }
 
-String formatToArabicDate(String isoString) {
-  try {
-    final date = DateTime.parse(isoString);
-    final formatter = DateFormat('d MMMM yyyy', 'ar');
-    return formatter.format(date);
-  } catch (e) {
-    return isoString;
+String getStatusNameAr(String id) {
+  switch (id) {
+    case 'DeliveryReturnToBranch':
+      return 'قيد الإسترداد للفرع';
+    case 'onGoingUnderBranchSettlement':
+      return 'قيد التسوية مع الفرع';
+    case 'UnderBranchSettlement':
+      return 'بإنتظار تسوية الفرع';
+    case 'DeliveryToBranch':
+      return 'قيد التوصيل للفرع';
+    case 'ReturnedInWarehouse':
+      return 'مسترد بالمخزن';
+    case 'UnderAudit':
+      return 'قيـد المراجعة في المستودع';
+    case 'ReturnToCompany':
+      return 'قيد الإسترداد للشركة';
+    case 'WaitingForDelivery':
+      return 'قيد إستلام المندوب';
+    case 'UnderCollection':
+      return 'بإنتظار التجميع';
+    case 'UnderPreparation':
+      return 'عند العميل';
+    case 'charging':
+      return 'قيد التجهيز';
+    case 'preparedInWarehouse':
+      return 'في الشركة';
+    case 'ConnectingNow':
+      return 'قيد التوصيل';
+    case 'UnderChecking':
+      return 'قيد المراجعة';
+    case 'RewindInProgress':
+      return 'عدم اكتمال عملية الشحن';
+    case 'WaitingDelivery':
+      return 'بانتظار الشحن';
+    case 'UnderDelivery':
+      return 'قيد التوصيل';
+    case 'CustomerDelivered':
+      return 'تم التسليم للزبون';
+    case 'CompanyDelivered':
+      return 'تم التسليم للشركة';
+    case 'Delay':
+      return 'قيد التسليم';
+    case 'Returned':
+      return 'مسترد في الشركة';
+    case 'FinancialSettlementPending':
+      return 'تم التسليم ';
+    case 'ReturnedAndReceived':
+      return 'مسترد للمتجر';
+    case 'Delivered':
+      return 'تحت تسوية الشركة';
+    case 'Closed':
+      return 'مكتملة';
+    default:
+      return 'غير معروف'; // في حال الـ id مش موجود
   }
 }
 
@@ -59,6 +108,16 @@ String translateStatus(String status) {
       return LocaleKeys.companyDues.tr();
     default:
       return "كل الشحنات"; // fallback لو الحالة مش موجودة
+  }
+}
+
+String formatToArabicDate(String isoString) {
+  try {
+    final date = DateTime.parse(isoString);
+    final formatter = DateFormat('d MMMM yyyy', 'ar');
+    return formatter.format(date);
+  } catch (e) {
+    return isoString;
   }
 }
 

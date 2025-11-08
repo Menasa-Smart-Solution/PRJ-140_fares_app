@@ -5,9 +5,12 @@ class AddCollectionRequestView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(title: LocaleKeys.addCollectionRequest.tr()),
-      body: const AddCollectionRequestViewBody(),
+    return BlocProvider(
+      create: (context) => getIt<CreateStoreCollectCubit>(),
+      child: Scaffold(
+        appBar: CustomAppBar(title: LocaleKeys.addCollectionRequest.tr()),
+        body: const AddCollectionRequestViewBody(),
+      ),
     );
   }
 }

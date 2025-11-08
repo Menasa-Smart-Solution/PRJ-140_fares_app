@@ -6,22 +6,30 @@ class LogoutBlocListener extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<HomeCubit, HomeState>(
+      listenWhen: (previous, current) =>
+          previous.logOutState != current.logOutState,
       listener: (context, state) async {
-        if (state.logOutState.isSuccess) {
+        AppLogger.log('Logout state changed: ${state.logOutState}');
+
+        if (state.logOutState == StateType.success) {
+          AppLogger.log('Logout success - navigating to login');
+          OverlayHelper.hideLoadingOverlay();
           await CacheHelper.clearAllSecuredData();
           if (!context.mounted) return;
-          OverlayHelper.hideLoadingOverlay();
-          context.pushReplacementNamed(Routes.loginRoute);
+          context.pushNamedAndRemoveUntil(
+            Routes.loginRoute,
+            predicate: (route) => false,
+          );
           showSnackBar(
             message: 'تم تسجيل الخروج بنجاح',
             type: SnackType.success,
           );
-        } else if (state.logOutState.isLoading) {
+        } else if (state.logOutState == StateType.loading) {
           OverlayHelper.showLoadingOverlay(context);
-        } else if (state.logOutState.isError) {
+        } else if (state.logOutState == StateType.error) {
           OverlayHelper.hideLoadingOverlay();
           showSnackBar(message: state.errorMessage!, type: SnackType.error);
-        } else if (state.logOutState.isNoInternet) {
+        } else if (state.logOutState == StateType.noInternet) {
           OverlayHelper.hideLoadingOverlay();
           showSnackBar(
             message: LocaleKeys.noNetworkConnection.tr(),

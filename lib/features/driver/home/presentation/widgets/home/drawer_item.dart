@@ -20,7 +20,12 @@ class DrawerItem extends StatelessWidget {
     return ListTile(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       splashColor: hoverColor ?? AppColors.lightPrimaryColor,
-      leading: SvgPicture.asset(imagePath),
+      leading: SvgPicture.asset(
+        imagePath,
+        width: 24,
+        height: 24,
+        colorFilter: const ColorFilter.mode(AppColors.white, BlendMode.srcIn),
+      ),
       title: Text(
         title,
         style: AppTextStyles.med16.copyWith(

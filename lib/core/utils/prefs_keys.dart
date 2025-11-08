@@ -5,4 +5,6 @@ class PrefsKeys {
   static const String onboarding = 'onboarding';
   static const String role = 'role';
   static const String deviceToken = 'deviceToken';
+  static const String phone = 'phone';
+  static const String address = 'address';
 }

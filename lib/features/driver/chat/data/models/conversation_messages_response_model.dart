@@ -33,7 +33,7 @@ class ConversationMessagesModel {
   final int? storeId;
   @JsonKey(name: "parcel_id")
   final String? parcelId;
-  @JsonKey(name: "last_message_id")
+  @JsonKey(name: "last_message_id", fromJson: _priceFromJson)
   final int? lastMessageId;
   @JsonKey(name: "created_at")
   final String? createdAt;
@@ -45,6 +45,7 @@ class ConversationMessagesModel {
       : v is String
       ? int.tryParse(v)
       : (v as num?)?.toInt();
+
   ConversationMessagesModel({
     this.id,
     this.branchId,

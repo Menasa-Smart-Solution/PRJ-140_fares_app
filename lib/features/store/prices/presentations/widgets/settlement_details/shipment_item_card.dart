@@ -56,18 +56,9 @@ class ShipmentItemCard extends StatelessWidget {
             ],
           ),
           verticalSpace(12),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                parcel.desc ?? '',
-                style: AppTextStyles.med16.copyWith(color: AppColors.black),
-              ),
-              Text(
-                parcel.tocity?.name ?? '',
-                style: AppTextStyles.med16.copyWith(color: AppColors.black),
-              ),
-            ],
+          Text(
+            parcel.desc ?? '',
+            style: AppTextStyles.med16.copyWith(color: AppColors.black),
           ),
           verticalSpace(8),
           Row(
@@ -77,6 +68,11 @@ class ShipmentItemCard extends StatelessWidget {
               Text(
                 parcel.recipientNumber ?? '',
                 style: AppTextStyles.reg14.copyWith(color: AppColors.black),
+              ),
+              const Spacer(),
+              Text(
+                parcel.tocity?.name ?? '',
+                style: AppTextStyles.med16.copyWith(color: AppColors.black),
               ),
             ],
           ),

@@ -2,7 +2,6 @@ part of '../widgets.dart';
 
 class LogoutWidget extends StatelessWidget {
   const LogoutWidget({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -13,10 +12,18 @@ class LogoutWidget extends StatelessWidget {
         textColor: AppColors.lightRed,
         hoverColor: AppColors.grey200,
         onTap: () {
+          final cubit = context.read<StoreHomeCubit>();
           showDialog(
             barrierDismissible: false,
             context: context,
-            builder: (context) => const LogoutAlertDialog(),
+            builder: (context) => BlocProvider.value(
+              value: cubit,
+              child: LogoutAlertDialog(
+                onTap: () {
+                  cubit.logout();
+                },
+              ),
+            ),
           );
         },
       ),

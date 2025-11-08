@@ -7,8 +7,14 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<HomeCubit>()..getAllSummary(),
-      child: SafeArea(
-        child: const HomeViewBody().withPadding(bottom: 20, horizontal: 16),
+      child: Stack(
+        children: [
+          SafeArea(
+            child: const HomeViewBody().withPadding(bottom: 20, horizontal: 16),
+          ),
+          const LogoutBlocListener(),
+          const FlightsBlocListener(),
+        ],
       ),
     );
   }

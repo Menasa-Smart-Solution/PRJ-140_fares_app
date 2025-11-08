@@ -12,17 +12,19 @@ class NotificationItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: AppColors.pastelGreen,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: const Icon(
-              AppIcons.package,
-              color: AppColors.complimentaryGreen,
-              size: 20,
+          Skeleton.leaf(
+            child: Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                color: AppColors.pastelGreen,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Icon(
+                AppIcons.package,
+                color: AppColors.complimentaryGreen,
+                size: 20,
+              ),
             ),
           ),
           horizontalSpace(12),

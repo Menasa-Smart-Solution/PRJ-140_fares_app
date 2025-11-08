@@ -9,44 +9,54 @@ class NotificationsBlocBuilder extends StatelessWidget {
       builder: (context, state) {
         switch (state.notificationState) {
           case StateType.loading:
-            return const SliverToBoxAdapter(
-              child: Center(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 50),
-                  child: CircularProgressIndicator(
-                    color: AppColors.primaryColor,
+            return Skeletonizer(
+              enabled: true,
+              child: NotificationsListView(
+                isLoadingMore: false,
+                hasMore: false,
+                notifications: List.generate(
+                  5,
+                  (index) => NotificationModel(
+                    id: index,
+                    title: 'Notification $index',
+                    body: 'This is the body of notification $index',
+                    createdAt: DateTime.now().toIso8601String(),
                   ),
                 ),
               ),
             );
           case StateType.success:
-            return NotificationsListView(notifications: state.notifications);
+            return NotificationsListView(
+              notifications: state.notifications,
+              isLoadingMore: state.isLoadingMore,
+              hasMore: state.hasMoreData,
+            );
           case StateType.error:
-            return SliverFillRemaining(
-              hasScrollBody: false,
-              child: CustomErrorWidget(
+            return buildWidget(
+              CustomErrorWidget(
                 message: state.errorMessage!,
                 onPressed: () {
                   context.read<NotificationsCubit>().getAllNotifications();
                 },
               ),
+              context,
             );
           case StateType.empty:
-            return const SliverFillRemaining(
-              hasScrollBody: false,
-              child: CustomEmptyWidget(message: "لا يوجد إشعار حتى الآن.!"),
+            return buildWidget(
+              const CustomEmptyWidget(message: "لا يوجد إشعار حتى الآن.!"),
+              context,
             );
           case StateType.noInternet:
-            return SliverFillRemaining(
-              hasScrollBody: false,
-              child: InternetConnectionWidget(
+            return buildWidget(
+              InternetConnectionWidget(
                 onPressed: () {
                   context.read<NotificationsCubit>().getAllNotifications();
                 },
               ),
+              context,
             );
           default:
-            return const SliverToBoxAdapter(child: SizedBox());
+            return const SizedBox();
         }
       },
     );
