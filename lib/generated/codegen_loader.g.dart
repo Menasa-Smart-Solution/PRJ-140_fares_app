@@ -237,7 +237,11 @@ class CodegenLoader extends AssetLoader{
   "parcelId": "رقم الشحنة",
   "desc": "الوصف",
   "parcelIdHint": "ادخل رقم الشحنة",
-  "descHint": "ادخل وصف التذكرة"
+  "descHint": "ادخل وصف التذكرة",
+  "partial_delivery ": "قابل للتسليم الجزئي",
+  "chooseArea": "أختر المنطقة",
+  "chooseAreaHint": "اختر المنطقة هنا",
+  "notesHint": "ادخل الملاحظات هنا"
 };
 static const Map<String,dynamic> _en = {
   "trackingTitle": "تتبع حالة \nشحناتك \nوانت في مكانك",

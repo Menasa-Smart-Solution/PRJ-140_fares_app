@@ -19,13 +19,14 @@ class CreateParcelsCubit extends Cubit<CreateParcelsState> {
     this._imagePickerService,
     this._internetService,
   ) : super(const CreateParcelsState());
-  final TextEditingController descriptionController = TextEditingController();
   final TextEditingController productPriceController = TextEditingController();
+  final TextEditingController qtyController = TextEditingController();
 
   Future<void> createParcels({
     required String phone,
     required String address,
-    required String qty,
+    String? notes,
+    required String description,
     String? recipientName,
     String? recipientPhone2,
   }) async {
@@ -34,8 +35,8 @@ class CreateParcelsCubit extends Cubit<CreateParcelsState> {
     );
     final parcels = CreateParcelsRequestBody(
       customerName: recipientName,
-      qty: int.parse(qty),
-      desc: descriptionController.text,
+      qty: int.parse(qtyController.text),
+      desc: description,
       recipientNumber: phone,
       recipientNumber2: recipientPhone2,
       productPrice: num.parse(productPriceController.text),
@@ -48,6 +49,10 @@ class CreateParcelsCubit extends Cubit<CreateParcelsState> {
       unopenable: isServiceSelected(LocaleKeys.nonOpenable) ? 1 : 0,
       measurable: isServiceSelected(LocaleKeys.measurable) ? 1 : 0,
       unreturnable: isServiceSelected(LocaleKeys.nonReturnable) ? 1 : 0,
+      partialDelivery: isServiceSelected(LocaleKeys.partialDelivery) ? 1 : 0,
+      productIds: state.selectedProducts.map((e) => e.id).toList(),
+      qtys: state.qyts,
+      subCityId: state.selectedSubCity?.id,
     );
     final result = await _repo.createShipment(
       body: parcels,
@@ -71,15 +76,17 @@ class CreateParcelsCubit extends Cubit<CreateParcelsState> {
   void addDeposit({
     required String phone,
     required String address,
-    required String qty,
+    String? notes,
+    required String description,
     String? recipientName,
     String? recipientPhone2,
   }) async {
     emit(state.copyWith(createParcelsState: StateType.loading));
     final body = AddDepositRequestModel(
       customerName: recipientName,
-      qty: int.parse(qty),
-      desc: descriptionController.text,
+      qty: int.parse(qtyController.text),
+      desc: description,
+      notes: notes,
       recipientNumber: phone,
       recipientNumber2: recipientPhone2,
       productPrice: num.parse(productPriceController.text),
@@ -138,7 +145,12 @@ class CreateParcelsCubit extends Cubit<CreateParcelsState> {
 
   void setSelectedCity(CityModel? city) {
     AppLogger.info('Selected City: ${city?.name}');
-    emit(state.copyWith(selectedCity: city));
+    emit(state.copyWith(selectedCity: city, clearSubCityId: true));
+  }
+
+  void setSelectedSubCity(SubCitiesModel? subCity) {
+    AppLogger.info('Selected SubCity: ${subCity?.name}');
+    emit(state.copyWith(selectedSubCity: subCity));
   }
 
   void setOnDeliveryType(String onDelivery) {
@@ -168,15 +180,74 @@ class CreateParcelsCubit extends Cubit<CreateParcelsState> {
     }
   }
 
+  void updateQty(List<int> updatedQtys) {
+    emit(state.copyWith(qyts: updatedQtys));
+    updateTotalPrice();
+    updateControllerQty();
+  }
+
+  void deleteQty(int index) {
+    final updatedQtys = List<int>.from(state.qyts);
+    final updatedProducts = List<ProductModel>.from(state.selectedProducts);
+    final deletedProduct = updatedProducts[index];
+    if (deletedProduct.id == state.selectedProduct?.id) {
+      emit(state.copyWith(selectedProduct: null, clearSelectedProduct: true));
+    }
+    updatedQtys.removeAt(index);
+    updatedProducts.removeAt(index);
+    emit(state.copyWith(qyts: updatedQtys, selectedProducts: updatedProducts));
+    updateTotalPrice();
+    updateControllerQty();
+  }
+
   void clearSelectedImage() {
     emit(state.copyWith(clearSelectedImage: true));
   }
 
   void setSelectedProduct(ProductModel? product) {
     AppLogger.info('Selected Product: ${product?.name}');
-    descriptionController.text = product?.name ?? '';
-    productPriceController.text = product?.price.toString() ?? '';
+    if (product != null) {
+      final updatedProducts = List<ProductModel>.from(state.selectedProducts);
+      final updatedQtys = List<int>.from(state.qyts);
+      updatedProducts.add(product);
+      updatedQtys.add(1); // Default quantity is 1 when adding a product
+      emit(
+        state.copyWith(selectedProducts: updatedProducts, qyts: updatedQtys),
+      );
+    }
+    if (product != null) {
+      updateTotalPrice();
+      updateControllerQty();
+    }
+
     emit(state.copyWith(selectedProduct: product, clearSelectedProduct: false));
+  }
+
+  void updateTotalPrice() {
+    double total = 0.0;
+    for (var product in state.selectedProducts) {
+      final prodPrice = product.price;
+      double price = 0.0;
+      if (prodPrice is num) {
+        price = double.tryParse(prodPrice.toString()) ?? 0.0;
+      } else {
+        price = double.tryParse(prodPrice.toString()) ?? 0.0;
+      }
+      total += price;
+    }
+    final formatted = (total % 1 == 0)
+        ? total.toInt().toString()
+        : total.toString();
+    productPriceController.text = formatted;
+  }
+
+  void updateControllerQty() {
+    // get the sum state.qyts and update the controller
+    final sum = state.qyts.fold<int>(
+      0,
+      (previous, current) => previous + current,
+    );
+    qtyController.text = sum.toString();
   }
 
   void resetState() {
@@ -185,8 +256,8 @@ class CreateParcelsCubit extends Cubit<CreateParcelsState> {
 
   @override
   Future<void> close() {
-    descriptionController.dispose();
     productPriceController.dispose();
+    qtyController.dispose();
     return super.close();
   }
 

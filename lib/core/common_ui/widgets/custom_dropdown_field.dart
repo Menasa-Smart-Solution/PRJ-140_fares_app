@@ -9,7 +9,9 @@ class CustomDropdownField<T> extends StatelessWidget {
     this.borderColor,
     this.initialValue,
     this.radius,
+    this.titleColor,
     this.hintColor,
+    this.label,
     required this.itemAsString,
     required this.hint,
   });
@@ -22,6 +24,8 @@ class CustomDropdownField<T> extends StatelessWidget {
   final Color? hintColor;
   final String Function(T item) itemAsString;
   final String hint;
+  final String? label;
+  final Color? titleColor;
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<T>(
@@ -42,6 +46,10 @@ class CustomDropdownField<T> extends StatelessWidget {
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 15,
           vertical: 15,
+        ),
+        labelText: label,
+        labelStyle: AppTextStyles.reg14.copyWith(
+          color: titleColor ?? AppColors.black500,
         ),
         border: _buildBorder(),
         enabledBorder: _buildBorder(),

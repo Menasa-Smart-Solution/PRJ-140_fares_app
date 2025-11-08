@@ -11,6 +11,9 @@ class CreateParcelsState extends Equatable {
   final List<ProductModel> products;
   final ProductModel? selectedProduct;
   final bool isDeposit;
+  final List<ProductModel> selectedProducts;
+  final List<int> qyts;
+  final SubCitiesModel? selectedSubCity;
 
   const CreateParcelsState({
     this.createParcelsState = StateType.initial,
@@ -19,10 +22,14 @@ class CreateParcelsState extends Equatable {
     this.onDeliveryType,
     this.selectedServices = const {},
     this.selectedImage,
+    this.selectedSubCity,
+
     this.getProductsState = StateType.loading,
     this.products = const [],
     this.selectedProduct,
     this.isDeposit = false,
+    this.selectedProducts = const [],
+    this.qyts = const [],
   });
 
   @override
@@ -37,6 +44,9 @@ class CreateParcelsState extends Equatable {
     selectedProduct,
     products,
     isDeposit,
+    selectedProducts,
+    qyts,
+    selectedSubCity,
   ];
 
   CreateParcelsState copyWith({
@@ -52,6 +62,10 @@ class CreateParcelsState extends Equatable {
     ProductModel? selectedProduct,
     bool clearSelectedProduct = false,
     bool? isDeposit,
+    List<ProductModel>? selectedProducts,
+    List<int>? qyts,
+    SubCitiesModel? selectedSubCity,
+    bool clearSubCityId = false,
   }) {
     return CreateParcelsState(
       createParcelsState: createParcelsState ?? this.createParcelsState,
@@ -68,6 +82,11 @@ class CreateParcelsState extends Equatable {
           ? null
           : selectedProduct ?? this.selectedProduct,
       isDeposit: isDeposit ?? this.isDeposit,
+      selectedProducts: selectedProducts ?? this.selectedProducts,
+      qyts: qyts ?? this.qyts,
+      selectedSubCity: clearSubCityId
+          ? null
+          : selectedSubCity ?? selectedSubCity,
     );
   }
 }

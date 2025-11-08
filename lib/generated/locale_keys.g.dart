@@ -226,5 +226,9 @@ abstract class  LocaleKeys {
   static const desc = 'desc';
   static const parcelIdHint = 'parcelIdHint';
   static const descHint = 'descHint';
+  static const partial_delivery  = 'partial_delivery ';
+  static const chooseArea = 'chooseArea';
+  static const chooseAreaHint = 'chooseAreaHint';
+  static const notesHint = 'notesHint';
 
 }

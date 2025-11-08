@@ -21,7 +21,8 @@ class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
   final TextEditingController _addressDetailedController =
       TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _quantityController = TextEditingController();
+  final TextEditingController _notesController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
 
   @override
   void dispose() {
@@ -29,6 +30,8 @@ class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
     _phoneController.dispose();
     _phone2Controller.dispose();
     _addressDetailedController.dispose();
+    _notesController.dispose();
+    descriptionController.dispose();
     super.dispose();
   }
 
@@ -44,7 +47,6 @@ class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
         child: Form(
           key: _formKey,
           child: Column(
-            spacing: 12,
             children: [
               verticalSpace(8),
               AppTextFormField(
@@ -55,6 +57,7 @@ class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
                 radius: 10,
                 title: LocaleKeys.recipientName.tr(),
               ),
+              verticalSpace(12),
               AppTextFormField(
                 hintText: LocaleKeys.phoneHint.tr(),
                 controller: _phoneController,
@@ -71,6 +74,8 @@ class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
 
                 title: LocaleKeys.phone.tr(),
               ),
+              verticalSpace(12),
+
               AppTextFormField(
                 hintText: LocaleKeys.phone2Hint.tr(),
                 controller: _phone2Controller,
@@ -86,8 +91,11 @@ class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
                 radius: 10,
                 title: LocaleKeys.phone2.tr(),
               ),
-
+              verticalSpace(12),
               const CreateParcelsCitiesBlocBuilder(),
+              verticalSpace(12),
+
+              const SubCities(),
               AppTextFormField(
                 hintText: LocaleKeys.enterAddressDetailed.tr(),
                 validator: (value) {
@@ -100,21 +108,12 @@ class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
                 radius: 10,
                 title: LocaleKeys.addressDetailed.tr(),
               ),
+              verticalSpace(12),
+
               const CreateParcelsProducts(),
+              verticalSpace(12),
 
-              AppTextFormField(
-                hintText: LocaleKeys.enterDescription.tr(),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return LocaleKeys.fieldRequired.tr();
-                  }
-                },
-                controller: cubit.descriptionController,
-                showLabel: true,
-                radius: 10,
-                title: LocaleKeys.description.tr(),
-              ),
-
+              const SelectedProducts(),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -122,12 +121,13 @@ class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
                     child: AppTextFormField(
                       hintText: LocaleKeys.enterQuantity.tr(),
                       validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return LocaleKeys.fieldRequired.tr();
-                        }
+                        // if (value == null || value.isEmpty) {
+                        //   return LocaleKeys.fieldRequired.tr();
+                        // }
                       },
-                      controller: _quantityController,
+                      controller: cubit.qtyController,
                       showLabel: true,
+                      readOnly: true,
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       radius: 10,
                       title: LocaleKeys.quantity.tr(),
@@ -138,11 +138,13 @@ class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
                     child: AppTextFormField(
                       hintText: LocaleKeys.enterProductPrice.tr(),
                       validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return LocaleKeys.fieldRequired.tr();
-                        }
+                        // if (value == null || value.isEmpty) {
+                        //   return LocaleKeys.fieldRequired.tr();
+                        // }
                       },
                       showLabel: true,
+                      readOnly: true,
+
                       radius: 10,
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       controller: cubit.productPriceController,
@@ -151,10 +153,35 @@ class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
                   ),
                 ],
               ),
+              verticalSpace(12),
+              AppTextFormField(
+                hintText: LocaleKeys.enterDescription.tr(),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return LocaleKeys.fieldRequired.tr();
+                  }
+                },
+                controller: descriptionController,
+                showLabel: true,
+                radius: 10,
+                title: LocaleKeys.description.tr(),
+              ),
+              verticalSpace(12),
+
+              AppTextFormField(
+                hintText: LocaleKeys.notesHint.tr(),
+                validator: (value) {},
+                controller: _notesController,
+                showLabel: true,
+                radius: 10,
+                title: LocaleKeys.notes.tr(),
+              ),
+              verticalSpace(12),
 
               CustomDropdownField<String>(
                 items: [LocaleKeys.customer.tr(), LocaleKeys.market.tr()],
                 initialValue: LocaleKeys.customer.tr(),
+
                 onChanged: (value) {
                   final deliveryType = value == LocaleKeys.customer.tr()
                       ? LocaleKeys.customer
@@ -164,14 +191,21 @@ class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
                   );
                 },
                 itemAsString: (item) => item,
+                label: 'التوصيل علي',
                 hint: LocaleKeys.deliveryOnAccount.tr(),
                 backgroundColor: AppColors.textFormFieldBg,
                 radius: 10,
               ),
+              verticalSpace(12),
+
               if (!widget.isDeposit) ...[
                 const ChooseShipmentImage(),
+                verticalSpace(12),
+
                 const ShipmentOptions(),
+                verticalSpace(12),
               ],
+
               const CreateParcelsBlocListener(),
               AppTextButton(
                 onPressed: () {
@@ -183,7 +217,8 @@ class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
                         address: _addressDetailedController.text,
                         recipientName: _recipientNameController.text,
                         recipientPhone2: _phone2Controller.text,
-                        qty: _quantityController.text,
+                        notes: _notesController.text,
+                        description: descriptionController.text,
                       );
                       return;
                     }
@@ -192,7 +227,8 @@ class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
                       address: _addressDetailedController.text,
                       recipientName: _recipientNameController.text,
                       recipientPhone2: _phone2Controller.text,
-                      qty: _quantityController.text,
+                      description: descriptionController.text,
+                      notes: _notesController.text,
                     );
                   }
                 },

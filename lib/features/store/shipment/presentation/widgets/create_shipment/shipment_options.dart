@@ -15,6 +15,7 @@ class _ShipmentOptionsState extends State<ShipmentOptions> {
     LocaleKeys.nonOpenable,
     LocaleKeys.nonReturnable,
     LocaleKeys.exchangeNote,
+    LocaleKeys.partialDelivery,
   ];
 
   @override

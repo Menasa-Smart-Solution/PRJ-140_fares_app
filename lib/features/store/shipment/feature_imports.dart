@@ -18,6 +18,9 @@ import '../../../core/utils/exports.dart';
 part 'presentation/views/create_shipment_view.dart';
 part 'presentation/widgets/create_shipment/create_shipment_view_body.dart';
 part 'presentation/widgets/create_shipment/choose_shipment_image.dart';
+part 'presentation/widgets/create_shipment/sub_cities.dart';
+part 'presentation/widgets/create_shipment/selected_products.dart';
+
 part 'presentation/widgets/create_shipment/shipment_options.dart';
 part 'presentation/widgets/create_shipment/create_parcels_cities_bloc_builder.dart';
 part 'presentation/widgets/create_shipment/create_parcels_bloc_listener.dart';
