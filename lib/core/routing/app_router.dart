@@ -122,6 +122,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const ContactUsView());
       case Routes.storeHomeSearchRoute:
         return MaterialPageRoute(builder: (_) => const StoreHomeSearchView());
+      case Routes.ticketsRoute:
+        return MaterialPageRoute(
+          builder: (_) => TicketsView(isComplaints: args as bool),
+        );
 
       default:
         return null;

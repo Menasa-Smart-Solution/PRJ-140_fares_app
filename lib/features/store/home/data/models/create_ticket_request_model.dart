@@ -6,8 +6,13 @@ class CreateTicketRequestModel {
   @JsonKey(name: 'parcel_id')
   final int parcelId;
   final String desc;
+  final int? complaint;
 
-  CreateTicketRequestModel({required this.parcelId, required this.desc});
+  CreateTicketRequestModel({
+    required this.parcelId,
+    required this.desc,
+    this.complaint,
+  });
 
   Map<String, dynamic> toJson() => _$CreateTicketRequestModelToJson(this);
 }

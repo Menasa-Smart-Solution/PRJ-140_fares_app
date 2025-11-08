@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDSuXJD3URaGiZqcHw6t_Dv0yc4ALFzI2E',
-    appId: '1:592673726223:android:bf0f699fd3a6d437ed287a',
+    appId: '1:592673726223:android:28dc7b54f6b59e4bed287a',
     messagingSenderId: '592673726223',
     projectId: 'faris-delivery',
     storageBucket: 'faris-delivery.firebasestorage.app',
@@ -59,10 +59,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyABXplUVZ5pK3uRJz8sNMiytQrj2vZT0E4',
-    appId: '1:592673726223:ios:e525913288f4f650ed287a',
+    appId: '1:592673726223:ios:0f00e62d7a48915ced287a',
     messagingSenderId: '592673726223',
     projectId: 'faris-delivery',
     storageBucket: 'faris-delivery.firebasestorage.app',
-    iosBundleId: 'com.example.fares',
+    iosBundleId: 'ly.com.faris',
   );
+
 }

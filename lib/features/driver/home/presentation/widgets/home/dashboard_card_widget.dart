@@ -56,7 +56,7 @@ class DashboardCardWidget extends StatelessWidget {
                   child: SizedBox(
                     width: 89,
                     height: 65,
-                    child: SvgPicture.asset(imagePath),
+                    child: Image.asset(imagePath),
                   ),
                 ),
               ],

@@ -1,15 +1,18 @@
 part of '../../features_imports.dart';
 
 class TicketsView extends StatelessWidget {
-  const TicketsView({super.key});
+  const TicketsView({super.key, this.isComplaints = false});
+  final bool isComplaints;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<TicketsCubit>()..getTickets(),
+      create: (context) => getIt<TicketsCubit>()..getTickets(isComplaints),
       child: Scaffold(
         appBar: CustomAppBar(
-          title: LocaleKeys.tickets.tr(),
+          title: isComplaints
+              ? LocaleKeys.complaints.tr()
+              : LocaleKeys.tickets.tr(),
           actions: [
             Builder(
               builder: (context) {
@@ -22,7 +25,9 @@ class TicketsView extends StatelessWidget {
                       backgroundColor: Colors.transparent,
                       builder: (context) => BlocProvider.value(
                         value: cubit,
-                        child: const CreateTicketBottomSheet(),
+                        child: CreateTicketBottomSheet(
+                          isComplaints: isComplaints,
+                        ),
                       ),
                     );
                   },
@@ -31,11 +36,17 @@ class TicketsView extends StatelessWidget {
               },
             ),
           ],
-          showBackButton: false,
+          showBackButton: isComplaints ? true : false,
         ),
-        body: const TicketsBlocBuilder().withPadding(
-          horizontal: 16,
-          vertical: 20,
+        body: Column(
+          children: [
+            Expanded(
+              child: TicketsBlocBuilder(
+                isComplaints: isComplaints,
+              ).withPadding(horizontal: 16, vertical: 20),
+            ),
+            CreateTicketBlocListener(isComplaints: isComplaints),
+          ],
         ),
       ),
     );

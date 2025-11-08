@@ -21,9 +21,11 @@ class HomeStoreRepo {
     }
   }
 
-  Future<Either<Failure, TicketsResponseModels>> getTickets() async {
+  Future<Either<Failure, TicketsResponseModels>> getTickets({
+    bool isComplaints = false,
+  }) async {
     try {
-      final response = await _dataSource.getTickets();
+      final response = await _dataSource.getTickets(isComplaints: isComplaints);
       return Right(response);
     } on ServerException catch (e) {
       return Left(ServerFailure(message: e.message));

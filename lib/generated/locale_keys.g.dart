@@ -230,5 +230,10 @@ abstract class  LocaleKeys {
   static const chooseArea = 'chooseArea';
   static const chooseAreaHint = 'chooseAreaHint';
   static const notesHint = 'notesHint';
+  static const complaints = 'complaints';
+  static const createComplaint = 'createComplaint';
+  static const createComplaintSuccess = 'createComplaintSuccess';
+  static const complaintsDescHint = 'complaintsDescHint';
+  static const noComplaints = 'noComplaints';
 
 }

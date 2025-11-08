@@ -166,7 +166,9 @@ abstract class ApiService {
   Future<UserResponseModel> getUserInfo();
 
   @GET(ApiConstants.tickets)
-  Future<TicketsResponseModels> getTickets();
+  Future<TicketsResponseModels> getTickets({
+    @Query('complaint') int? isComplaints,
+  });
 
   @POST(ApiConstants.tickets)
   Future<void> createTickets({@Body() required CreateTicketRequestModel body});

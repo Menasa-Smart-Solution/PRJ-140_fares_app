@@ -1,9 +1,13 @@
 part of '../../../features_imports.dart';
 
 class TicketsListView extends StatelessWidget {
-  const TicketsListView({super.key, required this.tickets});
+  const TicketsListView({
+    super.key,
+    required this.tickets,
+    required this.isComplaints,
+  });
   final List<TicketsModel> tickets;
-
+  final bool isComplaints;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -11,7 +15,7 @@ class TicketsListView extends StatelessWidget {
         Expanded(
           child: RefreshIndicator(
             onRefresh: () async {
-              context.read<TicketsCubit>().getTickets();
+              context.read<TicketsCubit>().getTickets(isComplaints);
             },
             child: ListView.builder(
               itemCount: tickets.length,
@@ -32,7 +36,6 @@ class TicketsListView extends StatelessWidget {
             ),
           ),
         ),
-        const CreateTicketBlocListener(),
       ],
     );
   }

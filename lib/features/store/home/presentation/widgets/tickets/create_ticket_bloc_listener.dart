@@ -2,7 +2,8 @@ import 'package:fares/core/utils/exports.dart';
 import 'package:fares/features/store/home/presentation/cubit/tickets/tickets_cubit.dart';
 
 class CreateTicketBlocListener extends StatelessWidget {
-  const CreateTicketBlocListener({super.key});
+  const CreateTicketBlocListener({super.key, required this.isComplaints});
+  final bool isComplaints;
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +14,12 @@ class CreateTicketBlocListener extends StatelessWidget {
         if (state.createTicketState.isSuccess) {
           OverlayHelper.hideLoadingOverlay();
           showSnackBar(
-            message: 'تم إنشاء التذكرة بنجاح',
+            message: isComplaints
+                ? LocaleKeys.createComplaintSuccess.tr()
+                : 'تم إنشاء التذكرة بنجاح',
             type: SnackType.success,
           );
-          context.read<TicketsCubit>().getTickets();
+          context.read<TicketsCubit>().getTickets(isComplaints);
         } else if (state.createTicketState.isLoading) {
           OverlayHelper.showLoadingOverlay(context);
         } else if (state.createTicketState.isError) {

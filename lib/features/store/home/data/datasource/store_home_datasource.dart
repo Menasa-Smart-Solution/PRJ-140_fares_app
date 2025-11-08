@@ -4,7 +4,7 @@ import 'package:fares/features/store/home/data/models/tickets_response_models.da
 
 abstract class StoreHomeDataSource {
   Future<void> createTickets({required CreateTicketRequestModel body});
-  Future<TicketsResponseModels> getTickets();
+  Future<TicketsResponseModels> getTickets({bool isComplaints = false});
   Future<StoreHomeResponseModel> getStoreHome();
   Future<void> logout();
 }

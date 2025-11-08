@@ -151,7 +151,7 @@ class HomeViewBody extends StatelessWidget {
                     child: DashboardCardWidget(
                       title: LocaleKeys.companyDues.tr(),
                       subtitle: model.due.toString(),
-                      imagePath: AppImages.imagesCompanyDues,
+                      imagePath: AppImages.imagesFinancialSettlementPending,
                       onTap: () => context.pushNamed(
                         Routes.allOrdersRoute,
                         arguments: AllOrdersParams(

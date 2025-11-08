@@ -16,11 +16,25 @@ class AppImages {
 
   static const String imagesCanceled = "assets/images/canceled.svg";
 
-  static const String imagesChats = "assets/images/chats.svg";
+  static const String imagesCharging = "assets/images/charging.png";
+
+  static const String imagesChats = "assets/images/chats.png";
+
+  static const String imagesChatsSvg = "assets/images/chats_svg.svg";
+
+  static const String imagesClosed = "assets/images/closed.png";
 
   static const String imagesCompanyDues = "assets/images/company_dues.svg";
 
+  static const String imagesComplaints = "assets/images/complaints.svg";
+
+  static const String imagesConnectingNow = "assets/images/connecting_now.png";
+
   static const String imagesConversations = "assets/images/conversations.svg";
+
+  static const String imagesDelay = "assets/images/delay.png";
+
+  static const String imagesDelivered = "assets/images/delivered.png";
 
   static const String imagesDelivery = "assets/images/delivery.svg";
 
@@ -37,6 +51,8 @@ class AppImages {
   static const String imagesEmptyTickets = "assets/images/empty_tickets.png";
 
   static const String imagesError = "assets/images/error.png";
+
+  static const String imagesFinancialSettlementPending = "assets/images/financialSettlementPending.png";
 
   static const String imagesGlobal = "assets/images/global.svg";
 
@@ -64,11 +80,19 @@ class AppImages {
 
   static const String imagesOrders = "assets/images/orders.svg";
 
+  static const String imagesPreparedInWarehouse = "assets/images/preparedInWarehouse.png";
+
   static const String imagesProduct = "assets/images/product.svg";
 
   static const String imagesProfile = "assets/images/profile.svg";
 
-  static const String imagesQrCode = "assets/images/qr_code.svg";
+  static const String imagesQrCode = "assets/images/qr_code.png";
+
+  static const String imagesReturned = "assets/images/returned.png";
+
+  static const String imagesReturnedAndReceived = "assets/images/returnedAndReceived.png";
+
+  static const String imagesRewindInProgress = "assets/images/rewindInProgress.png";
 
   static const String imagesSearch = "assets/images/search.svg";
 
@@ -85,6 +109,10 @@ class AppImages {
   static const String imagesSubtract = "assets/images/subtract.svg";
 
   static const String imagesSuccess = "assets/images/success.svg";
+
+  static const String imagesUnderChecking = "assets/images/underChecking.png";
+
+  static const String imagesUnderPreparation = "assets/images/UnderPreparation.png";
 
   static const String imagesUnderReviews = "assets/images/under-reviews.svg";
 

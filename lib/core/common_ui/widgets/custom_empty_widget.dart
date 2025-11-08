@@ -13,9 +13,10 @@ class CustomEmptyWidget extends StatelessWidget {
       children: [
         Image.asset(
           imagePath ?? AppImages.imagesEmpty,
-          height: 0.25 * context.height,
+          height: 0.15 * context.height,
           fit: BoxFit.fill,
         ),
+        verticalSpace(15),
         Text(
           message,
           textAlign: TextAlign.center,

@@ -1,7 +1,8 @@
 part of '../../features_imports.dart';
 
 class CreateTicketBottomSheet extends StatefulWidget {
-  const CreateTicketBottomSheet({super.key});
+  const CreateTicketBottomSheet({super.key, required this.isComplaints});
+  final bool isComplaints;
 
   @override
   State<CreateTicketBottomSheet> createState() =>
@@ -27,6 +28,7 @@ class _CreateTicketBottomSheetState extends State<CreateTicketBottomSheet> {
         CreateTicketRequestModel(
           parcelId: int.parse(_parcelIdController.text),
           desc: _descriptionController.text,
+          complaint: widget.isComplaints ? 1 : null,
         ),
       );
     }
@@ -51,7 +53,9 @@ class _CreateTicketBottomSheetState extends State<CreateTicketBottomSheet> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
-                LocaleKeys.createNewTicket.tr(),
+                widget.isComplaints
+                    ? LocaleKeys.createComplaint.tr()
+                    : LocaleKeys.createNewTicket.tr(),
                 style: AppTextStyles.bold16.copyWith(),
                 textAlign: TextAlign.center,
               ),
@@ -77,7 +81,9 @@ class _CreateTicketBottomSheetState extends State<CreateTicketBottomSheet> {
                 controller: _descriptionController,
                 showLabel: true,
                 title: LocaleKeys.desc.tr(),
-                hintText: LocaleKeys.descHint.tr(),
+                hintText: widget.isComplaints
+                    ? LocaleKeys.complaintsDescHint.tr()
+                    : LocaleKeys.descHint.tr(),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return LocaleKeys.fieldRequired.tr();
@@ -92,7 +98,9 @@ class _CreateTicketBottomSheetState extends State<CreateTicketBottomSheet> {
               verticalSpace(24),
               AppTextButton(
                 onPressed: _submitTicket,
-                text: LocaleKeys.createNewTicket.tr(),
+                text: widget.isComplaints
+                    ? LocaleKeys.createComplaint.tr()
+                    : LocaleKeys.createTicket.tr(),
               ),
               verticalSpace(8),
             ],

@@ -24,9 +24,11 @@ class StoreHomeDatasourceImpl extends StoreHomeDataSource {
   }
 
   @override
-  Future<TicketsResponseModels> getTickets() async {
+  Future<TicketsResponseModels> getTickets({bool isComplaints = false}) async {
     try {
-      final response = await _apiService.getTickets();
+      final response = await _apiService.getTickets(
+        isComplaints: isComplaints ? 1 : null,
+      );
       AppLogger.info('StoreHomeDataSourceImpl: Get Tickets Success');
       return response;
     } catch (e) {

@@ -5,6 +5,7 @@ class TicketsState extends Equatable {
   final StateType getTicketsState;
   final String? errorMessage;
   final List<TicketsModel> tickets;
+  final bool isComplaints;
 
   @override
   List<Object?> get props => [
@@ -12,12 +13,14 @@ class TicketsState extends Equatable {
     getTicketsState,
     errorMessage,
     tickets,
+    isComplaints,
   ];
 
   const TicketsState({
     this.createTicketState = StateType.initial,
     this.getTicketsState = StateType.initial,
     this.errorMessage,
+    this.isComplaints = false,
     this.tickets = const [],
   });
 
@@ -26,12 +29,14 @@ class TicketsState extends Equatable {
     StateType? getTicketsState,
     String? errorMessage,
     List<TicketsModel>? tickets,
+    bool? isComplaints,
   }) {
     return TicketsState(
       createTicketState: createTicketState ?? this.createTicketState,
       getTicketsState: getTicketsState ?? this.getTicketsState,
       errorMessage: errorMessage ?? this.errorMessage,
       tickets: tickets ?? this.tickets,
+      isComplaints: isComplaints ?? this.isComplaints,
     );
   }
 }

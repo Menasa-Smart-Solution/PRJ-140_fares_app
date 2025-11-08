@@ -241,7 +241,12 @@ class CodegenLoader extends AssetLoader{
   "partial_delivery ": "قابل للتسليم الجزئي",
   "chooseArea": "أختر المنطقة",
   "chooseAreaHint": "اختر المنطقة هنا",
-  "notesHint": "ادخل الملاحظات هنا"
+  "notesHint": "ادخل الملاحظات هنا",
+  "complaints": "الشكاوي",
+  "createComplaint": "انشاء شكوي",
+  "createComplaintSuccess": "تم انشاء الشكوي بنجاح",
+  "complaintsDescHint": "ادخل وصف الشكوي",
+  "noComplaints": "ليس لديك شكاوي حتي الآن !"
 };
 static const Map<String,dynamic> _en = {
   "trackingTitle": "تتبع حالة \nشحناتك \nوانت في مكانك",

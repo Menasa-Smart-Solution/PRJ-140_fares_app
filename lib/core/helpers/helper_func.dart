@@ -1,23 +1,36 @@
 import 'package:fares/core/utils/exports.dart';
-import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 String getImage(String status) {
   switch (status) {
     case 'ConnectingNow':
-      return AppImages.imagesDelivery;
+      return AppImages.imagesConnectingNow;
+    case 'charging':
+      return AppImages.imagesCharging;
     case 'FinancialSettlementPending':
-      return AppImages.imagesAreDelivery;
+      return AppImages.imagesFinancialSettlementPending;
     case 'RewindInProgress':
-      return AppImages.imagesCanceled;
+      return AppImages.imagesRewindInProgress;
     case 'Delay':
-      return AppImages.imagesDelivery;
+      return AppImages.imagesDelay;
     case 'UnderChecking':
-      return AppImages.imagesUnderReviews;
+      return AppImages.imagesUnderChecking;
     case 'chats':
       return AppImages.imagesChats;
+    case 'UnderPreparation':
+      return AppImages.imagesUnderPreparation;
+    case 'Closed':
+      return AppImages.imagesClosed;
+    case 'Delivered':
+      return AppImages.imagesDelivered;
+    case 'preparedInWarehouse':
+      return AppImages.imagesPreparedInWarehouse;
+    case 'Returned':
+      return AppImages.imagesReturned;
+    case 'ReturnedAndReceived':
+      return AppImages.imagesReturnedAndReceived;
     default:
-      return AppImages.imagesAllOrders;
+      return AppImages.imagesConnectingNow;
   }
 }
 

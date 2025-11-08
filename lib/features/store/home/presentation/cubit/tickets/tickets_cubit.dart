@@ -31,7 +31,7 @@ class TicketsCubit extends Cubit<TicketsState> {
     );
   }
 
-  Future<void> getTickets() async {
+  Future<void> getTickets([bool isComplaints = false]) async {
     emit(
       state.copyWith(getTicketsState: StateType.loading, errorMessage: null),
     );
@@ -41,7 +41,7 @@ class TicketsCubit extends Cubit<TicketsState> {
       return;
     }
 
-    final result = await _repo.getTickets();
+    final result = await _repo.getTickets(isComplaints: isComplaints);
     result.fold(
       (failure) {
         emit(
@@ -54,7 +54,9 @@ class TicketsCubit extends Cubit<TicketsState> {
       (ticketsResponse) {
         emit(
           state.copyWith(
-            getTicketsState: StateType.success,
+            getTicketsState: ticketsResponse.tickets.isEmpty
+                ? StateType.empty
+                : StateType.success,
             tickets: ticketsResponse.tickets,
           ),
         );

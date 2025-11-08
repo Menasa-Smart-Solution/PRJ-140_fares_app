@@ -94,7 +94,7 @@ class HomeDrawer extends StatelessWidget {
             SliverToBoxAdapter(
               child: DrawerItem(
                 title: LocaleKeys.contactUs.tr(),
-                imagePath: AppImages.imagesChats,
+                imagePath: AppImages.imagesChatsSvg,
                 onTap: () {
                   context.pushNamed(Routes.contactUsRoute);
                 },
@@ -108,6 +108,15 @@ class HomeDrawer extends StatelessWidget {
                 imagePath: AppImages.imagesDocumentText,
                 onTap: () {
                   context.pushNamed(Routes.privacyPolicyRoute);
+                },
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: DrawerItem(
+                title: LocaleKeys.complaints.tr(),
+                imagePath: AppImages.imagesComplaints,
+                onTap: () {
+                  context.pushNamed(Routes.ticketsRoute, arguments: true);
                 },
               ),
             ),
