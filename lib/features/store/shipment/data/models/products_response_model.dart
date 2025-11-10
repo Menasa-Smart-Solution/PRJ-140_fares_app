@@ -1,3 +1,4 @@
+import 'package:fares/core/helpers/helper_func.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'products_response_model.g.dart';
 
@@ -16,7 +17,9 @@ class ProductsResponseModel {
 class ProductModel {
   final int id;
   final String name;
+  @StringConverter()
   final String price;
+  @StringConverter()
   final String qty;
 
   ProductModel({

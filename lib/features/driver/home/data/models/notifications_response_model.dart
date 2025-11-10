@@ -1,3 +1,4 @@
+import 'package:fares/core/helpers/helper_func.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'notifications_response_model.g.dart';
 
@@ -34,11 +35,13 @@ class NotificationModel {
   final int? id;
   final String? title;
   @JsonKey(name: 'user_id')
+  @NullableStringConverter()
   final String? userId;
   final String? body;
   @JsonKey(name: 'created_at')
   final String? createdAt;
   @JsonKey(name: 'is_read')
+  @NullableStringConverter()
   final String? isRead;
 
   NotificationModel({

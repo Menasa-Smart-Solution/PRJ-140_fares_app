@@ -1,3 +1,4 @@
+import 'package:fares/core/helpers/helper_func.dart';
 import 'package:fares/features/driver/chat/data/models/conversations_response_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'conversation_messages_response_model.g.dart';
@@ -27,14 +28,18 @@ class ConversationMessagesDataModel {
 class ConversationMessagesModel {
   final int? id;
   @JsonKey(name: "branch_id")
+  @NullableStringConverter()
   final String? branchId;
 
-  @JsonKey(name: "store_id", fromJson: _priceFromJson)
-  final int? storeId;
+  @JsonKey(name: "store_id")
+  @NullableStringConverter()
+  final String? storeId;
   @JsonKey(name: "parcel_id")
+  @NullableStringConverter()
   final String? parcelId;
-  @JsonKey(name: "last_message_id", fromJson: _priceFromJson)
-  final int? lastMessageId;
+  @JsonKey(name: "last_message_id")
+  @NullableStringConverter()
+  final String? lastMessageId;
   @JsonKey(name: "created_at")
   final String? createdAt;
   @JsonKey(name: "updated_at")

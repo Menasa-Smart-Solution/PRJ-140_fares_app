@@ -1,3 +1,4 @@
+import 'package:fares/core/helpers/helper_func.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'cancel_order_reasons_response.g.dart';
 
@@ -14,6 +15,7 @@ class CancelOrderReasonsResponse {
 
 @JsonSerializable(checked: true)
 class ReasonsModel {
+  @StringConverter()
   final String id;
   final String name;
 

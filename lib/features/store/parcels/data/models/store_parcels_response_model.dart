@@ -1,3 +1,4 @@
+import 'package:fares/core/helpers/helper_func.dart';
 import 'package:fares/features/driver/orders/data/models/parcels_response_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'store_parcels_response_model.g.dart';
@@ -38,6 +39,7 @@ class StoreParcelModel {
   final String? city;
   final String? desc;
   @JsonKey(name: 'product_price')
+  @NullableStringConverter()
   final String? productPrice;
   @JsonKey(name: 'recipient_number')
   final String? recipientNumber;
@@ -46,16 +48,19 @@ class StoreParcelModel {
   @JsonKey(name: 'customer_name')
   final String? customerName;
   @JsonKey(name: 'origin_qty')
+  @NullableStringConverter()
   final String? qty;
   @JsonKey(name: 'delivery_on')
   final String? deliveryOn;
   @JsonKey(name: 'shipping_price')
+  @NullableStringConverter()
   final String? shippingPrice;
   final String? status;
   final String? notes;
   @JsonKey(name: 'delivery_notes')
   final String? deliveryNotes;
   @JsonKey(name: 'call_record_count')
+  @NullableStringConverter()
   final int? callRecordCount;
   @JsonKey(name: 'share_tracking_code_link')
   final String? shareTrackingCodeLink;
@@ -138,6 +143,7 @@ class ParcelsRecord {
   @JsonKey(name: 'created_at')
   final String? createdAt;
   @JsonKey(name: 'parcel_id')
+  @NullableStringConverter()
   final String? parcelId;
   ParcelsRecord({
     required this.id,

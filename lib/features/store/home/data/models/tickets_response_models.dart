@@ -1,3 +1,4 @@
+import 'package:fares/core/helpers/helper_func.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'tickets_response_models.g.dart';
 
@@ -55,6 +56,7 @@ class TicketDeliveryman {
 
 @JsonSerializable(checked: true)
 class TicketStatus {
+  @StringConverter()
   final String id;
   final String name;
 

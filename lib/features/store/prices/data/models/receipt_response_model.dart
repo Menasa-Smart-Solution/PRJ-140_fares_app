@@ -1,3 +1,4 @@
+import 'package:fares/core/helpers/helper_func.dart';
 import 'package:fares/features/driver/orders/data/models/parcels_response_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'receipt_response_model.g.dart';
@@ -38,11 +39,15 @@ class ReceiptModel {
   @JsonKey(name: 'total_parcels_products_count')
   final int parcelsCount;
   @JsonKey(name: 'total_products_price')
+  @StringConverter()
   final String totalPrice;
   @JsonKey(name: 'total_shipping_price')
+  @StringConverter()
   final String shippingPrice;
   @JsonKey(name: 'total_withdrawal_transaction')
+  @StringConverter()
   final String? withdrawalTransaction;
+  @StringConverter()
   final String total;
   final List<ParcelModel>? parcels;
 

@@ -1,4 +1,5 @@
 import 'package:fares/core/utils/exports.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 String getImage(String status) {
@@ -158,11 +159,34 @@ Widget buildWidget(Widget widget, BuildContext context) {
     child: SizedBox(
       height:
           MediaQuery.of(context).size.height -
-          40 -
+          220 -
           kToolbarHeight -
           MediaQuery.of(context).padding.bottom -
           MediaQuery.of(context).padding.top,
       child: Center(child: widget),
     ),
   );
+}
+
+class NullableStringConverter implements JsonConverter<String?, dynamic> {
+  const NullableStringConverter();
+
+  @override
+  String? fromJson(dynamic json) {
+    if (json == null) return null;
+    return json.toString();
+  }
+
+  @override
+  dynamic toJson(String? object) => object;
+}
+
+class StringConverter implements JsonConverter<String, dynamic> {
+  const StringConverter();
+
+  @override
+  String fromJson(dynamic json) => json?.toString() ?? '';
+
+  @override
+  dynamic toJson(String object) => object;
 }

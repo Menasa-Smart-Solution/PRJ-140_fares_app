@@ -1,3 +1,4 @@
+import 'package:fares/core/helpers/helper_func.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'parcels_response_model.g.dart';
 
@@ -109,26 +110,37 @@ class PaginationLinkModel {
 class ParcelModel {
   final int? id;
   @JsonKey(name: 'branch_id')
+  @NullableStringConverter()
   final String? branchId;
   @JsonKey(name: 'ref_id')
+  @NullableStringConverter()
   final String? refId;
   @JsonKey(name: 'store_id')
+  @NullableStringConverter()
   final String? storeId;
   @JsonKey(name: 'from_city_id')
+  @NullableStringConverter()
   final String? fromCityId;
   @JsonKey(name: 'to_city_id')
+  @NullableStringConverter()
   final String? toCityId;
   @JsonKey(name: 'sub_city_id')
+  @NullableStringConverter()
   final String? subCityId;
   @JsonKey(name: 'delivery_man_id')
+  @NullableStringConverter()
   final String? deliveryManId;
   @JsonKey(name: 'branch_settlement_id')
+  @NullableStringConverter()
   final String? branchSettlementId;
   @JsonKey(name: 'warehouse_flight_id')
+  @NullableStringConverter()
   final String? warehouseFlightId;
   @JsonKey(name: 'issue_id')
+  @NullableStringConverter()
   final String? issueId;
   @JsonKey(name: 'issue_user_id')
+  @NullableStringConverter()
   final String? issueUserId;
   @JsonKey(name: 'assign_flight_at')
   final String? assignFlightAt;
@@ -137,13 +149,18 @@ class ParcelModel {
   @JsonKey(name: 'customer_name')
   final String? customerName;
   @JsonKey(name: 'origin_qty')
+  @NullableStringConverter()
   final String? originQty;
   @JsonKey(name: 'origin_product_price')
+  @NullableStringConverter()
   final String? originProductPrice;
+  @NullableStringConverter()
   final String? qty;
   @JsonKey(name: 'return_qty')
+  @NullableStringConverter()
   final String? returnQty;
   @JsonKey(name: 'product_price')
+  @NullableStringConverter()
   final String? productPrice;
   @JsonKey(name: 'recipient_number')
   final String? recipientNumber;
@@ -154,16 +171,22 @@ class ParcelModel {
   @JsonKey(name: 'recipient_number_2')
   final String? recipientNumber2;
   @JsonKey(name: 'shipping_price')
+  @NullableStringConverter()
   final String? shippingPrice;
   @JsonKey(name: 'branch_commission')
+  @NullableStringConverter()
   final String? branchCommission;
   @JsonKey(name: 'delivery_man_price')
+  @NullableStringConverter()
   final String? deliveryManPrice;
   @JsonKey(name: 'paid_shipping_price')
+  @NullableStringConverter()
   final String? paidShippingPrice;
   @JsonKey(name: 'paid_product_price')
+  @NullableStringConverter()
   final String? paidProductPrice;
   @JsonKey(name: 'transaction_amount')
+  @NullableStringConverter()
   final String? transactionAmount;
   final String? status;
   @JsonKey(name: 'status_change_at')
@@ -172,37 +195,57 @@ class ParcelModel {
   @JsonKey(name: 'delivery_notes')
   final String? deliveryNotes;
   @JsonKey(name: 'have_flight')
+  @NullableStringConverter()
   final String? haveFlight;
+  @NullableStringConverter()
   final String? delivered;
+  @NullableStringConverter()
   final String? closed;
+  @NullableStringConverter()
   final String? returned;
   @JsonKey(name: 'measuring_allowed')
+  @NullableStringConverter()
   final String? measuringAllowed;
+  @NullableStringConverter()
   final String? breakable;
+  @NullableStringConverter()
   final String? replacing;
+  @NullableStringConverter()
   final String? unopenable;
+  @NullableStringConverter()
   final String? unmeasurable;
+  @NullableStringConverter()
   final String? measurable;
+  @NullableStringConverter()
   final String? unreturnable;
+  @NullableStringConverter()
   final String? prepaid;
   @JsonKey(name: 'branch_prepaid')
+  @NullableStringConverter()
   final String? branchPrepaid;
   @JsonKey(name: 'pre_branch_prepaid')
+  @NullableStringConverter()
   final String? preBranchPrepaid;
+  @NullableStringConverter()
   final String? urgent;
   @JsonKey(name: 'image_path')
   final String? imagePath;
   @JsonKey(name: 'prepiad_user_id')
+  @NullableStringConverter()
   final String? prepiadUserId;
   @JsonKey(name: 'prepaid_at')
   final String? prepaidAt;
   @JsonKey(name: 'delivery_closed')
+  @NullableStringConverter()
   final String? deliveryClosed;
   @JsonKey(name: 'unable_delivery_type_id')
+  @NullableStringConverter()
   final String? unableDeliveryTypeId;
   @JsonKey(name: 'unable_delivery_type_user_id')
+  @NullableStringConverter()
   final String? unableDeliveryTypeUserId;
   @JsonKey(name: 'unable_delivery_type_at')
+  @NullableStringConverter()
   final String? unableDeliveryTypeAt;
   @JsonKey(name: 'whatsapp_message')
   final String? whatsappMessage;
@@ -214,41 +257,53 @@ class ParcelModel {
   @JsonKey(name: 'deleted_at')
   final String? deletedAt;
   @JsonKey(name: 'deleted_user_id')
+  @NullableStringConverter()
   final String? deletedUserId;
   @JsonKey(name: 'created_at')
   final String? createdAt;
   @JsonKey(name: 'updated_at')
   final String? updatedAt;
   @JsonKey(name: 'system_payment')
+  @NullableStringConverter()
   final String? systemPayment;
+  @NullableStringConverter()
   final String? warehouse;
   @JsonKey(name: 'delay_date')
   final String? delayDate;
   @JsonKey(name: 'receive_delivery_only')
+  @NullableStringConverter()
   final String? receiveDeliveryOnly;
   @JsonKey(name: 'with_treasury')
   final String? withTreasury;
   @JsonKey(name: 'rating_attempts_store')
+  @NullableStringConverter()
   final String? ratingAttemptsStore;
   @JsonKey(name: 'rating_attempts_customer')
+  @NullableStringConverter()
   final String? ratingAttemptsCustomer;
   @JsonKey(name: 'old_id')
+  @NullableStringConverter()
   final String? oldId;
   @JsonKey(name: 'is_deducted')
+  @NullableStringConverter()
   final String? isDeducted;
   @JsonKey(name: 'is_payment_down')
+  @NullableStringConverter()
   final String? isPaymentDown;
   @JsonKey(name: 'underchecking_notes_delivery_man')
   final String? undercheckingNotesDeliveryMan;
   @JsonKey(name: 'underchecking_notes_store')
   final String? undercheckingNotesStore;
   @JsonKey(name: 'issue_to_user_id')
+  @NullableStringConverter()
   final String? issueToUserId;
   @JsonKey(name: 'flight_id')
+  @NullableStringConverter()
   final String? flightId;
   @JsonKey(name: 'call_record_count')
   final int? callRecordCount;
   @JsonKey(name: 'tracking_code')
+  @NullableStringConverter()
   final String? trackingCode;
   @JsonKey(name: 'share_tracking_code_link')
   final String? shareTrackingCodeLink;
@@ -438,6 +493,7 @@ class ParcelStoreModel {
 class ParcelCityModel {
   final int? id;
   final String? name;
+  @NullableStringConverter()
   final String? price;
 
   ParcelCityModel({this.id, this.name, this.price});

@@ -1,3 +1,4 @@
+import 'package:fares/core/helpers/helper_func.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'city_response_model.g.dart';
 
@@ -16,8 +17,10 @@ class CityModel {
   final String name;
   @JsonKey(name: 'created_at')
   final String? createdAt;
+  @StringConverter()
   final String price;
   @JsonKey(name: 'downpayment')
+  @StringConverter()
   final String downPayment;
   @JsonKey(name: 'sub_cities')
   final List<SubCitiesModel>? subCities;
@@ -38,8 +41,10 @@ class CityModel {
 class SubCitiesModel {
   final int id;
   final String name;
+  @StringConverter()
   final String price;
   @JsonKey(name: 'delivery_man_price')
+  @NullableStringConverter()
   final String? deliveryManPrice;
 
   SubCitiesModel({

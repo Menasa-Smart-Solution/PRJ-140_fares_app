@@ -1,3 +1,4 @@
+import 'package:fares/core/helpers/helper_func.dart';
 import 'package:fares/features/driver/orders/data/models/parcels_response_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'conversations_response_model.g.dart';
@@ -26,12 +27,16 @@ class ConversationsDataModel {
 class ConversationModel {
   final int? id;
   @JsonKey(name: "branch_id")
+  @NullableStringConverter()
   final String? branchId;
   @JsonKey(name: "store_id")
+  @NullableStringConverter()
   final String? storeId;
   @JsonKey(name: "parcel_id")
+  @NullableStringConverter()
   final String? parcelId;
   @JsonKey(name: "last_message_id")
+  @NullableStringConverter()
   final String? lastMessageId;
   @JsonKey(name: "created_at")
   final String? createdAt;
@@ -64,8 +69,10 @@ class ConversationModel {
 class StoreModel {
   final int? id;
   @JsonKey(name: "branch_id")
+  @NullableStringConverter()
   final String? branchId;
   @JsonKey(name: "parent_store_id")
+  @NullableStringConverter()
   final String? parentStoreId;
   final String? name;
   @JsonKey(name: "owner_name")
@@ -95,16 +102,22 @@ class StoreModel {
 class MessageModel {
   final int? id;
   @JsonKey(name: "branch_id")
+  @NullableStringConverter()
   final String? branchId;
   @JsonKey(name: "chat_id")
+  @NullableStringConverter()
   final String? chatId;
   @JsonKey(name: "store_id")
+  @NullableStringConverter()
   final String? storeId;
   @JsonKey(name: "user_id")
+  @NullableStringConverter()
   final String? userId;
   @JsonKey(name: "parcel_id")
+  @NullableStringConverter()
   final String? parcelId;
   @JsonKey(name: "delivery_man_id")
+  @NullableStringConverter()
   final String? deliveryManId;
   final String? details;
   @JsonKey(name: "created_at")
