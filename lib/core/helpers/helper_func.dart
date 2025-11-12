@@ -128,7 +128,7 @@ String translateStatus(String status) {
 String formatToArabicDate(String isoString) {
   try {
     final date = DateTime.parse(isoString);
-    final formatter = DateFormat('d MMMM yyyy', 'ar');
+    final formatter = DateFormat('d MMMM yyyy', 'en');
     return formatter.format(date);
   } catch (e) {
     return isoString;

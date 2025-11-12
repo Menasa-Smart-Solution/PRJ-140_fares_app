@@ -1,4 +1,6 @@
+import 'package:fares/core/helpers/cache_helper.dart';
 import 'package:fares/core/utils/exports.dart';
+import 'package:fares/core/utils/prefs_keys.dart';
 import 'package:fares/features/auth/data/models/auth_request_model.dart';
 import 'package:fares/features/auth/data/models/branches_response_model.dart'
     show BranchModel;
@@ -12,8 +14,13 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> login(String email, String password) async {
     emit(state.copyWith(type: StateType.loading));
+    final fcmToken = await CacheHelper().getData(key: PrefsKeys.deviceToken);
     final result = await _authRepo.login(
-      LoginRequestModel(email: email, password: password),
+      LoginRequestModel(
+        email: email,
+        password: password,
+        deviceToken: fcmToken,
+      ),
     );
     result.fold(
       (failure) {

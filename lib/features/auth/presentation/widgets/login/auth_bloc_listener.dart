@@ -21,6 +21,10 @@ class AuthBlocListener extends StatelessWidget {
               Routes.loginRoute,
               predicate: (_) => false,
             );
+            showSnackBar(
+              message: state.successMessage ?? 'Success',
+              type: SnackType.success,
+            );
             return;
           }
           await CacheHelper.setSecuredString(

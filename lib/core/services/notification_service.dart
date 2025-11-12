@@ -2,8 +2,6 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 import 'package:fares/core/helpers/cache_helper.dart';
-import 'package:fares/core/routing/app_router.dart';
-import 'package:fares/core/routing/routes.dart';
 import 'package:fares/core/utils/prefs_keys.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -225,9 +223,9 @@ class NotificationService {
   }
 
   void _handleNavigation(Map<String, dynamic> data) {
-    final bool isExist = data.isNotEmpty && data.containsKey('value')
-        ? true
-        : false;
+    // final bool isExist = data.isNotEmpty && data.containsKey('value')
+    //     ? true
+    //     : false;
 
     // log('Handling navigation with data: $data, isExist: $isExist');
     // if (isExist) {
@@ -245,7 +243,7 @@ class NotificationService {
     // } else {
     //   AppRouter.navigatorKey.currentState?.pushNamed(Routes.mainScreen);
     // }
-    AppRouter.navigatorKey.currentState?.pushNamed(Routes.mainDriverRoute);
+    // AppRouter.navigatorKey.currentState?.pushNamed(Routes.mainDriverRoute);
   }
 
   Future<void> _initializeLocalNotifications() async {

@@ -50,6 +50,7 @@ class ReceiptModel {
   @StringConverter()
   final String total;
   final List<ParcelModel>? parcels;
+  final List<TransactionsModel>? transactions;
 
   ReceiptModel({
     required this.id,
@@ -59,9 +60,29 @@ class ReceiptModel {
     required this.shippingPrice,
     this.withdrawalTransaction,
     required this.total,
+    this.transactions,
     this.parcels,
   });
 
   factory ReceiptModel.fromJson(Map<String, dynamic> json) =>
       _$ReceiptModelFromJson(json);
+}
+
+@JsonSerializable(checked: true)
+class TransactionsModel {
+  final int id;
+  final String title;
+  @StringConverter()
+  final String amount;
+  @JsonKey(name: 'transaction_date')
+  final String transactionDate;
+  TransactionsModel({
+    required this.id,
+    required this.title,
+    required this.amount,
+    required this.transactionDate,
+  });
+
+  factory TransactionsModel.fromJson(Map<String, dynamic> json) =>
+      _$TransactionsModelFromJson(json);
 }

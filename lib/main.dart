@@ -8,6 +8,7 @@ import 'package:fares/core/utils/prefs_keys.dart';
 import 'package:fares/fares_app.dart';
 import 'package:fares/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 
 void main() async {
@@ -42,13 +43,12 @@ Future<String> _initializeApp() async {
     // Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform),
     EasyLocalization.ensureInitialized(),
     CacheHelper().init(),
-    NotificationService().initialize(),
     //
   ]);
 
   await setupDependencyInjection();
-  // FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
-  // await NotificationHandler().initialize();
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+  NotificationService().initialize();
   return _getInitialRoute();
 }
 

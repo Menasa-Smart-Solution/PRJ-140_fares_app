@@ -1,3 +1,4 @@
+import 'package:fares/core/helpers/helper_func.dart';
 import 'package:fares/features/driver/home/data/models/summary_response_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'store_home_response_model.g.dart';
@@ -14,6 +15,7 @@ class StoreHomeResponseModel {
 
 @JsonSerializable(checked: true)
 class StoreHomeModel {
+  @NullableStringConverter()
   final String? balance;
   @JsonKey(name: 'chats_count')
   final int? chatCounts;
