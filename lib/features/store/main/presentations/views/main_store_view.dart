@@ -4,6 +4,7 @@ import 'package:fares/features/driver/home/presentation/widgets/widgets.dart';
 import 'package:fares/features/store/home/features_imports.dart';
 import 'package:fares/features/store/home/presentation/views/store_home_view.dart';
 import 'package:fares/features/store/main/presentations/cubit/main_store_cubit.dart';
+import 'package:fares/features/store/shipment/feature_imports.dart';
 
 class MainStoreView extends StatelessWidget {
   const MainStoreView({super.key});

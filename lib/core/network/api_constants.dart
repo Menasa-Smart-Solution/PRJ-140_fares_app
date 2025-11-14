@@ -37,4 +37,6 @@ class ApiConstants {
   static const String tickets = "/tickets";
   static const String storeHome = "/home";
   static const String uploadImage = "/parcels/imageUpload";
+  static const String updateParcel = "/parcels/{id}/update";
+  static const String deleteParcel = "/parcels/{id}/destroy";
 }

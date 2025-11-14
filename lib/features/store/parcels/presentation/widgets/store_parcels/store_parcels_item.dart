@@ -47,10 +47,36 @@ class StoreParcelsItem extends StatelessWidget {
                               color: AppColors.white,
                             ),
                           ),
-                          Text(
-                            storeParcelModel.id.toString(),
-                            style: AppTextStyles.med24.copyWith(
-                              color: AppColors.white,
+                          verticalSpace(4),
+                          InkWell(
+                            onTap: () async {
+                              await Clipboard.setData(
+                                ClipboardData(
+                                  text: storeParcelModel.id.toString(),
+                                ),
+                              );
+                              showSnackBar(
+                                message: LocaleKeys.copyShipmentNumberSuccess
+                                    .tr(),
+                                type: SnackType.success,
+                              );
+                            },
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  storeParcelModel.id.toString(),
+                                  style: AppTextStyles.med18.copyWith(
+                                    color: AppColors.white,
+                                  ),
+                                ),
+                                horizontalSpace(4),
+                                const Icon(
+                                  Icons.copy,
+                                  size: 16,
+                                  color: AppColors.white,
+                                ),
+                              ],
                             ),
                           ),
                         ],

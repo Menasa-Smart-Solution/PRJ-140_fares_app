@@ -1,19 +1,14 @@
 part of '../../../feature_imports.dart';
 
-class CreateShipmentViewBody extends StatefulWidget {
-  const CreateShipmentViewBody({
-    super.key,
-    required this.products,
-    required this.isDeposit,
-  });
-  final List<ProductModel> products;
-  final bool isDeposit;
+class UpdateParcelViewBody extends StatefulWidget {
+  const UpdateParcelViewBody({super.key, required this.parcel});
+  final StoreParcelModel parcel;
 
   @override
-  State<CreateShipmentViewBody> createState() => _CreateShipmentViewBodyState();
+  State<UpdateParcelViewBody> createState() => _UpdateParcelViewBodyState();
 }
 
-class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
+class _UpdateParcelViewBodyState extends State<UpdateParcelViewBody> {
   final TextEditingController _recipientNameController =
       TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
@@ -23,6 +18,11 @@ class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _notesController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    _initData();
+  }
 
   @override
   void dispose() {
@@ -35,13 +35,23 @@ class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
     super.dispose();
   }
 
+  void _initData() {
+    _recipientNameController.text = widget.parcel.customerName ?? '';
+    _phoneController.text = widget.parcel.recipientNumber ?? '';
+    _phone2Controller.text = widget.parcel.recipientNumberTwo ?? '';
+    _addressDetailedController.text = widget.parcel.city ?? '';
+    _notesController.text = widget.parcel.notes ?? '';
+    descriptionController.text = widget.parcel.desc ?? '';
+  }
+
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<CreateParcelsCubit>();
+    final cubit = context.read<UpdateParcelsCubit>();
     return RefreshIndicator(
       onRefresh: () async {
-        context.read<CitiesPriceCubit>().getCitiesPrices();
-        context.read<CreateParcelsCubit>().getProducts();
+        cubit.getCitiesPrices();
+        cubit.getProducts();
+        cubit.getParcel(widget.parcel.id);
       },
       child: SingleChildScrollView(
         child: Form(
@@ -92,10 +102,10 @@ class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
                 title: LocaleKeys.phone2.tr(),
               ),
               verticalSpace(12),
-              const CreateParcelsCitiesBlocBuilder(),
+              const UpdateParcelCities(),
               verticalSpace(12),
 
-              const SubCities(),
+              const UpdateParcelSubCities(),
               AppTextFormField(
                 hintText: LocaleKeys.enterAddressDetailed.tr(),
                 validator: (value) {
@@ -110,10 +120,10 @@ class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
               ),
               verticalSpace(12),
 
-              const CreateParcelsProducts(),
+              const UpdateParcelProducts(),
               verticalSpace(12),
 
-              const SelectedProducts(),
+              const UpdateParcelSelectedProducts(),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -197,31 +207,17 @@ class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
               ),
               verticalSpace(12),
 
-              if (!widget.isDeposit) ...[
-                const ChooseShipmentImage(),
-                verticalSpace(12),
+              const UpdateParcelImage(),
+              verticalSpace(12),
 
-                const ShipmentOptions(),
-                verticalSpace(12),
-              ],
+              const UpdateParcelOptions(),
+              verticalSpace(12),
 
-              const CreateParcelsBlocListener(),
+              const EditParcelBlocListener(),
               AppTextButton(
                 onPressed: () {
-                  final cubit = context.read<CreateParcelsCubit>();
                   if (_formKey.currentState!.validate()) {
-                    if (widget.isDeposit) {
-                      cubit.addDeposit(
-                        phone: _phoneController.text,
-                        address: _addressDetailedController.text,
-                        recipientName: _recipientNameController.text,
-                        recipientPhone2: _phone2Controller.text,
-                        notes: _notesController.text,
-                        description: descriptionController.text,
-                      );
-                      return;
-                    }
-                    cubit.createParcels(
+                    cubit.updateParcel(
                       phone: _phoneController.text,
                       address: _addressDetailedController.text,
                       recipientName: _recipientNameController.text,
@@ -231,7 +227,7 @@ class _CreateShipmentViewBodyState extends State<CreateShipmentViewBody> {
                     );
                   }
                 },
-                text: LocaleKeys.createShipment.tr(),
+                text: LocaleKeys.editShipment.tr(),
               ),
             ],
           ),

@@ -235,5 +235,12 @@ abstract class  LocaleKeys {
   static const createComplaintSuccess = 'createComplaintSuccess';
   static const complaintsDescHint = 'complaintsDescHint';
   static const noComplaints = 'noComplaints';
+  static const contactStore = 'contactStore';
+  static const whatsappStore = 'whatsappStore';
+  static const copyShipmentNumberSuccess = 'copyShipmentNumberSuccess';
+  static const editShipment = 'editShipment';
+  static const editShipmentSuccess = 'editShipmentSuccess';
+  static const deleteShipment = 'deleteShipment';
+  static const deleteShipmentSuccess = 'deleteShipmentSuccess';
 
 }

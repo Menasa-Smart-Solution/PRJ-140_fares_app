@@ -12,4 +12,9 @@ abstract class ShipmentDataSource {
   Future<ProductsResponseModel> getProducts();
   Future<void> addDeposit({required AddDepositRequestModel body});
   Future<UploadParcelsImageResponse> uploadParcelsImage({required File image});
+
+  Future<void> updateParcel({
+    required int id,
+    required CreateParcelsRequestBody body,
+  });
 }

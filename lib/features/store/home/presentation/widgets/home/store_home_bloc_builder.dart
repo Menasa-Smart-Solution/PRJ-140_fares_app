@@ -39,6 +39,7 @@ class StoreHomeBlocBuilder extends StatelessWidget {
           case StateType.noInternet:
             return buildWidget(
               InternetConnectionWidget(
+                isScaffold: true,
                 onPressed: () {
                   final cubit = context.read<StoreHomeCubit>();
                   cubit.getStoreHome();

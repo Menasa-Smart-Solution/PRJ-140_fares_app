@@ -78,4 +78,19 @@ class ShipmentDataSourceImpl extends ShipmentDataSource {
       throw ServerException(message: ErrorHandler.handle(e).message!);
     }
   }
+
+  @override
+  Future<void> updateParcel({
+    required int id,
+    required CreateParcelsRequestBody body,
+  }) async {
+    try {
+      final response = await _apiService.updateParcel(id: id, body: body);
+      AppLogger.log('ShipmentDataSource: Update Parcel Success');
+      return response;
+    } catch (e) {
+      AppLogger.log('ShipmentDataSource: Update Parcel Failed: $e');
+      throw ServerException(message: ErrorHandler.handle(e).message!);
+    }
+  }
 }

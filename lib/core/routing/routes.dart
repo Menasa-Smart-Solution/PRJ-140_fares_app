@@ -40,4 +40,5 @@ class Routes {
   static const String contactUsRoute = '/contactUs';
   static const String storeHomeSearchRoute = '/StoreHomeSearchView';
   static const String ticketsRoute = '/TicketsView';
+  static const String updateParcelRoute = '/UpdateParcelView';
 }

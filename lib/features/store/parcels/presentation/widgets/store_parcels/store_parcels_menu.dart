@@ -9,16 +9,23 @@ class StoreParcelsMenu extends StatefulWidget {
 }
 
 class _StoreParcelsMenuState extends State<StoreParcelsMenu> {
-  late final List<String> options;
+  final List<String> options = [
+    LocaleKeys.contactCourier.tr(),
+    LocaleKeys.chatWithCourier.tr(),
+    LocaleKeys.copyShipmentLink.tr(),
+    // LocaleKeys.editShipment.tr(),
+    // LocaleKeys.deleteShipment.tr(),
+  ];
 
   @override
   void initState() {
     super.initState();
-    options = [
-      LocaleKeys.contactCourier.tr(),
-      LocaleKeys.chatWithCourier.tr(),
-      LocaleKeys.copyShipmentLink.tr(),
-    ];
+    if (widget.storeParcelModel.status == 'UnderPreparation') {
+      options.addAll([
+        LocaleKeys.editShipment.tr(),
+        LocaleKeys.deleteShipment.tr(),
+      ]);
+    }
   }
 
   void copyShipmentLink() async {
@@ -68,6 +75,18 @@ class _StoreParcelsMenuState extends State<StoreParcelsMenu> {
               when contactDelivery == LocaleKeys.contactCourier.tr():
             contactDeliveryman();
             break;
+          case String editShipment
+              when editShipment == LocaleKeys.editShipment.tr():
+            context.pushNamed(
+              Routes.updateParcelRoute,
+              arguments: widget.storeParcelModel.id,
+            );
+            break;
+          case String deleteShipment
+              when deleteShipment == LocaleKeys.deleteShipment.tr():
+            contactDeliveryman();
+            break;
+
           case String storeChatKey
               when storeChatKey == LocaleKeys.chatWithCourier.tr():
             await openStoreChat();

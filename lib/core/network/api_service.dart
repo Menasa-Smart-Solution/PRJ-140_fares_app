@@ -181,4 +181,13 @@ abstract class ApiService {
   Future<UploadParcelsImageResponse> uploadParcelsImage({
     @Part() required File image,
   });
+
+  @POST(ApiConstants.updateParcel)
+  Future<void> updateParcel({
+    @Path('id') required int id,
+    @Body() required CreateParcelsRequestBody body,
+  });
+
+  @DELETE(ApiConstants.deleteParcel)
+  Future<void> deleteParcel({@Path('id') required int id});
 }

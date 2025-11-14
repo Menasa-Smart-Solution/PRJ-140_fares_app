@@ -18,6 +18,7 @@ import 'package:fares/features/store/home/features_imports.dart';
 import 'package:fares/features/store/home/presentation/cubit/store_home/store_home_cubit.dart';
 import 'package:fares/features/store/main/presentations/cubit/main_store_cubit.dart';
 import 'package:fares/features/store/parcels/feature_imports.dart';
+import 'package:fares/features/store/shipment/feature_imports.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../core/utils/exports.dart';

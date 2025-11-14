@@ -72,7 +72,7 @@ class CodegenLoader extends AssetLoader{
   "shippingStatusUnderReview": "قيد المراجعه",
   "shippingStatusDeliveryFailed": "تعذر التسليم للشحنه",
   "shippingStatus": "حاله الشحنه",
-  "trackingNumber": "رقم الرحله",
+  "trackingNumber": "رقم الشحنة",
   "from": "من:",
   "description": "الوصف:",
   "creationDate": "تاريخ الإنشاء:",
@@ -82,7 +82,7 @@ class CodegenLoader extends AssetLoader{
   "total": "الإجمالي",
   "trackOrder": "متابعة الطلب",
   "contactMerchant": "الاتصال بالمسلتم",
-  "whatsapp": "واتساب",
+  "whatsapp": "واتس اب بالمستلم",
   "storeChat": "محادثه المتجر",
   "requestLocation": "طلب الموقع",
   "searchHint": "بحث..",
@@ -246,7 +246,14 @@ class CodegenLoader extends AssetLoader{
   "createComplaint": "انشاء شكوي",
   "createComplaintSuccess": "تم انشاء الشكوي بنجاح",
   "complaintsDescHint": "ادخل وصف الشكوي",
-  "noComplaints": "ليس لديك شكاوي حتي الآن !"
+  "noComplaints": "ليس لديك شكاوي حتي الآن !",
+  "contactStore": "اتصال بالمتجر",
+  "whatsappStore": "واتس اب بالمتجر",
+  "copyShipmentNumberSuccess": "تم نسخ رقم الشحنة",
+  "editShipment": "تعديل  الشحنة",
+  "editShipmentSuccess": "تم تعديل الشحنة بنجاح",
+  "deleteShipment": "حذف  الشحنة",
+  "deleteShipmentSuccess": "تم حذف الشحنة بنجاح"
 };
 static const Map<String,dynamic> _en = {
   "trackingTitle": "تتبع حالة \nشحناتك \nوانت في مكانك",

@@ -62,4 +62,23 @@ class ShipmentRepo {
       return Left(ServerFailure(message: e.message));
     }
   }
+
+  Future<Either<Failure, void>> updateParcel({
+    required int id,
+    required CreateParcelsRequestBody body,
+    File? image,
+  }) async {
+    try {
+      String? imageUrl;
+      if (image != null) {
+        final result = await _dataSource.uploadParcelsImage(image: image);
+        imageUrl = result.imageUrl;
+      }
+      body.imagePath = imageUrl;
+      await _dataSource.updateParcel(id: id, body: body);
+      return const Right(null);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(message: e.message));
+    }
+  }
 }

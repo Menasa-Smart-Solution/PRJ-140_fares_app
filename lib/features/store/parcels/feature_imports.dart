@@ -4,6 +4,7 @@ import 'package:fares/features/driver/chat/feature_imports.dart';
 import 'package:fares/features/driver/orders/feature_imports.dart';
 import 'package:fares/features/store/parcels/data/models/store_parcels_response_model.dart';
 import 'package:fares/features/store/parcels/presentation/cubit/store_parcels_cubit.dart';
+import 'package:fares/features/store/shipment/feature_imports.dart';
 
 import '../../../core/common_ui/widgets/animate_do.dart';
 import '../../../core/utils/exports.dart';

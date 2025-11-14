@@ -1,28 +1,90 @@
 import 'dart:io';
-import 'package:equatable/equatable.dart';
+
+import 'package:fares/core/enums/enums.dart';
 import 'package:fares/core/services/image_picker_service.dart';
 import 'package:fares/core/services/internet_service.dart';
-import 'package:fares/core/utils/exports.dart';
+import 'package:fares/core/utils/app_logger.dart';
+import 'package:fares/features/store/parcels/data/models/store_parcels_response_model.dart';
+import 'package:fares/features/store/parcels/data/repos/store_parcels_repo.dart';
 import 'package:fares/features/store/prices/data/models/city_response_model.dart';
-import 'package:fares/features/store/shipment/data/models/add_deposit_request_model.dart';
+import 'package:fares/features/store/prices/data/repos/prices_repo.dart';
 import 'package:fares/features/store/shipment/data/models/create_parcels_request_body.dart';
 import 'package:fares/features/store/shipment/data/models/products_response_model.dart';
 import 'package:fares/features/store/shipment/data/repositories/shipment_repo.dart';
-part 'create_parcels_state.dart';
+import 'package:fares/features/store/shipment/presentation/cubit/update_parcles/update_parcels_state.dart';
+import 'package:fares/generated/locale_keys.g.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CreateParcelsCubit extends Cubit<CreateParcelsState> {
+class UpdateParcelsCubit extends Cubit<UpdateParcelsState> {
   final ShipmentRepo _repo;
   final ImagePickerService _imagePickerService;
   final InternetService _internetService;
-  CreateParcelsCubit(
+  final PricesRepo _pricesRepo;
+  final StoreParcelsRepo _storeParcelsRepo;
+
+  UpdateParcelsCubit(
     this._repo,
     this._imagePickerService,
     this._internetService,
-  ) : super(const CreateParcelsState());
+    this._pricesRepo,
+    this._storeParcelsRepo,
+  ) : super(const UpdateParcelsState());
+
   final TextEditingController productPriceController = TextEditingController();
   final TextEditingController qtyController = TextEditingController();
 
-  Future<void> createParcels({
+  Future<void> getCitiesPrices() async {
+    emit(state.copyWith(getCitiesPricesState: StateType.loading));
+    if (!await _internetService.isConnected()) {
+      emit(state.copyWith(getCitiesPricesState: StateType.noInternet));
+      return;
+    }
+    final result = await _pricesRepo.getCities();
+    result.fold(
+      (failure) {
+        emit(
+          state.copyWith(
+            getCitiesPricesState: StateType.error,
+            errorMessage: failure.message,
+          ),
+        );
+      },
+      (response) {
+        emit(
+          state.copyWith(
+            getCitiesPricesState: StateType.success,
+            citiesPrices: response.data,
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> getParcel(int id) async {
+    emit(state.copyWith(getParcelsState: StateType.loading));
+    if (!await _internetService.isConnected()) {
+      emit(state.copyWith(getParcelsState: StateType.noInternet));
+      return;
+    }
+    final result = await _storeParcelsRepo.getStoreParcelDetails(id);
+    result.fold(
+      (failure) {
+        emit(
+          state.copyWith(
+            getParcelsState: StateType.error,
+            errorMessage: failure.message,
+          ),
+        );
+      },
+      (parcel) {
+        // Fill the form data from the fetched parcel
+        _emitGetParcel(parcel);
+      },
+    );
+  }
+
+  Future<void> updateParcel({
     required String phone,
     required String address,
     String? notes,
@@ -31,18 +93,22 @@ class CreateParcelsCubit extends Cubit<CreateParcelsState> {
     String? recipientPhone2,
   }) async {
     // Debug logging BEFORE emitting loading state
-    AppLogger.info('=== BEFORE LOADING STATE ===');
+    AppLogger.info('=== BEFORE UPDATE LOADING STATE ===');
     AppLogger.info(
       'Selected SubCity: ${state.selectedSubCity?.name} (ID: ${state.selectedSubCity?.id})',
     );
 
     emit(
-      state.copyWith(createParcelsState: StateType.loading, isDeposit: false),
+      state.copyWith(
+        updateParcelState: StateType.loading,
+        isDeposit: false,
+        clearSubCityId: false, // Explicitly preserve subcity
+      ),
     );
 
     // Debug logging AFTER emitting loading state
-    AppLogger.info('=== AFTER LOADING STATE ===');
-    AppLogger.info('Creating parcels with:');
+    AppLogger.info('=== AFTER UPDATE LOADING STATE ===');
+    AppLogger.info('Updating parcel with:');
     AppLogger.info(
       'Selected City: ${state.selectedCity?.name} (ID: ${state.selectedCity?.id})',
     );
@@ -76,64 +142,22 @@ class CreateParcelsCubit extends Cubit<CreateParcelsState> {
     // Log the actual request body
     AppLogger.info('Request body subCityId: ${parcels.subCityId}');
 
-    final result = await _repo.createShipment(
+    final result = await _repo.updateParcel(
       body: parcels,
+      id: state.parcel!.id,
       image: state.selectedImage,
     );
     result.fold(
       (failure) {
         emit(
           state.copyWith(
-            createParcelsState: StateType.error,
+            updateParcelState: StateType.error,
             errorMessage: failure.message,
           ),
         );
       },
       (_) {
-        emit(state.copyWith(createParcelsState: StateType.success));
-      },
-    );
-  }
-
-  void addDeposit({
-    required String phone,
-    required String address,
-    String? notes,
-    required String description,
-    String? recipientName,
-    String? recipientPhone2,
-  }) async {
-    emit(state.copyWith(createParcelsState: StateType.loading));
-    final body = AddDepositRequestModel(
-      customerName: recipientName,
-      qty: int.parse(qtyController.text),
-      desc: description,
-      notes: notes,
-      recipientNumber: phone,
-      recipientNumber2: recipientPhone2,
-      productPrice: num.parse(productPriceController.text),
-      address: address,
-      cityId: state.selectedCity!.id,
-      deliveryOn: state.onDeliveryType ?? LocaleKeys.customer,
-      downPayment: 1, // Example down payment value),
-    );
-    final result = await _repo.addDeposit(body: body);
-    result.fold(
-      (failure) {
-        emit(
-          state.copyWith(
-            createParcelsState: StateType.error,
-            errorMessage: failure.message,
-          ),
-        );
-      },
-      (_) {
-        emit(
-          state.copyWith(
-            createParcelsState: StateType.success,
-            isDeposit: true,
-          ),
-        );
+        emit(state.copyWith(updateParcelState: StateType.success));
       },
     );
   }
@@ -166,7 +190,7 @@ class CreateParcelsCubit extends Cubit<CreateParcelsState> {
   }
 
   void setSelectedCity(CityModel? city) {
-    AppLogger.info('Selected City: ${city?.name}');
+    AppLogger.info('Selected City: ${city?.name} (ID: ${city?.id})');
     emit(state.copyWith(selectedCity: city, clearSubCityId: true));
   }
 
@@ -231,7 +255,6 @@ class CreateParcelsCubit extends Cubit<CreateParcelsState> {
   }
 
   void setSelectedProduct(ProductModel? product) {
-    AppLogger.info('Selected Product: ${product?.name}');
     if (product != null) {
       final updatedProducts = List<ProductModel>.from(state.selectedProducts);
       final updatedQtys = List<int>.from(state.qyts);
@@ -276,8 +299,101 @@ class CreateParcelsCubit extends Cubit<CreateParcelsState> {
     qtyController.text = sum.toString();
   }
 
-  void resetState() {
-    emit(const CreateParcelsState());
+  void _emitGetParcel(StoreParcelModel parcel) {
+    // Ensure data is loaded before filling
+    if (state.citiesPrices.isEmpty || state.products.isEmpty) {
+      AppLogger.warning(
+        'Cannot fill parcel: cities or products not loaded yet',
+      );
+      return;
+    }
+
+    AppLogger.info('Parcel subCityId from API: ${parcel.subCityId}');
+    productPriceController.text = parcel.productPrice?.toString() ?? '0';
+    qtyController.text = parcel.qty?.toString() ?? '0';
+
+    final services = <String>{};
+    if (parcel.breakable == "1") services.add(LocaleKeys.breakable);
+    if (parcel.unmeasurable == "1") services.add(LocaleKeys.nonMeasurable);
+    if (parcel.replacing == "1") services.add(LocaleKeys.exchangeNote);
+    if (parcel.unopenable == "1") services.add(LocaleKeys.nonOpenable);
+    if (parcel.measurable == "1") services.add(LocaleKeys.measurable);
+    if (parcel.unreturnable == "1") services.add(LocaleKeys.nonReturnable);
+    if (parcel.partialDelivery == "1") services.add(LocaleKeys.partialDelivery);
+
+    final deliveryType = parcel.deliveryOn ?? LocaleKeys.customer;
+
+    // Find and set selected city from available cities
+    CityModel? selectedCity;
+    SubCitiesModel? selectedSubCity;
+    if (parcel.toCity != null) {
+      try {
+        selectedCity = state.citiesPrices.firstWhere(
+          (city) => city.id == parcel.toCity!.id,
+        );
+
+        AppLogger.info(
+          'Found city: ${selectedCity.name} with ${selectedCity.subCities?.length ?? 0} subcities',
+        );
+
+        // Find subcity if available
+        if (parcel.subCityId != null && selectedCity.subCities != null) {
+          try {
+            selectedSubCity = selectedCity.subCities!.firstWhere(
+              (subCity) => subCity.id.toString() == parcel.subCityId,
+            );
+            AppLogger.info(
+              'Found subcity: ${selectedSubCity.name} (ID: ${selectedSubCity.id})',
+            );
+          } catch (e) {
+            AppLogger.warning('SubCity not found with ID: ${parcel.subCityId}');
+          }
+        }
+      } catch (e) {
+        AppLogger.warning('City not found: ${parcel.toCity?.id}');
+      }
+    }
+
+    final List<int> qtys = [];
+
+    // If no products mapped, try to use the total qty
+    if (qtys.isEmpty && parcel.qty != null) {
+      final totalQty = int.tryParse(parcel.qty!) ?? 0;
+      if (totalQty > 0) {
+        qtys.add(totalQty);
+      }
+    }
+
+    AppLogger.info(
+      'Filling from parcel with ${parcel.products?.length ?? 0} products',
+    );
+    AppLogger.info(
+      'Setting selectedSubCity to: ${selectedSubCity?.name} (ID: ${selectedSubCity?.id})',
+    );
+
+    emit(
+      state.copyWith(
+        selectedCity: selectedCity,
+        selectedSubCity: selectedSubCity,
+        onDeliveryType: deliveryType,
+        selectedServices: services,
+        selectedProduct: parcel.products != null && parcel.products!.isNotEmpty
+            ? parcel.products![0]
+            : null,
+        selectedProducts: parcel.products ?? [],
+        qyts: qtys.isNotEmpty ? qtys : [1],
+        clearSelectedProduct: false,
+        clearSelectedImage: false,
+        clearSubCityId: false,
+        getParcelsState: StateType.success,
+        parcel: parcel,
+      ),
+    );
+
+    // Verify after emit
+    AppLogger.info(
+      'After emit - SubCity in state: ${state.selectedSubCity?.name} (ID: ${state.selectedSubCity?.id})',
+    );
   }
 
   @override
@@ -288,7 +404,7 @@ class CreateParcelsCubit extends Cubit<CreateParcelsState> {
   }
 
   @override
-  void emit(CreateParcelsState state) {
+  void emit(UpdateParcelsState state) {
     if (isClosed) {
       return;
     }

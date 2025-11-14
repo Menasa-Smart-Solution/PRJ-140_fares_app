@@ -4,6 +4,7 @@ import 'package:fares/features/store/shipment/data/datasources/shipment_data_sou
 import 'package:fares/features/store/shipment/data/repositories/shipment_repo.dart';
 import 'package:fares/features/store/shipment/presentation/cubit/collects/create_store_collect_cubit.dart';
 import 'package:fares/features/store/shipment/presentation/cubit/create_parcels/create_parcels_cubit.dart';
+import 'package:fares/features/store/shipment/presentation/cubit/update_parcles/update_parcels_cubit.dart';
 
 Future<void> initStoreShipmentDI() async {
   getIt.registerLazySingleton<ShipmentDataSource>(
@@ -17,5 +18,8 @@ Future<void> initStoreShipmentDI() async {
   );
   getIt.registerFactory<CreateParcelsCubit>(
     () => CreateParcelsCubit(getIt(), getIt(), getIt()),
+  );
+  getIt.registerFactory<UpdateParcelsCubit>(
+    () => UpdateParcelsCubit(getIt(), getIt(), getIt(), getIt(), getIt()),
   );
 }

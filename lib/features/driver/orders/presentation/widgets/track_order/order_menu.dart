@@ -17,6 +17,8 @@ class _OrderMenuState extends State<OrderMenu> {
     options = [
       LocaleKeys.contactMerchant.tr(),
       LocaleKeys.whatsapp.tr(),
+      LocaleKeys.contactStore.tr(),
+      LocaleKeys.whatsappStore.tr(),
       LocaleKeys.storeChat.tr(),
       LocaleKeys.addCallLog.tr(),
     ];
@@ -70,6 +72,14 @@ class _OrderMenuState extends State<OrderMenu> {
           case String storeChatKey
               when storeChatKey == LocaleKeys.storeChat.tr():
             await openStoreChat();
+            break;
+          case String contactStoreKey
+              when contactStoreKey == LocaleKeys.contactStore.tr():
+            await makePhoneCall(widget.parcel.store?.phone ?? '');
+            break;
+          case String whatsappStoreKey
+              when whatsappStoreKey == LocaleKeys.whatsappStore.tr():
+            await openWhatsApp(widget.parcel.store?.phone ?? '');
             break;
 
           case String addCallLogKey

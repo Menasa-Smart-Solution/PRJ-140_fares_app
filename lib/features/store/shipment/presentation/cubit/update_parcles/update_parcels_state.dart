@@ -1,8 +1,16 @@
-part of 'create_parcels_cubit.dart';
+import 'dart:io';
 
-class CreateParcelsState extends Equatable {
-  final StateType createParcelsState;
+import 'package:equatable/equatable.dart';
+import 'package:fares/core/enums/enums.dart';
+import 'package:fares/features/store/parcels/data/models/store_parcels_response_model.dart';
+import 'package:fares/features/store/prices/data/models/city_response_model.dart';
+import 'package:fares/features/store/shipment/data/models/products_response_model.dart';
+
+class UpdateParcelsState extends Equatable {
+  final StateType getParcelsState;
+  final StoreParcelModel? parcel;
   final String? errorMessage;
+  final StateType updateParcelState;
   final CityModel? selectedCity;
   final String? onDeliveryType;
   final Set<String> selectedServices;
@@ -16,9 +24,8 @@ class CreateParcelsState extends Equatable {
   final SubCitiesModel? selectedSubCity;
   final StateType getCitiesPricesState;
   final List<CityModel> citiesPrices;
-
-  const CreateParcelsState({
-    this.createParcelsState = StateType.initial,
+  const UpdateParcelsState({
+    this.updateParcelState = StateType.initial,
     this.errorMessage,
     this.selectedCity,
     this.onDeliveryType,
@@ -34,11 +41,13 @@ class CreateParcelsState extends Equatable {
     this.isDeposit = false,
     this.selectedProducts = const [],
     this.qyts = const [],
+    this.getParcelsState = StateType.loading,
+    this.parcel,
   });
 
   @override
   List<Object?> get props => [
-    createParcelsState,
+    updateParcelState,
     errorMessage,
     selectedCity,
     onDeliveryType,
@@ -53,10 +62,12 @@ class CreateParcelsState extends Equatable {
     selectedSubCity,
     getCitiesPricesState,
     citiesPrices,
+    getParcelsState,
+    parcel,
   ];
 
-  CreateParcelsState copyWith({
-    StateType? createParcelsState,
+  UpdateParcelsState copyWith({
+    StateType? updateParcelState,
     String? errorMessage,
     CityModel? selectedCity,
     String? onDeliveryType,
@@ -74,9 +85,11 @@ class CreateParcelsState extends Equatable {
     bool clearSubCityId = false,
     StateType? getCitiesPricesState,
     List<CityModel>? citiesPrices,
+    StateType? getParcelsState,
+    StoreParcelModel? parcel,
   }) {
-    return CreateParcelsState(
-      createParcelsState: createParcelsState ?? this.createParcelsState,
+    return UpdateParcelsState(
+      updateParcelState: updateParcelState ?? this.updateParcelState,
       errorMessage: errorMessage ?? this.errorMessage,
       selectedCity: selectedCity ?? this.selectedCity,
       onDeliveryType: onDeliveryType ?? this.onDeliveryType,
@@ -94,9 +107,11 @@ class CreateParcelsState extends Equatable {
       qyts: qyts ?? this.qyts,
       selectedSubCity: clearSubCityId
           ? null
-          : selectedSubCity ?? this.selectedSubCity,
+          : selectedSubCity ?? selectedSubCity,
       getCitiesPricesState: getCitiesPricesState ?? this.getCitiesPricesState,
       citiesPrices: citiesPrices ?? this.citiesPrices,
+      getParcelsState: getParcelsState ?? this.getParcelsState,
+      parcel: parcel ?? this.parcel,
     );
   }
 }

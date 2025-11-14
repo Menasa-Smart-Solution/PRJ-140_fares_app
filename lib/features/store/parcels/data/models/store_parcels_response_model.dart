@@ -1,5 +1,6 @@
 import 'package:fares/core/helpers/helper_func.dart';
 import 'package:fares/features/driver/orders/data/models/parcels_response_model.dart';
+import 'package:fares/features/store/shipment/data/models/products_response_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'store_parcels_response_model.g.dart';
 
@@ -74,6 +75,25 @@ class StoreParcelModel {
   @JsonKey(name: 'created_at')
   final String? createdAt;
   final List<ParcelsRecord>? records;
+  @JsonKey(name: 'sub_city_id')
+  @NullableStringConverter()
+  final String? subCityId;
+  @NullableStringConverter()
+  final String? breakable;
+  @NullableStringConverter()
+  final String? replacing;
+  @NullableStringConverter()
+  final String? unmeasurable;
+  @NullableStringConverter()
+  final String? measurable;
+  @NullableStringConverter()
+  final String? unreturnable;
+  @NullableStringConverter()
+  final String? unopenable;
+  @NullableStringConverter()
+  final String? partialDelivery;
+
+  final List<ProductModel>? products;
 
   StoreParcelModel({
     required this.id,
@@ -81,6 +101,7 @@ class StoreParcelModel {
     this.desc,
     this.productPrice,
     this.recipientNumber,
+    this.partialDelivery,
     this.customerName,
     this.qty,
     this.deliveryOn,
@@ -97,6 +118,14 @@ class StoreParcelModel {
     this.createdAt,
     this.recipientNumberTwo,
     this.records,
+    this.subCityId,
+    this.breakable,
+    this.replacing,
+    this.unmeasurable,
+    this.measurable,
+    this.unreturnable,
+    this.unopenable,
+    this.products,
   });
 
   factory StoreParcelModel.fromJson(Map<String, dynamic> json) =>

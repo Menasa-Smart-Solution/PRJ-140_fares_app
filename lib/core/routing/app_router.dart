@@ -126,6 +126,10 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => TicketsView(isComplaints: args as bool),
         );
+      case Routes.updateParcelRoute:
+        return MaterialPageRoute(
+          builder: (_) => UpdateParcelView(parcelId: args as int),
+        );
 
       default:
         return null;
