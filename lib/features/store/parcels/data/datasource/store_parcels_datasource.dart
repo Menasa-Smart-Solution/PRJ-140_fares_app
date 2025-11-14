@@ -8,4 +8,6 @@ abstract class StoreParcelsDataSource {
     int? page,
   });
   Future<StoreParcelsDetailsResponseModel> getStoreParcelDetails(int id);
+
+  Future<void> deleteParcel({required int id});
 }

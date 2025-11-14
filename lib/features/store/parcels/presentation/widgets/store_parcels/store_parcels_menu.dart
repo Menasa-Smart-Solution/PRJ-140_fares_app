@@ -84,7 +84,7 @@ class _StoreParcelsMenuState extends State<StoreParcelsMenu> {
             break;
           case String deleteShipment
               when deleteShipment == LocaleKeys.deleteShipment.tr():
-            contactDeliveryman();
+            _showDeleteDialog();
             break;
 
           case String storeChatKey
@@ -100,6 +100,27 @@ class _StoreParcelsMenuState extends State<StoreParcelsMenu> {
     context.pushNamed(
       Routes.chatRoute,
       arguments: ChatParam(parcelId: widget.storeParcelModel.id),
+    );
+  }
+
+  void _showDeleteDialog() {
+    final cubit = context.read<StoreParcelsCubit>();
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Builder(
+          builder: (context) {
+            return BlocProvider.value(
+              value: cubit,
+              child: DeleteParcelAlertDialog(
+                onTap: () {
+                  cubit.deleteParcel(id: widget.storeParcelModel.id);
+                },
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }

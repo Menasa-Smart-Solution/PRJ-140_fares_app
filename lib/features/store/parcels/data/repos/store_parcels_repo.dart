@@ -35,4 +35,13 @@ class StoreParcelsRepo {
       return Left(ServerFailure(message: e.message));
     }
   }
+
+  Future<Either<Failure, void>> deleteParcel({required int id}) async {
+    try {
+      await _dataSource.deleteParcel(id: id);
+      return const Right(null);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(message: e.message));
+    }
+  }
 }

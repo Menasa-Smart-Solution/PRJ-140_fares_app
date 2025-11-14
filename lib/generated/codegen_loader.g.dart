@@ -253,7 +253,8 @@ class CodegenLoader extends AssetLoader{
   "editShipment": "تعديل  الشحنة",
   "editShipmentSuccess": "تم تعديل الشحنة بنجاح",
   "deleteShipment": "حذف  الشحنة",
-  "deleteShipmentSuccess": "تم حذف الشحنة بنجاح"
+  "deleteShipmentSuccess": "تم حذف الشحنة بنجاح",
+  "parcelDeletedSuccessfully": "تم حذف الشحنة بنجاح"
 };
 static const Map<String,dynamic> _en = {
   "trackingTitle": "تتبع حالة \nشحناتك \nوانت في مكانك",

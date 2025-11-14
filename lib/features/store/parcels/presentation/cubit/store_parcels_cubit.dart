@@ -183,6 +183,34 @@ class StoreParcelsCubit extends Cubit<StoreParcelsState> {
     );
   }
 
+
+  Future<void> deleteParcel({required int id}) async {
+    emit(state.copyWith(deleteParcelState: StateType.loading));
+    if (!await _internetService.isConnected()) {
+      emit(state.copyWith(deleteParcelState: StateType.noInternet));
+      return;
+    }
+
+    final result = await _repo.deleteParcel(id: id);
+
+    result.fold(
+      (failure) {
+        emit(
+          state.copyWith(
+            deleteParcelState: StateType.error,
+            errorMessage: failure.message,
+          ),
+        );
+      },
+      (_) {
+        emit(
+          state.copyWith(
+            deleteParcelState: StateType.success,
+          ),
+        );
+      },
+    );
+  }
   @override
   void emit(StoreParcelsState state) {
     if (isClosed) return;

@@ -47,4 +47,15 @@ class StoreParcelsDatasourceImpl implements StoreParcelsDataSource {
       throw ServerException(message: ErrorHandler.handle(e).message!);
     }
   }
+
+  @override
+  Future<void> deleteParcel({required int id}) async {
+    try {
+      await _apiService.deleteParcel(id: id);
+      AppLogger.info('StoreParcelsDatasource: Delete Parcel Success: ID $id');
+    } catch (e) {
+      AppLogger.error('StoreParcelsDatasource: Delete Parcel Error: $e');
+      throw ServerException(message: ErrorHandler.handle(e).message!);
+    }
+  }
 }

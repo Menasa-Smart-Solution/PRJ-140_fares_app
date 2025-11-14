@@ -9,6 +9,7 @@ class StoreParcelsState extends Equatable {
   final int currentPage;
   final bool hasMoreData;
   final bool isLoadingMore;
+  final StateType deleteParcelState;
 
   const StoreParcelsState({
     this.getAllStoreParcelsState = StateType.initial,
@@ -19,6 +20,7 @@ class StoreParcelsState extends Equatable {
     this.currentPage = 1,
     this.hasMoreData = true,
     this.isLoadingMore = false,
+    this.deleteParcelState = StateType.initial,
   });
 
   StoreParcelsState copyWith({
@@ -30,6 +32,7 @@ class StoreParcelsState extends Equatable {
     int? currentPage,
     bool? hasMoreData,
     bool? isLoadingMore,
+    StateType? deleteParcelState,
   }) {
     return StoreParcelsState(
       getAllStoreParcelsState:
@@ -42,6 +45,7 @@ class StoreParcelsState extends Equatable {
       currentPage: currentPage ?? this.currentPage,
       hasMoreData: hasMoreData ?? this.hasMoreData,
       isLoadingMore: isLoadingMore ?? this.isLoadingMore,
+      deleteParcelState: deleteParcelState ?? this.deleteParcelState,
     );
   }
 
@@ -55,5 +59,6 @@ class StoreParcelsState extends Equatable {
     currentPage,
     hasMoreData,
     isLoadingMore,
+    deleteParcelState,
   ];
 }

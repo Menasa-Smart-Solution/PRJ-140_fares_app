@@ -242,5 +242,6 @@ abstract class  LocaleKeys {
   static const editShipmentSuccess = 'editShipmentSuccess';
   static const deleteShipment = 'deleteShipment';
   static const deleteShipmentSuccess = 'deleteShipmentSuccess';
+  static const parcelDeletedSuccessfully = 'parcelDeletedSuccessfully';
 
 }

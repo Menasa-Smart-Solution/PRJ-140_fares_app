@@ -101,7 +101,10 @@ class StoreParcelsItem extends StatelessWidget {
                     ),
                   ),
                   horizontalSpace(8),
-                  StoreParcelsMenu(storeParcelModel: storeParcelModel),
+                  BlocProvider.value(
+                    value: context.read<StoreParcelsCubit>(),
+                    child: StoreParcelsMenu(storeParcelModel: storeParcelModel),
+                  ),
                 ],
               ),
               _buildDivider(),

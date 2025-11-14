@@ -4,7 +4,6 @@ import 'package:fares/features/driver/chat/feature_imports.dart';
 import 'package:fares/features/driver/orders/feature_imports.dart';
 import 'package:fares/features/store/parcels/data/models/store_parcels_response_model.dart';
 import 'package:fares/features/store/parcels/presentation/cubit/store_parcels_cubit.dart';
-import 'package:fares/features/store/shipment/feature_imports.dart';
 
 import '../../../core/common_ui/widgets/animate_do.dart';
 import '../../../core/utils/exports.dart';
@@ -21,6 +20,8 @@ part 'presentation/widgets/store_parcels/timeline_item.dart';
 part 'presentation/widgets/store_parcels/store_parcels_bloc_builder.dart';
 part 'presentation/widgets/store_parcels/store_parcels_details_view_body.dart';
 part 'presentation/widgets/store_parcels/store_parcels_details_bloc_builder.dart';
+part 'presentation/widgets/store_parcels/delete_parcel_bloc_listener.dart';
+part 'presentation/widgets/store_parcels/delete_parcel_alert_dialog.dart';
 
 part 'presentation/widgets/store_parcels/store_parcels_search_field.dart';
 

@@ -237,7 +237,8 @@
   "editShipment": "تعديل  الشحنة",
   "editShipmentSuccess": "تم تعديل الشحنة بنجاح",
   "deleteShipment": "حذف  الشحنة",
-  "deleteShipmentSuccess": "تم حذف الشحنة بنجاح"
+  "deleteShipmentSuccess": "تم حذف الشحنة بنجاح",
+  "parcelDeletedSuccessfully":"تم حذف الشحنة بنجاح"
 
 
 }

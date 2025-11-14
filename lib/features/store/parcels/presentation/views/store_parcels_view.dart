@@ -15,6 +15,7 @@ class StoreParcelsView extends StatelessWidget {
             StoreParcelsSearchField(status: params.id),
             verticalSpace(12),
             Expanded(child: StoreParcelsBlocBuilder(status: params.id)),
+            DeleteParcelBlocListener(status: params.id),
           ],
         ).withPadding(vertical: 20, horizontal: 16),
       ),
