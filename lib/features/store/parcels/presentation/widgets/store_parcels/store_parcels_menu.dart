@@ -77,10 +77,13 @@ class _StoreParcelsMenuState extends State<StoreParcelsMenu> {
             break;
           case String editShipment
               when editShipment == LocaleKeys.editShipment.tr():
-            context.pushNamed(
+            final value = await context.pushNamed(
               Routes.updateParcelRoute,
               arguments: widget.storeParcelModel.id,
             );
+            if (value == true) {
+              context.read<StoreParcelsCubit>().getStoreParcels(refresh: true);
+            }
             break;
           case String deleteShipment
               when deleteShipment == LocaleKeys.deleteShipment.tr():

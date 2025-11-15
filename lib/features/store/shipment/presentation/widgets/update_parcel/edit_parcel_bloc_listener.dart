@@ -13,7 +13,7 @@ class EditParcelBlocListener extends StatelessWidget {
           OverlayHelper.showLoadingOverlay(context);
         } else if (state.updateParcelState.isSuccess) {
           OverlayHelper.hideLoadingOverlay();
-          context.pop();
+          Navigator.of(context).pop(true);
           showSnackBar(
             message: LocaleKeys.editShipmentSuccess.tr(),
             type: SnackType.success,
