@@ -25,8 +25,8 @@ class CallLogsImagesListView extends StatelessWidget {
                   height: 700,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16),
-                    child: Image.asset(
-                      AppImages.imagesOnboarding,
+                    child: CustomCachedImage(
+                      imageUrl: images[index].imagePath,
                       fit: BoxFit.cover,
                     ),
                   ),

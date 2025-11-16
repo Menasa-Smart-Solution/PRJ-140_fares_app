@@ -17,9 +17,13 @@ class CallLogsBlocBuilder extends StatelessWidget {
           case StateType.error:
             return SliverFillRemaining(
               hasScrollBody: false,
-              child: CustomEmptyWidget(
+              child: CustomErrorWidget(
                 message: state.errorMessage ?? LocaleKeys.unknown.tr(),
-                imagePath: AppImages.imagesEmpty,
+                onPressed: () {
+                  context.read<CallRecordsCubit>().getCallImages(
+                    parcelId: parcelId,
+                  );
+                },
               ),
             );
           case StateType.empty:

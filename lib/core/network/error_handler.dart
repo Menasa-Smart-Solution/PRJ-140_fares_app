@@ -56,10 +56,10 @@ ApiErrorModel _handleError(Response? response) {
       errors.forEach((key, value) {
         if (value is List) {
           for (var msg in value) {
-            messages.add("${key.toString()}: $msg");
+            messages.add("$msg");
           }
         } else {
-          messages.add("${key.toString()}: ${value.toString()}");
+          messages.add(value.toString());
         }
       });
     } else if (errors is List) {

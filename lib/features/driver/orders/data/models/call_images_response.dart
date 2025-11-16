@@ -1,3 +1,4 @@
+import 'package:fares/core/helpers/helper_func.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'call_images_response.g.dart';
 
@@ -15,6 +16,7 @@ class CallImagesResponse {
 
 @JsonSerializable(checked: true)
 class CallImageModel {
+  @StringConverter()
   final String id;
   @JsonKey(name: 'image_path')
   final String imagePath;

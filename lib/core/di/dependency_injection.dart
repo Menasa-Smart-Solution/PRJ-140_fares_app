@@ -65,8 +65,8 @@ Future<void> _initCoreDependencies() async {
     final dio = Dio();
     dio.options
       ..baseUrl = Env.apiUrl
-      ..connectTimeout = const Duration(seconds: 30)
-      ..receiveTimeout = const Duration(seconds: 30);
+      ..connectTimeout = const Duration(seconds: 59)
+      ..receiveTimeout = const Duration(seconds: 59);
     dio.interceptors.add(AuthInterceptor());
     dio.interceptors.add(LanguageInterceptor());
     if (kDebugMode) {

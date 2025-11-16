@@ -25,7 +25,7 @@ class CallLogsView extends StatelessWidget {
             );
           },
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
+        floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       ),
     );
   }

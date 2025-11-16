@@ -75,7 +75,9 @@ class OrdersCubit extends Cubit<OrdersState> {
 
         emit(
           state.copyWith(
-            ordersState: StateType.success,
+            ordersState: parcelsData!.data == null || parcelsData.data!.isEmpty
+                ? StateType.empty
+                : StateType.success,
             orders: parcelsResponse,
             allParcels: newParcels,
             currentPage: currentPage,

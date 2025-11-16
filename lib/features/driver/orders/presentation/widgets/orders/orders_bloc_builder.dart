@@ -70,7 +70,7 @@ class _OrdersBlocBuilderState extends State<OrdersBlocBuilder> {
           case StateType.empty:
             return Expanded(
               child: buildWidget(
-                const CustomEmptyWidget(message: 'لا توجد طلبات حالياً'),
+                const CustomEmptyWidget(message: 'لا توجد شحنات حالياً'),
                 context,
               ),
             );
