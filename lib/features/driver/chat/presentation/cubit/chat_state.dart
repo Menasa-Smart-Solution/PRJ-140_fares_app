@@ -13,6 +13,10 @@ class ChatState extends Equatable {
   final StateType sendMessageState;
   final String? sendMessageErrorMessage;
 
+  final int currentPage;
+  final bool hasMoreData;
+  final bool isLoadingMore;
+
   const ChatState({
     this.conversations = const [],
     this.allConversations = const [],
@@ -23,6 +27,9 @@ class ChatState extends Equatable {
     this.getConversationMessagesErrorMessage,
     this.sendMessageState = StateType.initial,
     this.sendMessageErrorMessage,
+    this.currentPage = 1,
+    this.hasMoreData = true,
+    this.isLoadingMore = false,
   });
 
   ChatState copyWith({
@@ -35,6 +42,9 @@ class ChatState extends Equatable {
     String? getConversationMessagesErrorMessage,
     StateType? sendMessageState,
     String? sendMessageErrorMessage,
+    int? currentPage,
+    bool? hasMoreData,
+    bool? isLoadingMore,
   }) {
     return ChatState(
       conversations: conversations ?? this.conversations,
@@ -53,6 +63,9 @@ class ChatState extends Equatable {
       sendMessageState: sendMessageState ?? this.sendMessageState,
       sendMessageErrorMessage:
           sendMessageErrorMessage ?? this.sendMessageErrorMessage,
+      currentPage: currentPage ?? this.currentPage,
+      hasMoreData: hasMoreData ?? this.hasMoreData,
+      isLoadingMore: isLoadingMore ?? this.isLoadingMore,
     );
   }
 
@@ -67,5 +80,8 @@ class ChatState extends Equatable {
     getConversationMessagesErrorMessage,
     sendMessageState,
     sendMessageErrorMessage,
+    currentPage,
+    hasMoreData,
+    isLoadingMore,
   ];
 }

@@ -460,6 +460,7 @@ class ParcelStoreModel {
   final String? phone;
   @JsonKey(name: 'total_parcels_count')
   final int? totalParcelsCount;
+  @NullableStringConverter()
   final String? balance;
   @JsonKey(name: 'suggested_shelf')
   final String? suggestedShelf;

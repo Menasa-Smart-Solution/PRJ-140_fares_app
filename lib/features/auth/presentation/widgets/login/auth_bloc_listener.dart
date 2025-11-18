@@ -29,15 +29,15 @@ class AuthBlocListener extends StatelessWidget {
           }
           await CacheHelper.setSecuredString(
             PrefsKeys.role,
-            state.userModel!.user.type,
+            state.userModel!.user.type ?? '',
           );
           await CacheHelper.setSecuredString(
             PrefsKeys.address,
-            state.userModel!.user.address,
+            state.userModel!.user.address ?? '',
           );
           await CacheHelper.setSecuredString(
             PrefsKeys.phone,
-            state.userModel!.user.phone,
+            state.userModel!.user.phone ?? '',
           );
           await CacheHelper.setSecuredString(
             PrefsKeys.token,

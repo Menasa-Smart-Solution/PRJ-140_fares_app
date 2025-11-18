@@ -33,9 +33,15 @@ class ChatDataSourceImpl extends ChatDataSource {
   }
 
   @override
-  Future<ConversationsResponseModel> getConversations() async {
+  Future<ConversationsResponseModel> getConversations({
+    int page = 1,
+    int perPage = 10,
+  }) async {
     try {
-      final response = await _apiService.getConversations();
+      final response = await _apiService.getConversations(
+        page: page,
+        perPage: perPage,
+      );
       AppLogger.log(
         'Chat Data Source: get conversations success:${response.data!.chats.length}',
       );

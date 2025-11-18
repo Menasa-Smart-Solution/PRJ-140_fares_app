@@ -14,7 +14,11 @@ class ConversationsBlocBuilder extends StatelessWidget {
             );
 
           case StateType.success:
-            return ConversationsListView(conversation: state.conversations);
+            return ConversationsListView(
+              conversation: state.conversations,
+              isLoadingMore: state.isLoadingMore,
+              hasMore: state.hasMoreData,
+            );
           case StateType.error:
             return SliverFillRemaining(
               hasScrollBody: false,

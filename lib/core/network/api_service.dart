@@ -70,7 +70,10 @@ abstract class ApiService {
   Future<void> partialDelivery({@Body() required PartialDeliveryRequest body});
 
   @GET(ApiConstants.chat)
-  Future<ConversationsResponseModel> getConversations();
+  Future<ConversationsResponseModel> getConversations({
+    @Query('page') int page = 1,
+    @Query('per_page') int perPage = 10,
+  });
 
   @GET('${ApiConstants.chat}/{parcel_id}')
   Future<ConversationMessagesResponseModel> getConversationMessages(

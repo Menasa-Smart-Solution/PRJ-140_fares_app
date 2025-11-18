@@ -15,9 +15,17 @@ class ConversationsResponseModel {
 
 @JsonSerializable(checked: true)
 class ConversationsDataModel {
+  @JsonKey(name: 'current_page')
+  final int currentPage;
+  @JsonKey(name: 'last_page')
+  final int lastPage;
   final List<ConversationModel> chats;
 
-  ConversationsDataModel({required this.chats});
+  ConversationsDataModel({
+    required this.currentPage,
+    required this.lastPage,
+    required this.chats,
+  });
 
   factory ConversationsDataModel.fromJson(Map<String, dynamic> json) =>
       _$ConversationsDataModelFromJson(json);

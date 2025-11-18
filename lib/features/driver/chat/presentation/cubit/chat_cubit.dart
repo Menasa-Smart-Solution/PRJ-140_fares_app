@@ -19,29 +19,56 @@ class ChatCubit extends Cubit<ChatState> {
   final ChatRepo _chatRepo;
   final InternetService _internetService;
 
-  Future<void> getConversations() async {
-    emit(state.copyWith(getAllConversationsState: StateType.loading));
+  Future<void> getConversations({bool isLoadMore = false}) async {
+    if (state.getAllConversationsState == StateType.loading) return;
+    if (isLoadMore && (state.isLoadingMore || !state.hasMoreData)) return;
+
+    final currentPage = isLoadMore ? state.currentPage + 1 : 1;
+
+    if (isLoadMore) {
+      emit(state.copyWith(isLoadingMore: true));
+    } else {
+      emit(
+        state.copyWith(
+          getAllConversationsState: StateType.loading,
+          currentPage: 1,
+          hasMoreData: true,
+          conversations: [],
+        ),
+      );
+    }
     if (!await _internetService.isConnected()) {
       emit(state.copyWith(getAllConversationsState: StateType.noInternet));
       return;
     }
-    final result = await _chatRepo.getConversation();
+    final result = await _chatRepo.getConversation(
+      page: currentPage,
+      perPage: 10,
+    );
     result.fold(
       (failure) {
         emit(
           state.copyWith(
             getAllConversationsState: StateType.error,
             getAllConversationsErrorMessage: failure.message,
+            isLoadingMore: false,
           ),
         );
       },
       (response) {
         final conversationsList = response.data!.chats;
+        final allConversations = isLoadMore
+            ? [...state.allConversations, ...conversationsList]
+            : conversationsList;
+        final hasMoreData =
+            response.data!.currentPage < response.data!.lastPage;
         emit(
           state.copyWith(
             getAllConversationsState: StateType.success,
             conversations: conversationsList,
-            allConversations: conversationsList, // Store original list
+            allConversations: allConversations, // Store original list
+            hasMoreData: hasMoreData,
+            isLoadingMore: false,
           ),
         );
       },

@@ -178,9 +178,15 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<ConversationsResponseModel> getConversations() async {
+  Future<ConversationsResponseModel> getConversations({
+    int page = 1,
+    int perPage = 10,
+  }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'page': page,
+      r'per_page': perPage,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<ConversationsResponseModel>(

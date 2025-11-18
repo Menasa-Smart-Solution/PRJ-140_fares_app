@@ -14,9 +14,15 @@ class ChatRepo {
   ChatRepo({required ChatDataSource chatDataSource})
     : _chatDataSource = chatDataSource;
 
-  Future<Either<Failure, ConversationsResponseModel>> getConversation() async {
+  Future<Either<Failure, ConversationsResponseModel>> getConversation({
+    int page = 1,
+    int perPage = 10,
+  }) async {
     try {
-      final result = await _chatDataSource.getConversations();
+      final result = await _chatDataSource.getConversations(
+        page: page,
+        perPage: perPage,
+      );
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(message: e.message));

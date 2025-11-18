@@ -12,5 +12,8 @@ abstract class ChatDataSource {
     int parcelId,
   );
 
-  Future<ConversationsResponseModel> getConversations();
+  Future<ConversationsResponseModel> getConversations({
+    int page = 1,
+    int perPage = 10,
+  });
 }
