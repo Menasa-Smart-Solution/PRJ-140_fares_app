@@ -1,7 +1,8 @@
 part of '../../../feature_imports.dart';
 
 class ConversationsBlocBuilder extends StatelessWidget {
-  const ConversationsBlocBuilder({super.key});
+  const ConversationsBlocBuilder({super.key, required this.scrollController});
+  final ScrollController scrollController;
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +17,7 @@ class ConversationsBlocBuilder extends StatelessWidget {
           case StateType.success:
             return ConversationsListView(
               conversation: state.conversations,
+              scrollController: scrollController,
               isLoadingMore: state.isLoadingMore,
               hasMore: state.hasMoreData,
             );

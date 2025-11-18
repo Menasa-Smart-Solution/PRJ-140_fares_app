@@ -20,7 +20,6 @@ class ChatCubit extends Cubit<ChatState> {
   final InternetService _internetService;
 
   Future<void> getConversations({bool isLoadMore = false}) async {
-    if (state.getAllConversationsState == StateType.loading) return;
     if (isLoadMore && (state.isLoadingMore || !state.hasMoreData)) return;
 
     final currentPage = isLoadMore ? state.currentPage + 1 : 1;
@@ -65,7 +64,7 @@ class ChatCubit extends Cubit<ChatState> {
         emit(
           state.copyWith(
             getAllConversationsState: StateType.success,
-            conversations: conversationsList,
+            conversations: allConversations,
             allConversations: allConversations, // Store original list
             hasMoreData: hasMoreData,
             isLoadingMore: false,

@@ -6,6 +6,9 @@ class ConfirmOrderShippingBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final totalPrice =
+        double.parse(parcel.productPrice ?? '0') +
+        double.parse(parcel.shippingPrice ?? '0');
     return SingleChildScrollView(
       child: SizedBox(
         width: double.infinity,
@@ -25,7 +28,7 @@ class ConfirmOrderShippingBottomSheet extends StatelessWidget {
             Text(
               tr(
                 LocaleKeys.confirmDeliveryQuestion,
-                namedArgs: {'price': '${parcel.productPrice} '},
+                namedArgs: {'price': '$totalPrice '},
               ),
               textAlign: TextAlign.center,
               style: AppTextStyles.med18.copyWith(color: AppColors.grey),

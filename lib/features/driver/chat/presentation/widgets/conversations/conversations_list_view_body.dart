@@ -6,29 +6,29 @@ class ConversationsListView extends StatefulWidget {
     required this.conversation,
     required this.isLoadingMore,
     required this.hasMore,
+    required this.scrollController,
   });
 
   final List<ConversationModel> conversation;
   final bool isLoadingMore;
   final bool hasMore;
+  final ScrollController scrollController;
 
   @override
   State<ConversationsListView> createState() => _ConversationsListViewState();
 }
 
 class _ConversationsListViewState extends State<ConversationsListView> {
-  final ScrollController _scrollController = ScrollController();
-
   @override
   void initState() {
     super.initState();
-    _scrollController.addListener(_onScroll);
+    widget.scrollController.addListener(_onScroll);
   }
 
   @override
   void dispose() {
-    _scrollController.removeListener(_onScroll);
-    _scrollController.dispose();
+    widget.scrollController.removeListener(_onScroll);
+    widget.scrollController.dispose();
     super.dispose();
   }
 
@@ -39,9 +39,9 @@ class _ConversationsListViewState extends State<ConversationsListView> {
   }
 
   bool get _isBottom {
-    if (!_scrollController.hasClients) return false;
-    final maxScroll = _scrollController.position.maxScrollExtent;
-    final currentScroll = _scrollController.offset;
+    if (!widget.scrollController.hasClients) return false;
+    final maxScroll = widget.scrollController.position.maxScrollExtent;
+    final currentScroll = widget.scrollController.offset;
     return currentScroll >= (maxScroll * 0.9);
   }
 

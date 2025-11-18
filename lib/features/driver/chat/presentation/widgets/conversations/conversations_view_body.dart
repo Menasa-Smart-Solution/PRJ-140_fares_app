@@ -9,6 +9,7 @@ class ConversationsViewBody extends StatefulWidget {
 
 class _ConversationsViewBodyState extends State<ConversationsViewBody> {
   final TextEditingController _searchController = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
   Timer? _debounce;
 
   @override
@@ -41,6 +42,7 @@ class _ConversationsViewBodyState extends State<ConversationsViewBody> {
         context.read<ChatCubit>().getConversations();
       },
       child: CustomScrollView(
+        controller: _scrollController,
         slivers: [
           SliverAppBar(
             pinned: true,
@@ -68,7 +70,7 @@ class _ConversationsViewBodyState extends State<ConversationsViewBody> {
           ),
           SliverToBoxAdapter(child: verticalSpace(16)),
 
-          const ConversationsBlocBuilder(),
+          ConversationsBlocBuilder(scrollController: _scrollController),
         ],
       ),
     );

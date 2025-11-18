@@ -31,13 +31,33 @@ class NewFlights extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         trailing: RoundedIconButton(
           onTap: () {
-            context.read<HomeCubit>().receiveParcels(flight.toString());
+            showAcceptFlights(context, flight);
           },
           icon: Icons.done,
           iconColor: Colors.white,
           backgroundColor: AppColors.lightPrimaryColor,
         ),
       ).withPadding(bottom: 8),
+    );
+  }
+
+  void showAcceptFlights(BuildContext context, int flight) async {
+    final cubit = context.read<HomeCubit>();
+    showDialog(
+      context: context,
+      builder: (context) => Builder(
+        builder: (context) {
+          return BlocProvider.value(
+            value: cubit,
+            child: AcceptFlightsAlertDialog(
+              flight: flight,
+              onTap: () {
+                cubit.receiveParcels(flight.toString());
+              },
+            ),
+          );
+        },
+      ),
     );
   }
 }

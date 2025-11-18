@@ -19,6 +19,7 @@ class ConversationsDataModel {
   final int currentPage;
   @JsonKey(name: 'last_page')
   final int lastPage;
+  @JsonKey(name: 'data')
   final List<ConversationModel> chats;
 
   ConversationsDataModel({
