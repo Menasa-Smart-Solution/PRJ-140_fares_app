@@ -127,22 +127,7 @@ class _UpdateParcelViewBodyState extends State<UpdateParcelViewBody> {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: AppTextFormField(
-                      hintText: LocaleKeys.enterQuantity.tr(),
-                      validator: (value) {
-                        // if (value == null || value.isEmpty) {
-                        //   return LocaleKeys.fieldRequired.tr();
-                        // }
-                      },
-                      controller: cubit.qtyController,
-                      showLabel: true,
-                      readOnly: true,
-                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                      radius: 10,
-                      title: LocaleKeys.quantity.tr(),
-                    ),
-                  ),
+                  const UpdateParcelQuantityTextFormField(),
                   horizontalSpace(8),
                   Expanded(
                     child: AppTextFormField(

@@ -69,7 +69,9 @@ class CreateParcelsCubit extends Cubit<CreateParcelsState> {
       unreturnable: isServiceSelected(LocaleKeys.nonReturnable) ? 1 : 0,
       partialDelivery: isServiceSelected(LocaleKeys.partialDelivery) ? 1 : 0,
       productIds: state.selectedProducts.map((e) => e.id).toList(),
-      qtys: state.qyts,
+      qtys: state.selectedProducts.isEmpty
+          ? [int.parse(qtyController.text)]
+          : state.qyts,
       subCityId: state.selectedSubCity?.id,
     );
 
@@ -231,6 +233,9 @@ class CreateParcelsCubit extends Cubit<CreateParcelsState> {
   }
 
   void setSelectedProduct(ProductModel? product) {
+    if (state.selectedProducts.isEmpty) {
+      qtyController.clear();
+    }
     AppLogger.info('Selected Product: ${product?.name}');
     if (product != null) {
       final updatedProducts = List<ProductModel>.from(state.selectedProducts);

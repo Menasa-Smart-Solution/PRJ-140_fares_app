@@ -98,6 +98,9 @@ class UpdateParcelsCubit extends Cubit<UpdateParcelsState> {
       'Selected SubCity: ${state.selectedSubCity?.name} (ID: ${state.selectedSubCity?.id})',
     );
 
+    final cachedSelectedSubCityId = state.selectedSubCity?.id;
+    final cachedParcelSubCityId = state.parcel?.subCityId;
+
     emit(
       state.copyWith(
         updateParcelState: StateType.loading,
@@ -117,6 +120,22 @@ class UpdateParcelsCubit extends Cubit<UpdateParcelsState> {
     );
     AppLogger.info('SubCity ID to send: ${state.selectedSubCity?.id}');
 
+    int? normalizeSubCityId(dynamic rawId) {
+      if (rawId == null) return null;
+      if (rawId is int) return rawId;
+      if (rawId is num) return rawId.toInt();
+      return int.tryParse(rawId.toString());
+    }
+
+    final resolvedSubCityId =
+        normalizeSubCityId(cachedSelectedSubCityId) ??
+        normalizeSubCityId(cachedParcelSubCityId);
+    if (resolvedSubCityId == null) {
+      AppLogger.warning('Resolved subCityId is null before sending request');
+    } else {
+      AppLogger.info('Resolved subCityId to send: $resolvedSubCityId');
+    }
+
     final parcels = CreateParcelsRequestBody(
       customerName: recipientName,
       qty: int.parse(qtyController.text),
@@ -135,8 +154,10 @@ class UpdateParcelsCubit extends Cubit<UpdateParcelsState> {
       unreturnable: isServiceSelected(LocaleKeys.nonReturnable) ? 1 : 0,
       partialDelivery: isServiceSelected(LocaleKeys.partialDelivery) ? 1 : 0,
       productIds: state.selectedProducts.map((e) => e.id).toList(),
-      qtys: state.qyts,
-      subCityId: state.selectedSubCity?.id,
+      qtys: state.selectedProducts.isEmpty
+          ? [int.parse(qtyController.text)]
+          : state.qyts,
+      subCityId: resolvedSubCityId,
     );
 
     // Log the actual request body
@@ -255,6 +276,9 @@ class UpdateParcelsCubit extends Cubit<UpdateParcelsState> {
   }
 
   void setSelectedProduct(ProductModel? product) {
+    if (state.selectedProducts.isEmpty) {
+      qtyController.clear();
+    }
     if (product != null) {
       final updatedProducts = List<ProductModel>.from(state.selectedProducts);
       final updatedQtys = List<int>.from(state.qyts);
@@ -311,6 +335,7 @@ class UpdateParcelsCubit extends Cubit<UpdateParcelsState> {
     AppLogger.info('Parcel subCityId from API: ${parcel.subCityId}');
     productPriceController.text = parcel.productPrice?.toString() ?? '0';
     qtyController.text = parcel.qty?.toString() ?? '0';
+    AppLogger.info('qtyController set to: ${parcel.qty}');
 
     final services = <String>{};
     if (parcel.breakable == "1") services.add(LocaleKeys.breakable);
@@ -336,7 +361,7 @@ class UpdateParcelsCubit extends Cubit<UpdateParcelsState> {
           'Found city: ${selectedCity.name} with ${selectedCity.subCities?.length ?? 0} subcities',
         );
 
-        // Find subcity if available
+        AppLogger.info('sub city id: ${parcel.subCityId} ');
         if (parcel.subCityId != null && selectedCity.subCities != null) {
           try {
             selectedSubCity = selectedCity.subCities!.firstWhere(

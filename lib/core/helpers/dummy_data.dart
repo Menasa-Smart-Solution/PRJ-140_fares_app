@@ -24,10 +24,8 @@ final dummyConversation = ConversationModel(
   ),
   parcel: ParcelModel(
     id: 789,
-    branchId: "BR-001",
     status: "In Transit",
     createdAt: "2025-10-10T09:15:00Z",
-    updatedAt: "2025-10-10T09:45:00Z",
   ),
   lastMessage: MessageModel(
     id: 555,

@@ -44,17 +44,6 @@ class ParcelsDataModel {
   final int? from;
   @JsonKey(name: 'last_page')
   final int? lastPage;
-  @JsonKey(name: 'last_page_url')
-  final String? lastPageUrl;
-  final List<PaginationLinkModel>? links;
-  @JsonKey(name: 'next_page_url')
-  final String? nextPageUrl;
-  final String? path;
-  @JsonKey(name: 'per_page')
-  final int? perPage;
-  @JsonKey(name: 'prev_page_url')
-  final String? prevPageUrl;
-  final int? to;
   final int? total;
 
   ParcelsDataModel({
@@ -63,13 +52,6 @@ class ParcelsDataModel {
     this.firstPageUrl,
     this.from,
     this.lastPage,
-    this.lastPageUrl,
-    this.links,
-    this.nextPageUrl,
-    this.path,
-    this.perPage,
-    this.prevPageUrl,
-    this.to,
     this.total,
   });
 
@@ -84,12 +66,6 @@ class ParcelsDataModel {
       firstPageUrl: 'https://api.fares.com.ly/api/parcels?page=1',
       from: 1,
       lastPage: 5,
-      lastPageUrl: 'https://api.fares.com.ly/api/parcels?page=5',
-      links: [],
-      nextPageUrl: 'https://api.fares.com.ly/api/parcels?page=2',
-      path: 'https://api.fares.com.ly/api/parcels',
-      perPage: 10,
-      prevPageUrl: null,
     );
   }
 }
@@ -111,39 +87,7 @@ class ParcelModel {
   final int? id;
   @JsonKey(name: 'branch_id')
   @NullableStringConverter()
-  final String? branchId;
-  @JsonKey(name: 'ref_id')
-  @NullableStringConverter()
   final String? refId;
-  @JsonKey(name: 'store_id')
-  @NullableStringConverter()
-  final String? storeId;
-  @JsonKey(name: 'from_city_id')
-  @NullableStringConverter()
-  final String? fromCityId;
-  @JsonKey(name: 'to_city_id')
-  @NullableStringConverter()
-  final String? toCityId;
-  @JsonKey(name: 'sub_city_id')
-  @NullableStringConverter()
-  final String? subCityId;
-  @JsonKey(name: 'delivery_man_id')
-  @NullableStringConverter()
-  final String? deliveryManId;
-  @JsonKey(name: 'branch_settlement_id')
-  @NullableStringConverter()
-  final String? branchSettlementId;
-  @JsonKey(name: 'warehouse_flight_id')
-  @NullableStringConverter()
-  final String? warehouseFlightId;
-  @JsonKey(name: 'issue_id')
-  @NullableStringConverter()
-  final String? issueId;
-  @JsonKey(name: 'issue_user_id')
-  @NullableStringConverter()
-  final String? issueUserId;
-  @JsonKey(name: 'assign_flight_at')
-  final String? assignFlightAt;
   final String? city;
   final String? desc;
   @JsonKey(name: 'customer_name')
@@ -164,173 +108,25 @@ class ParcelModel {
   final String? productPrice;
   @JsonKey(name: 'recipient_number')
   final String? recipientNumber;
-  @JsonKey(name: 'delivery_on')
-  final String? deliveryOn;
-  @JsonKey(name: 'transfer_on')
-  final String? transferOn;
   @JsonKey(name: 'recipient_number_2')
   final String? recipientNumber2;
   @JsonKey(name: 'shipping_price')
   @NullableStringConverter()
   final String? shippingPrice;
-  @JsonKey(name: 'branch_commission')
   @NullableStringConverter()
-  final String? branchCommission;
-  @JsonKey(name: 'delivery_man_price')
-  @NullableStringConverter()
-  final String? deliveryManPrice;
-  @JsonKey(name: 'paid_shipping_price')
-  @NullableStringConverter()
-  final String? paidShippingPrice;
-  @JsonKey(name: 'paid_product_price')
-  @NullableStringConverter()
-  final String? paidProductPrice;
-  @JsonKey(name: 'transaction_amount')
-  @NullableStringConverter()
-  final String? transactionAmount;
   final String? status;
-  @JsonKey(name: 'status_change_at')
-  final String? statusChangeAt;
-  final String? notes;
-  @JsonKey(name: 'delivery_notes')
-  final String? deliveryNotes;
-  @JsonKey(name: 'have_flight')
-  @NullableStringConverter()
-  final String? haveFlight;
-  @NullableStringConverter()
-  final String? delivered;
-  @NullableStringConverter()
-  final String? closed;
-  @NullableStringConverter()
-  final String? returned;
-  @JsonKey(name: 'measuring_allowed')
-  @NullableStringConverter()
-  final String? measuringAllowed;
-  @NullableStringConverter()
-  final String? breakable;
-  @NullableStringConverter()
-  final String? replacing;
-  @NullableStringConverter()
-  final String? unopenable;
-  @NullableStringConverter()
-  final String? unmeasurable;
-  @NullableStringConverter()
-  final String? measurable;
-  @NullableStringConverter()
-  final String? unreturnable;
-  @NullableStringConverter()
-  final String? prepaid;
-  @JsonKey(name: 'branch_prepaid')
-  @NullableStringConverter()
-  final String? branchPrepaid;
-  @JsonKey(name: 'pre_branch_prepaid')
-  @NullableStringConverter()
-  final String? preBranchPrepaid;
-  @NullableStringConverter()
-  final String? urgent;
-  @JsonKey(name: 'image_path')
-  final String? imagePath;
-  @JsonKey(name: 'prepiad_user_id')
-  @NullableStringConverter()
-  final String? prepiadUserId;
-  @JsonKey(name: 'prepaid_at')
-  final String? prepaidAt;
-  @JsonKey(name: 'delivery_closed')
-  @NullableStringConverter()
-  final String? deliveryClosed;
-  @JsonKey(name: 'unable_delivery_type_id')
-  @NullableStringConverter()
-  final String? unableDeliveryTypeId;
-  @JsonKey(name: 'unable_delivery_type_user_id')
-  @NullableStringConverter()
-  final String? unableDeliveryTypeUserId;
-  @JsonKey(name: 'unable_delivery_type_at')
-  @NullableStringConverter()
-  final String? unableDeliveryTypeAt;
-  @JsonKey(name: 'whatsapp_message')
-  final String? whatsappMessage;
-  @JsonKey(name: 'whatsapp_message_at')
-  final String? whatsappMessageAt;
-  final String? shelf;
-  @JsonKey(name: 'closed_at')
-  final String? closedAt;
-  @JsonKey(name: 'deleted_at')
-  final String? deletedAt;
-  @JsonKey(name: 'deleted_user_id')
-  @NullableStringConverter()
-  final String? deletedUserId;
-  @JsonKey(name: 'created_at')
-  final String? createdAt;
-  @JsonKey(name: 'updated_at')
-  final String? updatedAt;
-  @JsonKey(name: 'system_payment')
-  @NullableStringConverter()
-  final String? systemPayment;
-  @NullableStringConverter()
-  final String? warehouse;
-  @JsonKey(name: 'delay_date')
-  final String? delayDate;
-  @JsonKey(name: 'receive_delivery_only')
-  @NullableStringConverter()
-  final String? receiveDeliveryOnly;
-  @JsonKey(name: 'with_treasury')
-  final String? withTreasury;
-  @JsonKey(name: 'rating_attempts_store')
-  @NullableStringConverter()
-  final String? ratingAttemptsStore;
-  @JsonKey(name: 'rating_attempts_customer')
-  @NullableStringConverter()
-  final String? ratingAttemptsCustomer;
-  @JsonKey(name: 'old_id')
-  @NullableStringConverter()
-  final String? oldId;
-  @JsonKey(name: 'is_deducted')
-  @NullableStringConverter()
-  final String? isDeducted;
-  @JsonKey(name: 'is_payment_down')
-  @NullableStringConverter()
-  final String? isPaymentDown;
-  @JsonKey(name: 'underchecking_notes_delivery_man')
-  final String? undercheckingNotesDeliveryMan;
-  @JsonKey(name: 'underchecking_notes_store')
-  final String? undercheckingNotesStore;
-  @JsonKey(name: 'issue_to_user_id')
-  @NullableStringConverter()
-  final String? issueToUserId;
-  @JsonKey(name: 'flight_id')
-  @NullableStringConverter()
-  final String? flightId;
-  @JsonKey(name: 'call_record_count')
-  final int? callRecordCount;
-  @JsonKey(name: 'tracking_code')
-  @NullableStringConverter()
-  final String? trackingCode;
-  @JsonKey(name: 'share_tracking_code_link')
-  final String? shareTrackingCodeLink;
-  @JsonKey(name: 'image_url')
-  final String? imageUrl;
-  @JsonKey(name: 'suggested_shelf')
-  final String? suggestedShelf;
   final ParcelStoreModel? store;
   final ParcelCityModel? tocity;
   @JsonKey(name: 'origin_branch')
   final BranchModel? originBranch;
   final BranchModel? branch;
+  @JsonKey(name: 'created_at')
+  final String? createdAt;
 
   ParcelModel({
     this.id,
-    this.branchId,
     this.refId,
-    this.storeId,
-    this.fromCityId,
-    this.toCityId,
-    this.subCityId,
-    this.deliveryManId,
-    this.branchSettlementId,
-    this.warehouseFlightId,
-    this.issueId,
-    this.issueUserId,
-    this.assignFlightAt,
+    this.createdAt,
     this.city,
     this.desc,
     this.customerName,
@@ -340,70 +136,12 @@ class ParcelModel {
     this.returnQty,
     this.productPrice,
     this.recipientNumber,
-    this.deliveryOn,
-    this.transferOn,
     this.recipientNumber2,
     this.shippingPrice,
-    this.branchCommission,
-    this.deliveryManPrice,
-    this.paidShippingPrice,
-    this.paidProductPrice,
-    this.transactionAmount,
     this.status,
-    this.statusChangeAt,
-    this.notes,
-    this.deliveryNotes,
-    this.haveFlight,
-    this.delivered,
-    this.closed,
-    this.returned,
-    this.measuringAllowed,
-    this.breakable,
-    this.replacing,
-    this.unopenable,
-    this.unmeasurable,
-    this.measurable,
-    this.unreturnable,
-    this.prepaid,
-    this.branchPrepaid,
-    this.preBranchPrepaid,
-    this.urgent,
-    this.imagePath,
-    this.prepiadUserId,
-    this.prepaidAt,
-    this.deliveryClosed,
-    this.unableDeliveryTypeId,
-    this.unableDeliveryTypeUserId,
-    this.unableDeliveryTypeAt,
-    this.whatsappMessage,
-    this.whatsappMessageAt,
-    this.shelf,
-    this.closedAt,
-    this.deletedAt,
-    this.deletedUserId,
-    this.createdAt,
     this.originBranch,
     this.branch,
-    this.updatedAt,
-    this.systemPayment,
-    this.warehouse,
-    this.delayDate,
-    this.receiveDeliveryOnly,
-    this.withTreasury,
-    this.ratingAttemptsStore,
-    this.ratingAttemptsCustomer,
-    this.oldId,
-    this.isDeducted,
-    this.isPaymentDown,
-    this.undercheckingNotesDeliveryMan,
-    this.undercheckingNotesStore,
-    this.issueToUserId,
-    this.flightId,
-    this.callRecordCount,
-    this.trackingCode,
-    this.shareTrackingCodeLink,
-    this.imageUrl,
-    this.suggestedShelf,
+
     this.store,
     this.tocity,
   });
@@ -416,11 +154,7 @@ class ParcelModel {
     final parcelId = id ?? 155473;
     return ParcelModel(
       id: parcelId,
-      branchId: '1',
       refId: null,
-      storeId: '2333',
-      deliveryManId: '782',
-      flightId: '22400',
       city: 'النوفليين',
       desc: '/ - ',
       customerName: '/',
@@ -432,21 +166,7 @@ class ParcelModel {
       recipientNumber: '4455555555',
       recipientNumber2: null,
       shippingPrice: '15',
-      deliveryManPrice: '7',
-      paidShippingPrice: '0',
-      paidProductPrice: '0',
-      transactionAmount: '0',
       status: 'FinancialSettlementPending',
-      statusChangeAt: '2025-09-27 14:41:45',
-      notes: null,
-      deliveryNotes: null,
-      callRecordCount: 0,
-      trackingCode: '2333.1.$parcelId',
-      shareTrackingCodeLink:
-          'https://faris.com.ly/tracking?code=2333.1.$parcelId',
-      imageUrl: null,
-      createdAt: '2025-09-27T12:02:05.000000Z',
-      updatedAt: '2025-09-27T12:41:45.000000Z',
       store: ParcelStoreModel.dummy(),
       tocity: ParcelCityModel.dummy(),
     );

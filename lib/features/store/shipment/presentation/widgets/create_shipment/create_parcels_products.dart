@@ -10,12 +10,12 @@ class CreateParcelsProducts extends StatelessWidget {
         return CustomDropdownSearchList<ProductModel>(
           items: state.products,
           showLabel: true,
-          validator: (value) {
-            if (value == null) {
-              return LocaleKeys.fieldRequired.tr();
-            }
-            return null;
-          },
+          // validator: (value) {
+          //   if (value == null) {
+          //     return LocaleKeys.fieldRequired.tr();
+          //   }
+          //   return null;
+          // },
           // showRemove: true,
           initialValue: context
               .read<CreateParcelsCubit>()

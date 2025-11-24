@@ -11,12 +11,7 @@ class UpdateParcelProducts extends StatelessWidget {
             ? CustomDropdownSearchList<ProductModel>(
                 items: state.products,
                 showLabel: true,
-                validator: (value) {
-                  if (value == null) {
-                    return LocaleKeys.fieldRequired.tr();
-                  }
-                  return null;
-                },
+
                 // showRemove: true,
                 initialValue: context
                     .read<UpdateParcelsCubit>()

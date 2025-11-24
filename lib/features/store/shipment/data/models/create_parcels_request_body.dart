@@ -30,7 +30,7 @@ class CreateParcelsRequestBody {
   final int unreturnable;
   final int unopenable;
   @JsonKey(name: 'product_ids')
-  final List<int> productIds;
+  final List<int>? productIds;
   final List<int> qtys;
   @JsonKey(name: 'partial_delivery')
   final int partialDelivery;
@@ -47,7 +47,7 @@ class CreateParcelsRequestBody {
     required this.deliveryOn,
     this.notes,
     this.partialDelivery = 0,
-    required this.productIds,
+    this.productIds,
     required this.qtys,
     this.subCityId,
 

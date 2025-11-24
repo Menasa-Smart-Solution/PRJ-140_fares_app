@@ -48,23 +48,13 @@ class StoreParcelModel {
   final String? recipientNumberTwo;
   @JsonKey(name: 'customer_name')
   final String? customerName;
-  @JsonKey(name: 'origin_qty')
   @NullableStringConverter()
   final String? qty;
-  @JsonKey(name: 'delivery_on')
-  final String? deliveryOn;
   @JsonKey(name: 'shipping_price')
   @NullableStringConverter()
   final String? shippingPrice;
   final String? status;
   final String? notes;
-  @JsonKey(name: 'delivery_notes')
-  final String? deliveryNotes;
-  @JsonKey(name: 'call_record_count')
-  @NullableStringConverter()
-  final int? callRecordCount;
-  @JsonKey(name: 'share_tracking_code_link')
-  final String? shareTrackingCodeLink;
   @JsonKey(name: 'tocity')
   final ParcelCityModel? toCity;
   @JsonKey(name: 'origin_branch')
@@ -92,7 +82,10 @@ class StoreParcelModel {
   final String? unopenable;
   @NullableStringConverter()
   final String? partialDelivery;
-
+  @JsonKey(name: 'delivery_on')
+  final String? deliveryOn;
+  @JsonKey(name: 'share_tracking_code_link')
+  final String? shareTrackingCodeLink;
   final List<ProductModel>? products;
 
   StoreParcelModel({
@@ -104,13 +97,9 @@ class StoreParcelModel {
     this.partialDelivery,
     this.customerName,
     this.qty,
-    this.deliveryOn,
     this.shippingPrice,
     this.status,
     this.notes,
-    this.deliveryNotes,
-    this.callRecordCount,
-    this.shareTrackingCodeLink,
     this.toCity,
     this.originBranch,
     this.store,
@@ -126,6 +115,8 @@ class StoreParcelModel {
     this.unreturnable,
     this.unopenable,
     this.products,
+    this.deliveryOn,
+    this.shareTrackingCodeLink,
   });
 
   factory StoreParcelModel.fromJson(Map<String, dynamic> json) =>
@@ -140,6 +131,7 @@ class StoreModel {
   final String? ownerName;
   @JsonKey(name: 'total_parcels_count')
   final int? totalParcelsCount;
+  @NullableStringConverter()
   final String? balance;
 
   StoreModel({
@@ -194,13 +186,9 @@ final List<StoreParcelModel> dummyParcels = List.generate(10, (index) {
     recipientNumberTwo: '09${(index + 20) * 987654 % 9999999}',
     customerName: 'Customer ${index + 1}',
     qty: '${(index % 3) + 1}',
-    deliveryOn: '2025-10-${20 + (index % 10)}',
     shippingPrice: '${(index % 5) * 5 + 10}',
     status: ['Pending', 'In Transit', 'Delivered'][index % 3],
     notes: 'Note for parcel ${index + 1}',
-    deliveryNotes: index.isEven ? 'Delivered successfully' : 'Still in transit',
-    callRecordCount: index % 4,
-    shareTrackingCodeLink: 'https://myapp.ly/track/${index + 1000}',
     toCity: ParcelCityModel(
       id: (index % 5) + 1,
       name: ['Tripoli', 'Benghazi', 'Misrata', 'Zliten', 'Sabha'][index % 5],

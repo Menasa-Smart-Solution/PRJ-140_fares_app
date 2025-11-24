@@ -22,12 +22,12 @@ class CallLogsImagesListView extends StatelessWidget {
                 contentPadding: EdgeInsets.zero,
 
                 content: SizedBox(
-                  height: 700,
+                  height: 500,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16),
                     child: CustomCachedImage(
                       imageUrl: images[index].imagePath,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fill,
                     ),
                   ),
                 ),

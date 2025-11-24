@@ -34,12 +34,14 @@ part 'presentation/widgets/update_parcel/update_parcel_cities.dart';
 part 'presentation/widgets/update_parcel/update_parcel_image.dart';
 part 'presentation/widgets/update_parcel/update_parcel_options.dart';
 part 'presentation/widgets/update_parcel/edit_parcel_bloc_listener.dart';
+part 'presentation/widgets/update_parcel/update_parcel_quantity_text_from_field.dart';
 
 part 'presentation/widgets/create_shipment/shipment_options.dart';
 part 'presentation/widgets/create_shipment/create_parcels_cities_bloc_builder.dart';
 part 'presentation/widgets/create_shipment/create_parcels_bloc_listener.dart';
 part 'presentation/widgets/create_shipment/create_parcels_bloc_builder.dart';
 part 'presentation/widgets/create_shipment/create_parcels_products.dart';
+part 'presentation/widgets/create_shipment/create_parcel_quantity_text_from_field.dart';
 
 part 'presentation/widgets/add_collection_request/collection_request_options.dart';
 part 'presentation/widgets/add_collection_request/add_collection_bloc_listener.dart';
